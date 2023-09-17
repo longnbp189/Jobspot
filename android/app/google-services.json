@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "422660051607",
+    "project_id": "jobspot-11d8f",
+    "storage_bucket": "jobspot-11d8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422660051607:android:456f0fee6bffb6a8974fd2",
+        "android_client_info": {
+          "package_name": "com.jobspot.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422660051607-5sieaibv2ai45i5cmd0ljl3klkgd045n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jobspot.prod",
+            "certificate_hash": "757a9694ad7eacb28cd8c7d2eb67ede43c350f79"
+          }
+        },
+        {
+          "client_id": "422660051607-rgfn8sn0ukupqaosevgf6aro4414ci0b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXxzD-uFMThHOWidkmgQPDK-SK68BkL3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422660051607-dacjesus3tcifdu6mmqthpqttapq2u5b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "422660051607-hs5rj7jpt33403esph1immco71lne5qg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jobspot.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
