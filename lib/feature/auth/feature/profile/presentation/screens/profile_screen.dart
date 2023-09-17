@@ -299,7 +299,7 @@ class ProfileOptionItem extends StatelessWidget {
             children: [
               IconWidget(
                 icon: item.icon,
-                size: 28.r,
+                size: 24.r,
                 color: AppColor.unSelected,
               ),
               spaceW8,
