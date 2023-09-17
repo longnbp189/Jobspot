@@ -76,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 }
               },
               builder: (context, state) {
-                final authBloc = context.read<SignUpBloc>();
+                final signUpBloc = context.read<SignUpBloc>();
 
                 return SingleChildScrollView(
                   child: Form(
@@ -104,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // stateBloc: '',
                             // stateValue: '',
                             onChanged: (value) =>
-                                authBloc.add(SignUpEvent.emailChanged(value)),
+                                signUpBloc.add(SignUpEvent.emailChanged(value)),
                           ),
                           spaceH16,
                           CustomTextFormField(
@@ -114,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             title: 'Password',
                             textController: _passwordController,
                             onTap: _togglePassword,
-                            onChanged: (value) => authBloc
+                            onChanged: (value) => signUpBloc
                                 .add(SignUpEvent.passwordChanged(value)),
                             isPassword: true,
                           ),
@@ -126,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             title: 'Confirm Password',
                             textController: _confirmPasswordController,
                             onTap: _toggleConfirmPassword,
-                            onChanged: (value) => authBloc
+                            onChanged: (value) => signUpBloc
                                 .add(SignUpEvent.confirmPasswordChanged(value)),
                             isPassword: true,
                             isCorrectPassword: state.isCorrectPassword(),
@@ -138,7 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             textController: _fullNameController,
                             // stateBloc: '',
                             // stateValue: '',
-                            onChanged: (value) => authBloc
+                            onChanged: (value) => signUpBloc
                                 .add(SignUpEvent.fullnameChanged(value)),
                           ),
                           spaceH16,
@@ -151,7 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // stateValue: '',
                             // isError:
                             //     state.isCorrectPhone() && state.phone.isNotEmpty,
-                            onChanged: (value) => authBloc
+                            onChanged: (value) => signUpBloc
                                 .add(SignUpEvent.phoneNumberChanged(value)),
                           ),
                           spaceH32,
@@ -165,7 +165,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 () async {
                               FocusManager.instance.primaryFocus?.unfocus();
                               if (_formKey.currentState!.validate()) {
-                                authBloc.add(const SignUpEvent.signUp());
+                                signUpBloc.add(const SignUpEvent.signUp());
                               }
 
                               // AppFormat.showSnackBar(

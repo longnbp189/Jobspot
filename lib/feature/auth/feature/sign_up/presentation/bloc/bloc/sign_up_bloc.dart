@@ -4,7 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobspot/core/service_locator.dart';
+import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info.dart';
 import 'package:jobspot/feature/auth/feature/sign_up/domain/usecases/sign_up_use_case.dart';
 
 part 'sign_up_event.dart';
@@ -47,13 +49,14 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       final user = await serviceLocator<SignUpUsecase>()
           .signUp(email: state.email.trim(), password: state.password.trim());
       await serviceLocator<SignUpUsecase>().saveUserToFirebase(UserModel(
-          // id: state,
-          id: user.user!.uid,
-          displayName: state.fullName.trim(),
-          username: state.email.trim(),
-          email: state.email.trim(),
-          password: state.password,
-          phoneNumber: state.phone));
+        // id: state,
+        id: user.user!.uid,
+        displayName: state.fullName.trim(),
+        username: state.email.trim(),
+        email: state.email.trim(),
+        password: state.password,
+        phoneNumber: state.phone,
+      ));
       emit(state.copyWith(signUpSuccess: true, isLoading: false));
     } on FirebaseAuthException catch (e) {
       emit(state.copyWith(error: e.toString(), isLoading: false));
