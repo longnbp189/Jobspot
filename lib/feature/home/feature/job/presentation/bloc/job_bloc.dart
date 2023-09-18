@@ -7,6 +7,7 @@ import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/domain/usecases/company_use_case.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/district_model.dart';
@@ -46,6 +47,11 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     on<RemoveListBookmarkRequested>(_onRemoveListBookmarkRequested);
     on<GetJobSameTypeRequest>(_onGetJobSameTypeRequest);
     on<GetJobSameCompanyRequest>(_onGetJobSameCompanyRequest);
+    on<SubmitCVRequest>(_onSubmitCVRequest);
+    on<GetTextEmailJobRequested>(_onGetTextEmailJobRequested);
+    on<GetTextPhoneJobRequested>(_onGetTextPhoneJobRequested);
+    on<GetTextNameJobRequested>(_onGetTextNameJobRequested);
+    on<GetTextIntroLetterJobRequested>(_onGetTextIntroLetterJobRequested);
   }
 
   FutureOr<void> _onGetAddressRequested(
@@ -262,7 +268,8 @@ class JobBloc extends Bloc<JobEvent, JobState> {
       await Future.delayed(const Duration(seconds: 1));
 
       result.fold(
-          (l) => emit(state.copyWith(error: l.message, isLoading: false)),
+          (l) => emit(state.copyWith(
+              error: l.message, loadStatus: LoadStatusEnum.loaded)),
           (r) => emit(state.copyWith(
               updateSuccess: true,
               isLoading: false,
@@ -312,5 +319,59 @@ class JobBloc extends Bloc<JobEvent, JobState> {
             element.id == state.job!.id) ||
         !AppFormat.isAvailableJob(element));
     emit(state.copyWith(isShimmer: false, error: '', jobsSameCompany: jobs));
+  }
+
+  FutureOr<void> _onSubmitCVRequest(
+      SubmitCVRequest event, Emitter<JobState> emit) async {
+    try {
+      emit(state.copyWith(
+        loadStatus: LoadStatusEnum.loading,
+      ));
+      List<String> userJob = List.from(state.user?.jobIds ?? []);
+      if (!userJob.contains(state.job?.id)) {
+        userJob.add(state.job?.id ?? '');
+      }
+      final result =
+          await serviceLocator<JobUsecase>().submitCV(event.cvInfoModel);
+      // await Future.delayed(const Duration(seconds: 1));
+      var user = state.user!
+          .copyWith(jobIds: userJob, introducingLetter: state.introLetter);
+
+      result.fold(
+          (l) => emit(state.copyWith(
+              error: l.message, loadStatus: LoadStatusEnum.loaded)),
+          (r) => emit(state.copyWith(
+                submitSuccess: true,
+                isLoading: false,
+                user: user,
+                loadStatus: LoadStatusEnum.loaded,
+              )));
+    } catch (e) {
+      emit(state.copyWith(
+          error: e.toString(), loadStatus: LoadStatusEnum.loaded));
+    } finally {
+      emit(state.copyWith(
+          error: '', loadStatus: LoadStatusEnum.notLoad, submitSuccess: false));
+    }
+  }
+
+  FutureOr<void> _onGetTextEmailJobRequested(
+      GetTextEmailJobRequested event, Emitter<JobState> emit) {
+    emit(state.copyWith(email: event.text));
+  }
+
+  FutureOr<void> _onGetTextPhoneJobRequested(
+      GetTextPhoneJobRequested event, Emitter<JobState> emit) {
+    emit(state.copyWith(phone: event.text));
+  }
+
+  FutureOr<void> _onGetTextNameJobRequested(
+      GetTextNameJobRequested event, Emitter<JobState> emit) {
+    emit(state.copyWith(name: event.text));
+  }
+
+  FutureOr<void> _onGetTextIntroLetterJobRequested(
+      GetTextIntroLetterJobRequested event, Emitter<JobState> emit) {
+    emit(state.copyWith(introLetter: event.text));
   }
 }

@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 import 'package:jobspot/core/failure.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/district_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/job_category_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
@@ -16,6 +17,7 @@ import 'package:jobspot/services/database_helper.dart';
 abstract class JobRemoteDataSource {
   Future<Either<Failure, Unit>> getAddress();
   Future<Either<Failure, List<JobsModel>>> getListJob();
+  Future<Either<Failure, Unit>> submitCV(CVInfoModel cvInfoModel);
   Future<Either<Failure, List<JobsModel>>> getListJobMax();
   Future<Either<Failure, Unit>> updateBookMark({
     required UserModel userModel,
@@ -162,6 +164,20 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
     } catch (e) {
       return left(ParsingFailure(
           'Update bookmark user Firebase Error: ${e.toString()}'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> submitCV(CVInfoModel cvInfoModel) async {
+    try {
+      final collectionReference = FirebaseFirestore.instance
+          .collection('Jobs')
+          .doc(cvInfoModel.jobId)
+          .collection("SubmitCV");
+      await collectionReference.doc(cvInfoModel.id).set(cvInfoModel.toJson());
+      return right(unit);
+    } catch (e) {
+      return left(ParsingFailure('Submit CV Firebase Error: ${e.toString()}'));
     }
   }
 }

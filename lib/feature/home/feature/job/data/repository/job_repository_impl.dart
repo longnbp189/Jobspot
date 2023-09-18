@@ -32,4 +32,9 @@ class JobRepositoryImpl implements JobRepository {
     return serviceLocator<JobRemoteDataSource>()
         .updateBookMark(userModel: userModel);
   }
+
+  @override
+  Future<Either<Failure, Unit>> submitCV(cvInfoModel) {
+    return serviceLocator<JobRemoteDataSource>().submitCV(cvInfoModel);
+  }
 }

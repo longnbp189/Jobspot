@@ -9,7 +9,7 @@ import 'package:path_provider/path_provider.dart';
 
 abstract class CvDataSource {
   Future<Either<Failure, List<CVModel>>> getListCV(String id);
-  Future<Either<Failure, Unit>> updateMainCV(CVModel cv);
+  Future<Either<Failure, List<CVModel>>> updateMainCV(CVModel cv);
   Future<Either<Failure, Unit>> updateNameCV(CVModel cv);
   Future<Either<Failure, Unit>> uploadCV(CVModel cv);
   Future<Either<Failure, Unit>> downloadCV(CVModel cv);
@@ -45,7 +45,7 @@ class CvDataSourceImpl implements CvDataSource {
   }
 
   @override
-  Future<Either<Failure, Unit>> updateMainCV(CVModel cv) async {
+  Future<Either<Failure, List<CVModel>>> updateMainCV(CVModel cv) async {
     try {
       var query = await FirebaseFirestore.instance
           .collection('UserPdf')
@@ -53,23 +53,55 @@ class CvDataSourceImpl implements CvDataSource {
           .collection('Pdf')
           .where('isMainCV', isEqualTo: true)
           .get();
-      if (query.size > 0) {
-        for (final doc in query.docs) {
-          final pdfDocRef = doc.reference;
-          await pdfDocRef.update({
-            'isMainCV': false,
-          });
-        }
-      }
+      final List<CVModel> cvResponse = query.docs.map((doc) {
+        final data = doc.data();
+        return CVModel.fromJson(data);
+      }).toList();
+      var index = cvResponse.indexWhere((element) => element.id == cv.id);
+      if (index != -1) {
+        var docReference = _db
+            .collection('UserPdf')
+            .doc(cv.userId)
+            .collection('Pdf')
+            .doc(cv.id);
 
-      await _db
+        await docReference.update({'isMainCV': false});
+      } else {
+        if (query.size > 0) {
+          for (final doc in query.docs) {
+            final pdfDocRef = doc.reference;
+            await pdfDocRef.update({
+              'isMainCV': false,
+            });
+          }
+        }
+
+        var docReference = _db
+            .collection('UserPdf')
+            .doc(cv.userId)
+            .collection('Pdf')
+            .doc(cv.id);
+
+        await docReference.update({'isMainCV': true});
+      }
+      final querySnapshot = await _db
           .collection('UserPdf')
           .doc(cv.userId)
           .collection('Pdf')
-          .doc(cv.id)
-          .update({'isMainCV': true});
+          .where('isDelete', isEqualTo: false)
+          .get();
 
-      return right(unit);
+      final List<CVModel> cvs = querySnapshot.docs.map((doc) {
+        final data = doc.data();
+        return CVModel.fromJson(data);
+      }).toList();
+      if (cvs.isNotEmpty) {
+        cvs.sort(
+          (a, b) => b.uploadDate!.compareTo(a.uploadDate!),
+        );
+      }
+
+      return right(cvs);
     } catch (e) {
       return left(
           ParsingFailure('Update main cv Firebase Error: ${e.toString()}'));

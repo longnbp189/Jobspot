@@ -79,11 +79,35 @@ class CvItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        item.name,
-                        style: TxtStyles.semiBold14,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              item.name,
+                              style: TxtStyles.semiBold14,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              cvBloc.add(CvEvent.getCvDetail(item));
+                              Future.delayed(const Duration(milliseconds: 400),
+                                  () {
+                                cvBloc.add(const CvEvent.updateMainCV());
+                              });
+                            },
+                            child: IconWidget(
+                              size: 32.r,
+                              icon: item.isMainCV
+                                  ? AppAsset.starBold
+                                  : AppAsset.star,
+                              color: item.isMainCV
+                                  ? AppColor.secondary
+                                  : AppColor.unSelected,
+                            ),
+                          )
+                        ],
                       ),
                       spaceH4,
                       Row(
@@ -177,12 +201,12 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('PDF Viewer', style: TxtStyles.semiBold18),
-
       ),
       body: Center(
           child: const PDF().cachedFromUrl(
         widget.pdfUrl,
-        placeholder: (progress) => const Center(child: CircularProgressIndicator()),
+        placeholder: (progress) =>
+            const Center(child: CircularProgressIndicator()),
         errorWidget: (error) => Center(child: Text(error.toString())),
       )),
     );

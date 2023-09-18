@@ -41,9 +41,10 @@ class CVScreen extends StatelessWidget {
 
     return BlocConsumer<CvBloc, CvState>(
       listener: (context, state) {
-        if (state.updateSuccess) {
+        if (state.updateSuccess || state.updateMainSuccess) {
           AppFormat.showSnackBar(context, 'Update success', 2);
         }
+
         if (state.deleteSuccess) {
           AppFormat.showSnackBar(context, 'Delete success', 2);
         }
@@ -66,6 +67,7 @@ class CVScreen extends StatelessWidget {
           );
         }
         if (state.loadStatus == LoadStatusEnum.loaded) {
+          print('close');
           if (dialogContext != null) {
             Navigator.of(dialogContext!).pop();
           }

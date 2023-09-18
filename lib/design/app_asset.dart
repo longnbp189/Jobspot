@@ -56,4 +56,6 @@ class AppAsset {
   static const String password = "${iconPath}password.svg";
   static const String logout = "${iconPath}logout.svg";
   static const String setting = "${iconPath}setting.svg";
+  static const String star = "${iconPath}star.svg";
+  static const String starBold = "${iconPath}star_bold.svg";
 }

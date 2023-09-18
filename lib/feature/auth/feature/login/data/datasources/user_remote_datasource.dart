@@ -7,7 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:jobspot/core/failure.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
-import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 
 abstract class UserRemoteDataSource {
   Future<Either<Failure, UserModel>> loginWithGoogle();

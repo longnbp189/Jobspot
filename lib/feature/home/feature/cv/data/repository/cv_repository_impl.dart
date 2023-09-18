@@ -12,7 +12,7 @@ class CVRepositoryImpl implements CVRepository {
   }
 
   @override
-  Future<Either<Failure, Unit>> updateMainCV(CVModel cv) {
+  Future<Either<Failure, List<CVModel>>> updateMainCV(CVModel cv) {
     return serviceLocator<CvDataSource>().updateMainCV(cv);
   }
 

@@ -46,11 +46,6 @@ class ProfileItem {
 
 List<ProfileItem> itemProfile = [
   ProfileItem(
-    title: 'CV configuration',
-    icon: AppAsset.setting,
-    ontap: (context) => context.pushNamed(AppRouterName.cvConfiguration),
-  ),
-  ProfileItem(
     title: 'Change Password',
     icon: AppAsset.password,
     ontap: (context) => context.pushNamed(AppRouterName.changePassword),

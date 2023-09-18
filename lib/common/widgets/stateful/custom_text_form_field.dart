@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
-    required this.title,
+    this.title,
     this.type,
     this.hintText,
     this.hide = false,
@@ -18,10 +18,12 @@ class CustomTextFormField extends StatefulWidget {
     this.enabled = true,
     this.onTap,
     this.onChanged,
+    this.maxLength,
+    this.maxLine,
     this.isCorrectPassword,
     required TextEditingController textController,
   }) : _textController = textController;
-  final String title;
+  final String? title;
   final TextEditingController _textController;
   final TextInputType? type;
   final String? hintText;
@@ -31,6 +33,8 @@ class CustomTextFormField extends StatefulWidget {
   final bool? hide;
   final bool? isPassword;
   final bool? isCorrectPassword;
+  final int? maxLength;
+  final int? maxLine;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -81,7 +85,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.title,
+          widget.title ?? '',
           style: TxtStyles.extraBold14,
         ),
         spaceH8,
@@ -98,7 +102,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             }
           },
           enabled: widget.enabled,
+          maxLength: widget.maxLength,
           focusNode: focus,
+
+          maxLines: widget.maxLine,
           obscureText: widget.hide!,
           controller: widget._textController,
           keyboardType: widget.type ?? TextInputType.text,

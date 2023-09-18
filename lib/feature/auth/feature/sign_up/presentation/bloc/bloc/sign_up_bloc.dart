@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
-import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/auth/feature/sign_up/domain/usecases/sign_up_use_case.dart';
 
 part 'sign_up_event.dart';

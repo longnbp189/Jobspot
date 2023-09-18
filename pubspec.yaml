@@ -79,6 +79,7 @@ dependencies:
   connectivity_plus: ^4.0.2
   open_filex: ^4.3.2
   flutter_cached_pdfview: ^0.4.2
+  flutter_keyboard_visibility: ^5.4.1
 
 
 dev_dependencies:

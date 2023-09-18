@@ -6,6 +6,7 @@ import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screen
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/forgot_password_screen.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/screens/login_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/bloc/profile_bloc.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/screens/cv_configuration_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/profile_screen.dart';
 import 'package:jobspot/feature/auth/feature/sign_up/presentation/screens/sign_up_screen.dart';
@@ -71,6 +72,27 @@ class AppRouter {
                             ));
                           },
                         ),
+                        GoRoute(
+                          name: AppRouterName.cvConfiguration,
+                          path: 'cv-configuration',
+                          pageBuilder: (context, state) {
+                            final arguments = state.extra as SubmitJob;
+
+                            return MaterialPage(
+                                child: MultiBlocProvider(
+                              providers: [
+                                BlocProvider.value(
+                                  value: arguments.jobBloc,
+                                ),
+                                BlocProvider.value(
+                                  value: arguments.cvBloc,
+                                ),
+                              ],
+                              child: const CVConfigurationScreen(),
+                            ));
+                          },
+                        ),
+                        
                       ]),
                   GoRoute(
                     name: AppRouterName.companyDetail,

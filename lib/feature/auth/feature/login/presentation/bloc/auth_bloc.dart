@@ -8,6 +8,7 @@ import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/domain/usecases/login_use_case.dart';
+import 'package:jobspot/feature/auth/feature/profile/domain/usecases/profile_usecase.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/notification/data/models/notification_model.dart';
 import 'package:jobspot/services/user_cache_service.dart';
@@ -70,7 +71,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> _onLogout(Logout event, Emitter<AuthState> emit) async {
-    await serviceLocator<LoginUsecase>().logout(state.user?.id??'');
+    await serviceLocator<LoginUsecase>().logout(state.user?.id ?? '');
     // await serviceLocator<UserCacheService>().deleteUser();
     emit(state.copyWith(user: null));
   }
@@ -551,7 +552,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   // ];
 
   FutureOr<void> _onInitUserRequested(
-      InitUserRequested event, Emitter<AuthState> emit) {
+      InitUserRequested event, Emitter<AuthState> emit) async {
+    await serviceLocator<ProfileUsecase>()
+        .updateUserToFirebase(event.userModel);
+
+    await serviceLocator<UserCacheService>().saveUser(event.userModel);
+    print('object');
     emit(state.copyWith(user: event.userModel));
   }
 }
@@ -700,8 +706,7 @@ Create content for campaigns, media messages - advertising on multi-channel.''',
     gender: 2,
     location: 'Ho Chi Minh',
     quantity: '1',
-    requirement:
-        '''Experience: 1 year or more.
+    requirement: '''Experience: 1 year or more.
 Be responsible and dedicated to work.
 Have management and organizational skills, able to withstand high work pressure.
 University graduate from directly related majors, preferably in Marketing.
@@ -720,8 +725,7 @@ Have extensive knowledge and experience in marketing methods, advertising, PR, c
     companyName: 'CHANNEL JOINT STOCK COMPANY 28 ENTERTAINMENT',
     companyLocation:
         '4th floor, Luxury Park View Building, Duong Dinh Nghe, Cau Giay District, Hanoi City',
-    benefit:
-        '''Dynamic, creative, youthful working environment.
+    benefit: '''Dynamic, creative, youthful working environment.
 Hard salary 7 - 9 million + Bonus + Allowances
 There are clear opportunities for advancement, testing, learning and personal development.
 Enjoy full benefits according to Vietnam Labor Law''',
@@ -799,8 +803,7 @@ Hardworking, industrious, with a high sense of responsibility towards work''',
     companyName: 'CHANNEL JOINT STOCK COMPANY 28 ENTERTAINMENT',
     companyLocation:
         '4th floor, Luxury Park View Building, Duong Dinh Nghe, Cau Giay District, Hanoi City',
-    benefit:
-        '''Dynamic, creative, youthful working environment.
+    benefit: '''Dynamic, creative, youthful working environment.
 Fixed salary + Bonus + Allowances
 Dynamic and friendly working environment
 Opportunities for development in the fields of advertising, media and entertainment
@@ -838,8 +841,7 @@ Use basic Photoshop.''',
     companyName: 'ECR SOLUTIONS VIETNAM CO., LTD',
     companyLocation:
         'The Morning Star Building, 57 National Highway 13, Ward 26, Binh Thanh District, Ho Chi Minh City, Vietnam',
-    benefit:
-        '''Friendly and comfortable working environment
+    benefit: '''Friendly and comfortable working environment
 Opportunity to work directly with foreign customers.
 Opportunity to learn new technologies
 Team building & company trips at least once a year
@@ -862,8 +864,7 @@ Stay up-to-date with new technology trends''',
     gender: 2,
     location: 'Ho Chi Minh',
     quantity: '3',
-    requirement:
-        '''Proven work experience as a Mobile developer
+    requirement: '''Proven work experience as a Mobile developer
 Demonstrable portfolio of released applications on the App store or the Android market
 Experience in Dart language & Flutter Framework is required
 Knowledge of languages like Swift (iOS) and Java (Android) is a major plus

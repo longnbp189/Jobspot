@@ -7,8 +7,9 @@ import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/home/feature/cv/data/models/cv_model.dart';
 import 'package:jobspot/feature/home/feature/cv/domain/usecases/cv_use_case.dart';
+import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/services/user_cache_service.dart';
-
+import 'package:collection/collection.dart';
 part 'cv_event.dart';
 part 'cv_state.dart';
 part 'cv_bloc.freezed.dart';
@@ -23,6 +24,7 @@ class CvBloc extends Bloc<CvEvent, CvState> {
     on<GetCVDetailRequested>(_onGetCVDetailRequested);
     on<DeleteCVRequested>(_onDeleteCVRequested);
     on<DownloadCVRequested>(_onDownloadCVRequested);
+    on<GetJobDetailRequested>(_onGetJobDetailRequested);
   }
 
   FutureOr<void> _onGetListCVRequested(
@@ -32,20 +34,43 @@ class CvBloc extends Bloc<CvEvent, CvState> {
     final result = await serviceLocator<CvUsecase>().getListCV(user?.id ?? '');
     result.fold(
       (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
-      (r) => emit(state.copyWith(cvList: r, userModel: user, isShimmer: false)),
+      (r) {
+        final cvMain = r.firstWhereOrNull((element) => element.isMainCV);
+        emit(state.copyWith(
+            cvList: r, userModel: user, isShimmer: false, cvMainModel: cvMain));
+      },
     );
   }
 
   FutureOr<void> _onUpdateMainCVRequested(
       UpdateMainCVRequested event, Emitter<CvState> emit) async {
-    emit(state.copyWith(isLoading: true, error: ''));
+    emit(state.copyWith(loadStatus: LoadStatusEnum.loading, error: ''));
+    try {
+      var cv = state.cvModel;
 
-    final result =
-        await serviceLocator<CvUsecase>().getListCV(state.userModel?.id ?? '');
-    result.fold(
-      (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
-      (r) => emit(state.copyWith(isLoading: false)),
-    );
+      final result = await serviceLocator<CvUsecase>().updateMainCV(cv!);
+      result.fold(
+          (l) => emit(state.copyWith(
+                error: l.message,
+                loadStatus: LoadStatusEnum.loaded,
+              )),
+          (r) => emit(state.copyWith(
+              cvList: r,
+              isLoading: false,
+              updateMainSuccess: true,
+              loadStatus: LoadStatusEnum.loaded,
+              error: '')));
+    } catch (e) {
+      emit(state.copyWith(
+        error: e.toString(),
+        loadStatus: LoadStatusEnum.loaded,
+      ));
+    } finally {
+      emit(state.copyWith(
+          error: '',
+          loadStatus: LoadStatusEnum.notLoad,
+          updateMainSuccess: false));
+    }
   }
 
   FutureOr<void> _onUpdateNameCVRequested(
@@ -138,5 +163,10 @@ class CvBloc extends Bloc<CvEvent, CvState> {
   FutureOr<void> _onDownloadCVRequested(
       DownloadCVRequested event, Emitter<CvState> emit) async {
     await serviceLocator<CvUsecase>().downloadCV(state.cvModel!);
+  }
+
+  FutureOr<void> _onGetJobDetailRequested(
+      GetJobDetailRequested event, Emitter<CvState> emit) {
+    emit(state.copyWith(jobModel: event.job));
   }
 }

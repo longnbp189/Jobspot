@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/common/widgets/stateful/show_more_widget.dart';
 import 'package:jobspot/common/widgets/stateless/avatar_company.dart';
 import 'package:jobspot/common/widgets/stateless/icon_widget.dart';
@@ -13,10 +14,14 @@ import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
+import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
+import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/screens/job_screen.dart';
+import 'package:jobspot/router/app_router_name.dart';
 
 class JobDetailScreen extends StatefulWidget {
   const JobDetailScreen({
@@ -33,10 +38,14 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
   var collapsedHeight = 310.0;
   var authBloc = AuthBloc();
   var jobBloc = JobBloc();
+  var cvBloc = CvBloc();
   @override
   void initState() {
     authBloc = context.read<AuthBloc>();
     jobBloc = context.read<JobBloc>();
+    cvBloc = context.read<CvBloc>();
+    cvBloc.add(const CvEvent.getListCV());
+    // cvBloc.add(CvEvent.getJobDetail(jobBloc.state.job ?? JobsModel()));
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {});
@@ -53,10 +62,38 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
                 kToolbarHeight);
   }
 
+  BuildContext? dialogContext;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<JobBloc, JobState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.submitSuccess) {
+          print('pop');
+          context.pop();
+          AppFormat.showSnackBar(context, 'CV submitted successfully', 2);
+          authBloc.add(InitUserRequested(state.user!));
+        }
+        if (state.loadStatus == LoadStatusEnum.loading) {
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) {
+              dialogContext = context;
+
+              return Container(
+                  color: AppColor.black.withOpacity(0.4),
+                  child: const Center(child: CircularProgressIndicator()));
+            },
+          );
+        }
+        if (state.loadStatus == LoadStatusEnum.loaded) {
+          print('close');
+          if (dialogContext != null) {
+            Navigator.of(dialogContext!).pop();
+          }
+        }
+      },
       builder: (context, state) {
         print(state.isShimmer);
         return DefaultTabController(
@@ -88,60 +125,45 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) => Container(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 16.w, vertical: 16.h),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            'Sử dụng cv đã ứng tuyển',
-                                            style: TxtStyles.semiBold18,
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () => context.pop(),
-                                          child: const Icon(
-                                            Icons.close,
-                                            color: AppColor.primary,
-                                            size: 24,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                          if (authBloc.state.user!.jobIds.isEmpty) {
+                            context.pushNamed(AppRouterName.cvConfiguration,
+                                extra: SubmitJob(
+                                    jobBloc: jobBloc, cvBloc: cvBloc));
+                          } else {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) => MultiBlocProvider(
+                                providers: [
+                                  BlocProvider.value(
+                                    value: cvBloc,
                                   ),
-                                  const Divider(
-                                    color: AppColor.greyBox,
+                                  BlocProvider.value(
+                                    value: jobBloc,
                                   ),
-                                  const Column(
-                                    children: [
-                                      Text('sds'),
-                                      Text('sds'),
-                                      Text('sds'),
-                                      Text('sds')
-                                    ],
-                                  )
                                 ],
+                                child: const ApplyBottomSheet(),
                               ),
-                            ),
-                          );
+                            );
+                          }
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.r),
-                              color: AppColor.primary),
+                          decoration: state.isSubmitCV()
+                              ? BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  border: Border.all(color: AppColor.primary),
+                                )
+                              : BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  color: AppColor.primary),
                           child: Text(
-                            'Apply now',
-                            style: TxtStyles.semiBold16
-                                .copyWith(color: AppColor.white),
+                            state.isSubmitCV() ? 'Reapply' : 'Apply now',
+                            style: state.isSubmitCV()
+                                ? TxtStyles.semiBold16
+                                    .copyWith(color: AppColor.primary)
+                                : TxtStyles.semiBold16
+                                    .copyWith(color: AppColor.white),
                           ),
                         ),
                       ),
@@ -268,6 +290,239 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
               ))),
         );
       },
+    );
+  }
+}
+
+class ApplyBottomSheet extends StatefulWidget {
+  const ApplyBottomSheet({
+    super.key,
+  });
+
+  @override
+  State<ApplyBottomSheet> createState() => _ApplyBottomSheetState();
+}
+
+class _ApplyBottomSheetState extends State<ApplyBottomSheet> {
+  @override
+  Widget build(BuildContext context) {
+    final authBloc = context.read<AuthBloc>();
+    final cvBloc = context.read<CvBloc>();
+    final jobBloc = context.read<JobBloc>();
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColor.backgroundWhite,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.r),
+          topRight: Radius.circular(24.r),
+        ),
+      ),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Use your applied CV',
+                    style: TxtStyles.semiBold18,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => context.pop(),
+                  child: const Icon(
+                    Icons.close,
+                    color: AppColor.primary,
+                    size: 24,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            height: 0,
+            color: AppColor.greyBox,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'CV',
+                            style: TxtStyles.regular16,
+                          ),
+                          Text(
+                            'Name',
+                            style: TxtStyles.regular16,
+                          ),
+                          Text(
+                            'Phone number',
+                            style: TxtStyles.regular16,
+                          ),
+                          Text(
+                            'Email',
+                            style: TxtStyles.regular16,
+                          ),
+                          Text(
+                            'Introducing letter',
+                            style: TxtStyles.regular16,
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              onTap: (cvBloc.state.cvMainModel != null &&
+                                      cvBloc.state.cvMainModel!.name.isNotEmpty)
+                                  ? () => Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => PdfViewerScreen(
+                                              pdfUrl: cvBloc
+                                                  .state.cvMainModel!.url),
+                                        ),
+                                      )
+                                  : null,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    (cvBloc.state.cvMainModel != null &&
+                                            cvBloc.state.cvMainModel!.name
+                                                .isNotEmpty)
+                                        ? ':${cvBloc.state.cvMainModel!.name}'
+                                        : ':Empty',
+                                    style: (cvBloc.state.cvMainModel != null &&
+                                            cvBloc.state.cvMainModel!.name
+                                                .isNotEmpty)
+                                        ? TxtStyles.semiBold16
+                                            .copyWith(color: AppColor.primary)
+                                        : TxtStyles.regular16,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  if ((cvBloc.state.cvMainModel != null &&
+                                      cvBloc
+                                          .state.cvMainModel!.name.isNotEmpty))
+                                    Expanded(
+                                      child: Text(
+                                        ' (View)',
+                                        style: TxtStyles.semiBold16
+                                            .copyWith(color: AppColor.primary),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                            Text(
+                              authBloc.state.user!.displayName.isEmpty
+                                  ? ':Empty'
+                                  : ':${authBloc.state.user?.displayName ?? 'Empty'}',
+                              style: TxtStyles.regular16,
+                            ),
+                            Text(
+                              authBloc.state.user!.phoneNumber.isEmpty
+                                  ? ':Empty'
+                                  : ':${authBloc.state.user?.phoneNumber ?? 'Empty'}',
+                              style: TxtStyles.regular16,
+                            ),
+                            Text(
+                              authBloc.state.user!.email.isEmpty
+                                  ? ':Empty'
+                                  : ':${authBloc.state.user?.email ?? 'Empty'}',
+                              style: TxtStyles.regular16,
+                            ),
+                            Text(
+                              authBloc.state.user!.introducingLetter.isEmpty
+                                  ? ':Empty'
+                                  : ':${authBloc.state.user?.introducingLetter}',
+                              style: TxtStyles.regular16,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            height: 80.h,
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            decoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(color: AppColor.greyBox),
+              ),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      context.pop();
+                      context.pushNamed(AppRouterName.cvConfiguration,
+                          extra: SubmitJob(jobBloc: jobBloc, cvBloc: cvBloc));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 12.h),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(color: AppColor.primary),
+                          color: AppColor.backgroundWhite),
+                      child: Text(
+                        'Change',
+                        style: TxtStyles.semiBold16
+                            .copyWith(color: AppColor.primary),
+                      ),
+                    ),
+                  ),
+                ),
+                spaceW16,
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      jobBloc.add(JobEvent.submitCV(CVInfoModel(
+                          id: AppFormat.generateRandomString(),
+                          jobId: jobBloc.state.job?.id ?? '',
+                          cvId: cvBloc.state.cvMainModel?.id ?? '',
+                          cvLink: cvBloc.state.cvMainModel?.url ?? '',
+                          cvName: cvBloc.state.cvMainModel?.name ?? '',
+                          displayName: authBloc.state.user?.displayName ?? '',
+                          email: authBloc.state.user?.email ?? '',
+                          introducingLetter:
+                              authBloc.state.user?.introducingLetter ?? '',
+                          phoneNumber: authBloc.state.user?.phoneNumber ?? '',
+                          sendDate: DateTime.now())));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 12.h),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.r),
+                          color: AppColor.primary),
+                      child: Text(
+                        'Use',
+                        style: TxtStyles.semiBold16
+                            .copyWith(color: AppColor.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -624,7 +879,6 @@ class JobDetailHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final jobBloc = context.read<JobBloc>();
     final authBloc = context.read<AuthBloc>();
     authBloc.add(const AuthEvent.getUser());
     return BlocBuilder<JobBloc, JobState>(
@@ -799,4 +1053,11 @@ class JobDetailHeader extends StatelessWidget {
       },
     );
   }
+}
+
+class SubmitJob {
+  final JobBloc jobBloc;
+  final CvBloc cvBloc;
+
+  SubmitJob({required this.jobBloc, required this.cvBloc});
 }

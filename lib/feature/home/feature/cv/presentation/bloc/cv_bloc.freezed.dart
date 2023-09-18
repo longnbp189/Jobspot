@@ -26,6 +26,7 @@ mixin _$CvEvent {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +39,7 @@ mixin _$CvEvent {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,7 @@ mixin _$CvEvent {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$CvEvent {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +79,7 @@ mixin _$CvEvent {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +92,7 @@ mixin _$CvEvent {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +161,7 @@ class _$GetListCVRequested implements GetListCVRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return getListCV();
   }
@@ -170,6 +177,7 @@ class _$GetListCVRequested implements GetListCVRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return getListCV?.call();
   }
@@ -185,6 +193,7 @@ class _$GetListCVRequested implements GetListCVRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (getListCV != null) {
@@ -204,6 +213,7 @@ class _$GetListCVRequested implements GetListCVRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return getListCV(this);
   }
@@ -219,6 +229,7 @@ class _$GetListCVRequested implements GetListCVRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return getListCV?.call(this);
   }
@@ -234,6 +245,7 @@ class _$GetListCVRequested implements GetListCVRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (getListCV != null) {
@@ -330,6 +342,7 @@ class _$GetCVDetailRequested implements GetCVDetailRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return getCvDetail(cvModel);
   }
@@ -345,6 +358,7 @@ class _$GetCVDetailRequested implements GetCVDetailRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return getCvDetail?.call(cvModel);
   }
@@ -360,6 +374,7 @@ class _$GetCVDetailRequested implements GetCVDetailRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (getCvDetail != null) {
@@ -379,6 +394,7 @@ class _$GetCVDetailRequested implements GetCVDetailRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return getCvDetail(this);
   }
@@ -394,6 +410,7 @@ class _$GetCVDetailRequested implements GetCVDetailRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return getCvDetail?.call(this);
   }
@@ -409,6 +426,7 @@ class _$GetCVDetailRequested implements GetCVDetailRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (getCvDetail != null) {
@@ -474,6 +492,7 @@ class _$UpdateMainCVRequested implements UpdateMainCVRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return updateMainCV();
   }
@@ -489,6 +508,7 @@ class _$UpdateMainCVRequested implements UpdateMainCVRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return updateMainCV?.call();
   }
@@ -504,6 +524,7 @@ class _$UpdateMainCVRequested implements UpdateMainCVRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (updateMainCV != null) {
@@ -523,6 +544,7 @@ class _$UpdateMainCVRequested implements UpdateMainCVRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return updateMainCV(this);
   }
@@ -538,6 +560,7 @@ class _$UpdateMainCVRequested implements UpdateMainCVRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return updateMainCV?.call(this);
   }
@@ -553,6 +576,7 @@ class _$UpdateMainCVRequested implements UpdateMainCVRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (updateMainCV != null) {
@@ -612,6 +636,7 @@ class _$DeleteCVRequested implements DeleteCVRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return deleteCV();
   }
@@ -627,6 +652,7 @@ class _$DeleteCVRequested implements DeleteCVRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return deleteCV?.call();
   }
@@ -642,6 +668,7 @@ class _$DeleteCVRequested implements DeleteCVRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (deleteCV != null) {
@@ -661,6 +688,7 @@ class _$DeleteCVRequested implements DeleteCVRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return deleteCV(this);
   }
@@ -676,6 +704,7 @@ class _$DeleteCVRequested implements DeleteCVRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return deleteCV?.call(this);
   }
@@ -691,6 +720,7 @@ class _$DeleteCVRequested implements DeleteCVRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (deleteCV != null) {
@@ -750,6 +780,7 @@ class _$UpdateNameCVRequested implements UpdateNameCVRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return updateNameCV();
   }
@@ -765,6 +796,7 @@ class _$UpdateNameCVRequested implements UpdateNameCVRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return updateNameCV?.call();
   }
@@ -780,6 +812,7 @@ class _$UpdateNameCVRequested implements UpdateNameCVRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (updateNameCV != null) {
@@ -799,6 +832,7 @@ class _$UpdateNameCVRequested implements UpdateNameCVRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return updateNameCV(this);
   }
@@ -814,6 +848,7 @@ class _$UpdateNameCVRequested implements UpdateNameCVRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return updateNameCV?.call(this);
   }
@@ -829,6 +864,7 @@ class _$UpdateNameCVRequested implements UpdateNameCVRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (updateNameCV != null) {
@@ -924,6 +960,7 @@ class _$UploadCVRequested implements UploadCVRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return uploadCV(cvModel);
   }
@@ -939,6 +976,7 @@ class _$UploadCVRequested implements UploadCVRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return uploadCV?.call(cvModel);
   }
@@ -954,6 +992,7 @@ class _$UploadCVRequested implements UploadCVRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (uploadCV != null) {
@@ -973,6 +1012,7 @@ class _$UploadCVRequested implements UploadCVRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return uploadCV(this);
   }
@@ -988,6 +1028,7 @@ class _$UploadCVRequested implements UploadCVRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return uploadCV?.call(this);
   }
@@ -1003,6 +1044,7 @@ class _$UploadCVRequested implements UploadCVRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (uploadCV != null) {
@@ -1104,6 +1146,7 @@ class _$DownloadCVRequested implements DownloadCVRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return downloadCV(cvModel);
   }
@@ -1119,6 +1162,7 @@ class _$DownloadCVRequested implements DownloadCVRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return downloadCV?.call(cvModel);
   }
@@ -1134,6 +1178,7 @@ class _$DownloadCVRequested implements DownloadCVRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (downloadCV != null) {
@@ -1153,6 +1198,7 @@ class _$DownloadCVRequested implements DownloadCVRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return downloadCV(this);
   }
@@ -1168,6 +1214,7 @@ class _$DownloadCVRequested implements DownloadCVRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return downloadCV?.call(this);
   }
@@ -1183,6 +1230,7 @@ class _$DownloadCVRequested implements DownloadCVRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (downloadCV != null) {
@@ -1275,6 +1323,7 @@ class _$NameChangedRequested implements NameChangedRequested {
     required TResult Function(CVModel cvModel) uploadCV,
     required TResult Function(CVModel cvModel) downloadCV,
     required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
   }) {
     return nameChanged(name);
   }
@@ -1290,6 +1339,7 @@ class _$NameChangedRequested implements NameChangedRequested {
     TResult? Function(CVModel cvModel)? uploadCV,
     TResult? Function(CVModel cvModel)? downloadCV,
     TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
   }) {
     return nameChanged?.call(name);
   }
@@ -1305,6 +1355,7 @@ class _$NameChangedRequested implements NameChangedRequested {
     TResult Function(CVModel cvModel)? uploadCV,
     TResult Function(CVModel cvModel)? downloadCV,
     TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
     required TResult orElse(),
   }) {
     if (nameChanged != null) {
@@ -1324,6 +1375,7 @@ class _$NameChangedRequested implements NameChangedRequested {
     required TResult Function(UploadCVRequested value) uploadCV,
     required TResult Function(DownloadCVRequested value) downloadCV,
     required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
   }) {
     return nameChanged(this);
   }
@@ -1339,6 +1391,7 @@ class _$NameChangedRequested implements NameChangedRequested {
     TResult? Function(UploadCVRequested value)? uploadCV,
     TResult? Function(DownloadCVRequested value)? downloadCV,
     TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
   }) {
     return nameChanged?.call(this);
   }
@@ -1354,6 +1407,7 @@ class _$NameChangedRequested implements NameChangedRequested {
     TResult Function(UploadCVRequested value)? uploadCV,
     TResult Function(DownloadCVRequested value)? downloadCV,
     TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
     required TResult orElse(),
   }) {
     if (nameChanged != null) {
@@ -1374,9 +1428,198 @@ abstract class NameChangedRequested implements CvEvent {
 }
 
 /// @nodoc
+abstract class _$$GetJobDetailRequestedCopyWith<$Res> {
+  factory _$$GetJobDetailRequestedCopyWith(_$GetJobDetailRequested value,
+          $Res Function(_$GetJobDetailRequested) then) =
+      __$$GetJobDetailRequestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({JobsModel job});
+
+  $JobsModelCopyWith<$Res> get job;
+}
+
+/// @nodoc
+class __$$GetJobDetailRequestedCopyWithImpl<$Res>
+    extends _$CvEventCopyWithImpl<$Res, _$GetJobDetailRequested>
+    implements _$$GetJobDetailRequestedCopyWith<$Res> {
+  __$$GetJobDetailRequestedCopyWithImpl(_$GetJobDetailRequested _value,
+      $Res Function(_$GetJobDetailRequested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? job = null,
+  }) {
+    return _then(_$GetJobDetailRequested(
+      null == job
+          ? _value.job
+          : job // ignore: cast_nullable_to_non_nullable
+              as JobsModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $JobsModelCopyWith<$Res> get job {
+    return $JobsModelCopyWith<$Res>(_value.job, (value) {
+      return _then(_value.copyWith(job: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GetJobDetailRequested implements GetJobDetailRequested {
+  const _$GetJobDetailRequested(this.job);
+
+  @override
+  final JobsModel job;
+
+  @override
+  String toString() {
+    return 'CvEvent.getJobDetail(job: $job)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetJobDetailRequested &&
+            (identical(other.job, job) || other.job == job));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, job);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetJobDetailRequestedCopyWith<_$GetJobDetailRequested> get copyWith =>
+      __$$GetJobDetailRequestedCopyWithImpl<_$GetJobDetailRequested>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getListCV,
+    required TResult Function(CVModel cvModel) getCvDetail,
+    required TResult Function() updateMainCV,
+    required TResult Function() deleteCV,
+    required TResult Function() updateNameCV,
+    required TResult Function(CVModel cvModel) uploadCV,
+    required TResult Function(CVModel cvModel) downloadCV,
+    required TResult Function(String name) nameChanged,
+    required TResult Function(JobsModel job) getJobDetail,
+  }) {
+    return getJobDetail(job);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getListCV,
+    TResult? Function(CVModel cvModel)? getCvDetail,
+    TResult? Function()? updateMainCV,
+    TResult? Function()? deleteCV,
+    TResult? Function()? updateNameCV,
+    TResult? Function(CVModel cvModel)? uploadCV,
+    TResult? Function(CVModel cvModel)? downloadCV,
+    TResult? Function(String name)? nameChanged,
+    TResult? Function(JobsModel job)? getJobDetail,
+  }) {
+    return getJobDetail?.call(job);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getListCV,
+    TResult Function(CVModel cvModel)? getCvDetail,
+    TResult Function()? updateMainCV,
+    TResult Function()? deleteCV,
+    TResult Function()? updateNameCV,
+    TResult Function(CVModel cvModel)? uploadCV,
+    TResult Function(CVModel cvModel)? downloadCV,
+    TResult Function(String name)? nameChanged,
+    TResult Function(JobsModel job)? getJobDetail,
+    required TResult orElse(),
+  }) {
+    if (getJobDetail != null) {
+      return getJobDetail(job);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetListCVRequested value) getListCV,
+    required TResult Function(GetCVDetailRequested value) getCvDetail,
+    required TResult Function(UpdateMainCVRequested value) updateMainCV,
+    required TResult Function(DeleteCVRequested value) deleteCV,
+    required TResult Function(UpdateNameCVRequested value) updateNameCV,
+    required TResult Function(UploadCVRequested value) uploadCV,
+    required TResult Function(DownloadCVRequested value) downloadCV,
+    required TResult Function(NameChangedRequested value) nameChanged,
+    required TResult Function(GetJobDetailRequested value) getJobDetail,
+  }) {
+    return getJobDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetListCVRequested value)? getListCV,
+    TResult? Function(GetCVDetailRequested value)? getCvDetail,
+    TResult? Function(UpdateMainCVRequested value)? updateMainCV,
+    TResult? Function(DeleteCVRequested value)? deleteCV,
+    TResult? Function(UpdateNameCVRequested value)? updateNameCV,
+    TResult? Function(UploadCVRequested value)? uploadCV,
+    TResult? Function(DownloadCVRequested value)? downloadCV,
+    TResult? Function(NameChangedRequested value)? nameChanged,
+    TResult? Function(GetJobDetailRequested value)? getJobDetail,
+  }) {
+    return getJobDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetListCVRequested value)? getListCV,
+    TResult Function(GetCVDetailRequested value)? getCvDetail,
+    TResult Function(UpdateMainCVRequested value)? updateMainCV,
+    TResult Function(DeleteCVRequested value)? deleteCV,
+    TResult Function(UpdateNameCVRequested value)? updateNameCV,
+    TResult Function(UploadCVRequested value)? uploadCV,
+    TResult Function(DownloadCVRequested value)? downloadCV,
+    TResult Function(NameChangedRequested value)? nameChanged,
+    TResult Function(GetJobDetailRequested value)? getJobDetail,
+    required TResult orElse(),
+  }) {
+    if (getJobDetail != null) {
+      return getJobDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetJobDetailRequested implements CvEvent {
+  const factory GetJobDetailRequested(final JobsModel job) =
+      _$GetJobDetailRequested;
+
+  JobsModel get job;
+  @JsonKey(ignore: true)
+  _$$GetJobDetailRequestedCopyWith<_$GetJobDetailRequested> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CvState {
   UserModel? get userModel => throw _privateConstructorUsedError;
   CVModel? get cvModel => throw _privateConstructorUsedError;
+  JobsModel? get jobModel => throw _privateConstructorUsedError;
+  CVModel? get cvMainModel => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   LoadStatusEnum get loadStatus => throw _privateConstructorUsedError;
   bool get isShimmer => throw _privateConstructorUsedError;
@@ -1386,6 +1629,7 @@ mixin _$CvState {
   bool get uploadSuccess => throw _privateConstructorUsedError;
   bool get deleteSuccess => throw _privateConstructorUsedError;
   bool get updateSuccess => throw _privateConstructorUsedError;
+  bool get updateMainSuccess => throw _privateConstructorUsedError;
   bool? get signUpSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1400,6 +1644,8 @@ abstract class $CvStateCopyWith<$Res> {
   $Res call(
       {UserModel? userModel,
       CVModel? cvModel,
+      JobsModel? jobModel,
+      CVModel? cvMainModel,
       bool isLoading,
       LoadStatusEnum loadStatus,
       bool isShimmer,
@@ -1409,10 +1655,13 @@ abstract class $CvStateCopyWith<$Res> {
       bool uploadSuccess,
       bool deleteSuccess,
       bool updateSuccess,
+      bool updateMainSuccess,
       bool? signUpSuccess});
 
   $UserModelCopyWith<$Res>? get userModel;
   $CVModelCopyWith<$Res>? get cvModel;
+  $JobsModelCopyWith<$Res>? get jobModel;
+  $CVModelCopyWith<$Res>? get cvMainModel;
 }
 
 /// @nodoc
@@ -1430,6 +1679,8 @@ class _$CvStateCopyWithImpl<$Res, $Val extends CvState>
   $Res call({
     Object? userModel = freezed,
     Object? cvModel = freezed,
+    Object? jobModel = freezed,
+    Object? cvMainModel = freezed,
     Object? isLoading = null,
     Object? loadStatus = null,
     Object? isShimmer = null,
@@ -1439,6 +1690,7 @@ class _$CvStateCopyWithImpl<$Res, $Val extends CvState>
     Object? uploadSuccess = null,
     Object? deleteSuccess = null,
     Object? updateSuccess = null,
+    Object? updateMainSuccess = null,
     Object? signUpSuccess = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1449,6 +1701,14 @@ class _$CvStateCopyWithImpl<$Res, $Val extends CvState>
       cvModel: freezed == cvModel
           ? _value.cvModel
           : cvModel // ignore: cast_nullable_to_non_nullable
+              as CVModel?,
+      jobModel: freezed == jobModel
+          ? _value.jobModel
+          : jobModel // ignore: cast_nullable_to_non_nullable
+              as JobsModel?,
+      cvMainModel: freezed == cvMainModel
+          ? _value.cvMainModel
+          : cvMainModel // ignore: cast_nullable_to_non_nullable
               as CVModel?,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -1486,6 +1746,10 @@ class _$CvStateCopyWithImpl<$Res, $Val extends CvState>
           ? _value.updateSuccess
           : updateSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      updateMainSuccess: null == updateMainSuccess
+          ? _value.updateMainSuccess
+          : updateMainSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
       signUpSuccess: freezed == signUpSuccess
           ? _value.signUpSuccess
           : signUpSuccess // ignore: cast_nullable_to_non_nullable
@@ -1516,6 +1780,30 @@ class _$CvStateCopyWithImpl<$Res, $Val extends CvState>
       return _then(_value.copyWith(cvModel: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $JobsModelCopyWith<$Res>? get jobModel {
+    if (_value.jobModel == null) {
+      return null;
+    }
+
+    return $JobsModelCopyWith<$Res>(_value.jobModel!, (value) {
+      return _then(_value.copyWith(jobModel: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CVModelCopyWith<$Res>? get cvMainModel {
+    if (_value.cvMainModel == null) {
+      return null;
+    }
+
+    return $CVModelCopyWith<$Res>(_value.cvMainModel!, (value) {
+      return _then(_value.copyWith(cvMainModel: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -1528,6 +1816,8 @@ abstract class _$$_CvStateCopyWith<$Res> implements $CvStateCopyWith<$Res> {
   $Res call(
       {UserModel? userModel,
       CVModel? cvModel,
+      JobsModel? jobModel,
+      CVModel? cvMainModel,
       bool isLoading,
       LoadStatusEnum loadStatus,
       bool isShimmer,
@@ -1537,12 +1827,17 @@ abstract class _$$_CvStateCopyWith<$Res> implements $CvStateCopyWith<$Res> {
       bool uploadSuccess,
       bool deleteSuccess,
       bool updateSuccess,
+      bool updateMainSuccess,
       bool? signUpSuccess});
 
   @override
   $UserModelCopyWith<$Res>? get userModel;
   @override
   $CVModelCopyWith<$Res>? get cvModel;
+  @override
+  $JobsModelCopyWith<$Res>? get jobModel;
+  @override
+  $CVModelCopyWith<$Res>? get cvMainModel;
 }
 
 /// @nodoc
@@ -1557,6 +1852,8 @@ class __$$_CvStateCopyWithImpl<$Res>
   $Res call({
     Object? userModel = freezed,
     Object? cvModel = freezed,
+    Object? jobModel = freezed,
+    Object? cvMainModel = freezed,
     Object? isLoading = null,
     Object? loadStatus = null,
     Object? isShimmer = null,
@@ -1566,6 +1863,7 @@ class __$$_CvStateCopyWithImpl<$Res>
     Object? uploadSuccess = null,
     Object? deleteSuccess = null,
     Object? updateSuccess = null,
+    Object? updateMainSuccess = null,
     Object? signUpSuccess = freezed,
   }) {
     return _then(_$_CvState(
@@ -1576,6 +1874,14 @@ class __$$_CvStateCopyWithImpl<$Res>
       cvModel: freezed == cvModel
           ? _value.cvModel
           : cvModel // ignore: cast_nullable_to_non_nullable
+              as CVModel?,
+      jobModel: freezed == jobModel
+          ? _value.jobModel
+          : jobModel // ignore: cast_nullable_to_non_nullable
+              as JobsModel?,
+      cvMainModel: freezed == cvMainModel
+          ? _value.cvMainModel
+          : cvMainModel // ignore: cast_nullable_to_non_nullable
               as CVModel?,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -1613,6 +1919,10 @@ class __$$_CvStateCopyWithImpl<$Res>
           ? _value.updateSuccess
           : updateSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      updateMainSuccess: null == updateMainSuccess
+          ? _value.updateMainSuccess
+          : updateMainSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
       signUpSuccess: freezed == signUpSuccess
           ? _value.signUpSuccess
           : signUpSuccess // ignore: cast_nullable_to_non_nullable
@@ -1627,6 +1937,8 @@ class _$_CvState implements _CvState {
   const _$_CvState(
       {this.userModel,
       this.cvModel,
+      this.jobModel,
+      this.cvMainModel,
       this.isLoading = false,
       this.loadStatus = LoadStatusEnum.notLoad,
       this.isShimmer = true,
@@ -1636,6 +1948,7 @@ class _$_CvState implements _CvState {
       this.uploadSuccess = false,
       this.deleteSuccess = false,
       this.updateSuccess = false,
+      this.updateMainSuccess = false,
       this.signUpSuccess})
       : _cvList = cvList;
 
@@ -1643,6 +1956,10 @@ class _$_CvState implements _CvState {
   final UserModel? userModel;
   @override
   final CVModel? cvModel;
+  @override
+  final JobsModel? jobModel;
+  @override
+  final CVModel? cvMainModel;
   @override
   @JsonKey()
   final bool isLoading;
@@ -1677,11 +1994,14 @@ class _$_CvState implements _CvState {
   @JsonKey()
   final bool updateSuccess;
   @override
+  @JsonKey()
+  final bool updateMainSuccess;
+  @override
   final bool? signUpSuccess;
 
   @override
   String toString() {
-    return 'CvState(userModel: $userModel, cvModel: $cvModel, isLoading: $isLoading, loadStatus: $loadStatus, isShimmer: $isShimmer, error: $error, name: $name, cvList: $cvList, uploadSuccess: $uploadSuccess, deleteSuccess: $deleteSuccess, updateSuccess: $updateSuccess, signUpSuccess: $signUpSuccess)';
+    return 'CvState(userModel: $userModel, cvModel: $cvModel, jobModel: $jobModel, cvMainModel: $cvMainModel, isLoading: $isLoading, loadStatus: $loadStatus, isShimmer: $isShimmer, error: $error, name: $name, cvList: $cvList, uploadSuccess: $uploadSuccess, deleteSuccess: $deleteSuccess, updateSuccess: $updateSuccess, updateMainSuccess: $updateMainSuccess, signUpSuccess: $signUpSuccess)';
   }
 
   @override
@@ -1692,6 +2012,10 @@ class _$_CvState implements _CvState {
             (identical(other.userModel, userModel) ||
                 other.userModel == userModel) &&
             (identical(other.cvModel, cvModel) || other.cvModel == cvModel) &&
+            (identical(other.jobModel, jobModel) ||
+                other.jobModel == jobModel) &&
+            (identical(other.cvMainModel, cvMainModel) ||
+                other.cvMainModel == cvMainModel) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.loadStatus, loadStatus) ||
@@ -1707,6 +2031,8 @@ class _$_CvState implements _CvState {
                 other.deleteSuccess == deleteSuccess) &&
             (identical(other.updateSuccess, updateSuccess) ||
                 other.updateSuccess == updateSuccess) &&
+            (identical(other.updateMainSuccess, updateMainSuccess) ||
+                other.updateMainSuccess == updateMainSuccess) &&
             (identical(other.signUpSuccess, signUpSuccess) ||
                 other.signUpSuccess == signUpSuccess));
   }
@@ -1716,6 +2042,8 @@ class _$_CvState implements _CvState {
       runtimeType,
       userModel,
       cvModel,
+      jobModel,
+      cvMainModel,
       isLoading,
       loadStatus,
       isShimmer,
@@ -1725,6 +2053,7 @@ class _$_CvState implements _CvState {
       uploadSuccess,
       deleteSuccess,
       updateSuccess,
+      updateMainSuccess,
       signUpSuccess);
 
   @JsonKey(ignore: true)
@@ -1738,6 +2067,8 @@ abstract class _CvState implements CvState {
   const factory _CvState(
       {final UserModel? userModel,
       final CVModel? cvModel,
+      final JobsModel? jobModel,
+      final CVModel? cvMainModel,
       final bool isLoading,
       final LoadStatusEnum loadStatus,
       final bool isShimmer,
@@ -1747,12 +2078,17 @@ abstract class _CvState implements CvState {
       final bool uploadSuccess,
       final bool deleteSuccess,
       final bool updateSuccess,
+      final bool updateMainSuccess,
       final bool? signUpSuccess}) = _$_CvState;
 
   @override
   UserModel? get userModel;
   @override
   CVModel? get cvModel;
+  @override
+  JobsModel? get jobModel;
+  @override
+  CVModel? get cvMainModel;
   @override
   bool get isLoading;
   @override
@@ -1771,6 +2107,8 @@ abstract class _CvState implements CvState {
   bool get deleteSuccess;
   @override
   bool get updateSuccess;
+  @override
+  bool get updateMainSuccess;
   @override
   bool? get signUpSuccess;
   @override

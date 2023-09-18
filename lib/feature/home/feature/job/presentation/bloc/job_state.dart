@@ -21,6 +21,7 @@ class JobState with _$JobState {
     @Default(false) bool isLoading,
     @Default(true) bool isShimmer,
     @Default(false) bool updateSuccess,
+    @Default(false) bool submitSuccess,
     @Default("") String error,
     @Default("") String idProvince,
     @Default("") String provinceText,
@@ -29,6 +30,10 @@ class JobState with _$JobState {
     @Default("") String salaryText,
     @Default("") String jobCategoryText,
     @Default("") String typeText,
+    @Default("") String introLetter,
+    @Default("") String name,
+    @Default("") String phone,
+    @Default("") String email,
   }) = _JobState;
 }
 
@@ -67,6 +72,10 @@ extension JobStateExtension on JobState {
       default:
         return '';
     }
+  }
+
+  bool isSubmitCV() {
+    return user!.jobIds.contains(job!.id);
   }
 
   void clearSubText(JobBloc jobBloc, int index) {

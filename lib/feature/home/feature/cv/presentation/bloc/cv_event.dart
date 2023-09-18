@@ -10,4 +10,5 @@ class CvEvent with _$CvEvent {
   const factory CvEvent.uploadCV(CVModel cvModel) = UploadCVRequested;
   const factory CvEvent.downloadCV(CVModel cvModel) = DownloadCVRequested;
   const factory CvEvent.nameChanged(String name) = NameChangedRequested;
+  const factory CvEvent.getJobDetail(JobsModel job) = GetJobDetailRequested;
 }

@@ -162,7 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Quản lý tìm việc',
+                            'Job search management',
                             style: TxtStyles.semiBold18,
                           ),
                           spaceH16,
@@ -188,11 +188,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'Việc làm đã ứng tuyển',
+                                            'Job applied',
                                             style: TxtStyles.regular14,
                                           ),
                                           Text(
-                                            '9',
+                                            authBloc.state.user!.jobIds.length
+                                                .toString(),
                                             style: TxtStyles.semiBold16,
                                           )
                                         ],
@@ -221,11 +222,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'Công ty đang theo dõi',
+                                            'Following company',
                                             style: TxtStyles.regular14,
                                           ),
                                           Text(
-                                            '9',
+                                            authBloc
+                                                .state.user!.followerIds.length
+                                                .toString(),
                                             style: TxtStyles.semiBold16,
                                           )
                                         ],
@@ -247,7 +250,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Cài đặt tài khoản',
+                            'Account Settings',
                             style: TxtStyles.semiBold18,
                           ),
                           spaceH16,

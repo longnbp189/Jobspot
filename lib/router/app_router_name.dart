@@ -18,4 +18,5 @@ class AppRouterName {
   static const notification = 'notification';
   static const cvConfiguration = 'cv-configuration';
   static const changePassword = 'change-password';
+  static const followingCompany = 'following-company';
 }

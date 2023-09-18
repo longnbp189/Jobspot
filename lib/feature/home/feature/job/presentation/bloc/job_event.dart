@@ -42,4 +42,13 @@ class JobEvent with _$JobEvent {
       GetJobByIdRequested;
   const factory JobEvent.getJobSameType() = GetJobSameTypeRequest;
   const factory JobEvent.getJobSameCompany() = GetJobSameCompanyRequest;
+  const factory JobEvent.submitCV(CVInfoModel cvInfoModel) = SubmitCVRequest;
+
+  const factory JobEvent.getTextEmailJob(String text) =
+      GetTextEmailJobRequested;
+  const factory JobEvent.getTextPhoneJob(String text) =
+      GetTextPhoneJobRequested;
+  const factory JobEvent.getTextNameJob(String text) = GetTextNameJobRequested;
+  const factory JobEvent.getTextIntroLetterJob(String text) =
+      GetTextIntroLetterJobRequested;
 }

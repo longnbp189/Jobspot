@@ -9,7 +9,7 @@ class CvUsecase {
     return serviceLocator<CVRepository>().getListCV(id);
   }
 
-  Future<Either<Failure, Unit>> updateMainCV(CVModel cv) {
+  Future<Either<Failure, List<CVModel>>> updateMainCV(CVModel cv) {
     return serviceLocator<CVRepository>().updateMainCV(cv);
   }
 
