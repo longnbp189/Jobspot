@@ -19,4 +19,5 @@ class AppRouterName {
   static const cvConfiguration = 'cv-configuration';
   static const changePassword = 'change-password';
   static const followingCompany = 'following-company';
+  static const jobApplied = 'job-applied';
 }

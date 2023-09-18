@@ -51,4 +51,7 @@ class JobEvent with _$JobEvent {
   const factory JobEvent.getTextNameJob(String text) = GetTextNameJobRequested;
   const factory JobEvent.getTextIntroLetterJob(String text) =
       GetTextIntroLetterJobRequested;
+
+  const factory JobEvent.getListApplyJob(UserModel userModel) =
+      GetListApplyJobRequested;
 }

@@ -22,6 +22,9 @@ abstract class JobRemoteDataSource {
   Future<Either<Failure, Unit>> updateBookMark({
     required UserModel userModel,
   });
+  Future<Either<Failure, Map<String, CVInfoModel>>> getListApplyJob({
+    required UserModel userModel,
+  });
   void resetLastDocument() {}
 }
 
@@ -176,6 +179,78 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
           .collection("SubmitCV");
       await collectionReference.doc(cvInfoModel.id).set(cvInfoModel.toJson());
       return right(unit);
+    } catch (e) {
+      return left(ParsingFailure('Submit CV Firebase Error: ${e.toString()}'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, CVInfoModel>>> getListApplyJob(
+      {required UserModel userModel}) async {
+    try {
+      List<CVInfoModel> documentJobs = [];
+      // final jobCollection =
+      //     await FirebaseFirestore.instance.collection('Jobs').get();
+      // for (var doc in jobCollection.docs) {
+      //   documentJobIds.add(doc.id);
+      // }
+
+      for (var element in userModel.jobIds) {
+        CollectionReference submitCvCollection = FirebaseFirestore.instance
+            .collection('Jobs')
+            .doc(element)
+            .collection('SubmitCV');
+
+        QuerySnapshot submitCvQuerySnapshot = await submitCvCollection.get();
+
+        for (var doc in submitCvQuerySnapshot.docs) {
+          final data = doc.data() as Map<String, dynamic>;
+          documentJobs.add(CVInfoModel.fromJson(data));
+        }
+      }
+      documentJobs.removeWhere((element) => element.userId != userModel.id);
+
+      void sortListsByCreationTime(
+          Map<String, List<CVInfoModel>> dividedLists) {
+        dividedLists.forEach((id, list) {
+          list.sort((a, b) => b.sendDate!.compareTo(a.sendDate!));
+        });
+      }
+
+      Map<String, CVInfoModel> firstItemMap = {};
+
+      Map<String, List<CVInfoModel>> dividedLists = {};
+      Map<String, List<CVInfoModel>> divideListById(
+          List<CVInfoModel> inputList) {
+        for (var object in inputList) {
+          if (!dividedLists.containsKey(object.jobId)) {
+            dividedLists[object.jobId] = [];
+          }
+          dividedLists[object.jobId]!.add(object);
+        }
+
+        return dividedLists;
+      }
+
+      dividedLists = divideListById(documentJobs);
+
+      dividedLists.forEach((id, cvInfoList) {
+        if (cvInfoList.isNotEmpty) {
+          // Sort the list by sendDate and take the first item
+          cvInfoList.sort((a, b) => b.sendDate!.compareTo(a.sendDate!));
+          CVInfoModel firstItem = cvInfoList.first;
+          // Store the first item in the new map
+          firstItemMap[id] = firstItem;
+        }
+      });
+
+      // Chia danh sách thành các danh sách riêng lẻ dựa trên ID
+
+      // Sắp xếp mỗi danh sách theo thời gian tạo
+      // sortListsByCreationTime(dividedLists);
+      // dividedLists.forEach((key, value) {});
+
+      return right(firstItemMap);
     } catch (e) {
       return left(ParsingFailure('Submit CV Firebase Error: ${e.toString()}'));
     }

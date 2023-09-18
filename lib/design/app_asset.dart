@@ -58,4 +58,5 @@ class AppAsset {
   static const String setting = "${iconPath}setting.svg";
   static const String star = "${iconPath}star.svg";
   static const String starBold = "${iconPath}star_bold.svg";
+  static const String timer = "${iconPath}timer.svg";
 }

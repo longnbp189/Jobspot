@@ -169,36 +169,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Row(
                             children: [
                               Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 12.w, vertical: 12.h),
-                                  decoration: BoxDecoration(
-                                    color: AppColor.white,
-                                    borderRadius: BorderRadius.circular(8.r),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const IconWidget(
-                                          icon: AppAsset.experience),
-                                      spaceH8,
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Job applied',
-                                            style: TxtStyles.regular14,
-                                          ),
-                                          Text(
-                                            authBloc.state.user!.jobIds.length
-                                                .toString(),
-                                            style: TxtStyles.semiBold16,
-                                          )
-                                        ],
-                                      ),
-                                    ],
+                                child: InkWell(
+                                  onTap: () => context
+                                      .pushNamed(AppRouterName.jobApplied),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 12.w, vertical: 12.h),
+                                    decoration: BoxDecoration(
+                                      color: AppColor.white,
+                                      borderRadius: BorderRadius.circular(8.r),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const IconWidget(
+                                            icon: AppAsset.experience),
+                                        spaceH8,
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Job applied',
+                                              style: TxtStyles.regular14,
+                                            ),
+                                            Text(
+                                              authBloc.state.user!.jobIds.length
+                                                  .toString(),
+                                              style: TxtStyles.semiBold16,
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

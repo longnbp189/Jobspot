@@ -11,6 +11,7 @@ class CVInfoModel with _$CVInfoModel {
     @Default('') final String phoneNumber,
     @Default('') final String cvLink,
     @Default('') final String cvId,
+    @Default('') final String userId,
     @Default('') final String cvName,
     @Default('') final String jobId,
     @Default('') final String introducingLetter,

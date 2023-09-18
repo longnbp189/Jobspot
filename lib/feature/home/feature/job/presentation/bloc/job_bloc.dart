@@ -52,6 +52,7 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     on<GetTextPhoneJobRequested>(_onGetTextPhoneJobRequested);
     on<GetTextNameJobRequested>(_onGetTextNameJobRequested);
     on<GetTextIntroLetterJobRequested>(_onGetTextIntroLetterJobRequested);
+    on<GetListApplyJobRequested>(_onGetListApplyJobRequested);
   }
 
   FutureOr<void> _onGetAddressRequested(
@@ -373,5 +374,37 @@ class JobBloc extends Bloc<JobEvent, JobState> {
   FutureOr<void> _onGetTextIntroLetterJobRequested(
       GetTextIntroLetterJobRequested event, Emitter<JobState> emit) {
     emit(state.copyWith(introLetter: event.text));
+  }
+
+  FutureOr<void> _onGetListApplyJobRequested(
+      GetListApplyJobRequested event, Emitter<JobState> emit) async {
+    emit(state.copyWith(isShimmer: true, error: ''));
+    final result =
+        await serviceLocator<JobUsecase>().getListApplyJob(event.userModel);
+    List<CVInfoModel> jobs = [];
+    result.fold(
+      (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+      (r) => jobs = r.values.toList(),
+    );
+    jobs.sort(
+      (a, b) => b.sendDate!.compareTo(a.sendDate!),
+    );
+
+    final resultList = await serviceLocator<JobUsecase>().getListJobMax();
+    resultList.fold(
+      (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+      (r) => emit(state.copyWith(jobsApplied: r, isShimmer: false)),
+    );
+    List<JobsModel> jobsList = List.from(state.jobsApplied);
+    List<JobsModel> resultJobList = [];
+    for (var element in jobs) {
+      for (var e in jobsList) {
+        if (e.id == element.jobId) {
+          resultJobList.add(e);
+        }
+      }
+    }
+    emit(state.copyWith(
+        cvInfoList: jobs, isShimmer: false, jobsApplied: resultJobList));
   }
 }

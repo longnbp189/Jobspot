@@ -32,4 +32,10 @@ class JobUsecase {
   Future<Either<Failure, Unit>> submitCV(CVInfoModel cvInfoModel) async {
     return await serviceLocator<JobRepository>().submitCV(cvInfoModel);
   }
+
+  Future<Either<Failure, Map<String, CVInfoModel>>> getListApplyJob(
+      UserModel userModel) async {
+    return await serviceLocator<JobRepository>()
+        .getListApplyJob(userModel: userModel);
+  }
 }

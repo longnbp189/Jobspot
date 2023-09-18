@@ -47,6 +47,7 @@ mixin _$JobEvent {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +81,7 @@ mixin _$JobEvent {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,6 +115,7 @@ mixin _$JobEvent {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,6 +156,7 @@ mixin _$JobEvent {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -187,6 +191,7 @@ mixin _$JobEvent {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -221,6 +226,7 @@ mixin _$JobEvent {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -310,6 +316,7 @@ class _$GetAddressRequested implements GetAddressRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getAddress();
   }
@@ -346,6 +353,7 @@ class _$GetAddressRequested implements GetAddressRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getAddress?.call();
   }
@@ -382,6 +390,7 @@ class _$GetAddressRequested implements GetAddressRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getAddress != null) {
@@ -428,6 +437,7 @@ class _$GetAddressRequested implements GetAddressRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getAddress(this);
   }
@@ -465,6 +475,7 @@ class _$GetAddressRequested implements GetAddressRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getAddress?.call(this);
   }
@@ -502,6 +513,7 @@ class _$GetAddressRequested implements GetAddressRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getAddress != null) {
@@ -583,6 +595,7 @@ class _$GetJobCategoryRequested implements GetJobCategoryRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getJobCategory();
   }
@@ -619,6 +632,7 @@ class _$GetJobCategoryRequested implements GetJobCategoryRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getJobCategory?.call();
   }
@@ -655,6 +669,7 @@ class _$GetJobCategoryRequested implements GetJobCategoryRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobCategory != null) {
@@ -701,6 +716,7 @@ class _$GetJobCategoryRequested implements GetJobCategoryRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getJobCategory(this);
   }
@@ -738,6 +754,7 @@ class _$GetJobCategoryRequested implements GetJobCategoryRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getJobCategory?.call(this);
   }
@@ -775,6 +792,7 @@ class _$GetJobCategoryRequested implements GetJobCategoryRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobCategory != null) {
@@ -885,6 +903,7 @@ class _$SearchJobCategoryRequested implements SearchJobCategoryRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return searchJobCategory(searchText);
   }
@@ -921,6 +940,7 @@ class _$SearchJobCategoryRequested implements SearchJobCategoryRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return searchJobCategory?.call(searchText);
   }
@@ -957,6 +977,7 @@ class _$SearchJobCategoryRequested implements SearchJobCategoryRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchJobCategory != null) {
@@ -1003,6 +1024,7 @@ class _$SearchJobCategoryRequested implements SearchJobCategoryRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return searchJobCategory(this);
   }
@@ -1040,6 +1062,7 @@ class _$SearchJobCategoryRequested implements SearchJobCategoryRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return searchJobCategory?.call(this);
   }
@@ -1077,6 +1100,7 @@ class _$SearchJobCategoryRequested implements SearchJobCategoryRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchJobCategory != null) {
@@ -1163,6 +1187,7 @@ class _$GetProvincesRequested implements GetProvincesRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getProvinces();
   }
@@ -1199,6 +1224,7 @@ class _$GetProvincesRequested implements GetProvincesRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getProvinces?.call();
   }
@@ -1235,6 +1261,7 @@ class _$GetProvincesRequested implements GetProvincesRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getProvinces != null) {
@@ -1281,6 +1308,7 @@ class _$GetProvincesRequested implements GetProvincesRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getProvinces(this);
   }
@@ -1318,6 +1346,7 @@ class _$GetProvincesRequested implements GetProvincesRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getProvinces?.call(this);
   }
@@ -1355,6 +1384,7 @@ class _$GetProvincesRequested implements GetProvincesRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getProvinces != null) {
@@ -1463,6 +1493,7 @@ class _$GetTextProvinceRequested implements GetTextProvinceRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextProvince(text);
   }
@@ -1499,6 +1530,7 @@ class _$GetTextProvinceRequested implements GetTextProvinceRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextProvince?.call(text);
   }
@@ -1535,6 +1567,7 @@ class _$GetTextProvinceRequested implements GetTextProvinceRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextProvince != null) {
@@ -1581,6 +1614,7 @@ class _$GetTextProvinceRequested implements GetTextProvinceRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextProvince(this);
   }
@@ -1618,6 +1652,7 @@ class _$GetTextProvinceRequested implements GetTextProvinceRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextProvince?.call(this);
   }
@@ -1655,6 +1690,7 @@ class _$GetTextProvinceRequested implements GetTextProvinceRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextProvince != null) {
@@ -1770,6 +1806,7 @@ class _$GetTextExperienceRequested implements GetTextExperienceRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextExperience(text);
   }
@@ -1806,6 +1843,7 @@ class _$GetTextExperienceRequested implements GetTextExperienceRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextExperience?.call(text);
   }
@@ -1842,6 +1880,7 @@ class _$GetTextExperienceRequested implements GetTextExperienceRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextExperience != null) {
@@ -1888,6 +1927,7 @@ class _$GetTextExperienceRequested implements GetTextExperienceRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextExperience(this);
   }
@@ -1925,6 +1965,7 @@ class _$GetTextExperienceRequested implements GetTextExperienceRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextExperience?.call(this);
   }
@@ -1962,6 +2003,7 @@ class _$GetTextExperienceRequested implements GetTextExperienceRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextExperience != null) {
@@ -2076,6 +2118,7 @@ class _$GetTextDistrictRequested implements GetTextDistrictRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextdistrict(text);
   }
@@ -2112,6 +2155,7 @@ class _$GetTextDistrictRequested implements GetTextDistrictRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextdistrict?.call(text);
   }
@@ -2148,6 +2192,7 @@ class _$GetTextDistrictRequested implements GetTextDistrictRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextdistrict != null) {
@@ -2194,6 +2239,7 @@ class _$GetTextDistrictRequested implements GetTextDistrictRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextdistrict(this);
   }
@@ -2231,6 +2277,7 @@ class _$GetTextDistrictRequested implements GetTextDistrictRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextdistrict?.call(this);
   }
@@ -2268,6 +2315,7 @@ class _$GetTextDistrictRequested implements GetTextDistrictRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextdistrict != null) {
@@ -2381,6 +2429,7 @@ class _$GetTextSalaryRequested implements GetTextSalaryRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextSalary(text);
   }
@@ -2417,6 +2466,7 @@ class _$GetTextSalaryRequested implements GetTextSalaryRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextSalary?.call(text);
   }
@@ -2453,6 +2503,7 @@ class _$GetTextSalaryRequested implements GetTextSalaryRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextSalary != null) {
@@ -2499,6 +2550,7 @@ class _$GetTextSalaryRequested implements GetTextSalaryRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextSalary(this);
   }
@@ -2536,6 +2588,7 @@ class _$GetTextSalaryRequested implements GetTextSalaryRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextSalary?.call(this);
   }
@@ -2573,6 +2626,7 @@ class _$GetTextSalaryRequested implements GetTextSalaryRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextSalary != null) {
@@ -2688,6 +2742,7 @@ class _$GetTextJobCategoryRequested implements GetTextJobCategoryRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextJobCategory(text);
   }
@@ -2724,6 +2779,7 @@ class _$GetTextJobCategoryRequested implements GetTextJobCategoryRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextJobCategory?.call(text);
   }
@@ -2760,6 +2816,7 @@ class _$GetTextJobCategoryRequested implements GetTextJobCategoryRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextJobCategory != null) {
@@ -2806,6 +2863,7 @@ class _$GetTextJobCategoryRequested implements GetTextJobCategoryRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextJobCategory(this);
   }
@@ -2843,6 +2901,7 @@ class _$GetTextJobCategoryRequested implements GetTextJobCategoryRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextJobCategory?.call(this);
   }
@@ -2880,6 +2939,7 @@ class _$GetTextJobCategoryRequested implements GetTextJobCategoryRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextJobCategory != null) {
@@ -2993,6 +3053,7 @@ class _$GetTextTypeRequested implements GetTextTypeRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextType(text);
   }
@@ -3029,6 +3090,7 @@ class _$GetTextTypeRequested implements GetTextTypeRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextType?.call(text);
   }
@@ -3065,6 +3127,7 @@ class _$GetTextTypeRequested implements GetTextTypeRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextType != null) {
@@ -3111,6 +3174,7 @@ class _$GetTextTypeRequested implements GetTextTypeRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextType(this);
   }
@@ -3148,6 +3212,7 @@ class _$GetTextTypeRequested implements GetTextTypeRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextType?.call(this);
   }
@@ -3185,6 +3250,7 @@ class _$GetTextTypeRequested implements GetTextTypeRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextType != null) {
@@ -3271,6 +3337,7 @@ class _$InitProvincesRequested implements InitProvincesRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return initProvinces();
   }
@@ -3307,6 +3374,7 @@ class _$InitProvincesRequested implements InitProvincesRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return initProvinces?.call();
   }
@@ -3343,6 +3411,7 @@ class _$InitProvincesRequested implements InitProvincesRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (initProvinces != null) {
@@ -3389,6 +3458,7 @@ class _$InitProvincesRequested implements InitProvincesRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return initProvinces(this);
   }
@@ -3426,6 +3496,7 @@ class _$InitProvincesRequested implements InitProvincesRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return initProvinces?.call(this);
   }
@@ -3463,6 +3534,7 @@ class _$InitProvincesRequested implements InitProvincesRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (initProvinces != null) {
@@ -3543,6 +3615,7 @@ class _$InitDistrictsRequested implements InitDistrictsRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return initDistricts();
   }
@@ -3579,6 +3652,7 @@ class _$InitDistrictsRequested implements InitDistrictsRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return initDistricts?.call();
   }
@@ -3615,6 +3689,7 @@ class _$InitDistrictsRequested implements InitDistrictsRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (initDistricts != null) {
@@ -3661,6 +3736,7 @@ class _$InitDistrictsRequested implements InitDistrictsRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return initDistricts(this);
   }
@@ -3698,6 +3774,7 @@ class _$InitDistrictsRequested implements InitDistrictsRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return initDistricts?.call(this);
   }
@@ -3735,6 +3812,7 @@ class _$InitDistrictsRequested implements InitDistrictsRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (initDistricts != null) {
@@ -3842,6 +3920,7 @@ class _$GetDistrictsRequested implements GetDistrictsRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getDistricts(id);
   }
@@ -3878,6 +3957,7 @@ class _$GetDistrictsRequested implements GetDistrictsRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getDistricts?.call(id);
   }
@@ -3914,6 +3994,7 @@ class _$GetDistrictsRequested implements GetDistrictsRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getDistricts != null) {
@@ -3960,6 +4041,7 @@ class _$GetDistrictsRequested implements GetDistrictsRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getDistricts(this);
   }
@@ -3997,6 +4079,7 @@ class _$GetDistrictsRequested implements GetDistrictsRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getDistricts?.call(this);
   }
@@ -4034,6 +4117,7 @@ class _$GetDistrictsRequested implements GetDistrictsRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getDistricts != null) {
@@ -4148,6 +4232,7 @@ class _$SearchDistrictsRequested implements SearchDistrictsRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return searchDistricts(text);
   }
@@ -4184,6 +4269,7 @@ class _$SearchDistrictsRequested implements SearchDistrictsRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return searchDistricts?.call(text);
   }
@@ -4220,6 +4306,7 @@ class _$SearchDistrictsRequested implements SearchDistrictsRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchDistricts != null) {
@@ -4266,6 +4353,7 @@ class _$SearchDistrictsRequested implements SearchDistrictsRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return searchDistricts(this);
   }
@@ -4303,6 +4391,7 @@ class _$SearchDistrictsRequested implements SearchDistrictsRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return searchDistricts?.call(this);
   }
@@ -4340,6 +4429,7 @@ class _$SearchDistrictsRequested implements SearchDistrictsRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchDistricts != null) {
@@ -4454,6 +4544,7 @@ class _$SearchProvincesRequested implements SearchProvincesRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return searchProvinces(text);
   }
@@ -4490,6 +4581,7 @@ class _$SearchProvincesRequested implements SearchProvincesRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return searchProvinces?.call(text);
   }
@@ -4526,6 +4618,7 @@ class _$SearchProvincesRequested implements SearchProvincesRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchProvinces != null) {
@@ -4572,6 +4665,7 @@ class _$SearchProvincesRequested implements SearchProvincesRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return searchProvinces(this);
   }
@@ -4609,6 +4703,7 @@ class _$SearchProvincesRequested implements SearchProvincesRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return searchProvinces?.call(this);
   }
@@ -4646,6 +4741,7 @@ class _$SearchProvincesRequested implements SearchProvincesRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchProvinces != null) {
@@ -4760,6 +4856,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return searchCompany(searchText);
   }
@@ -4796,6 +4893,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return searchCompany?.call(searchText);
   }
@@ -4832,6 +4930,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchCompany != null) {
@@ -4878,6 +4977,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return searchCompany(this);
   }
@@ -4915,6 +5015,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return searchCompany?.call(this);
   }
@@ -4952,6 +5053,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (searchCompany != null) {
@@ -5065,6 +5167,7 @@ class _$GetListJobRequested implements GetListJobRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getListJob(pageKey);
   }
@@ -5101,6 +5204,7 @@ class _$GetListJobRequested implements GetListJobRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getListJob?.call(pageKey);
   }
@@ -5137,6 +5241,7 @@ class _$GetListJobRequested implements GetListJobRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getListJob != null) {
@@ -5183,6 +5288,7 @@ class _$GetListJobRequested implements GetListJobRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getListJob(this);
   }
@@ -5220,6 +5326,7 @@ class _$GetListJobRequested implements GetListJobRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getListJob?.call(this);
   }
@@ -5257,6 +5364,7 @@ class _$GetListJobRequested implements GetListJobRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getListJob != null) {
@@ -5345,6 +5453,7 @@ class _$RemoveListBookmarkRequested implements RemoveListBookmarkRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return removeListBookmark();
   }
@@ -5381,6 +5490,7 @@ class _$RemoveListBookmarkRequested implements RemoveListBookmarkRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return removeListBookmark?.call();
   }
@@ -5417,6 +5527,7 @@ class _$RemoveListBookmarkRequested implements RemoveListBookmarkRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (removeListBookmark != null) {
@@ -5463,6 +5574,7 @@ class _$RemoveListBookmarkRequested implements RemoveListBookmarkRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return removeListBookmark(this);
   }
@@ -5500,6 +5612,7 @@ class _$RemoveListBookmarkRequested implements RemoveListBookmarkRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return removeListBookmark?.call(this);
   }
@@ -5537,6 +5650,7 @@ class _$RemoveListBookmarkRequested implements RemoveListBookmarkRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (removeListBookmark != null) {
@@ -5655,6 +5769,7 @@ class _$GetListJobMaxRequested implements GetListJobMaxRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getListJobMax(userModel);
   }
@@ -5691,6 +5806,7 @@ class _$GetListJobMaxRequested implements GetListJobMaxRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getListJobMax?.call(userModel);
   }
@@ -5727,6 +5843,7 @@ class _$GetListJobMaxRequested implements GetListJobMaxRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getListJobMax != null) {
@@ -5773,6 +5890,7 @@ class _$GetListJobMaxRequested implements GetListJobMaxRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getListJobMax(this);
   }
@@ -5810,6 +5928,7 @@ class _$GetListJobMaxRequested implements GetListJobMaxRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getListJobMax?.call(this);
   }
@@ -5847,6 +5966,7 @@ class _$GetListJobMaxRequested implements GetListJobMaxRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getListJobMax != null) {
@@ -5936,6 +6056,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return resetLastDocument();
   }
@@ -5972,6 +6093,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return resetLastDocument?.call();
   }
@@ -6008,6 +6130,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (resetLastDocument != null) {
@@ -6054,6 +6177,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return resetLastDocument(this);
   }
@@ -6091,6 +6215,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return resetLastDocument?.call(this);
   }
@@ -6128,6 +6253,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (resetLastDocument != null) {
@@ -6208,6 +6334,7 @@ class _$UpdateBookmarkRequest implements UpdateBookmarkRequest {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return updateBookmark();
   }
@@ -6244,6 +6371,7 @@ class _$UpdateBookmarkRequest implements UpdateBookmarkRequest {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return updateBookmark?.call();
   }
@@ -6280,6 +6408,7 @@ class _$UpdateBookmarkRequest implements UpdateBookmarkRequest {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (updateBookmark != null) {
@@ -6326,6 +6455,7 @@ class _$UpdateBookmarkRequest implements UpdateBookmarkRequest {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return updateBookmark(this);
   }
@@ -6363,6 +6493,7 @@ class _$UpdateBookmarkRequest implements UpdateBookmarkRequest {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return updateBookmark?.call(this);
   }
@@ -6400,6 +6531,7 @@ class _$UpdateBookmarkRequest implements UpdateBookmarkRequest {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (updateBookmark != null) {
@@ -6535,6 +6667,7 @@ class _$GetJobByIdRequested implements GetJobByIdRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getJobById(job, userModel);
   }
@@ -6571,6 +6704,7 @@ class _$GetJobByIdRequested implements GetJobByIdRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getJobById?.call(job, userModel);
   }
@@ -6607,6 +6741,7 @@ class _$GetJobByIdRequested implements GetJobByIdRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobById != null) {
@@ -6653,6 +6788,7 @@ class _$GetJobByIdRequested implements GetJobByIdRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getJobById(this);
   }
@@ -6690,6 +6826,7 @@ class _$GetJobByIdRequested implements GetJobByIdRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getJobById?.call(this);
   }
@@ -6727,6 +6864,7 @@ class _$GetJobByIdRequested implements GetJobByIdRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobById != null) {
@@ -6814,6 +6952,7 @@ class _$GetJobSameTypeRequest implements GetJobSameTypeRequest {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getJobSameType();
   }
@@ -6850,6 +6989,7 @@ class _$GetJobSameTypeRequest implements GetJobSameTypeRequest {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getJobSameType?.call();
   }
@@ -6886,6 +7026,7 @@ class _$GetJobSameTypeRequest implements GetJobSameTypeRequest {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobSameType != null) {
@@ -6932,6 +7073,7 @@ class _$GetJobSameTypeRequest implements GetJobSameTypeRequest {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getJobSameType(this);
   }
@@ -6969,6 +7111,7 @@ class _$GetJobSameTypeRequest implements GetJobSameTypeRequest {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getJobSameType?.call(this);
   }
@@ -7006,6 +7149,7 @@ class _$GetJobSameTypeRequest implements GetJobSameTypeRequest {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobSameType != null) {
@@ -7087,6 +7231,7 @@ class _$GetJobSameCompanyRequest implements GetJobSameCompanyRequest {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getJobSameCompany();
   }
@@ -7123,6 +7268,7 @@ class _$GetJobSameCompanyRequest implements GetJobSameCompanyRequest {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getJobSameCompany?.call();
   }
@@ -7159,6 +7305,7 @@ class _$GetJobSameCompanyRequest implements GetJobSameCompanyRequest {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobSameCompany != null) {
@@ -7205,6 +7352,7 @@ class _$GetJobSameCompanyRequest implements GetJobSameCompanyRequest {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getJobSameCompany(this);
   }
@@ -7242,6 +7390,7 @@ class _$GetJobSameCompanyRequest implements GetJobSameCompanyRequest {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getJobSameCompany?.call(this);
   }
@@ -7279,6 +7428,7 @@ class _$GetJobSameCompanyRequest implements GetJobSameCompanyRequest {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getJobSameCompany != null) {
@@ -7396,6 +7546,7 @@ class _$SubmitCVRequest implements SubmitCVRequest {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return submitCV(cvInfoModel);
   }
@@ -7432,6 +7583,7 @@ class _$SubmitCVRequest implements SubmitCVRequest {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return submitCV?.call(cvInfoModel);
   }
@@ -7468,6 +7620,7 @@ class _$SubmitCVRequest implements SubmitCVRequest {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (submitCV != null) {
@@ -7514,6 +7667,7 @@ class _$SubmitCVRequest implements SubmitCVRequest {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return submitCV(this);
   }
@@ -7551,6 +7705,7 @@ class _$SubmitCVRequest implements SubmitCVRequest {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return submitCV?.call(this);
   }
@@ -7588,6 +7743,7 @@ class _$SubmitCVRequest implements SubmitCVRequest {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (submitCV != null) {
@@ -7702,6 +7858,7 @@ class _$GetTextEmailJobRequested implements GetTextEmailJobRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextEmailJob(text);
   }
@@ -7738,6 +7895,7 @@ class _$GetTextEmailJobRequested implements GetTextEmailJobRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextEmailJob?.call(text);
   }
@@ -7774,6 +7932,7 @@ class _$GetTextEmailJobRequested implements GetTextEmailJobRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextEmailJob != null) {
@@ -7820,6 +7979,7 @@ class _$GetTextEmailJobRequested implements GetTextEmailJobRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextEmailJob(this);
   }
@@ -7857,6 +8017,7 @@ class _$GetTextEmailJobRequested implements GetTextEmailJobRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextEmailJob?.call(this);
   }
@@ -7894,6 +8055,7 @@ class _$GetTextEmailJobRequested implements GetTextEmailJobRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextEmailJob != null) {
@@ -8008,6 +8170,7 @@ class _$GetTextPhoneJobRequested implements GetTextPhoneJobRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextPhoneJob(text);
   }
@@ -8044,6 +8207,7 @@ class _$GetTextPhoneJobRequested implements GetTextPhoneJobRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextPhoneJob?.call(text);
   }
@@ -8080,6 +8244,7 @@ class _$GetTextPhoneJobRequested implements GetTextPhoneJobRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextPhoneJob != null) {
@@ -8126,6 +8291,7 @@ class _$GetTextPhoneJobRequested implements GetTextPhoneJobRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextPhoneJob(this);
   }
@@ -8163,6 +8329,7 @@ class _$GetTextPhoneJobRequested implements GetTextPhoneJobRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextPhoneJob?.call(this);
   }
@@ -8200,6 +8367,7 @@ class _$GetTextPhoneJobRequested implements GetTextPhoneJobRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextPhoneJob != null) {
@@ -8313,6 +8481,7 @@ class _$GetTextNameJobRequested implements GetTextNameJobRequested {
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextNameJob(text);
   }
@@ -8349,6 +8518,7 @@ class _$GetTextNameJobRequested implements GetTextNameJobRequested {
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextNameJob?.call(text);
   }
@@ -8385,6 +8555,7 @@ class _$GetTextNameJobRequested implements GetTextNameJobRequested {
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextNameJob != null) {
@@ -8431,6 +8602,7 @@ class _$GetTextNameJobRequested implements GetTextNameJobRequested {
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextNameJob(this);
   }
@@ -8468,6 +8640,7 @@ class _$GetTextNameJobRequested implements GetTextNameJobRequested {
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextNameJob?.call(this);
   }
@@ -8505,6 +8678,7 @@ class _$GetTextNameJobRequested implements GetTextNameJobRequested {
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextNameJob != null) {
@@ -8621,6 +8795,7 @@ class _$GetTextIntroLetterJobRequested
     required TResult Function(String text) getTextPhoneJob,
     required TResult Function(String text) getTextNameJob,
     required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
   }) {
     return getTextIntroLetterJob(text);
   }
@@ -8657,6 +8832,7 @@ class _$GetTextIntroLetterJobRequested
     TResult? Function(String text)? getTextPhoneJob,
     TResult? Function(String text)? getTextNameJob,
     TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
   }) {
     return getTextIntroLetterJob?.call(text);
   }
@@ -8693,6 +8869,7 @@ class _$GetTextIntroLetterJobRequested
     TResult Function(String text)? getTextPhoneJob,
     TResult Function(String text)? getTextNameJob,
     TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextIntroLetterJob != null) {
@@ -8739,6 +8916,7 @@ class _$GetTextIntroLetterJobRequested
     required TResult Function(GetTextNameJobRequested value) getTextNameJob,
     required TResult Function(GetTextIntroLetterJobRequested value)
         getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
   }) {
     return getTextIntroLetterJob(this);
   }
@@ -8776,6 +8954,7 @@ class _$GetTextIntroLetterJobRequested
     TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult? Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
   }) {
     return getTextIntroLetterJob?.call(this);
   }
@@ -8813,6 +8992,7 @@ class _$GetTextIntroLetterJobRequested
     TResult Function(GetTextNameJobRequested value)? getTextNameJob,
     TResult Function(GetTextIntroLetterJobRequested value)?
         getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
     required TResult orElse(),
   }) {
     if (getTextIntroLetterJob != null) {
@@ -8833,6 +9013,329 @@ abstract class GetTextIntroLetterJobRequested implements JobEvent {
 }
 
 /// @nodoc
+abstract class _$$GetListApplyJobRequestedCopyWith<$Res> {
+  factory _$$GetListApplyJobRequestedCopyWith(_$GetListApplyJobRequested value,
+          $Res Function(_$GetListApplyJobRequested) then) =
+      __$$GetListApplyJobRequestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel userModel});
+
+  $UserModelCopyWith<$Res> get userModel;
+}
+
+/// @nodoc
+class __$$GetListApplyJobRequestedCopyWithImpl<$Res>
+    extends _$JobEventCopyWithImpl<$Res, _$GetListApplyJobRequested>
+    implements _$$GetListApplyJobRequestedCopyWith<$Res> {
+  __$$GetListApplyJobRequestedCopyWithImpl(_$GetListApplyJobRequested _value,
+      $Res Function(_$GetListApplyJobRequested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userModel = null,
+  }) {
+    return _then(_$GetListApplyJobRequested(
+      null == userModel
+          ? _value.userModel
+          : userModel // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userModel {
+    return $UserModelCopyWith<$Res>(_value.userModel, (value) {
+      return _then(_value.copyWith(userModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GetListApplyJobRequested implements GetListApplyJobRequested {
+  const _$GetListApplyJobRequested(this.userModel);
+
+  @override
+  final UserModel userModel;
+
+  @override
+  String toString() {
+    return 'JobEvent.getListApplyJob(userModel: $userModel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetListApplyJobRequested &&
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetListApplyJobRequestedCopyWith<_$GetListApplyJobRequested>
+      get copyWith =>
+          __$$GetListApplyJobRequestedCopyWithImpl<_$GetListApplyJobRequested>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAddress,
+    required TResult Function() getJobCategory,
+    required TResult Function(String searchText) searchJobCategory,
+    required TResult Function() getProvinces,
+    required TResult Function(String text) getTextProvince,
+    required TResult Function(String text) getTextExperience,
+    required TResult Function(String text) getTextdistrict,
+    required TResult Function(String text) getTextSalary,
+    required TResult Function(String text) getTextJobCategory,
+    required TResult Function(String text) getTextType,
+    required TResult Function() initProvinces,
+    required TResult Function() initDistricts,
+    required TResult Function(String id) getDistricts,
+    required TResult Function(String text) searchDistricts,
+    required TResult Function(String text) searchProvinces,
+    required TResult Function(String searchText) searchCompany,
+    required TResult Function(int pageKey) getListJob,
+    required TResult Function() removeListBookmark,
+    required TResult Function(UserModel userModel) getListJobMax,
+    required TResult Function() resetLastDocument,
+    required TResult Function() updateBookmark,
+    required TResult Function(JobsModel job, UserModel userModel) getJobById,
+    required TResult Function() getJobSameType,
+    required TResult Function() getJobSameCompany,
+    required TResult Function(CVInfoModel cvInfoModel) submitCV,
+    required TResult Function(String text) getTextEmailJob,
+    required TResult Function(String text) getTextPhoneJob,
+    required TResult Function(String text) getTextNameJob,
+    required TResult Function(String text) getTextIntroLetterJob,
+    required TResult Function(UserModel userModel) getListApplyJob,
+  }) {
+    return getListApplyJob(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAddress,
+    TResult? Function()? getJobCategory,
+    TResult? Function(String searchText)? searchJobCategory,
+    TResult? Function()? getProvinces,
+    TResult? Function(String text)? getTextProvince,
+    TResult? Function(String text)? getTextExperience,
+    TResult? Function(String text)? getTextdistrict,
+    TResult? Function(String text)? getTextSalary,
+    TResult? Function(String text)? getTextJobCategory,
+    TResult? Function(String text)? getTextType,
+    TResult? Function()? initProvinces,
+    TResult? Function()? initDistricts,
+    TResult? Function(String id)? getDistricts,
+    TResult? Function(String text)? searchDistricts,
+    TResult? Function(String text)? searchProvinces,
+    TResult? Function(String searchText)? searchCompany,
+    TResult? Function(int pageKey)? getListJob,
+    TResult? Function()? removeListBookmark,
+    TResult? Function(UserModel userModel)? getListJobMax,
+    TResult? Function()? resetLastDocument,
+    TResult? Function()? updateBookmark,
+    TResult? Function(JobsModel job, UserModel userModel)? getJobById,
+    TResult? Function()? getJobSameType,
+    TResult? Function()? getJobSameCompany,
+    TResult? Function(CVInfoModel cvInfoModel)? submitCV,
+    TResult? Function(String text)? getTextEmailJob,
+    TResult? Function(String text)? getTextPhoneJob,
+    TResult? Function(String text)? getTextNameJob,
+    TResult? Function(String text)? getTextIntroLetterJob,
+    TResult? Function(UserModel userModel)? getListApplyJob,
+  }) {
+    return getListApplyJob?.call(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAddress,
+    TResult Function()? getJobCategory,
+    TResult Function(String searchText)? searchJobCategory,
+    TResult Function()? getProvinces,
+    TResult Function(String text)? getTextProvince,
+    TResult Function(String text)? getTextExperience,
+    TResult Function(String text)? getTextdistrict,
+    TResult Function(String text)? getTextSalary,
+    TResult Function(String text)? getTextJobCategory,
+    TResult Function(String text)? getTextType,
+    TResult Function()? initProvinces,
+    TResult Function()? initDistricts,
+    TResult Function(String id)? getDistricts,
+    TResult Function(String text)? searchDistricts,
+    TResult Function(String text)? searchProvinces,
+    TResult Function(String searchText)? searchCompany,
+    TResult Function(int pageKey)? getListJob,
+    TResult Function()? removeListBookmark,
+    TResult Function(UserModel userModel)? getListJobMax,
+    TResult Function()? resetLastDocument,
+    TResult Function()? updateBookmark,
+    TResult Function(JobsModel job, UserModel userModel)? getJobById,
+    TResult Function()? getJobSameType,
+    TResult Function()? getJobSameCompany,
+    TResult Function(CVInfoModel cvInfoModel)? submitCV,
+    TResult Function(String text)? getTextEmailJob,
+    TResult Function(String text)? getTextPhoneJob,
+    TResult Function(String text)? getTextNameJob,
+    TResult Function(String text)? getTextIntroLetterJob,
+    TResult Function(UserModel userModel)? getListApplyJob,
+    required TResult orElse(),
+  }) {
+    if (getListApplyJob != null) {
+      return getListApplyJob(userModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAddressRequested value) getAddress,
+    required TResult Function(GetJobCategoryRequested value) getJobCategory,
+    required TResult Function(SearchJobCategoryRequested value)
+        searchJobCategory,
+    required TResult Function(GetProvincesRequested value) getProvinces,
+    required TResult Function(GetTextProvinceRequested value) getTextProvince,
+    required TResult Function(GetTextExperienceRequested value)
+        getTextExperience,
+    required TResult Function(GetTextDistrictRequested value) getTextdistrict,
+    required TResult Function(GetTextSalaryRequested value) getTextSalary,
+    required TResult Function(GetTextJobCategoryRequested value)
+        getTextJobCategory,
+    required TResult Function(GetTextTypeRequested value) getTextType,
+    required TResult Function(InitProvincesRequested value) initProvinces,
+    required TResult Function(InitDistrictsRequested value) initDistricts,
+    required TResult Function(GetDistrictsRequested value) getDistricts,
+    required TResult Function(SearchDistrictsRequested value) searchDistricts,
+    required TResult Function(SearchProvincesRequested value) searchProvinces,
+    required TResult Function(SearchCompanyRequested value) searchCompany,
+    required TResult Function(GetListJobRequested value) getListJob,
+    required TResult Function(RemoveListBookmarkRequested value)
+        removeListBookmark,
+    required TResult Function(GetListJobMaxRequested value) getListJobMax,
+    required TResult Function(ResetLastDocumentRequested value)
+        resetLastDocument,
+    required TResult Function(UpdateBookmarkRequest value) updateBookmark,
+    required TResult Function(GetJobByIdRequested value) getJobById,
+    required TResult Function(GetJobSameTypeRequest value) getJobSameType,
+    required TResult Function(GetJobSameCompanyRequest value) getJobSameCompany,
+    required TResult Function(SubmitCVRequest value) submitCV,
+    required TResult Function(GetTextEmailJobRequested value) getTextEmailJob,
+    required TResult Function(GetTextPhoneJobRequested value) getTextPhoneJob,
+    required TResult Function(GetTextNameJobRequested value) getTextNameJob,
+    required TResult Function(GetTextIntroLetterJobRequested value)
+        getTextIntroLetterJob,
+    required TResult Function(GetListApplyJobRequested value) getListApplyJob,
+  }) {
+    return getListApplyJob(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAddressRequested value)? getAddress,
+    TResult? Function(GetJobCategoryRequested value)? getJobCategory,
+    TResult? Function(SearchJobCategoryRequested value)? searchJobCategory,
+    TResult? Function(GetProvincesRequested value)? getProvinces,
+    TResult? Function(GetTextProvinceRequested value)? getTextProvince,
+    TResult? Function(GetTextExperienceRequested value)? getTextExperience,
+    TResult? Function(GetTextDistrictRequested value)? getTextdistrict,
+    TResult? Function(GetTextSalaryRequested value)? getTextSalary,
+    TResult? Function(GetTextJobCategoryRequested value)? getTextJobCategory,
+    TResult? Function(GetTextTypeRequested value)? getTextType,
+    TResult? Function(InitProvincesRequested value)? initProvinces,
+    TResult? Function(InitDistrictsRequested value)? initDistricts,
+    TResult? Function(GetDistrictsRequested value)? getDistricts,
+    TResult? Function(SearchDistrictsRequested value)? searchDistricts,
+    TResult? Function(SearchProvincesRequested value)? searchProvinces,
+    TResult? Function(SearchCompanyRequested value)? searchCompany,
+    TResult? Function(GetListJobRequested value)? getListJob,
+    TResult? Function(RemoveListBookmarkRequested value)? removeListBookmark,
+    TResult? Function(GetListJobMaxRequested value)? getListJobMax,
+    TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
+    TResult? Function(UpdateBookmarkRequest value)? updateBookmark,
+    TResult? Function(GetJobByIdRequested value)? getJobById,
+    TResult? Function(GetJobSameTypeRequest value)? getJobSameType,
+    TResult? Function(GetJobSameCompanyRequest value)? getJobSameCompany,
+    TResult? Function(SubmitCVRequest value)? submitCV,
+    TResult? Function(GetTextEmailJobRequested value)? getTextEmailJob,
+    TResult? Function(GetTextPhoneJobRequested value)? getTextPhoneJob,
+    TResult? Function(GetTextNameJobRequested value)? getTextNameJob,
+    TResult? Function(GetTextIntroLetterJobRequested value)?
+        getTextIntroLetterJob,
+    TResult? Function(GetListApplyJobRequested value)? getListApplyJob,
+  }) {
+    return getListApplyJob?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAddressRequested value)? getAddress,
+    TResult Function(GetJobCategoryRequested value)? getJobCategory,
+    TResult Function(SearchJobCategoryRequested value)? searchJobCategory,
+    TResult Function(GetProvincesRequested value)? getProvinces,
+    TResult Function(GetTextProvinceRequested value)? getTextProvince,
+    TResult Function(GetTextExperienceRequested value)? getTextExperience,
+    TResult Function(GetTextDistrictRequested value)? getTextdistrict,
+    TResult Function(GetTextSalaryRequested value)? getTextSalary,
+    TResult Function(GetTextJobCategoryRequested value)? getTextJobCategory,
+    TResult Function(GetTextTypeRequested value)? getTextType,
+    TResult Function(InitProvincesRequested value)? initProvinces,
+    TResult Function(InitDistrictsRequested value)? initDistricts,
+    TResult Function(GetDistrictsRequested value)? getDistricts,
+    TResult Function(SearchDistrictsRequested value)? searchDistricts,
+    TResult Function(SearchProvincesRequested value)? searchProvinces,
+    TResult Function(SearchCompanyRequested value)? searchCompany,
+    TResult Function(GetListJobRequested value)? getListJob,
+    TResult Function(RemoveListBookmarkRequested value)? removeListBookmark,
+    TResult Function(GetListJobMaxRequested value)? getListJobMax,
+    TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
+    TResult Function(UpdateBookmarkRequest value)? updateBookmark,
+    TResult Function(GetJobByIdRequested value)? getJobById,
+    TResult Function(GetJobSameTypeRequest value)? getJobSameType,
+    TResult Function(GetJobSameCompanyRequest value)? getJobSameCompany,
+    TResult Function(SubmitCVRequest value)? submitCV,
+    TResult Function(GetTextEmailJobRequested value)? getTextEmailJob,
+    TResult Function(GetTextPhoneJobRequested value)? getTextPhoneJob,
+    TResult Function(GetTextNameJobRequested value)? getTextNameJob,
+    TResult Function(GetTextIntroLetterJobRequested value)?
+        getTextIntroLetterJob,
+    TResult Function(GetListApplyJobRequested value)? getListApplyJob,
+    required TResult orElse(),
+  }) {
+    if (getListApplyJob != null) {
+      return getListApplyJob(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetListApplyJobRequested implements JobEvent {
+  const factory GetListApplyJobRequested(final UserModel userModel) =
+      _$GetListApplyJobRequested;
+
+  UserModel get userModel;
+  @JsonKey(ignore: true)
+  _$$GetListApplyJobRequestedCopyWith<_$GetListApplyJobRequested>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$JobState {
   CompanyModel? get company => throw _privateConstructorUsedError;
   JobsModel? get job => throw _privateConstructorUsedError;
@@ -8847,10 +9350,13 @@ mixin _$JobState {
   List<JobCategoryModel> get searchjobCategories =>
       throw _privateConstructorUsedError;
   List<JobsModel> get jobs => throw _privateConstructorUsedError;
+  List<JobsModel> get jobsApplied => throw _privateConstructorUsedError;
   List<JobsModel> get jobBookmark => throw _privateConstructorUsedError;
   List<JobsModel> get searchjobs => throw _privateConstructorUsedError;
   List<JobsModel> get jobsSameType => throw _privateConstructorUsedError;
   List<JobsModel> get jobsSameCompany => throw _privateConstructorUsedError;
+  List<CVInfoModel> get cvInfoList => throw _privateConstructorUsedError;
+  Map<String, CVInfoModel> get cvInfoMap => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isShimmer => throw _privateConstructorUsedError;
   bool get updateSuccess => throw _privateConstructorUsedError;
@@ -8890,10 +9396,13 @@ abstract class $JobStateCopyWith<$Res> {
       List<JobCategoryModel> jobCategories,
       List<JobCategoryModel> searchjobCategories,
       List<JobsModel> jobs,
+      List<JobsModel> jobsApplied,
       List<JobsModel> jobBookmark,
       List<JobsModel> searchjobs,
       List<JobsModel> jobsSameType,
       List<JobsModel> jobsSameCompany,
+      List<CVInfoModel> cvInfoList,
+      Map<String, CVInfoModel> cvInfoMap,
       bool isLoading,
       bool isShimmer,
       bool updateSuccess,
@@ -8940,10 +9449,13 @@ class _$JobStateCopyWithImpl<$Res, $Val extends JobState>
     Object? jobCategories = null,
     Object? searchjobCategories = null,
     Object? jobs = null,
+    Object? jobsApplied = null,
     Object? jobBookmark = null,
     Object? searchjobs = null,
     Object? jobsSameType = null,
     Object? jobsSameCompany = null,
+    Object? cvInfoList = null,
+    Object? cvInfoMap = null,
     Object? isLoading = null,
     Object? isShimmer = null,
     Object? updateSuccess = null,
@@ -9006,6 +9518,10 @@ class _$JobStateCopyWithImpl<$Res, $Val extends JobState>
           ? _value.jobs
           : jobs // ignore: cast_nullable_to_non_nullable
               as List<JobsModel>,
+      jobsApplied: null == jobsApplied
+          ? _value.jobsApplied
+          : jobsApplied // ignore: cast_nullable_to_non_nullable
+              as List<JobsModel>,
       jobBookmark: null == jobBookmark
           ? _value.jobBookmark
           : jobBookmark // ignore: cast_nullable_to_non_nullable
@@ -9022,6 +9538,14 @@ class _$JobStateCopyWithImpl<$Res, $Val extends JobState>
           ? _value.jobsSameCompany
           : jobsSameCompany // ignore: cast_nullable_to_non_nullable
               as List<JobsModel>,
+      cvInfoList: null == cvInfoList
+          ? _value.cvInfoList
+          : cvInfoList // ignore: cast_nullable_to_non_nullable
+              as List<CVInfoModel>,
+      cvInfoMap: null == cvInfoMap
+          ? _value.cvInfoMap
+          : cvInfoMap // ignore: cast_nullable_to_non_nullable
+              as Map<String, CVInfoModel>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -9145,10 +9669,13 @@ abstract class _$$_JobStateCopyWith<$Res> implements $JobStateCopyWith<$Res> {
       List<JobCategoryModel> jobCategories,
       List<JobCategoryModel> searchjobCategories,
       List<JobsModel> jobs,
+      List<JobsModel> jobsApplied,
       List<JobsModel> jobBookmark,
       List<JobsModel> searchjobs,
       List<JobsModel> jobsSameType,
       List<JobsModel> jobsSameCompany,
+      List<CVInfoModel> cvInfoList,
+      Map<String, CVInfoModel> cvInfoMap,
       bool isLoading,
       bool isShimmer,
       bool updateSuccess,
@@ -9196,10 +9723,13 @@ class __$$_JobStateCopyWithImpl<$Res>
     Object? jobCategories = null,
     Object? searchjobCategories = null,
     Object? jobs = null,
+    Object? jobsApplied = null,
     Object? jobBookmark = null,
     Object? searchjobs = null,
     Object? jobsSameType = null,
     Object? jobsSameCompany = null,
+    Object? cvInfoList = null,
+    Object? cvInfoMap = null,
     Object? isLoading = null,
     Object? isShimmer = null,
     Object? updateSuccess = null,
@@ -9262,6 +9792,10 @@ class __$$_JobStateCopyWithImpl<$Res>
           ? _value._jobs
           : jobs // ignore: cast_nullable_to_non_nullable
               as List<JobsModel>,
+      jobsApplied: null == jobsApplied
+          ? _value._jobsApplied
+          : jobsApplied // ignore: cast_nullable_to_non_nullable
+              as List<JobsModel>,
       jobBookmark: null == jobBookmark
           ? _value._jobBookmark
           : jobBookmark // ignore: cast_nullable_to_non_nullable
@@ -9278,6 +9812,14 @@ class __$$_JobStateCopyWithImpl<$Res>
           ? _value._jobsSameCompany
           : jobsSameCompany // ignore: cast_nullable_to_non_nullable
               as List<JobsModel>,
+      cvInfoList: null == cvInfoList
+          ? _value._cvInfoList
+          : cvInfoList // ignore: cast_nullable_to_non_nullable
+              as List<CVInfoModel>,
+      cvInfoMap: null == cvInfoMap
+          ? _value._cvInfoMap
+          : cvInfoMap // ignore: cast_nullable_to_non_nullable
+              as Map<String, CVInfoModel>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -9361,10 +9903,13 @@ class _$_JobState implements _JobState {
       final List<JobCategoryModel> jobCategories = const [],
       final List<JobCategoryModel> searchjobCategories = const [],
       final List<JobsModel> jobs = const [],
+      final List<JobsModel> jobsApplied = const [],
       final List<JobsModel> jobBookmark = const [],
       final List<JobsModel> searchjobs = const [],
       final List<JobsModel> jobsSameType = const [],
       final List<JobsModel> jobsSameCompany = const [],
+      final List<CVInfoModel> cvInfoList = const [],
+      final Map<String, CVInfoModel> cvInfoMap = const {},
       this.isLoading = false,
       this.isShimmer = true,
       this.updateSuccess = false,
@@ -9388,10 +9933,13 @@ class _$_JobState implements _JobState {
         _jobCategories = jobCategories,
         _searchjobCategories = searchjobCategories,
         _jobs = jobs,
+        _jobsApplied = jobsApplied,
         _jobBookmark = jobBookmark,
         _searchjobs = searchjobs,
         _jobsSameType = jobsSameType,
-        _jobsSameCompany = jobsSameCompany;
+        _jobsSameCompany = jobsSameCompany,
+        _cvInfoList = cvInfoList,
+        _cvInfoMap = cvInfoMap;
 
   @override
   final CompanyModel? company;
@@ -9466,6 +10014,15 @@ class _$_JobState implements _JobState {
     return EqualUnmodifiableListView(_jobs);
   }
 
+  final List<JobsModel> _jobsApplied;
+  @override
+  @JsonKey()
+  List<JobsModel> get jobsApplied {
+    if (_jobsApplied is EqualUnmodifiableListView) return _jobsApplied;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_jobsApplied);
+  }
+
   final List<JobsModel> _jobBookmark;
   @override
   @JsonKey()
@@ -9500,6 +10057,24 @@ class _$_JobState implements _JobState {
     if (_jobsSameCompany is EqualUnmodifiableListView) return _jobsSameCompany;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_jobsSameCompany);
+  }
+
+  final List<CVInfoModel> _cvInfoList;
+  @override
+  @JsonKey()
+  List<CVInfoModel> get cvInfoList {
+    if (_cvInfoList is EqualUnmodifiableListView) return _cvInfoList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_cvInfoList);
+  }
+
+  final Map<String, CVInfoModel> _cvInfoMap;
+  @override
+  @JsonKey()
+  Map<String, CVInfoModel> get cvInfoMap {
+    if (_cvInfoMap is EqualUnmodifiableMapView) return _cvInfoMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_cvInfoMap);
   }
 
   @override
@@ -9553,7 +10128,7 @@ class _$_JobState implements _JobState {
 
   @override
   String toString() {
-    return 'JobState(company: $company, job: $job, user: $user, loadStatus: $loadStatus, provinces: $provinces, searchProvinces: $searchProvinces, districts: $districts, searchDistricts: $searchDistricts, jobCategories: $jobCategories, searchjobCategories: $searchjobCategories, jobs: $jobs, jobBookmark: $jobBookmark, searchjobs: $searchjobs, jobsSameType: $jobsSameType, jobsSameCompany: $jobsSameCompany, isLoading: $isLoading, isShimmer: $isShimmer, updateSuccess: $updateSuccess, submitSuccess: $submitSuccess, error: $error, idProvince: $idProvince, provinceText: $provinceText, districtText: $districtText, experienceText: $experienceText, salaryText: $salaryText, jobCategoryText: $jobCategoryText, typeText: $typeText, introLetter: $introLetter, name: $name, phone: $phone, email: $email)';
+    return 'JobState(company: $company, job: $job, user: $user, loadStatus: $loadStatus, provinces: $provinces, searchProvinces: $searchProvinces, districts: $districts, searchDistricts: $searchDistricts, jobCategories: $jobCategories, searchjobCategories: $searchjobCategories, jobs: $jobs, jobsApplied: $jobsApplied, jobBookmark: $jobBookmark, searchjobs: $searchjobs, jobsSameType: $jobsSameType, jobsSameCompany: $jobsSameCompany, cvInfoList: $cvInfoList, cvInfoMap: $cvInfoMap, isLoading: $isLoading, isShimmer: $isShimmer, updateSuccess: $updateSuccess, submitSuccess: $submitSuccess, error: $error, idProvince: $idProvince, provinceText: $provinceText, districtText: $districtText, experienceText: $experienceText, salaryText: $salaryText, jobCategoryText: $jobCategoryText, typeText: $typeText, introLetter: $introLetter, name: $name, phone: $phone, email: $email)';
   }
 
   @override
@@ -9580,6 +10155,8 @@ class _$_JobState implements _JobState {
                 .equals(other._searchjobCategories, _searchjobCategories) &&
             const DeepCollectionEquality().equals(other._jobs, _jobs) &&
             const DeepCollectionEquality()
+                .equals(other._jobsApplied, _jobsApplied) &&
+            const DeepCollectionEquality()
                 .equals(other._jobBookmark, _jobBookmark) &&
             const DeepCollectionEquality()
                 .equals(other._searchjobs, _searchjobs) &&
@@ -9587,6 +10164,10 @@ class _$_JobState implements _JobState {
                 .equals(other._jobsSameType, _jobsSameType) &&
             const DeepCollectionEquality()
                 .equals(other._jobsSameCompany, _jobsSameCompany) &&
+            const DeepCollectionEquality()
+                .equals(other._cvInfoList, _cvInfoList) &&
+            const DeepCollectionEquality()
+                .equals(other._cvInfoMap, _cvInfoMap) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isShimmer, isShimmer) ||
@@ -9631,10 +10212,13 @@ class _$_JobState implements _JobState {
         const DeepCollectionEquality().hash(_jobCategories),
         const DeepCollectionEquality().hash(_searchjobCategories),
         const DeepCollectionEquality().hash(_jobs),
+        const DeepCollectionEquality().hash(_jobsApplied),
         const DeepCollectionEquality().hash(_jobBookmark),
         const DeepCollectionEquality().hash(_searchjobs),
         const DeepCollectionEquality().hash(_jobsSameType),
         const DeepCollectionEquality().hash(_jobsSameCompany),
+        const DeepCollectionEquality().hash(_cvInfoList),
+        const DeepCollectionEquality().hash(_cvInfoMap),
         isLoading,
         isShimmer,
         updateSuccess,
@@ -9673,10 +10257,13 @@ abstract class _JobState implements JobState {
       final List<JobCategoryModel> jobCategories,
       final List<JobCategoryModel> searchjobCategories,
       final List<JobsModel> jobs,
+      final List<JobsModel> jobsApplied,
       final List<JobsModel> jobBookmark,
       final List<JobsModel> searchjobs,
       final List<JobsModel> jobsSameType,
       final List<JobsModel> jobsSameCompany,
+      final List<CVInfoModel> cvInfoList,
+      final Map<String, CVInfoModel> cvInfoMap,
       final bool isLoading,
       final bool isShimmer,
       final bool updateSuccess,
@@ -9717,6 +10304,8 @@ abstract class _JobState implements JobState {
   @override
   List<JobsModel> get jobs;
   @override
+  List<JobsModel> get jobsApplied;
+  @override
   List<JobsModel> get jobBookmark;
   @override
   List<JobsModel> get searchjobs;
@@ -9724,6 +10313,10 @@ abstract class _JobState implements JobState {
   List<JobsModel> get jobsSameType;
   @override
   List<JobsModel> get jobsSameCompany;
+  @override
+  List<CVInfoModel> get cvInfoList;
+  @override
+  Map<String, CVInfoModel> get cvInfoMap;
   @override
   bool get isLoading;
   @override

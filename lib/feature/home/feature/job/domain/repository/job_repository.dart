@@ -11,5 +11,7 @@ abstract class JobRepository {
   Future<Either<Failure, List<JobsModel>>> getListJob();
   Future<Either<Failure, List<JobsModel>>> getListJobMax();
   Future<Either<Failure, Unit>> updateBookmark({required UserModel userModel});
+  Future<Either<Failure, Map<String, CVInfoModel>>> getListApplyJob(
+      {required UserModel userModel});
   Future<Either<Failure, Unit>> submitCV(CVInfoModel cvInfoModel);
 }

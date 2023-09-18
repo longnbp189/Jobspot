@@ -164,6 +164,7 @@ class _CVConfigurationScreenState extends State<CVConfigurationScreen> {
                                         cvLink: selectedValue?.url ?? '',
                                         cvName: selectedValue?.name ?? '',
                                         displayName: _nameController.text,
+                                        userId: authBloc.state.user?.id ?? '',
                                         email: _emailController.text,
                                         introducingLetter:
                                             _introController.text,

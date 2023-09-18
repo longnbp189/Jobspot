@@ -16,6 +16,7 @@ import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
@@ -26,6 +27,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:collection/collection.dart';
+
 // import 'dart:math' show sin, cos, sqrt, atan2;
 import 'package:vector_math/vector_math.dart' as vector;
 
@@ -1058,6 +1061,11 @@ class AppFormat {
 
       await Future.delayed(const Duration(seconds: 2));
     }
+  }
+
+  static JobsModel getJobInfo(
+      CVInfoModel cvInfoModel, List<JobsModel> jobsModel) {
+    return jobsModel.firstWhere((element) => element.id == cvInfoModel.jobId);
   }
 
   static String generateRandomString() {

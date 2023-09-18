@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:jobspot/core/failure.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/datasources/job_remote_datasource.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/domain/repository/job_repository.dart';
@@ -36,5 +37,12 @@ class JobRepositoryImpl implements JobRepository {
   @override
   Future<Either<Failure, Unit>> submitCV(cvInfoModel) {
     return serviceLocator<JobRemoteDataSource>().submitCV(cvInfoModel);
+  }
+
+  @override
+  Future<Either<Failure, Map<String, CVInfoModel>>> getListApplyJob(
+      {required UserModel userModel}) {
+    return serviceLocator<JobRemoteDataSource>()
+        .getListApplyJob(userModel: userModel);
   }
 }

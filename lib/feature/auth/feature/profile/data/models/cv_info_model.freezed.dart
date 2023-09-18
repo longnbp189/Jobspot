@@ -26,6 +26,7 @@ mixin _$CVInfoModel {
   String get phoneNumber => throw _privateConstructorUsedError;
   String get cvLink => throw _privateConstructorUsedError;
   String get cvId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get cvName => throw _privateConstructorUsedError;
   String get jobId => throw _privateConstructorUsedError;
   String get introducingLetter => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $CVInfoModelCopyWith<$Res> {
       String phoneNumber,
       String cvLink,
       String cvId,
+      String userId,
       String cvName,
       String jobId,
       String introducingLetter,
@@ -75,6 +77,7 @@ class _$CVInfoModelCopyWithImpl<$Res, $Val extends CVInfoModel>
     Object? phoneNumber = null,
     Object? cvLink = null,
     Object? cvId = null,
+    Object? userId = null,
     Object? cvName = null,
     Object? jobId = null,
     Object? introducingLetter = null,
@@ -104,6 +107,10 @@ class _$CVInfoModelCopyWithImpl<$Res, $Val extends CVInfoModel>
       cvId: null == cvId
           ? _value.cvId
           : cvId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       cvName: null == cvName
           ? _value.cvName
@@ -140,6 +147,7 @@ abstract class _$$_CVInfoModelCopyWith<$Res>
       String phoneNumber,
       String cvLink,
       String cvId,
+      String userId,
       String cvName,
       String jobId,
       String introducingLetter,
@@ -163,6 +171,7 @@ class __$$_CVInfoModelCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? cvLink = null,
     Object? cvId = null,
+    Object? userId = null,
     Object? cvName = null,
     Object? jobId = null,
     Object? introducingLetter = null,
@@ -192,6 +201,10 @@ class __$$_CVInfoModelCopyWithImpl<$Res>
       cvId: null == cvId
           ? _value.cvId
           : cvId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       cvName: null == cvName
           ? _value.cvName
@@ -223,6 +236,7 @@ class _$_CVInfoModel implements _CVInfoModel {
       this.phoneNumber = '',
       this.cvLink = '',
       this.cvId = '',
+      this.userId = '',
       this.cvName = '',
       this.jobId = '',
       this.introducingLetter = '',
@@ -251,6 +265,9 @@ class _$_CVInfoModel implements _CVInfoModel {
   final String cvId;
   @override
   @JsonKey()
+  final String userId;
+  @override
+  @JsonKey()
   final String cvName;
   @override
   @JsonKey()
@@ -263,7 +280,7 @@ class _$_CVInfoModel implements _CVInfoModel {
 
   @override
   String toString() {
-    return 'CVInfoModel(email: $email, id: $id, displayName: $displayName, phoneNumber: $phoneNumber, cvLink: $cvLink, cvId: $cvId, cvName: $cvName, jobId: $jobId, introducingLetter: $introducingLetter, sendDate: $sendDate)';
+    return 'CVInfoModel(email: $email, id: $id, displayName: $displayName, phoneNumber: $phoneNumber, cvLink: $cvLink, cvId: $cvId, userId: $userId, cvName: $cvName, jobId: $jobId, introducingLetter: $introducingLetter, sendDate: $sendDate)';
   }
 
   @override
@@ -279,6 +296,7 @@ class _$_CVInfoModel implements _CVInfoModel {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.cvLink, cvLink) || other.cvLink == cvLink) &&
             (identical(other.cvId, cvId) || other.cvId == cvId) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.cvName, cvName) || other.cvName == cvName) &&
             (identical(other.jobId, jobId) || other.jobId == jobId) &&
             (identical(other.introducingLetter, introducingLetter) ||
@@ -289,8 +307,19 @@ class _$_CVInfoModel implements _CVInfoModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email, id, displayName,
-      phoneNumber, cvLink, cvId, cvName, jobId, introducingLetter, sendDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      email,
+      id,
+      displayName,
+      phoneNumber,
+      cvLink,
+      cvId,
+      userId,
+      cvName,
+      jobId,
+      introducingLetter,
+      sendDate);
 
   @JsonKey(ignore: true)
   @override
@@ -314,6 +343,7 @@ abstract class _CVInfoModel implements CVInfoModel {
       final String phoneNumber,
       final String cvLink,
       final String cvId,
+      final String userId,
       final String cvName,
       final String jobId,
       final String introducingLetter,
@@ -334,6 +364,8 @@ abstract class _CVInfoModel implements CVInfoModel {
   String get cvLink;
   @override
   String get cvId;
+  @override
+  String get userId;
   @override
   String get cvName;
   @override

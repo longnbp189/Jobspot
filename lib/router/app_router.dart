@@ -6,6 +6,8 @@ import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screen
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/forgot_password_screen.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/screens/login_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/bloc/profile_bloc.dart';
+import 'package:jobspot/feature/auth/feature/profile/presentation/screens/following_company_screen.dart';
+import 'package:jobspot/feature/auth/feature/profile/presentation/screens/job_applied_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/screens/cv_configuration_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/profile_screen.dart';
@@ -92,7 +94,25 @@ class AppRouter {
                             ));
                           },
                         ),
-                        
+                        GoRoute(
+                          name: AppRouterName.followingCompany,
+                          path: 'following-company',
+                          pageBuilder: (context, state) {
+                            return const MaterialPage(
+                                child: FollowingCompanyScreen());
+                          },
+                        ),
+                        GoRoute(
+                          name: AppRouterName.jobApplied,
+                          path: 'job-applied',
+                          pageBuilder: (context, state) {
+                            return MaterialPage(
+                                child: BlocProvider(
+                              create: (context) => JobBloc(),
+                              child: const JobAppliedScreen(),
+                            ));
+                          },
+                        ),
                       ]),
                   GoRoute(
                     name: AppRouterName.companyDetail,
