@@ -6,6 +6,7 @@ class CompanyState with _$CompanyState {
       {CompanyModel? company,
       UserModel? user,
       @Default([]) List<CompanyModel> companies,
+      @Default([]) List<CompanyModel> companiesFollowing,
       @Default([]) List<CompanyModel> searchCompanies,
       @Default([]) List<CompanyModel> companiesSameType,
       @Default(false) bool isLoading,
@@ -18,7 +19,10 @@ class CompanyState with _$CompanyState {
 
 extension CompanyStateExtension on CompanyState {
   bool isFollowCompany() {
-    return company?.followerIds.contains(user?.id) ?? false;
+    var companyCheck = company?.followerIds.contains(user?.id) ?? false;
+    var userCheck = user?.followerIds.contains(company?.id) ?? false;
+
+    return companyCheck && userCheck;
   }
 
   bool isLastPage() {

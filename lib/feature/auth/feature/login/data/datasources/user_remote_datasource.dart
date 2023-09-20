@@ -73,16 +73,6 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         final userData = userFirebase.data() as Map<String, dynamic>;
         final userModel = UserModel.fromJson(userData);
 
-        // UserModel userResponse;
-        // if (userModel.cvInfo != null && userModel.cvInfo!.id.isNotEmpty) {}
-
-        //  userResponse = UserModel(
-        //     id: user.uid,
-        //     displayName: user.displayName ?? '',
-        //     email: user.email ?? '',
-        //     cvInfo: CVInfoModel(
-        //       displayName: user.displayName ?? '',
-        //     ));
         return right(userModel);
       } else {
         return left(const ConnectionFailure('Login failed.'));

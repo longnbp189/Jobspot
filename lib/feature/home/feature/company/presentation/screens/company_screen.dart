@@ -6,6 +6,8 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
+import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
@@ -41,6 +43,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authBloc = context.read<AuthBloc>();
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -64,6 +67,8 @@ class _CompanyScreenState extends State<CompanyScreen> {
               if (index != -1) {
                 pagingController.itemList![index] = state.company!;
               }
+              print('init');
+              authBloc.add(InitUserRequested(state.user ?? UserModel()));
             }
 
             if (!state.isFollow) {

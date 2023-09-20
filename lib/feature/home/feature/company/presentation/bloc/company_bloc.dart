@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
@@ -32,6 +33,7 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
     on<ResetLastDocumentRequested>(_onResetLastDocumentRequested);
     on<SearchCompanyRequested>(_onSearchCompanyRequested);
     on<GetListCompanyMaxRequested>(_onGetListCompanyMaxRequested);
+    on<GetListCompanyFollowingRequested>(_onGetListCompanyFollowingRequested);
   }
 
   FutureOr<void> _onGetListCompanyRequested(
@@ -86,19 +88,18 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
         if (companies.isNotEmpty) {
           final index = companies
               .indexWhere((company) => company.id == state.company!.id);
-
+          Unit? unit;
           final result = await serviceLocator<CompanyUsecase>().followCompany(
               companyModel: state.company!, userModel: state.user!);
           result.fold(
             (l) => emit(state.copyWith(error: l.message, isLoading: false)),
-            (r) {
-              if (index != -1) {
-                companies[index] = state.company!;
-                emit(state.copyWith(
-                    isFollow: true, isLoading: false, companies: companies));
-              }
-            },
+            (r) => unit = r,
           );
+          if (index != -1 && unit != null) {
+            companies[index] = state.company!;
+            emit(state.copyWith(
+                isFollow: true, isLoading: false, companies: companies));
+          }
         } else {
           final result = await serviceLocator<CompanyUsecase>().followCompany(
               companyModel: state.company!, userModel: state.user!);
@@ -120,7 +121,6 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
           (r) {
             if (index != -1) {
               searchCompanies[index] = state.company!;
-              print('ddddddddddddd');
               emit(state.copyWith(searchCompanies: searchCompanies));
             }
           },
@@ -240,5 +240,32 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
       (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
       (r) => emit(state.copyWith(companies: r, isShimmer: false)),
     );
+  }
+
+  FutureOr<void> _onGetListCompanyFollowingRequested(
+      GetListCompanyFollowingRequested event,
+      Emitter<CompanyState> emit) async {
+    emit(state.copyWith(isShimmer: true, error: ''));
+    final result = await serviceLocator<CompanyUsecase>().getListCompanyMax();
+    result.fold(
+      (l) => emit(state.copyWith(
+        error: l.message,
+      )),
+      (r) => emit(state.copyWith(
+        companies: r,
+      )),
+    );
+
+    List<CompanyModel> companyList = List.from(state.companies);
+    List<CompanyModel> companyFollowingList = [];
+    for (var element in companyList) {
+      for (var e in event.userModel.followerIds) {
+        if (e == element.id) {
+          companyFollowingList.add(element);
+        }
+      }
+    }
+    emit(state.copyWith(
+        companiesFollowing: companyFollowingList, isShimmer: false));
   }
 }

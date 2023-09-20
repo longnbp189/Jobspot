@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:jobspot/common/widgets/stateless/avatar_company.dart';
 import 'package:jobspot/common/widgets/stateless/button_medium.dart';
 import 'package:jobspot/common/widgets/stateless/icon_widget.dart';
+import 'package:jobspot/common/widgets/stateless/shimmer_effect.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/app_format.dart';
@@ -13,6 +14,7 @@ import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
+import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
 import 'package:jobspot/router/app_router_name.dart';
@@ -39,12 +41,19 @@ class JobAppliedScreen extends StatelessWidget {
                 style: TxtStyles.semiBold20,
               ),
             ),
-            body: SafeArea(
+            body: RefreshIndicator(
+              onRefresh: () async {
+                jobBloc.add(JobEvent.getListApplyJob(
+                    authBloc.state.user ?? UserModel()));
+              },
+              child: SafeArea(
+                  child: SingleChildScrollView(
                 child: state.isShimmer
-                    ? const SizedBox()
+                    ? const JobAppliedItemShimmer()
                     : state.cvInfoList.isEmpty
-                        ? const SizedBox()
+                        ? const TopCompanyEmpty()
                         : ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
                             separatorBuilder: (context, index) => spaceH16,
                             padding: EdgeInsets.symmetric(
                                 horizontal: 16.w, vertical: 16.h),
@@ -53,7 +62,9 @@ class JobAppliedScreen extends StatelessWidget {
                             ),
                             itemCount: state.cvInfoList.length,
                             shrinkWrap: true,
-                          )));
+                          ),
+              )),
+            ));
       },
     );
   }
@@ -100,7 +111,7 @@ class JobAppliedItem extends StatelessWidget {
                     children: [
                       Text(
                         jobInfo.title,
-                        style: TxtStyles.regular18,
+                        style: TxtStyles.semiBold16,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -180,6 +191,116 @@ class JobAppliedItem extends StatelessWidget {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class JobAppliedItemShimmer extends StatelessWidget {
+  const JobAppliedItemShimmer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ShimmerEffect(
+      child: ListView.separated(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        itemCount: 2,
+        shrinkWrap: true,
+        separatorBuilder: (context, index) => spaceH16,
+        itemBuilder: (context, index) => Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r), color: AppColor.white),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AvatarCompany(
+                    sizeAvatar: 72.r,
+                  ),
+                  spaceW16,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'title',
+                          style: TxtStyles.semiBold16,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        spaceH8,
+                        Text(
+                          'company',
+                          style: TxtStyles.regular14,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              spaceH8,
+              Row(
+                children: [
+                  const IconWidget(icon: AppAsset.location),
+                  spaceW4,
+                  Text(
+                    'Ho Chi Minh',
+                    style: TxtStyles.regular14,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        const IconWidget(icon: AppAsset.salary),
+                        spaceW4,
+                        Text(
+                          '\$200',
+                          style: TxtStyles.regular14,
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        const IconWidget(icon: AppAsset.timer),
+                        spaceW4,
+                        Text(
+                          '19/02/2000',
+                          style: TxtStyles.regular14,
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              spaceH8,
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 12.h),
+                width: double.infinity,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.r),
+                    color: AppColor.greyBox.withOpacity(0.4)),
+                child: Text(
+                  'View CV',
+                  style: TxtStyles.semiBold16,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

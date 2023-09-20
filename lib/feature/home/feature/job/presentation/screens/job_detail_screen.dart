@@ -309,6 +309,8 @@ class _ApplyBottomSheetState extends State<ApplyBottomSheet> {
     final authBloc = context.read<AuthBloc>();
     final cvBloc = context.read<CvBloc>();
     final jobBloc = context.read<JobBloc>();
+    final isHasCV = cvBloc.state.cvMainModel != null &&
+        cvBloc.state.cvMainModel!.id.isNotEmpty;
     return Container(
       decoration: BoxDecoration(
         color: AppColor.backgroundWhite,
@@ -490,26 +492,33 @@ class _ApplyBottomSheetState extends State<ApplyBottomSheet> {
                 spaceW16,
                 Expanded(
                   child: InkWell(
-                    onTap: () {
-                      jobBloc.add(JobEvent.submitCV(CVInfoModel(
-                          id: AppFormat.generateRandomString(),
-                          jobId: jobBloc.state.job?.id ?? '',
-                          cvId: cvBloc.state.cvMainModel?.id ?? '',
-                          cvLink: cvBloc.state.cvMainModel?.url ?? '',
-                          cvName: cvBloc.state.cvMainModel?.name ?? '',
-                          displayName: authBloc.state.user?.displayName ?? '',
-                          email: authBloc.state.user?.email ?? '',
-                          introducingLetter:
-                              authBloc.state.user?.introducingLetter ?? '',
-                          phoneNumber: authBloc.state.user?.phoneNumber ?? '',
-                          sendDate: DateTime.now())));
-                    },
+                    onTap: isHasCV
+                        ? () {
+                            jobBloc.add(JobEvent.submitCV(CVInfoModel(
+                                id: AppFormat.generateRandomString(),
+                                jobId: jobBloc.state.job?.id ?? '',
+                                cvId: cvBloc.state.cvMainModel?.id ?? '',
+                                cvLink: cvBloc.state.cvMainModel?.url ?? '',
+                                cvName: cvBloc.state.cvMainModel?.name ?? '',
+                                displayName:
+                                    authBloc.state.user?.displayName ?? '',
+                                email: authBloc.state.user?.email ?? '',
+                                introducingLetter:
+                                    authBloc.state.user?.introducingLetter ??
+                                        '',
+                                phoneNumber:
+                                    authBloc.state.user?.phoneNumber ?? '',
+                                sendDate: DateTime.now())));
+                          }
+                        : null,
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 12.h),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.r),
-                          color: AppColor.primary),
+                          color: isHasCV
+                              ? AppColor.primary
+                              : AppColor.primary.withOpacity(0.7)),
                       child: Text(
                         'Use',
                         style: TxtStyles.semiBold16
@@ -709,8 +718,8 @@ class RelatedJobsBody extends StatelessWidget {
         color: AppColor.backgroundWhite,
         child: BlocBuilder<JobBloc, JobState>(
           bloc: jobBloc,
-          // buildWhen: (previous, current) =>
-          //     previous.jobsSameType != current.jobsSameType,
+          buildWhen: (previous, current) =>
+              previous.jobsSameType != current.jobsSameType,
           builder: (context, state) {
             print('22222 ${state.isShimmer}');
             print('2224444 ${jobBloc.state.isShimmer}');

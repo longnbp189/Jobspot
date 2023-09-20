@@ -27,6 +27,7 @@ mixin _$CompanyEvent {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ mixin _$CompanyEvent {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +56,7 @@ mixin _$CompanyEvent {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) =>
@@ -72,6 +75,8 @@ mixin _$CompanyEvent {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) =>
       throw _privateConstructorUsedError;
@@ -86,6 +91,8 @@ mixin _$CompanyEvent {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) =>
       throw _privateConstructorUsedError;
@@ -100,6 +107,8 @@ mixin _$CompanyEvent {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) =>
@@ -198,6 +207,7 @@ class _$GetListCompanyRequested implements GetListCompanyRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return getListCompany(pageKey);
@@ -215,6 +225,7 @@ class _$GetListCompanyRequested implements GetListCompanyRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return getListCompany?.call(pageKey);
@@ -231,6 +242,7 @@ class _$GetListCompanyRequested implements GetListCompanyRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -255,6 +267,8 @@ class _$GetListCompanyRequested implements GetListCompanyRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return getListCompany(this);
@@ -272,6 +286,8 @@ class _$GetListCompanyRequested implements GetListCompanyRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return getListCompany?.call(this);
@@ -289,6 +305,8 @@ class _$GetListCompanyRequested implements GetListCompanyRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -359,6 +377,7 @@ class _$GetListCompanyMaxRequested implements GetListCompanyMaxRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return getListCompanyMax();
@@ -376,6 +395,7 @@ class _$GetListCompanyMaxRequested implements GetListCompanyMaxRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return getListCompanyMax?.call();
@@ -392,6 +412,7 @@ class _$GetListCompanyMaxRequested implements GetListCompanyMaxRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -416,6 +437,8 @@ class _$GetListCompanyMaxRequested implements GetListCompanyMaxRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return getListCompanyMax(this);
@@ -433,6 +456,8 @@ class _$GetListCompanyMaxRequested implements GetListCompanyMaxRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return getListCompanyMax?.call(this);
@@ -450,6 +475,8 @@ class _$GetListCompanyMaxRequested implements GetListCompanyMaxRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -539,6 +566,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return searchCompany(searchText);
@@ -556,6 +584,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return searchCompany?.call(searchText);
@@ -572,6 +601,7 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -596,6 +626,8 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return searchCompany(this);
@@ -613,6 +645,8 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return searchCompany?.call(this);
@@ -630,6 +664,8 @@ class _$SearchCompanyRequested implements SearchCompanyRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -727,6 +763,7 @@ class _$GetListCompanySameTypeRequested
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return getListCompanySameType(pageKey);
@@ -744,6 +781,7 @@ class _$GetListCompanySameTypeRequested
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return getListCompanySameType?.call(pageKey);
@@ -760,6 +798,7 @@ class _$GetListCompanySameTypeRequested
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -784,6 +823,8 @@ class _$GetListCompanySameTypeRequested
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return getListCompanySameType(this);
@@ -801,6 +842,8 @@ class _$GetListCompanySameTypeRequested
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return getListCompanySameType?.call(this);
@@ -818,6 +861,8 @@ class _$GetListCompanySameTypeRequested
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -888,6 +933,7 @@ class _$GetListTopCompanyRequested implements GetListTopCompanyRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return getListTopCompany();
@@ -905,6 +951,7 @@ class _$GetListTopCompanyRequested implements GetListTopCompanyRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return getListTopCompany?.call();
@@ -921,6 +968,7 @@ class _$GetListTopCompanyRequested implements GetListTopCompanyRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -945,6 +993,8 @@ class _$GetListTopCompanyRequested implements GetListTopCompanyRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return getListTopCompany(this);
@@ -962,6 +1012,8 @@ class _$GetListTopCompanyRequested implements GetListTopCompanyRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return getListTopCompany?.call(this);
@@ -979,6 +1031,8 @@ class _$GetListTopCompanyRequested implements GetListTopCompanyRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1043,6 +1097,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return resetLastDocument();
@@ -1060,6 +1115,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return resetLastDocument?.call();
@@ -1076,6 +1132,7 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1100,6 +1157,8 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return resetLastDocument(this);
@@ -1117,6 +1176,8 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return resetLastDocument?.call(this);
@@ -1134,6 +1195,8 @@ class _$ResetLastDocumentRequested implements ResetLastDocumentRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1250,6 +1313,7 @@ class _$GetCompanyByIdRequested implements GetCompanyByIdRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return getCompanyById(company, userModel);
@@ -1267,6 +1331,7 @@ class _$GetCompanyByIdRequested implements GetCompanyByIdRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return getCompanyById?.call(company, userModel);
@@ -1283,6 +1348,7 @@ class _$GetCompanyByIdRequested implements GetCompanyByIdRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1307,6 +1373,8 @@ class _$GetCompanyByIdRequested implements GetCompanyByIdRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return getCompanyById(this);
@@ -1324,6 +1392,8 @@ class _$GetCompanyByIdRequested implements GetCompanyByIdRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return getCompanyById?.call(this);
@@ -1341,6 +1411,8 @@ class _$GetCompanyByIdRequested implements GetCompanyByIdRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1410,6 +1482,7 @@ class _$FollowCompanyRequested implements FollowCompanyRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return followCompany();
@@ -1427,6 +1500,7 @@ class _$FollowCompanyRequested implements FollowCompanyRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return followCompany?.call();
@@ -1443,6 +1517,7 @@ class _$FollowCompanyRequested implements FollowCompanyRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1467,6 +1542,8 @@ class _$FollowCompanyRequested implements FollowCompanyRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return followCompany(this);
@@ -1484,6 +1561,8 @@ class _$FollowCompanyRequested implements FollowCompanyRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return followCompany?.call(this);
@@ -1501,6 +1580,8 @@ class _$FollowCompanyRequested implements FollowCompanyRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1513,6 +1594,216 @@ class _$FollowCompanyRequested implements FollowCompanyRequested {
 
 abstract class FollowCompanyRequested implements CompanyEvent {
   const factory FollowCompanyRequested() = _$FollowCompanyRequested;
+}
+
+/// @nodoc
+abstract class _$$GetListCompanyFollowingRequestedCopyWith<$Res> {
+  factory _$$GetListCompanyFollowingRequestedCopyWith(
+          _$GetListCompanyFollowingRequested value,
+          $Res Function(_$GetListCompanyFollowingRequested) then) =
+      __$$GetListCompanyFollowingRequestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserModel userModel});
+
+  $UserModelCopyWith<$Res> get userModel;
+}
+
+/// @nodoc
+class __$$GetListCompanyFollowingRequestedCopyWithImpl<$Res>
+    extends _$CompanyEventCopyWithImpl<$Res, _$GetListCompanyFollowingRequested>
+    implements _$$GetListCompanyFollowingRequestedCopyWith<$Res> {
+  __$$GetListCompanyFollowingRequestedCopyWithImpl(
+      _$GetListCompanyFollowingRequested _value,
+      $Res Function(_$GetListCompanyFollowingRequested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userModel = null,
+  }) {
+    return _then(_$GetListCompanyFollowingRequested(
+      null == userModel
+          ? _value.userModel
+          : userModel // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userModel {
+    return $UserModelCopyWith<$Res>(_value.userModel, (value) {
+      return _then(_value.copyWith(userModel: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GetListCompanyFollowingRequested
+    implements GetListCompanyFollowingRequested {
+  const _$GetListCompanyFollowingRequested(this.userModel);
+
+  @override
+  final UserModel userModel;
+
+  @override
+  String toString() {
+    return 'CompanyEvent.getListCompanyFollowing(userModel: $userModel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetListCompanyFollowingRequested &&
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetListCompanyFollowingRequestedCopyWith<
+          _$GetListCompanyFollowingRequested>
+      get copyWith => __$$GetListCompanyFollowingRequestedCopyWithImpl<
+          _$GetListCompanyFollowingRequested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int pageKey) getListCompany,
+    required TResult Function() getListCompanyMax,
+    required TResult Function(String searchText) searchCompany,
+    required TResult Function(int pageKey) getListCompanySameType,
+    required TResult Function() getListTopCompany,
+    required TResult Function() resetLastDocument,
+    required TResult Function(CompanyModel company, UserModel userModel)
+        getCompanyById,
+    required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
+    required TResult Function(CompanyModel company) unFollowCompany,
+  }) {
+    return getListCompanyFollowing(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int pageKey)? getListCompany,
+    TResult? Function()? getListCompanyMax,
+    TResult? Function(String searchText)? searchCompany,
+    TResult? Function(int pageKey)? getListCompanySameType,
+    TResult? Function()? getListTopCompany,
+    TResult? Function()? resetLastDocument,
+    TResult? Function(CompanyModel company, UserModel userModel)?
+        getCompanyById,
+    TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
+    TResult? Function(CompanyModel company)? unFollowCompany,
+  }) {
+    return getListCompanyFollowing?.call(userModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int pageKey)? getListCompany,
+    TResult Function()? getListCompanyMax,
+    TResult Function(String searchText)? searchCompany,
+    TResult Function(int pageKey)? getListCompanySameType,
+    TResult Function()? getListTopCompany,
+    TResult Function()? resetLastDocument,
+    TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
+    TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
+    TResult Function(CompanyModel company)? unFollowCompany,
+    required TResult orElse(),
+  }) {
+    if (getListCompanyFollowing != null) {
+      return getListCompanyFollowing(userModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetListCompanyRequested value) getListCompany,
+    required TResult Function(GetListCompanyMaxRequested value)
+        getListCompanyMax,
+    required TResult Function(SearchCompanyRequested value) searchCompany,
+    required TResult Function(GetListCompanySameTypeRequested value)
+        getListCompanySameType,
+    required TResult Function(GetListTopCompanyRequested value)
+        getListTopCompany,
+    required TResult Function(ResetLastDocumentRequested value)
+        resetLastDocument,
+    required TResult Function(GetCompanyByIdRequested value) getCompanyById,
+    required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
+    required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
+  }) {
+    return getListCompanyFollowing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetListCompanyRequested value)? getListCompany,
+    TResult? Function(GetListCompanyMaxRequested value)? getListCompanyMax,
+    TResult? Function(SearchCompanyRequested value)? searchCompany,
+    TResult? Function(GetListCompanySameTypeRequested value)?
+        getListCompanySameType,
+    TResult? Function(GetListTopCompanyRequested value)? getListTopCompany,
+    TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
+    TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
+    TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
+    TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
+  }) {
+    return getListCompanyFollowing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetListCompanyRequested value)? getListCompany,
+    TResult Function(GetListCompanyMaxRequested value)? getListCompanyMax,
+    TResult Function(SearchCompanyRequested value)? searchCompany,
+    TResult Function(GetListCompanySameTypeRequested value)?
+        getListCompanySameType,
+    TResult Function(GetListTopCompanyRequested value)? getListTopCompany,
+    TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
+    TResult Function(GetCompanyByIdRequested value)? getCompanyById,
+    TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
+    TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
+    required TResult orElse(),
+  }) {
+    if (getListCompanyFollowing != null) {
+      return getListCompanyFollowing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetListCompanyFollowingRequested implements CompanyEvent {
+  const factory GetListCompanyFollowingRequested(final UserModel userModel) =
+      _$GetListCompanyFollowingRequested;
+
+  UserModel get userModel;
+  @JsonKey(ignore: true)
+  _$$GetListCompanyFollowingRequestedCopyWith<
+          _$GetListCompanyFollowingRequested>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1600,6 +1891,7 @@ class _$UnFollowCompanyRequested implements UnFollowCompanyRequested {
     required TResult Function(CompanyModel company, UserModel userModel)
         getCompanyById,
     required TResult Function() followCompany,
+    required TResult Function(UserModel userModel) getListCompanyFollowing,
     required TResult Function(CompanyModel company) unFollowCompany,
   }) {
     return unFollowCompany(company);
@@ -1617,6 +1909,7 @@ class _$UnFollowCompanyRequested implements UnFollowCompanyRequested {
     TResult? Function(CompanyModel company, UserModel userModel)?
         getCompanyById,
     TResult? Function()? followCompany,
+    TResult? Function(UserModel userModel)? getListCompanyFollowing,
     TResult? Function(CompanyModel company)? unFollowCompany,
   }) {
     return unFollowCompany?.call(company);
@@ -1633,6 +1926,7 @@ class _$UnFollowCompanyRequested implements UnFollowCompanyRequested {
     TResult Function()? resetLastDocument,
     TResult Function(CompanyModel company, UserModel userModel)? getCompanyById,
     TResult Function()? followCompany,
+    TResult Function(UserModel userModel)? getListCompanyFollowing,
     TResult Function(CompanyModel company)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1657,6 +1951,8 @@ class _$UnFollowCompanyRequested implements UnFollowCompanyRequested {
         resetLastDocument,
     required TResult Function(GetCompanyByIdRequested value) getCompanyById,
     required TResult Function(FollowCompanyRequested value) followCompany,
+    required TResult Function(GetListCompanyFollowingRequested value)
+        getListCompanyFollowing,
     required TResult Function(UnFollowCompanyRequested value) unFollowCompany,
   }) {
     return unFollowCompany(this);
@@ -1674,6 +1970,8 @@ class _$UnFollowCompanyRequested implements UnFollowCompanyRequested {
     TResult? Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult? Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult? Function(FollowCompanyRequested value)? followCompany,
+    TResult? Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult? Function(UnFollowCompanyRequested value)? unFollowCompany,
   }) {
     return unFollowCompany?.call(this);
@@ -1691,6 +1989,8 @@ class _$UnFollowCompanyRequested implements UnFollowCompanyRequested {
     TResult Function(ResetLastDocumentRequested value)? resetLastDocument,
     TResult Function(GetCompanyByIdRequested value)? getCompanyById,
     TResult Function(FollowCompanyRequested value)? followCompany,
+    TResult Function(GetListCompanyFollowingRequested value)?
+        getListCompanyFollowing,
     TResult Function(UnFollowCompanyRequested value)? unFollowCompany,
     required TResult orElse(),
   }) {
@@ -1716,6 +2016,8 @@ mixin _$CompanyState {
   CompanyModel? get company => throw _privateConstructorUsedError;
   UserModel? get user => throw _privateConstructorUsedError;
   List<CompanyModel> get companies => throw _privateConstructorUsedError;
+  List<CompanyModel> get companiesFollowing =>
+      throw _privateConstructorUsedError;
   List<CompanyModel> get searchCompanies => throw _privateConstructorUsedError;
   List<CompanyModel> get companiesSameType =>
       throw _privateConstructorUsedError;
@@ -1742,6 +2044,7 @@ abstract class $CompanyStateCopyWith<$Res> {
       {CompanyModel? company,
       UserModel? user,
       List<CompanyModel> companies,
+      List<CompanyModel> companiesFollowing,
       List<CompanyModel> searchCompanies,
       List<CompanyModel> companiesSameType,
       bool isLoading,
@@ -1771,6 +2074,7 @@ class _$CompanyStateCopyWithImpl<$Res, $Val extends CompanyState>
     Object? company = freezed,
     Object? user = freezed,
     Object? companies = null,
+    Object? companiesFollowing = null,
     Object? searchCompanies = null,
     Object? companiesSameType = null,
     Object? isLoading = null,
@@ -1792,6 +2096,10 @@ class _$CompanyStateCopyWithImpl<$Res, $Val extends CompanyState>
       companies: null == companies
           ? _value.companies
           : companies // ignore: cast_nullable_to_non_nullable
+              as List<CompanyModel>,
+      companiesFollowing: null == companiesFollowing
+          ? _value.companiesFollowing
+          : companiesFollowing // ignore: cast_nullable_to_non_nullable
               as List<CompanyModel>,
       searchCompanies: null == searchCompanies
           ? _value.searchCompanies
@@ -1865,6 +2173,7 @@ abstract class _$$_CompanyStateCopyWith<$Res>
       {CompanyModel? company,
       UserModel? user,
       List<CompanyModel> companies,
+      List<CompanyModel> companiesFollowing,
       List<CompanyModel> searchCompanies,
       List<CompanyModel> companiesSameType,
       bool isLoading,
@@ -1894,6 +2203,7 @@ class __$$_CompanyStateCopyWithImpl<$Res>
     Object? company = freezed,
     Object? user = freezed,
     Object? companies = null,
+    Object? companiesFollowing = null,
     Object? searchCompanies = null,
     Object? companiesSameType = null,
     Object? isLoading = null,
@@ -1915,6 +2225,10 @@ class __$$_CompanyStateCopyWithImpl<$Res>
       companies: null == companies
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
+              as List<CompanyModel>,
+      companiesFollowing: null == companiesFollowing
+          ? _value._companiesFollowing
+          : companiesFollowing // ignore: cast_nullable_to_non_nullable
               as List<CompanyModel>,
       searchCompanies: null == searchCompanies
           ? _value._searchCompanies
@@ -1959,6 +2273,7 @@ class _$_CompanyState implements _CompanyState {
       {this.company,
       this.user,
       final List<CompanyModel> companies = const [],
+      final List<CompanyModel> companiesFollowing = const [],
       final List<CompanyModel> searchCompanies = const [],
       final List<CompanyModel> companiesSameType = const [],
       this.isLoading = false,
@@ -1968,6 +2283,7 @@ class _$_CompanyState implements _CompanyState {
       this.idCompany = "",
       this.pagingController})
       : _companies = companies,
+        _companiesFollowing = companiesFollowing,
         _searchCompanies = searchCompanies,
         _companiesSameType = companiesSameType;
 
@@ -1982,6 +2298,16 @@ class _$_CompanyState implements _CompanyState {
     if (_companies is EqualUnmodifiableListView) return _companies;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_companies);
+  }
+
+  final List<CompanyModel> _companiesFollowing;
+  @override
+  @JsonKey()
+  List<CompanyModel> get companiesFollowing {
+    if (_companiesFollowing is EqualUnmodifiableListView)
+      return _companiesFollowing;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_companiesFollowing);
   }
 
   final List<CompanyModel> _searchCompanies;
@@ -2023,7 +2349,7 @@ class _$_CompanyState implements _CompanyState {
 
   @override
   String toString() {
-    return 'CompanyState(company: $company, user: $user, companies: $companies, searchCompanies: $searchCompanies, companiesSameType: $companiesSameType, isLoading: $isLoading, isShimmer: $isShimmer, isFollow: $isFollow, error: $error, idCompany: $idCompany, pagingController: $pagingController)';
+    return 'CompanyState(company: $company, user: $user, companies: $companies, companiesFollowing: $companiesFollowing, searchCompanies: $searchCompanies, companiesSameType: $companiesSameType, isLoading: $isLoading, isShimmer: $isShimmer, isFollow: $isFollow, error: $error, idCompany: $idCompany, pagingController: $pagingController)';
   }
 
   @override
@@ -2035,6 +2361,8 @@ class _$_CompanyState implements _CompanyState {
             (identical(other.user, user) || other.user == user) &&
             const DeepCollectionEquality()
                 .equals(other._companies, _companies) &&
+            const DeepCollectionEquality()
+                .equals(other._companiesFollowing, _companiesFollowing) &&
             const DeepCollectionEquality()
                 .equals(other._searchCompanies, _searchCompanies) &&
             const DeepCollectionEquality()
@@ -2058,6 +2386,7 @@ class _$_CompanyState implements _CompanyState {
       company,
       user,
       const DeepCollectionEquality().hash(_companies),
+      const DeepCollectionEquality().hash(_companiesFollowing),
       const DeepCollectionEquality().hash(_searchCompanies),
       const DeepCollectionEquality().hash(_companiesSameType),
       isLoading,
@@ -2079,6 +2408,7 @@ abstract class _CompanyState implements CompanyState {
           {final CompanyModel? company,
           final UserModel? user,
           final List<CompanyModel> companies,
+          final List<CompanyModel> companiesFollowing,
           final List<CompanyModel> searchCompanies,
           final List<CompanyModel> companiesSameType,
           final bool isLoading,
@@ -2095,6 +2425,8 @@ abstract class _CompanyState implements CompanyState {
   UserModel? get user;
   @override
   List<CompanyModel> get companies;
+  @override
+  List<CompanyModel> get companiesFollowing;
   @override
   List<CompanyModel> get searchCompanies;
   @override

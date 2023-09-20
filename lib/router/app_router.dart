@@ -98,8 +98,11 @@ class AppRouter {
                           name: AppRouterName.followingCompany,
                           path: 'following-company',
                           pageBuilder: (context, state) {
-                            return const MaterialPage(
-                                child: FollowingCompanyScreen());
+                            return MaterialPage(
+                                child: BlocProvider(
+                              create: (context) => CompanyBloc(),
+                              child: const FollowingCompanyScreen(),
+                            ));
                           },
                         ),
                         GoRoute(

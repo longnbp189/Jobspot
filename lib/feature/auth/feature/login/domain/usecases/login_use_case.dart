@@ -70,7 +70,7 @@ class LoginUsecase {
     return response;
   }
 
-  Future<void> logout(String  userId) async {
+  Future<void> logout(String userId) async {
     await serviceLocator<AuthRepository>().logout();
     await serviceLocator<UserCacheService>().deleteUser(userId);
   }

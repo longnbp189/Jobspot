@@ -38,26 +38,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> _onLogin(Login event, Emitter<AuthState> emit) async {
     emit(state.copyWith(isLoading: true));
     final result = await serviceLocator<LoginUsecase>().loginWithGoogle();
+    UserModel? userResponse;
     result.fold((l) => emit(state.copyWith(error: l.message, isLoading: false)),
-        (r) => emit(state.copyWith(user: r, isLoading: false)));
-  }
+        (r) => userResponse = r);
 
-  // FutureOr<void> _onLogin(Login event, Emitter<AuthState> emit) async {
-  //   AuthState newState = state.copyWith(isLoading: true);
-  //   // emit(state.copyWith(isLoading: true));
-  //   final result = await serviceLocator<LoginUsecase>().loginWithGoogle();
-  //   result.fold(
-  //       (l) => newState = state.copyWith(error: l.message, isLoading: false),
-  //       // result.fold((l) => emit(state.copyWith(error: l.message, isLoading: false)),
-  //       (r) async {
-  //     await serviceLocator<SignUpUsecase>().saveUserToFirebase(r);
-  //     newState =
-  //         state.copyWith(user: UserEntity.toUserEntity(r), isLoading: false);
-  //     //  emit(state.copyWith(
-  //     // user: UserEntity.toUserEntity(r), isLoading: false));
-  //   });
-  //   emit(newState);
-  // }
+    if (userResponse != null) {
+      final user = await serviceLocator<UserCacheService>().getUser();
+
+      emit(state.copyWith(isLoading: false, user: user));
+    }
+  }
 
   FutureOr<void> _onSignUp(SignUp event, Emitter<AuthState> emit) async {
     emit(state.copyWith(isLoading: true, error: '', signUpSuccess: null));

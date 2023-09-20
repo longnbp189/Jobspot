@@ -208,36 +208,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               spaceW16,
                               Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 12.w, vertical: 12.h),
-                                  decoration: BoxDecoration(
-                                    color: AppColor.white,
-                                    borderRadius: BorderRadius.circular(8.r),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const IconWidget(icon: AppAsset.company),
-                                      spaceH8,
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Following company',
-                                            style: TxtStyles.regular14,
-                                          ),
-                                          Text(
-                                            authBloc
-                                                .state.user!.followerIds.length
-                                                .toString(),
-                                            style: TxtStyles.semiBold16,
-                                          )
-                                        ],
-                                      ),
-                                    ],
+                                child: InkWell(
+                                  onTap: () => context.pushNamed(
+                                      AppRouterName.followingCompany),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 12.w, vertical: 12.h),
+                                    decoration: BoxDecoration(
+                                      color: AppColor.white,
+                                      borderRadius: BorderRadius.circular(8.r),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const IconWidget(
+                                            icon: AppAsset.company),
+                                        spaceH8,
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Following company',
+                                              style: TxtStyles.regular14,
+                                            ),
+                                            Text(
+                                              authBloc.state.user!.followerIds
+                                                  .length
+                                                  .toString(),
+                                              style: TxtStyles.semiBold16,
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

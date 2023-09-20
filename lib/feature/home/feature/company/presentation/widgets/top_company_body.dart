@@ -8,6 +8,7 @@ class TopCompaniesBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<CompanyBloc>(context);
+    final authBloc = context.read<AuthBloc>();
 
     final PagingController<int, CompanyModel> pagingController =
         PagingController(firstPageKey: 0);
@@ -25,6 +26,7 @@ class TopCompaniesBody extends StatelessWidget {
           if (index != -1) {
             pagingController.itemList![index] = state.company!;
           }
+          authBloc.add(InitUserRequested(state.user ?? UserModel()));
         }
 
         if (!state.isFollow) {
