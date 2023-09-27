@@ -17,6 +17,7 @@ import 'package:jobspot/services/database_helper.dart';
 abstract class JobRemoteDataSource {
   Future<Either<Failure, Unit>> getAddress();
   Future<Either<Failure, List<JobsModel>>> getListJob();
+  Future<Either<Failure, List<JobsModel>>> getListBestJob();
   Future<Either<Failure, Unit>> submitCV(CVInfoModel cvInfoModel);
   Future<Either<Failure, List<JobsModel>>> getListJobMax();
   Future<Either<Failure, Unit>> updateBookMark({
@@ -44,6 +45,7 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
       List<ProvinceModel> provinceModel = [];
       var provinces = responseProvince.data['data']['data'];
       for (var element in provinces) {
+        
         provinceModel.add(ProvinceModel.fromJson(element));
       }
       db.addProvince(provinceModel);
@@ -123,8 +125,7 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
       }).toList();
 
       jobs.removeWhere((element) =>
-          element.status == false ||
-          element.startDate!.isAfter(element.endDate!));
+          !element.status || !DateTime.now().isBefore(element.endDate!));
       jobs.sort(
         (a, b) => b.startDate!.compareTo(a.startDate!),
       );
@@ -253,6 +254,29 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
       return right(firstItemMap);
     } catch (e) {
       return left(ParsingFailure('Submit CV Firebase Error: ${e.toString()}'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<JobsModel>>> getListBestJob() async {
+    try {
+      final querySnapshot = await _db.collection("Jobs").get();
+
+      final List<JobsModel> jobs = querySnapshot.docs.map((doc) {
+        final data = doc.data();
+        return JobsModel.fromJson(data);
+      }).toList();
+
+      jobs.removeWhere((element) =>
+         !element.status || !DateTime.now().isBefore(element.endDate!));
+
+      // jobs.shuffle();
+      // List<JobsModel> shuffledJobs = jobs.take(4).toList();
+
+      return right(jobs);
+    } catch (e) {
+      return left(
+          ParsingFailure('Get list jobs Firebase Error: ${e.toString()}'));
     }
   }
 }

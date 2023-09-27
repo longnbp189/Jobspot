@@ -15,6 +15,9 @@ import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/screens/job_detail_screen.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/screens/job_screen.dart';
 import 'package:jobspot/feature/home/presentation/screen/home_screen.dart';
 
 import 'package:jobspot/common/widgets/stateless/avatar_company.dart';
@@ -22,6 +25,7 @@ import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
+import 'package:jobspot/router/app_router.dart';
 import 'package:jobspot/router/app_router_name.dart';
 
 part '../widgets/recruitment_news_body.dart';
@@ -31,7 +35,9 @@ part '../widgets/company_detail_header.dart';
 
 class CompanyDetailScreen extends StatefulWidget {
   final CompanyModel companyModel;
-  const CompanyDetailScreen({super.key, required this.companyModel});
+  final ValueChanged<bool> changed;
+  const CompanyDetailScreen(
+      {super.key, required this.companyModel, required this.changed});
 
   @override
   State<CompanyDetailScreen> createState() => _CompanyDetailScreenState();
@@ -40,10 +46,29 @@ class CompanyDetailScreen extends StatefulWidget {
 class _CompanyDetailScreenState extends State<CompanyDetailScreen> {
   // TabController? _tabController;
   int intTab = 0;
+  late ScrollController _scrollController;
+  @override
+  void initState() {
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {});
+      });
+    super.initState();
+  }
+
+  bool get _isSliverAppBarExpanded {
+    return _scrollController.hasClients &&
+        _scrollController.offset >
+            (AppFormat.heightHeader(widget.companyModel.displayName.length,
+                    widget.companyModel.displayName.length) -
+                kToolbarHeight);
+  }
+
   @override
   Widget build(BuildContext context) {
     final authBloc = context.read<AuthBloc>();
-
+    var collapsedHeight =
+        widget.companyModel.displayName.length > 37 ? 370.h : 350.h;
     return BlocProvider(
       create: (context) => CompanyBloc()
         ..add(CompanyEvent.getCompanyById(
@@ -55,16 +80,19 @@ class _CompanyDetailScreenState extends State<CompanyDetailScreen> {
             child: Scaffold(
                 body: SafeArea(
                     child: NestedScrollView(
+              controller: _scrollController,
               headerSliverBuilder: (context, innerBoxIsScrolled) {
                 return [
                   SliverAppBar(
-                    collapsedHeight: 350.h,
+                    pinned: true,
+                    expandedHeight: collapsedHeight,
                     leading: GestureDetector(
                       onTap: () => context.pop(),
-                      child: Container(
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 700),
                         margin: const EdgeInsets.all(8.0),
-                        decoration: const BoxDecoration(
-                          color: Colors.white, // White background color
+                        decoration: BoxDecoration(
+                          color: _isSliverAppBarExpanded ? null : Colors.white,
                           shape: BoxShape.circle,
                         ),
                         child: const Icon(
@@ -73,8 +101,22 @@ class _CompanyDetailScreenState extends State<CompanyDetailScreen> {
                         ),
                       ),
                     ),
-                    flexibleSpace: CompanyDetailHeader(
-                        companyModel: state.company ?? widget.companyModel),
+                    flexibleSpace: FlexibleSpaceBar(
+                      title: AnimatedOpacity(
+                        opacity: _isSliverAppBarExpanded ? 1.0 : 0.0,
+                        duration: const Duration(milliseconds: 300),
+                        child: _isSliverAppBarExpanded
+                            ? Text(
+                                state.company?.displayName ??
+                                    widget.companyModel.displayName,
+                                style: TxtStyles.semiBold20,
+                              )
+                            : null,
+                      ),
+                      background: CompanyDetailHeader(
+                          change: widget.changed,
+                          companyModel: state.company ?? widget.companyModel),
+                    ),
                   ),
                   SliverPersistentHeader(
                       pinned: true,

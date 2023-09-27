@@ -29,7 +29,8 @@ mixin _$JobsModel {
   String get companyImage => throw _privateConstructorUsedError;
   String get companyName => throw _privateConstructorUsedError;
   String get companyLocation => throw _privateConstructorUsedError;
-  String get salary => throw _privateConstructorUsedError;
+  double get minSalary => throw _privateConstructorUsedError;
+  double get maxSalary => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
   String get experienceYear => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
@@ -61,7 +62,8 @@ abstract class $JobsModelCopyWith<$Res> {
       String companyImage,
       String companyName,
       String companyLocation,
-      String salary,
+      double minSalary,
+      double maxSalary,
       String location,
       String experienceYear,
       String category,
@@ -95,7 +97,8 @@ class _$JobsModelCopyWithImpl<$Res, $Val extends JobsModel>
     Object? companyImage = null,
     Object? companyName = null,
     Object? companyLocation = null,
-    Object? salary = null,
+    Object? minSalary = null,
+    Object? maxSalary = null,
     Object? location = null,
     Object? experienceYear = null,
     Object? category = null,
@@ -143,10 +146,14 @@ class _$JobsModelCopyWithImpl<$Res, $Val extends JobsModel>
           ? _value.companyLocation
           : companyLocation // ignore: cast_nullable_to_non_nullable
               as String,
-      salary: null == salary
-          ? _value.salary
-          : salary // ignore: cast_nullable_to_non_nullable
-              as String,
+      minSalary: null == minSalary
+          ? _value.minSalary
+          : minSalary // ignore: cast_nullable_to_non_nullable
+              as double,
+      maxSalary: null == maxSalary
+          ? _value.maxSalary
+          : maxSalary // ignore: cast_nullable_to_non_nullable
+              as double,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -204,7 +211,8 @@ abstract class _$$_JobsModelCopyWith<$Res> implements $JobsModelCopyWith<$Res> {
       String companyImage,
       String companyName,
       String companyLocation,
-      String salary,
+      double minSalary,
+      double maxSalary,
       String location,
       String experienceYear,
       String category,
@@ -236,7 +244,8 @@ class __$$_JobsModelCopyWithImpl<$Res>
     Object? companyImage = null,
     Object? companyName = null,
     Object? companyLocation = null,
-    Object? salary = null,
+    Object? minSalary = null,
+    Object? maxSalary = null,
     Object? location = null,
     Object? experienceYear = null,
     Object? category = null,
@@ -284,10 +293,14 @@ class __$$_JobsModelCopyWithImpl<$Res>
           ? _value.companyLocation
           : companyLocation // ignore: cast_nullable_to_non_nullable
               as String,
-      salary: null == salary
-          ? _value.salary
-          : salary // ignore: cast_nullable_to_non_nullable
-              as String,
+      minSalary: null == minSalary
+          ? _value.minSalary
+          : minSalary // ignore: cast_nullable_to_non_nullable
+              as double,
+      maxSalary: null == maxSalary
+          ? _value.maxSalary
+          : maxSalary // ignore: cast_nullable_to_non_nullable
+              as double,
       location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -341,7 +354,8 @@ class _$_JobsModel implements _JobsModel {
       this.companyImage = '',
       this.companyName = '',
       this.companyLocation = '',
-      this.salary = '',
+      this.minSalary = 0,
+      this.maxSalary = 0,
       this.location = '',
       this.experienceYear = '',
       this.category = '',
@@ -384,7 +398,10 @@ class _$_JobsModel implements _JobsModel {
   final String companyLocation;
   @override
   @JsonKey()
-  final String salary;
+  final double minSalary;
+  @override
+  @JsonKey()
+  final double maxSalary;
   @override
   @JsonKey()
   final String location;
@@ -413,7 +430,7 @@ class _$_JobsModel implements _JobsModel {
 
   @override
   String toString() {
-    return 'JobsModel(id: $id, title: $title, description: $description, requirement: $requirement, benefit: $benefit, companyId: $companyId, companyImage: $companyImage, companyName: $companyName, companyLocation: $companyLocation, salary: $salary, location: $location, experienceYear: $experienceYear, category: $category, type: $type, quantity: $quantity, startDate: $startDate, endDate: $endDate, gender: $gender, status: $status)';
+    return 'JobsModel(id: $id, title: $title, description: $description, requirement: $requirement, benefit: $benefit, companyId: $companyId, companyImage: $companyImage, companyName: $companyName, companyLocation: $companyLocation, minSalary: $minSalary, maxSalary: $maxSalary, location: $location, experienceYear: $experienceYear, category: $category, type: $type, quantity: $quantity, startDate: $startDate, endDate: $endDate, gender: $gender, status: $status)';
   }
 
   @override
@@ -436,7 +453,10 @@ class _$_JobsModel implements _JobsModel {
                 other.companyName == companyName) &&
             (identical(other.companyLocation, companyLocation) ||
                 other.companyLocation == companyLocation) &&
-            (identical(other.salary, salary) || other.salary == salary) &&
+            (identical(other.minSalary, minSalary) ||
+                other.minSalary == minSalary) &&
+            (identical(other.maxSalary, maxSalary) ||
+                other.maxSalary == maxSalary) &&
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.experienceYear, experienceYear) ||
@@ -466,7 +486,8 @@ class _$_JobsModel implements _JobsModel {
         companyImage,
         companyName,
         companyLocation,
-        salary,
+        minSalary,
+        maxSalary,
         location,
         experienceYear,
         category,
@@ -503,7 +524,8 @@ abstract class _JobsModel implements JobsModel {
       final String companyImage,
       final String companyName,
       final String companyLocation,
-      final String salary,
+      final double minSalary,
+      final double maxSalary,
       final String location,
       final String experienceYear,
       final String category,
@@ -536,7 +558,9 @@ abstract class _JobsModel implements JobsModel {
   @override
   String get companyLocation;
   @override
-  String get salary;
+  double get minSalary;
+  @override
+  double get maxSalary;
   @override
   String get location;
   @override

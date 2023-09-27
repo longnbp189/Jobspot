@@ -2,10 +2,12 @@ part of '../screens/company_detail_screen.dart';
 
 class CompanyDetailHeader extends StatelessWidget {
   final CompanyModel companyModel;
+  final ValueChanged<bool> change;
 
   const CompanyDetailHeader({
     super.key,
     required this.companyModel,
+    required this.change,
   });
 
   @override
@@ -41,11 +43,15 @@ class CompanyDetailHeader extends StatelessWidget {
               ],
             ),
             spaceH16,
-            Text(
-              companyModel.displayName,
-              style: TxtStyles.extraBold16,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Text(
+                companyModel.displayName,
+                style: TxtStyles.extraBold16,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
             ),
             if (companyModel.link.isNotEmpty)
               Padding(
@@ -173,6 +179,7 @@ class CompanyDetailHeader extends StatelessWidget {
                                       Navigator.pop(context);
                                       companyBloc.add(
                                           const CompanyEvent.followCompany());
+                                      change.call(true);
                                     },
                                   )
                                 ],
@@ -181,6 +188,7 @@ class CompanyDetailHeader extends StatelessWidget {
                           );
                         } else {
                           companyBloc.add(const CompanyEvent.followCompany());
+                          change.call(true);
                         }
                       },
                       child: AppFormat.isFollow(

@@ -6,6 +6,7 @@ class JobState with _$JobState {
     CompanyModel? company,
     JobsModel? job,
     UserModel? user,
+    SalaryRange? salaryRange,
     @Default(LoadStatusEnum.notLoad) LoadStatusEnum loadStatus,
     @Default([]) List<ProvinceModel> provinces,
     @Default([]) List<ProvinceModel> searchProvinces,
@@ -14,6 +15,8 @@ class JobState with _$JobState {
     @Default([]) List<JobCategoryModel> jobCategories,
     @Default([]) List<JobCategoryModel> searchjobCategories,
     @Default([]) List<JobsModel> jobs,
+    @Default([]) List<JobsModel> jobsBest,
+    @Default([]) List<JobsModel> jobsFilter,
     @Default([]) List<JobsModel> jobsApplied,
     @Default([]) List<JobsModel> jobBookmark,
     @Default([]) List<JobsModel> searchjobs,
@@ -37,6 +40,7 @@ class JobState with _$JobState {
     @Default("") String name,
     @Default("") String phone,
     @Default("") String email,
+    @Default("") String searchText,
   }) = _JobState;
 }
 
@@ -68,6 +72,8 @@ extension JobStateExtension on JobState {
         return getAddressText();
       case 1:
         return experienceText.isNotEmpty ? experienceText : '';
+      case 2:
+        return salaryText.isNotEmpty ? salaryText : '';
       case 3:
         return jobCategoryText.isNotEmpty ? jobCategoryText : '';
       case 4:
@@ -79,6 +85,48 @@ extension JobStateExtension on JobState {
 
   bool isSubmitCV() {
     return user!.jobIds.contains(job!.id);
+  }
+
+  bool isHasSubText() {
+    return provinceText.isNotEmpty ||
+        districtText.isNotEmpty ||
+        experienceText.isNotEmpty ||
+        salaryText.isNotEmpty ||
+        jobCategoryText.isNotEmpty ||
+        typeText.isNotEmpty;
+  }
+
+  bool isEmptyLocation(JobsModel job) {
+    return provinceText.isNotEmpty
+        ? AppFormat.nonUnicode(job.location).toLowerCase() ==
+            (AppFormat.nonUnicode(provinceText).toLowerCase())
+        : true;
+  }
+
+  bool isEmptyExperience(JobsModel job) {
+    return experienceText.isNotEmpty
+        ? job.experienceYear.toLowerCase() == (experienceText.toLowerCase())
+        : true;
+  }
+
+  // bool isEmptySalary(JobsModel job) {
+  //   return
+  //       //  salaryText.isNotEmpty
+  //       //     ? job.salary.toLowerCase() == (salaryText.toLowerCase())
+  //       //     :
+  //       true;
+  // }
+
+  bool isEmptyJobCategory(JobsModel job) {
+    return jobCategoryText.isNotEmpty
+        ? job.category.toLowerCase() == (jobCategoryText.toLowerCase())
+        : true;
+  }
+
+  bool isEmptyJobType(JobsModel job) {
+    return typeText.isNotEmpty
+        ? job.type.toLowerCase() == (typeText.toLowerCase())
+        : true;
   }
 
   void clearSubText(JobBloc jobBloc, int index) {
@@ -93,14 +141,31 @@ extension JobStateExtension on JobState {
         jobBloc.add(const GetTextExperienceRequested(''));
 
         break;
+      case 2:
+        jobBloc.add(GetTextSalaryRequested(
+            SalaryRange(id: 0, title: '', min: 0, max: 0)));
+
+        break;
+      case 3:
+        jobBloc.add(const GetTextJobCategoryRequested(''));
+
+        break;
 
       case 4:
         jobBloc.add(const GetTextTypeRequested(''));
 
         break;
-
-      default:
-        break;
     }
+  }
+
+  void clearAllSubText(JobBloc jobBloc) {
+    jobBloc.add(const GetTextProvinceRequested(''));
+    jobBloc.add(const GetTextDistrictRequested(''));
+    jobBloc.add(const GetTextExperienceRequested(''));
+    jobBloc.add(
+        GetTextSalaryRequested(SalaryRange(id: 0, title: '', min: 0, max: 0)));
+
+    jobBloc.add(const GetTextJobCategoryRequested(''));
+    jobBloc.add(const GetTextTypeRequested(''));
   }
 }

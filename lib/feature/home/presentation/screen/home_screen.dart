@@ -20,12 +20,15 @@ import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.d
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/profile_screen.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
+import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/screens/job_screen.dart';
 import 'package:jobspot/feature/home/feature/notification/presentation/bloc/notification_bloc.dart';
 import 'package:jobspot/feature/home/feature/notification/presentation/screens/notification_screen.dart';
 import 'package:jobspot/feature/home/presentation/widgets/bookmark_screen.dart';
+import 'package:jobspot/router/app_router.dart';
 import 'package:jobspot/router/app_router_name.dart';
 
 part '../widgets/bottom_bar.dart';
@@ -34,6 +37,7 @@ part '../widgets/home_body.dart';
 part '../widgets/icon_bottom_navigation_bar.dart';
 part '../widgets/job_card.dart';
 part '../widgets/top_company_shimmer.dart';
+part '../widgets/top_job_shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jobspot/common/widgets/stateless/button_bottom_row.dart';
 import 'package:jobspot/common/widgets/stateless/icon_widget.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
@@ -36,17 +37,20 @@ class _FilterJobScreenState extends State<FilterJobScreen> {
   @override
   Widget build(BuildContext context) {
     final jobBloc = context.read<JobBloc>();
+    jobBloc
+      ..add(const GetProvincesRequested())
+      ..add(const GetJobCategoryRequested());
     return BlocConsumer<JobBloc, JobState>(
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
             body: SafeArea(
-                child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Column(
-            children: [
-              spaceH8,
-              Row(
+                child: Column(
+          children: [
+            spaceH8,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
                 children: [
                   GestureDetector(
                       onTap: () => context.pop(),
@@ -61,22 +65,45 @@ class _FilterJobScreenState extends State<FilterJobScreen> {
                   )
                 ],
               ),
-              spaceH16,
-              ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => FilterOptionItem(
-                        index: index,
-                        parentContext: context,
-                        jobBloc: jobBloc,
-                        item: item[index],
-                      ),
-                  separatorBuilder: (context, index) => const Divider(
-                        color: AppColor.backgroundWhite,
-                      ),
-                  itemCount: item.length),
-            ],
-          ),
+            ),
+            spaceH16,
+            ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) => FilterOptionItem(
+                      index: index,
+                      parentContext: context,
+                      jobBloc: jobBloc,
+                      item: item[index],
+                    ),
+                separatorBuilder: (context, index) => const Divider(
+                      color: AppColor.backgroundWhite,
+                    ),
+                itemCount: item.length),
+            const Expanded(child: SizedBox()),
+            Container(
+                padding: EdgeInsets.only(
+                    left: 16.w, right: 16.w, top: 16.h, bottom: 32.h),
+                decoration: BoxDecoration(
+                  border:
+                      Border.all(color: AppColor.unSelected.withOpacity(0.4)),
+                ),
+                child: ButtonBottomRow(
+                    isEnable: state.isHasSubText(),
+                    onTapLeft: () {
+                      jobBloc.state.clearAllSubText(jobBloc);
+                      context.pop();
+                    },
+                    titleLeft: 'Clear filter',
+                    onTapRight: state.isHasSubText()
+                        ? () {
+                            jobBloc.add(SearchJobRequested(state.searchText));
+
+                            context.pop();
+                          }
+                        : null,
+                    titleRight: 'Apply'))
+          ],
         )));
       },
     );

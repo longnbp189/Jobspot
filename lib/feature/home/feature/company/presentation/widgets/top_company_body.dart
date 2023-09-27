@@ -32,7 +32,7 @@ class TopCompaniesBody extends StatelessWidget {
         if (!state.isFollow) {
           if (state.isLastPage()) {
             pagingController.appendLastPage(state.companies);
-            bloc.add(const ResetLastDocumentRequested());
+            bloc.add(const CompanyEvent.resetLastDocument());
           } else {
             final next = 1 + state.companies.length;
             pagingController.appendPage(state.companies, next);
@@ -58,7 +58,16 @@ class TopCompaniesBody extends StatelessWidget {
 
                     //   pagingController.refresh();
                     // },
-                    companyModel: item,
+                    argument: CompanyAgrument(
+                      companyModel: item,
+                      changed: (value) {
+                        if (value) {
+                          bloc.add(const CompanyEvent.resetLastDocument());
+
+                          pagingController.refresh();
+                        }
+                      },
+                    ),
                   );
                 },
               ),
@@ -99,11 +108,41 @@ class TopCompanyEmpty extends StatelessWidget {
   }
 }
 
+class InitSearchEmpty extends StatelessWidget {
+  const InitSearchEmpty({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: AppFormat.height(context) - 200.h,
+      width: AppFormat.width(context),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            AppAsset.searchJobImage,
+            height: 200.h,
+            width: 200.w,
+          ),
+          spaceH32,
+          Text(
+            'Please enter the keyword you want to search',
+            style: TxtStyles.semiBold16,
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class TopCompanyCard extends StatelessWidget {
-  final CompanyModel companyModel;
+  final CompanyAgrument argument;
   const TopCompanyCard({
     super.key,
-    required this.companyModel,
+    required this.argument,
   });
 
   @override
@@ -116,8 +155,8 @@ class TopCompanyCard extends StatelessWidget {
           onTap: () {
             FocusManager.instance.primaryFocus?.unfocus();
             companyBloc.add(CompanyEvent.getCompanyById(
-                companyModel, authBloc.state.user ?? UserModel()));
-            context.pushNamed(AppRouterName.companyDetail, extra: companyModel);
+                argument.companyModel, authBloc.state.user ?? UserModel()));
+            context.pushNamed(AppRouterName.companyDetail, extra: argument);
           },
           child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -129,7 +168,7 @@ class TopCompanyCard extends StatelessWidget {
                 children: [
                   AvatarCompany(
                     sizeAvatar: 72.r,
-                    avatarUrl: companyModel.image,
+                    avatarUrl: argument.companyModel.image,
                   ),
                   spaceW16,
                   Expanded(
@@ -137,14 +176,14 @@ class TopCompanyCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          companyModel.displayName,
+                          argument.companyModel.displayName,
                           style: TxtStyles.extraBold14,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
                         spaceH8,
                         Text(
-                          companyModel.type,
+                          argument.companyModel.type,
                           style: TxtStyles.extraBold14
                               .copyWith(fontWeight: FontWeight.normal),
                         ),
@@ -164,7 +203,7 @@ class TopCompanyCard extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             companyBloc.add(CompanyEvent.getCompanyById(
-                                companyModel,
+                                argument.companyModel,
                                 authBloc.state.user ?? UserModel()));
                             Future.delayed(const Duration(milliseconds: 400),
                                 () {
@@ -173,7 +212,7 @@ class TopCompanyCard extends StatelessWidget {
                             });
                           },
                           child: AppFormat.isFollow(
-                                  companyModel, authBloc.state.user!)
+                                  argument.companyModel, authBloc.state.user!)
                               ? Container(
                                   width: double.infinity,
                                   alignment: Alignment.bottomCenter,

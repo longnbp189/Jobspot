@@ -1,6 +1,5 @@
 part of '../../screens/filter_job_screen.dart';
 
-
 class ChooseJobCategoryWidget extends StatefulWidget {
   const ChooseJobCategoryWidget({
     super.key,
@@ -106,7 +105,7 @@ class _ChooseJobCategoryWidgetState extends State<ChooseJobCategoryWidget> {
                             physics: const AlwaysScrollableScrollPhysics(),
                             padding: EdgeInsets.only(top: 8.h, bottom: 16.h),
                             shrinkWrap: true,
-                            itemBuilder: (context, index) => GestureDetector(
+                            itemBuilder: (context, index) => InkWell(
                                   onTap: () {
                                     jobBloc.add(GetTextJobCategoryRequested(
                                         state.searchjobCategories[index].name));

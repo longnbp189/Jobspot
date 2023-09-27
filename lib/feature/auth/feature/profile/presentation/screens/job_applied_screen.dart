@@ -52,16 +52,21 @@ class JobAppliedScreen extends StatelessWidget {
                     ? const JobAppliedItemShimmer()
                     : state.cvInfoList.isEmpty
                         ? const TopCompanyEmpty()
-                        : ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            separatorBuilder: (context, index) => spaceH16,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16.w, vertical: 16.h),
-                            itemBuilder: (context, index) => JobAppliedItem(
-                              item: state.cvInfoList[index],
-                            ),
-                            itemCount: state.cvInfoList.length,
-                            shrinkWrap: true,
+                        : Column(
+                            children: [
+                              ListView.separated(
+                                physics: const NeverScrollableScrollPhysics(),
+                                separatorBuilder: (context, index) => spaceH16,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w, vertical: 16.h),
+                                itemBuilder: (context, index) => JobAppliedItem(
+                                  item: state.cvInfoList[index],
+                                ),
+                                itemCount: state.cvInfoList.length,
+                                shrinkWrap: true,
+                              ),
+                              spaceH40
+                            ],
                           ),
               )),
             ));
@@ -148,7 +153,7 @@ class JobAppliedItem extends StatelessWidget {
                       const IconWidget(icon: AppAsset.salary),
                       spaceW4,
                       Text(
-                        jobInfo.salary,
+                        AppFormat.parseSalaryText(jobInfo),
                         style: TxtStyles.regular14,
                       )
                     ],

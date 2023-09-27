@@ -45,4 +45,9 @@ class JobRepositoryImpl implements JobRepository {
     return serviceLocator<JobRemoteDataSource>()
         .getListApplyJob(userModel: userModel);
   }
+
+  @override
+  Future<Either<Failure, List<JobsModel>>> getListBestJob() {
+    return serviceLocator<JobRemoteDataSource>().getListBestJob();
+  }
 }

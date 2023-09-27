@@ -11,117 +11,215 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<CompanyBloc>().add(const CompanyEvent.getListTopCompany());
+    final jobBloc = context.read<JobBloc>();
+    jobBloc.add(const JobEvent.getListBestJob());
     return SafeArea(
         child: BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {},
       builder: (context, state) {
         return SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                spaceH24,
-                Row(
-                  children: [
-                    Text(
-                      'Hello,\n${authBloc.state.user?.displayName}',
-                      style: TxtStyles.extraBold20,
-                    ),
-                    const Expanded(child: SizedBox.shrink()),
-                    GestureDetector(
-                      onTap: () => context.pushNamed(AppRouterName.profile),
-                      child: Avatar(
-                        sizeAvatar: 52.r,
-                        avatarUrl: authBloc.state.user?.image,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              spaceH24,
+              state.user != null
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Hello,\n${state.user?.displayName}',
+                            style: TxtStyles.extraBold20,
+                          ),
+                          const Expanded(child: SizedBox.shrink()),
+                          GestureDetector(
+                            onTap: () =>
+                                context.pushNamed(AppRouterName.profile),
+                            child: Avatar(
+                              sizeAvatar: 52.r,
+                              avatarUrl: authBloc.state.user?.image,
+                            ),
+                          )
+                        ],
                       ),
                     )
-                  ],
-                ),
-                spaceH16,
-                GestureDetector(
-                  onTap: () => context.pushNamed(AppRouterName.searchJob),
-                  child: Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.r),
-                      color: AppColor.white,
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.search,
-                          color: AppColor.primary,
-                        ),
-                        spaceW8,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  : ShimmerEffect(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        child: Row(
                           children: [
-                            Text(
-                              'You want to find a job?',
-                              style: TxtStyles.semiBold14,
+                            ColoredBox(
+                              color: AppColor.grey,
+                              child: Text(
+                                'Hello,\n${state.user?.displayName}',
+                                style: TxtStyles.extraBold20,
+                              ),
                             ),
-                            Text(
-                              'Application position',
-                              style: TxtStyles.regular14,
+                            const Expanded(child: SizedBox.shrink()),
+                            GestureDetector(
+                              onTap: () =>
+                                  context.pushNamed(AppRouterName.profile),
+                              child: Avatar(
+                                sizeAvatar: 52.r,
+                                avatarUrl: authBloc.state.user?.image,
+                              ),
                             )
                           ],
-                        )
-                      ],
+                        ),
+                      ),
                     ),
+              spaceH16,
+              GestureDetector(
+                onTap: () => context.pushNamed(AppRouterName.searchJob),
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 16.w),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.r),
+                    color: AppColor.white,
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.search,
+                        color: AppColor.primary,
+                      ),
+                      spaceW8,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'You want to find a job?',
+                            style: TxtStyles.semiBold14,
+                          ),
+                          Text(
+                            'Application position',
+                            style: TxtStyles.regular14,
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ),
-                spaceH16,
-
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () => context.pushNamed(AppRouterName.job),
-                      child: const FuntionWidget(
-                        image: AppAsset.job,
-                        text: 'Job',
+              ),
+              spaceH16,
+              state.user != null
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () => context.pushNamed(AppRouterName.job),
+                            child: const FuntionWidget(
+                              image: AppAsset.job,
+                              text: 'Job',
+                            ),
+                          ),
+                          spaceW16,
+                          InkWell(
+                            onTap: () =>
+                                context.pushNamed(AppRouterName.company),
+                            child: const FuntionWidget(
+                              image: AppAsset.officeBuilding,
+                              text: 'Company',
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : ShimmerEffect(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 60,
+                              width: 60,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16.w, vertical: 16.h),
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColor.backgroundChip),
+                            ),
+                            spaceW16,
+                            Container(
+                              height: 60,
+                              width: 60,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16.w, vertical: 16.h),
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: AppColor.backgroundChip),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    spaceW16,
-                    InkWell(
-                      onTap: () => context.pushNamed(AppRouterName.company),
-                      child: const FuntionWidget(
-                        image: AppAsset.officeBuilding,
-                        text: 'Company',
-                      ),
-                    ),
-                  ],
-                ),
-                spaceH16,
-                // IconButton(
-                //     onPressed: () {
-                //       authBloc.add(const AuthEvent.logout());
-                //     },
-                //     icon: const Icon(Icons.logout)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Best job',
-                      style: TxtStyles.extraBold18,
-                    ),
-                    Text(
-                      'View all',
-                      style: TxtStyles.semiBold18
-                          .copyWith(color: AppColor.secondary),
-                    ),
-                  ],
-                ),
-                spaceH16,
+              spaceH16,
+              BlocBuilder<JobBloc, JobState>(
+                builder: (context, stateJob) {
+                  return stateJob.isShimmer
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          child: const TopJobShimmer(),
+                        )
+                      : Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.w),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Best job',
+                                    style: TxtStyles.extraBold18,
+                                  ),
+                                  // GestureDetector(
+                                  //   onTap: () => context
+                                  //       .pushNamed(AppRouterName.company),
+                                  //   child: Text(
+                                  //     'View all',
+                                  //     style: TxtStyles.semiBold18
+                                  //         .copyWith(color: AppColor.secondary),
+                                  //   ),
+                                  // ),
+                                ],
+                              ),
+                            ),
+                            spaceH16,
+                            SizedBox(
+                              height: 250.h,
+                              child: ListView.separated(
+                                  padding:
+                                      EdgeInsets.only(left: 16.w, right: 16.w),
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) => JobCard(
+                                      item: jobBloc.state.jobsBest[index],
+                                      jobBloc: jobBloc,
+                                      authBloc: authBloc),
+                                  separatorBuilder: (context, index) =>
+                                      spaceW16,
+                                  itemCount: jobBloc.state.jobsBest.length),
+                            ),
+                          ],
+                        );
+                },
+              ),
 
-                const JobCard(),
-                spaceH16,
-                BlocBuilder<CompanyBloc, CompanyState>(
-                  builder: (context, companyState) {
-                    return companyState.isShimmer
-                        ? const TopCompanyShimmer()
-                        : Column(
+              // const JobCard(),
+              spaceH16,
+              BlocBuilder<CompanyBloc, CompanyState>(
+                builder: (context, companyState) {
+                  return companyState.isShimmer
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          child: const TopCompanyShimmer(),
+                        )
+                      : Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          child: Column(
                             children: [
                               Row(
                                 mainAxisAlignment:
@@ -131,15 +229,15 @@ class HomeBody extends StatelessWidget {
                                     'Top company',
                                     style: TxtStyles.extraBold18,
                                   ),
-                                  InkWell(
-                                    onTap: () => context
-                                        .pushNamed(AppRouterName.company),
-                                    child: Text(
-                                      'View all',
-                                      style: TxtStyles.semiBold18
-                                          .copyWith(color: AppColor.secondary),
-                                    ),
-                                  ),
+                                  // GestureDetector(
+                                  //   onTap: () => context
+                                  //       .pushNamed(AppRouterName.company),
+                                  //   child: Text(
+                                  //     'View all',
+                                  //     style: TxtStyles.semiBold18
+                                  //         .copyWith(color: AppColor.secondary),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                               spaceH16,
@@ -163,8 +261,11 @@ class HomeBody extends StatelessWidget {
                                       onTap: () {
                                         context.pushNamed(
                                             AppRouterName.companyDetail,
-                                            extra:
-                                                companyState.companies[index]);
+                                            extra: CompanyAgrument(
+                                              companyModel:
+                                                  companyState.companies[index],
+                                              changed: (value) {},
+                                            ));
                                         context.read<CompanyBloc>().add(
                                             CompanyEvent.getCompanyById(
                                                 companyState.companies[index],
@@ -174,12 +275,13 @@ class HomeBody extends StatelessWidget {
                                       child: CompanyCard(
                                         company: companyState.companies[index],
                                       ))),
+                              spaceH40,
                             ],
-                          );
-                  },
-                ),
-              ],
-            ),
+                          ),
+                        );
+                },
+              ),
+            ],
           ),
         );
       },

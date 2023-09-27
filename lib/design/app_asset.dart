@@ -10,6 +10,7 @@ class AppAsset {
   static const String officeBuilding = "${imagePath}office_building.png";
   static const String job = "${imagePath}job.png";
   static const String bookmarkImage = "${imagePath}bookmark.png";
+  static const String searchJobImage = "${imagePath}search_job_image.png";
   // static const String defaultAvatar = "${imagePath}default_avatar.png";
 
   //icon
@@ -59,4 +60,8 @@ class AppAsset {
   static const String star = "${iconPath}star.svg";
   static const String starBold = "${iconPath}star_bold.svg";
   static const String timer = "${iconPath}timer.svg";
+  static const String searchJob = "${iconPath}search_job.svg";
+  static const String warning = "${iconPath}warning.svg";
+  static const String success = "${iconPath}success.svg";
+  static const String fail = "${iconPath}fail.svg";
 }

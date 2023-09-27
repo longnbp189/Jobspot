@@ -957,7 +957,7 @@ class JobDetailHeader extends StatelessWidget {
                                 ),
                                 spaceH4,
                                 Text(
-                                  jobsModel.salary,
+                                AppFormat.parseSalaryText(jobsModel),
                                   style: TxtStyles.semiBold14
                                       .copyWith(color: AppColor.secondary),
                                   maxLines: 1,

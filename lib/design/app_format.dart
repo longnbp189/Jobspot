@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:math';
-
+import 'dart:core';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
@@ -22,6 +23,7 @@ import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/province_model.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/screens/filter_job_screen.dart';
 import 'package:jobspot/services/database_helper.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -47,15 +49,15 @@ class AppFormat {
     switch (type) {
       case 0:
         color = AppColor.red;
-        iconPath = 'assets/icons/google.svg';
+        iconPath = AppAsset.fail;
         break;
       case 1:
         color = AppColor.yellow;
-        iconPath = 'assets/icons/google.svg';
+        iconPath = AppAsset.warning;
         break;
       case 2:
-        color = AppColor.green;
-        iconPath = 'assets/icons/google.svg';
+        color = const Color.fromARGB(255, 50, 176, 111);
+        iconPath = AppAsset.success;
         break;
     }
 
@@ -566,12 +568,165 @@ class AppFormat {
   //   return color!;
   // }
 
-  static List<String> typeText = [
-    'All',
-    'Full-time',
-    'Part-time',
-    'Internship'
+  static List<String> typeText = ['Full-time', 'Part-time', 'Internship'];
+
+  static List<SalaryRange> salaryText = [
+    // SalaryRange(
+    //   id: 0,
+    //   title: 'All',
+    //   min: 0,
+    //   max: 0,
+    // ),
+    SalaryRange(
+      id: 1,
+      title: 'Up to 500\$',
+      min: 0,
+      max: 500,
+    ),
+    SalaryRange(
+      id: 2,
+      title: '500\$ - 2000\$',
+      min: 500,
+      max: 2000,
+    ),
+    SalaryRange(
+      id: 3,
+      title: '2000\$ - 5000\$',
+      min: 2000,
+      max: 5000,
+    ),
+    SalaryRange(
+      id: 4,
+      title: 'Over 5000\$',
+      min: 5000,
+      max: 0,
+    ),
+    SalaryRange(
+      id: 5,
+      title: 'Deal',
+      min: 0,
+      max: 0,
+    ),
   ];
+
+  static String parseSalaryText(JobsModel jobsModel) {
+    String salary = '';
+    if (jobsModel.minSalary == 0 && jobsModel.maxSalary > 0) {
+      return salary = 'Up to ${jobsModel.maxSalary.toInt()}\$';
+    }
+    if (jobsModel.minSalary > 0 && jobsModel.maxSalary > 0) {
+      return salary =
+          '${jobsModel.minSalary.toInt()}\$ -  ${jobsModel.maxSalary.toInt()}\$';
+    }
+    if (jobsModel.minSalary == 0 && jobsModel.maxSalary == 0) {
+      return salary = 'Deal';
+    }
+
+    if (jobsModel.minSalary > 0 && jobsModel.maxSalary == 0) {
+      return salary = 'Over ${jobsModel.minSalary.toInt()}\$';
+    }
+
+    return salary;
+  }
+
+  static List<JobsModel> filterItems(
+      List<JobsModel> items, SalaryRange filterOption) {
+    switch (filterOption.id) {
+      case 1:
+        return items
+            .where((item) => item.maxSalary != 0 && item.maxSalary <= 500)
+            .toList();
+      case 2:
+        return items
+            .where((item) =>
+                (item.minSalary >= 500 && item.minSalary <= 2000) ||
+                (item.maxSalary >= 500 && item.maxSalary <= 2000) ||
+                (item.minSalary < 500 && item.maxSalary > 2000))
+            .toList();
+      case 3:
+        return items
+            .where((item) =>
+                item.minSalary >= 2000 && item.minSalary <= 5000 ||
+                item.maxSalary >= 2000 && item.maxSalary <= 5000 ||
+                (item.minSalary < 2000 && item.maxSalary > 5000))
+            .toList();
+      case 4:
+        return items.where((item) => item.minSalary > 5000).toList();
+      case 5:
+        // You can define your own logic for filtering deals here.
+        // For example, items on sale, discounted items, etc.
+        // Return items that meet your criteria.
+        return items
+            .where((item) => item.minSalary == 0 && item.maxSalary == 0)
+            .toList();
+      default:
+        return items; // Default to returning all items.
+    }
+  }
+
+  // static String parseSalaryText(JobsModel jobsModel) {
+  //   String salary = '';
+  //   if (jobsModel.minSalary != null && jobsModel.maxSalary != null) {
+  //     if (jobsModel.minSalary == 0 && jobsModel.maxSalary! > 0) {
+  //       return salary = 'Up to ${jobsModel.maxSalary!.toInt()}\$';
+  //     }
+  //     if (jobsModel.minSalary! > 0 && jobsModel.maxSalary! > 0) {
+  //       return salary =
+  //           '${jobsModel.minSalary!.toInt()}\$ -  ${jobsModel.maxSalary!.toInt()}\$';
+  //     }
+  //   } else {
+  //     if (jobsModel.minSalary == null && jobsModel.maxSalary == null) {
+  //       return salary = 'Deal';
+  //     }
+
+  //     if (jobsModel.minSalary != null &&
+  //         jobsModel.minSalary! > 0 &&
+  //         jobsModel.maxSalary == null) {
+  //       return salary = 'Over ${jobsModel.minSalary!.toInt()}\$';
+  //     }
+  //   }
+
+  //   return salary;
+  // }
+
+  // static List<JobsModel> filterItems(
+  //     List<JobsModel> items, SalaryRange filterOption) {
+  //   switch (filterOption.id) {
+  //     case 1:
+  //       return items
+  //           .where((item) => item.maxSalary != null && item.maxSalary! <= 500)
+  //           .toList();
+  //     case 2:
+  //       return items
+  //           .where((item) =>
+  //               item.minSalary != null &&
+  //               item.minSalary! >= 500 &&
+  //               item.maxSalary != null &&
+  //               item.maxSalary! <= 2000)
+  //           .toList();
+  //     case 3:
+  //       return items
+  //           .where((item) =>
+  //               item.minSalary != null &&
+  //               item.minSalary! > 2000 &&
+  //               item.maxSalary != null &&
+  //               item.maxSalary! <= 5000)
+  //           .toList();
+  //     case 4:
+  //       return items
+  //           .where((item) => item.minSalary != null && item.minSalary! > 5000)
+  //           .toList();
+  //     case 5:
+  //       // You can define your own logic for filtering deals here.
+  //       // For example, items on sale, discounted items, etc.
+  //       // Return items that meet your criteria.
+  //       return items
+  //           .where((item) => item.minSalary == null && item.maxSalary == null)
+  //           .toList();
+  //     default:
+  //       return items; // Default to returning all items.
+  //   }
+  // }
 
   static String parseFormatDateAndTimeNoti(String date) {
     DateTime dt = DateTime.parse(date);
@@ -1082,6 +1237,17 @@ class AppFormat {
     return randomString;
   }
 
+  static String removeDiacritics(String str) {
+    var withDia =
+        'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+    var withoutDia =
+        'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
+    for (int i = 0; i < withDia.length; i++) {
+      str = str.replaceAll(withDia[i], withoutDia[i]);
+    }
+    return str;
+  }
+
   static String nonUnicode(String text) {
     var arr1 = [
       "á",
@@ -1223,8 +1389,8 @@ class AppFormat {
     ];
     for (int i = 0; i < arr1.length; i++) {
       text = text.replaceAll(arr1[i], arr2[i]);
-      text = text.replaceAll(arr1[i].toUpperCase(), arr2[i]);
+      text = text.replaceAll(arr1[i].toUpperCase(), arr2[i].toUpperCase());
     }
-    return text.toLowerCase();
+    return text;
   }
 }

@@ -1,6 +1,5 @@
 part of '../../screens/filter_job_screen.dart';
 
-
 class ChooseExperienceWidget extends StatelessWidget {
   const ChooseExperienceWidget({
     super.key,
@@ -40,10 +39,10 @@ class ChooseExperienceWidget extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.only(top: 8.h, bottom: 16.h),
                   shrinkWrap: true,
-                  itemBuilder: (context, index) => GestureDetector(
+                  itemBuilder: (context, index) => InkWell(
                         onTap: () {
                           jobBloc.add(GetTextExperienceRequested(
-                              experienceText[index]));
+                              experienceTextOption[index]));
                           Future.delayed(const Duration(milliseconds: 500), () {
                             context.pop();
                           });
@@ -53,7 +52,7 @@ class ChooseExperienceWidget extends StatelessWidget {
                           children: [
                             spaceH8,
                             Text(
-                              experienceText[index],
+                              experienceTextOption[index],
                               style: TxtStyles.semiBold16,
                             ),
                             spaceH8,
@@ -63,7 +62,7 @@ class ChooseExperienceWidget extends StatelessWidget {
                           ],
                         ),
                       ),
-                  itemCount: experienceText.length)
+                  itemCount: experienceTextOption.length)
             ],
           ),
         );
@@ -72,15 +71,13 @@ class ChooseExperienceWidget extends StatelessWidget {
   }
 }
 
-
-List<String> experienceText = [
+List<String> experienceTextOption = [
   'All',
-  'Going to work soon',
-  'Under one year',
-  'One year',
-  'Two years',
-  'Three years',
-  'Four years',
-  'Five years',
+  'Under 1 year',
+  '1 year',
+  '2 years',
+  '3 years',
+  '4 years',
+  '5 years',
   'Over 5 years'
 ];

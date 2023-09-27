@@ -2,21 +2,21 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
 import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
-import 'package:jobspot/feature/home/feature/company/domain/usecases/company_use_case.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/district_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/job_category_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/province_model.dart';
 import 'package:jobspot/feature/home/feature/job/domain/usecases/job_use_case.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/screens/filter_job_screen.dart';
 import 'package:jobspot/services/database_helper.dart';
 import 'package:jobspot/services/user_cache_service.dart';
+import 'package:collection/collection.dart';
 
 part 'job_event.dart';
 part 'job_state.dart';
@@ -53,6 +53,10 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     on<GetTextNameJobRequested>(_onGetTextNameJobRequested);
     on<GetTextIntroLetterJobRequested>(_onGetTextIntroLetterJobRequested);
     on<GetListApplyJobRequested>(_onGetListApplyJobRequested);
+    on<GetListBestJobRequest>(_onGetListBestJobRequest);
+    on<SearchJobRequested>(_onSearchJobRequested);
+    // on<GetJobByFilterRequest>(_onGetJobByFilterRequest);
+    on<GetSearchTextRequested>(_onGetSearchTextRequested);
   }
 
   FutureOr<void> _onGetAddressRequested(
@@ -65,8 +69,8 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     List<ProvinceModel> provinces =
         await DatabaseHelper.instance.getProvinces();
 
-    provinces.insert(
-        0, ProvinceModel(id: '0', slug: 'aa', name: 'Tất cả', code: '0'));
+    // provinces.insert(
+    //     0, ProvinceModel(id: '0', slug: 'aa', name: 'All', code: '0'));
     emit(state.copyWith(provinces: provinces, searchProvinces: provinces));
   }
 
@@ -75,16 +79,17 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     List<DistrictModel> districts =
         await DatabaseHelper.instance.getDistrict(event.id);
 
-    districts.insert(
-        0, DistrictModel(id: '0', slug: 'aa', name: 'Tất cả', code: '0'));
+    // districts.insert(
+    //     0, DistrictModel(id: '0', slug: 'aa', name: 'All', code: '0'));
     emit(state.copyWith(districts: districts, searchDistricts: districts));
   }
 
   FutureOr<void> _onSearchDistrictsRequested(
       SearchDistrictsRequested event, Emitter<JobState> emit) {
     var searchList = state.districts
-        .where((element) =>
-            element.name.toLowerCase().contains(event.text.toLowerCase()))
+        .where((element) => AppFormat.nonUnicode(element.name)
+            .toLowerCase()
+            .contains(event.text.toLowerCase()))
         .toList();
     emit(state.copyWith(searchDistricts: searchList));
   }
@@ -92,8 +97,9 @@ class JobBloc extends Bloc<JobEvent, JobState> {
   FutureOr<void> _onSearchProvincesRequested(
       SearchProvincesRequested event, Emitter<JobState> emit) {
     var searchList = state.provinces
-        .where((element) =>
-            element.name.toLowerCase().contains(event.text.toLowerCase()))
+        .where((element) => AppFormat.nonUnicode(element.name)
+            .toLowerCase()
+            .contains(event.text.toLowerCase()))
         .toList();
     emit(state.copyWith(searchProvinces: searchList));
   }
@@ -126,7 +132,10 @@ class JobBloc extends Bloc<JobEvent, JobState> {
   }
 
   FutureOr<void> _onGetTextSalaryRequested(
-      GetTextSalaryRequested event, Emitter<JobState> emit) {}
+      GetTextSalaryRequested event, Emitter<JobState> emit) {
+    emit(state.copyWith(
+        salaryRange: event.salaryRange, salaryText: event.salaryRange.title));
+  }
 
   FutureOr<void> _onGetTextJobCategoryRequested(
       GetTextJobCategoryRequested event, Emitter<JobState> emit) {
@@ -167,9 +176,8 @@ class JobBloc extends Bloc<JobEvent, JobState> {
       (r) => jobs = r,
     );
 
-    jobs.removeWhere((element) =>
-        !(element.status && DateTime.now().isBefore(element.endDate!)));
-
+    // jobs.removeWhere((element) =>
+    //     !element.status || !DateTime.now().isBefore(element.endDate!));
     emit(state.copyWith(jobs: jobs, isShimmer: false));
   }
 
@@ -304,20 +312,22 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     emit(state.copyWith(isShimmer: true, error: ''));
     // await Future.delayed(const Duration(milliseconds: 700));
 
-    final result = await serviceLocator<CompanyUsecase>()
-        .getCompanyById(id: state.job!.companyId);
-    result.fold(
-        (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
-        (r) => emit(state.copyWith(
-              company: r,
-              isShimmer: false,
-            )));
+    // final result = await serviceLocator<CompanyUsecase>()
+    //     .getCompanyById(id: state.job!.companyId);
+    // result.fold(
+    //     (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+    //     (r) => emit(state.copyWith(
+    //           company: r,
+    //           isShimmer: false,
+    //         )));
 
     List<JobsModel> jobs = List.from(state.jobs);
 
     jobs.removeWhere((element) =>
-        (!(element.companyId == state.job!.companyId) ||
-            element.id == state.job!.id) ||
+        (!(element.companyId == state.job!.companyId)
+        // ||
+        // element.id == state.job!.id
+        ) ||
         !AppFormat.isAvailableJob(element));
     emit(state.copyWith(isShimmer: false, error: '', jobsSameCompany: jobs));
   }
@@ -406,5 +416,71 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     }
     emit(state.copyWith(
         cvInfoList: jobs, isShimmer: false, jobsApplied: resultJobList));
+  }
+
+  FutureOr<void> _onGetListBestJobRequest(
+      GetListBestJobRequest event, Emitter<JobState> emit) async {
+    emit(state.copyWith(isShimmer: true, error: ''));
+
+    List<JobsModel> jobs = [];
+
+    final result = await serviceLocator<JobUsecase>().getListBestJob();
+    result.fold(
+      (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+      (r) => jobs = r,
+    );
+    jobs.shuffle();
+    List<JobsModel> shuffledJobs = jobs.take(4).toList();
+
+    emit(state.copyWith(jobs: jobs, isShimmer: false, jobsBest: shuffledJobs));
+  }
+
+  FutureOr<void> _onSearchJobRequested(
+      SearchJobRequested event, Emitter<JobState> emit) {
+    List<JobsModel> jobFilter = List.from(state.jobs);
+    // jobFilter.removeWhere((element) =>
+    //     !element.status || !DateTime.now().isBefore(element.endDate!));
+    var searchList = jobFilter
+        .where((element) => element.title
+            .toLowerCase()
+            .contains(event.searchText.toLowerCase()))
+        .toList();
+
+    searchList.removeWhere((element) =>
+        !element.status ||
+        !DateTime.now().isBefore(element.endDate!) ||
+        !state.isEmptyExperience(element) ||
+        !state.isEmptyJobCategory(element) ||
+        !state.isEmptyJobType(element) ||
+        !state.isEmptyLocation(element));
+    if (state.salaryText.isNotEmpty) {
+      var list = AppFormat.filterItems(searchList, state.salaryRange!);
+
+      searchList = searchList
+          .where((element1) => list.any((element) => element.id == element1.id))
+          .toList();
+    }
+
+    emit(state.copyWith(searchjobs: searchList, searchText: event.searchText));
+  }
+
+  // FutureOr<void> _onGetJobByFilterRequest(
+  //     GetJobByFilterRequest event, Emitter<JobState> emit) {
+  //   List<JobsModel> jobFilter = List.from(state.jobs);
+
+  //   jobFilter.removeWhere((element) =>
+  //       !element.status ||
+  //       !DateTime.now().isBefore(element.endDate!) ||
+  //       !state.isEmptyExperience(element) ||
+  //       !state.isEmptyJobCategory(element) ||
+  //       !state.isEmptyJobType(element) ||
+  //       !state.isEmptyLocation(element) ||
+  //       !state.isEmptySalary(element));
+  //   emit(state.copyWith(searchjobs: jobFilter));
+  // }
+
+  FutureOr<void> _onGetSearchTextRequested(
+      GetSearchTextRequested event, Emitter<JobState> emit) {
+    // emit(state.copyWith(searchText: event. ));
   }
 }

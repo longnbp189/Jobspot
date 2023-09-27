@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jobspot/common/widgets/stateful/custom_text_form_field_password.dart';
 import 'package:jobspot/common/widgets/stateless/button_medium.dart';
 import 'package:jobspot/common/widgets/stateful/custom_text_form_field.dart';
 import 'package:jobspot/design/app_format.dart';
@@ -92,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                           spaceH8,
                           Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+                            'To join the Jobspot',
                             style: TxtStyles.regular12,
                             textAlign: TextAlign.center,
                           ),
@@ -107,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 signUpBloc.add(SignUpEvent.emailChanged(value)),
                           ),
                           spaceH16,
-                          CustomTextFormField(
+                          CustomTextFormFieldPassword(
                             // stateBloc: '',
                             // stateValue: '',
                             hide: _passwordVisible,
@@ -116,10 +117,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onTap: _togglePassword,
                             onChanged: (value) => signUpBloc
                                 .add(SignUpEvent.passwordChanged(value)),
-                            isPassword: true,
                           ),
                           spaceH16,
-                          CustomTextFormField(
+                          CustomTextFormFieldPassword(
                             // stateBloc: '',
                             // stateValue: '',
                             hide: _confirmPasswordVisible,
@@ -128,7 +128,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onTap: _toggleConfirmPassword,
                             onChanged: (value) => signUpBloc
                                 .add(SignUpEvent.confirmPasswordChanged(value)),
-                            isPassword: true,
                             isCorrectPassword: state.isCorrectPassword(),
                           ),
                           spaceH16,

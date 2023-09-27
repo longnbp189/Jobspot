@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_asset.dart';
@@ -74,7 +75,8 @@ class _SplashScreenState extends State<SplashScreen> {
           AppAsset.logo,
           // semanticsLabel: 'Acme Logo'
         ),
-        // Image.asset('assets/images/logo.svg'),
+        // Image.asset(
+        //     cacheHeight: 100, cacheWidth: 100, 'assets/images/logo.png'),
         Text(
           'Jobspot',
           style: TxtStyles.extraBold32.copyWith(color: AppColor.white),

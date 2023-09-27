@@ -5,10 +5,13 @@ class CompanyState with _$CompanyState {
   factory CompanyState(
       {CompanyModel? company,
       UserModel? user,
+      JobsModel? job,
       @Default([]) List<CompanyModel> companies,
+      @Default([]) List<JobsModel> jobs,
       @Default([]) List<CompanyModel> companiesFollowing,
       @Default([]) List<CompanyModel> searchCompanies,
       @Default([]) List<CompanyModel> companiesSameType,
+      @Default([]) List<JobsModel> jobSameCompanies,
       @Default(false) bool isLoading,
       @Default(true) bool isShimmer,
       @Default(false) bool isFollow,

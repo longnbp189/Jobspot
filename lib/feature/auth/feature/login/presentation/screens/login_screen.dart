@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         spaceH8,
                         Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+                          'Please enter your account here',
                           style: TxtStyles.regular12,
                           textAlign: TextAlign.center,
                         ),

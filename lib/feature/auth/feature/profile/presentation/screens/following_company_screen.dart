@@ -8,6 +8,7 @@ import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
+import 'package:jobspot/router/app_router.dart';
 
 class FollowingCompanyScreen extends StatelessWidget {
   const FollowingCompanyScreen({super.key});
@@ -49,7 +50,10 @@ class FollowingCompanyScreen extends StatelessWidget {
                             // padding: EdgeInsets.symmetric(
                             //     horizontal: 16.w, vertical: 16.h),
                             itemBuilder: (context, index) => TopCompanyCard(
-                              companyModel: state.companiesFollowing[index],
+                              argument: CompanyAgrument(
+                                companyModel: state.companiesFollowing[index],
+                                changed: (value) {},
+                              ),
                             ),
                             itemCount: state.companiesFollowing.length,
                             shrinkWrap: true,

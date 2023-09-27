@@ -122,7 +122,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     noItemsFoundIndicatorBuilder: (context) =>
                         const TopCompanyEmpty(),
                     firstPageProgressIndicatorBuilder: (context) => Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.w, vertical: 16.h),
                       child: const TopCompanyCardShimmer(),
                     ),
                     itemBuilder: (context, item, index) {

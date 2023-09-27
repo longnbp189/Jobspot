@@ -11,8 +11,10 @@ class ButtonBottomRow extends StatelessWidget {
     required this.titleRight,
     this.onTapLeft,
     this.onTapRight,
+    this.isEnable = true,
   });
   final String titleLeft;
+  final bool? isEnable;
   final String titleRight;
   final VoidCallback? onTapLeft;
   final VoidCallback? onTapRight;
@@ -47,7 +49,9 @@ class ButtonBottomRow extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
-                  color: AppColor.primary),
+                  color: !isEnable!
+                      ? AppColor.primary.withOpacity(0.7)
+                      : AppColor.primary),
               child: Text(
                 titleRight,
                 style: TxtStyles.semiBold16.copyWith(color: AppColor.white),

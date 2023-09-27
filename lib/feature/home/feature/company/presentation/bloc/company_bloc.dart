@@ -4,10 +4,13 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobspot/core/service_locator.dart';
+import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/domain/usecases/company_use_case.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
+import 'package:jobspot/feature/home/feature/job/domain/usecases/job_use_case.dart';
 
 part 'company_event.dart';
 part 'company_state.dart';
@@ -34,6 +37,7 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
     on<SearchCompanyRequested>(_onSearchCompanyRequested);
     on<GetListCompanyMaxRequested>(_onGetListCompanyMaxRequested);
     on<GetListCompanyFollowingRequested>(_onGetListCompanyFollowingRequested);
+    on<GetJobSameCompanyRequest>(_onGetJobSameCompanyRequest);
   }
 
   FutureOr<void> _onGetListCompanyRequested(
@@ -86,20 +90,27 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
       if (state.searchCompanies.isEmpty) {
         List<CompanyModel> companies = List.from(state.companies);
         if (companies.isNotEmpty) {
-          final index = companies
-              .indexWhere((company) => company.id == state.company!.id);
-          Unit? unit;
+          // final index = companies
+          //     .indexWhere((company) => company.id == state.company!.id);
+          // Unit? unit;
           final result = await serviceLocator<CompanyUsecase>().followCompany(
               companyModel: state.company!, userModel: state.user!);
           result.fold(
             (l) => emit(state.copyWith(error: l.message, isLoading: false)),
-            (r) => unit = r,
+            (r) => emit(state.copyWith(
+              isFollow: true,
+              isLoading: false,
+            )),
           );
-          if (index != -1 && unit != null) {
-            companies[index] = state.company!;
-            emit(state.copyWith(
-                isFollow: true, isLoading: false, companies: companies));
-          }
+          // if (index != -1 && unit != null) {
+          //   companies[index] = state.company!;
+          //   // emit(state.copyWith(
+          //   //     isFollow: true, isLoading: false, companies: companies));
+          //   emit(state.copyWith(
+          //     isFollow: true,
+          //     isLoading: false,
+          //   ));
+          // }
         } else {
           final result = await serviceLocator<CompanyUsecase>().followCompany(
               companyModel: state.company!, userModel: state.user!);
@@ -267,5 +278,34 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
     }
     emit(state.copyWith(
         companiesFollowing: companyFollowingList, isShimmer: false));
+  }
+
+  FutureOr<void> _onGetJobSameCompanyRequest(
+      GetJobSameCompanyRequest event, Emitter<CompanyState> emit) async {
+    emit(state.copyWith(isShimmer: true, error: ''));
+    // await Future.delayed(const Duration(milliseconds: 700));
+    final resultList = await serviceLocator<JobUsecase>().getListJobMax();
+    resultList.fold(
+      (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+      (r) => emit(state.copyWith(jobs: r, isShimmer: false)),
+    );
+    // final result = await serviceLocator<CompanyUsecase>()
+    //     .getCompanyById(id: state.job!.companyId);
+    // result.fold(
+    //     (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+    //     (r) => emit(state.copyWith(
+    //           company: r,
+    //           isShimmer: false,
+    //         )));
+
+    List<JobsModel> jobs = List.from(state.jobs);
+
+    jobs.removeWhere((element) =>
+        (!(element.companyId == state.company?.id)
+        // ||
+        // element.id == state.job!.id
+        ) ||
+        !AppFormat.isAvailableJob(element));
+    emit(state.copyWith(isShimmer: false, error: '', jobSameCompanies: jobs));
   }
 }

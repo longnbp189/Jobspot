@@ -7,6 +7,7 @@ import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
+import 'package:jobspot/router/app_router.dart';
 
 class SearchCompany extends StatefulWidget {
   const SearchCompany({super.key});
@@ -79,7 +80,11 @@ class _SearchCompanyState extends State<SearchCompany> {
             listener: (context, state) {},
             builder: (context, state) {
               return SingleChildScrollView(
-                  child: _searchController.text.isEmpty ||
+                  child:    _searchController.text.isEmpty
+                    ? SizedBox(
+                        height: AppFormat.height(context) - 200.h,
+                        width: AppFormat.width(context),
+                        child: const InitSearchEmpty()):
                           state.searchCompanies.isEmpty
                       ? SizedBox(
                           height: AppFormat.height(context) - 200.h,
@@ -88,12 +93,15 @@ class _SearchCompanyState extends State<SearchCompany> {
                       : ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           padding: EdgeInsets.symmetric(
-                            horizontal: 16.w, vertical: 16.h),
+                              horizontal: 16.w, vertical: 16.h),
                           shrinkWrap: true,
                           itemBuilder: (context, index) => TopCompanyCard(
-                              companyModel: _searchController.text.isEmpty
-                                  ? state.companies[index]
-                                  : state.searchCompanies[index]),
+                                  argument: CompanyAgrument(
+                                companyModel: _searchController.text.isEmpty
+                                    ? state.companies[index]
+                                    : state.searchCompanies[index],
+                                changed: (value) {},
+                              )),
                           separatorBuilder: (context, index) => spaceH16,
                           itemCount: state.searchCompanies.length));
             },

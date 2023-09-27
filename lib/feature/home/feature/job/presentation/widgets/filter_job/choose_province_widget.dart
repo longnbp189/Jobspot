@@ -1,6 +1,5 @@
 part of '../../screens/filter_job_screen.dart';
 
-
 class ChooseProvinceWidget extends StatefulWidget {
   const ChooseProvinceWidget({
     super.key,
@@ -12,11 +11,6 @@ class ChooseProvinceWidget extends StatefulWidget {
 
 class _ChooseProvinceWidgetState extends State<ChooseProvinceWidget> {
   final _searchController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   void dispose() {
@@ -31,6 +25,9 @@ class _ChooseProvinceWidgetState extends State<ChooseProvinceWidget> {
     return WillPopScope(
       onWillPop: () async => false,
       child: BlocBuilder<JobBloc, JobState>(
+        buildWhen: (previous, current) =>
+            previous.searchProvinces != current.searchProvinces,
+        bloc: jobBloc,
         builder: (context, state) {
           return Container(
             height: double.infinity,
@@ -50,7 +47,7 @@ class _ChooseProvinceWidgetState extends State<ChooseProvinceWidget> {
                     ),
                     GestureDetector(
                         onTap: () {
-                          jobBloc.add(const GetTextProvinceRequested(''));
+                          // jobBloc.add(const GetTextProvinceRequested(''));
                           context.pop();
                         },
                         child: Icon(
@@ -105,12 +102,12 @@ class _ChooseProvinceWidgetState extends State<ChooseProvinceWidget> {
                             physics: const AlwaysScrollableScrollPhysics(),
                             padding: EdgeInsets.only(top: 8.h, bottom: 16.h),
                             shrinkWrap: true,
-                            itemBuilder: (context, index) => GestureDetector(
+                            itemBuilder: (context, index) => InkWell(
                                   onTap: () {
-                                    jobBloc.add(JobEvent.getDistricts(
-                                        state.searchProvinces[index].code));
-                                    jobBloc.add(GetTextProvinceRequested(
-                                        state.searchProvinces[index].name));
+                                    jobBloc.add(JobEvent.getDistricts(jobBloc
+                                        .state.searchProvinces[index].code));
+                                    jobBloc.add(GetTextProvinceRequested(jobBloc
+                                        .state.searchProvinces[index].name));
 
                                     Future.delayed(
                                         const Duration(milliseconds: 500), () {
@@ -139,7 +136,8 @@ class _ChooseProvinceWidgetState extends State<ChooseProvinceWidget> {
                                     children: [
                                       spaceH8,
                                       Text(
-                                        state.searchProvinces[index].name,
+                                        AppFormat.nonUnicode(jobBloc
+                                            .state.searchProvinces[index].name),
                                         style: TxtStyles.semiBold16,
                                       ),
                                       spaceH8,
@@ -149,7 +147,7 @@ class _ChooseProvinceWidgetState extends State<ChooseProvinceWidget> {
                                     ],
                                   ),
                                 ),
-                            itemCount: state.searchProvinces.length),
+                            itemCount: jobBloc.state.searchProvinces.length),
                       )
               ],
             ),

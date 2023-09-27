@@ -42,7 +42,7 @@ class IntroScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'jobspot',
+                    'Jobspot',
                     style: TxtStyles.semiBold18,
                   ),
                 ),

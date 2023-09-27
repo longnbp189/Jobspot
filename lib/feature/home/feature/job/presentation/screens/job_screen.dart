@@ -53,14 +53,14 @@ class _JobScreenState extends State<JobScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Best job',
+            'Job',
             style: TxtStyles.semiBold20,
           ),
-          actions: [
-            IconButton(
-                onPressed: () => context.pushNamed(AppRouterName.searchCompany),
-                icon: const Icon(Icons.search))
-          ],
+          // actions: [
+          //   IconButton(
+          //       onPressed: () => context.pushNamed(AppRouterName.searchJob),
+          //       icon: const Icon(Icons.search))
+          // ],
         ),
         body: SafeArea(
             child: BlocConsumer<JobBloc, JobState>(
@@ -133,6 +133,7 @@ class JobCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: AppFormat.width(context) - 32.w,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       decoration: BoxDecoration(
           color: AppColor.white, borderRadius: BorderRadius.circular(24.r)),
@@ -163,7 +164,8 @@ class JobCard extends StatelessWidget {
                   },
                   child: SvgPicture.asset(
                     AppAsset.save,
-                    color: AppFormat.isHasBookmark(item, authBloc.state.user!)
+                    color: AppFormat.isHasBookmark(
+                            item, authBloc.state.user ?? UserModel())
                         ? AppColor.secondary
                         : AppColor.unSelected,
                   ),
@@ -173,7 +175,7 @@ class JobCard extends StatelessWidget {
             spaceH8,
             Text(
               item.title,
-              maxLines: 2,
+              maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TxtStyles.extraBold16,
             ),
@@ -188,19 +190,8 @@ class JobCard extends StatelessWidget {
             spaceH16,
             Wrap(
               spacing: 8.0.w,
-              runSpacing: 8.0.h,
+              // runSpacing: 8.0.h,
               children: [
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
-                  decoration: BoxDecoration(
-                      color: AppColor.backgroundChip.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(8.r)),
-                  child: Text(
-                    item.location,
-                    style: TxtStyles.regular14,
-                  ),
-                ),
                 Container(
                   padding:
                       EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
@@ -219,7 +210,7 @@ class JobCard extends StatelessWidget {
                       color: AppColor.secondary.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(8.r)),
                   child: Text(
-                    item.salary,
+                    AppFormat.parseSalaryText(item),
                     style: TxtStyles.semiBold14
                         .copyWith(color: AppColor.secondary),
                   ),

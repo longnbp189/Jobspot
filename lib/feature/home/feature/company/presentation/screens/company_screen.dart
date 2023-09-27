@@ -11,6 +11,7 @@ import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.d
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
+import 'package:jobspot/router/app_router.dart';
 import 'package:jobspot/router/app_router_name.dart';
 
 class CompanyScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Top company',
+            'Company',
             style: TxtStyles.semiBold20,
           ),
           actions: [
@@ -59,7 +60,8 @@ class _CompanyScreenState extends State<CompanyScreen> {
         body: SafeArea(
             child: BlocConsumer<CompanyBloc, CompanyState>(
           listenWhen: (previous, current) =>
-              previous.companies != current.companies,
+              previous.companies != current.companies ||
+              current.isFollow == true,
           listener: (context, state) {
             if (state.isFollow) {
               var index = pagingController.itemList!
@@ -101,7 +103,18 @@ class _CompanyScreenState extends State<CompanyScreen> {
                           const TopCompanyCardShimmer(),
                       itemBuilder: (context, item, index) {
                         return TopCompanyCard(
-                          companyModel: item,
+                          argument: CompanyAgrument(
+                            companyModel: item,
+                            changed: (value) {
+                              print('ahihi');
+                              if (value) {
+                                print('ahuhu');
+                                bloc.add(const ResetLastDocumentRequested());
+
+                                pagingController.refresh();
+                              }
+                            },
+                          ),
                         );
                       },
                     ),

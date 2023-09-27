@@ -1,6 +1,5 @@
 part of '../../screens/filter_job_screen.dart';
 
-
 class ChooseDistrictWidget extends StatefulWidget {
   const ChooseDistrictWidget({
     super.key,
@@ -44,7 +43,7 @@ class _ChooseDistrictWidgetState extends State<ChooseDistrictWidget> {
                     ),
                     GestureDetector(
                         onTap: () {
-                          jobBloc.add(const GetTextDistrictRequested(''));
+                          // jobBloc.add(const GetTextDistrictRequested(''));
                           context.pop();
                         },
                         child: Icon(
@@ -94,7 +93,7 @@ class _ChooseDistrictWidgetState extends State<ChooseDistrictWidget> {
                       physics: const AlwaysScrollableScrollPhysics(),
                       padding: EdgeInsets.only(top: 8.h, bottom: 16.h),
                       shrinkWrap: true,
-                      itemBuilder: (context, index) => GestureDetector(
+                      itemBuilder: (context, index) => InkWell(
                             onTap: () {
                               // jobBloc.add(JobEvent.getDistricts(state.provinces[index].code));
                               jobBloc.add(GetTextDistrictRequested(
@@ -107,7 +106,8 @@ class _ChooseDistrictWidgetState extends State<ChooseDistrictWidget> {
                               children: [
                                 spaceH8,
                                 Text(
-                                  state1.searchDistricts[index].name,
+                                  AppFormat.nonUnicode(
+                                      state1.searchDistricts[index].name),
                                   style: TxtStyles.semiBold16,
                                 ),
                                 spaceH8,

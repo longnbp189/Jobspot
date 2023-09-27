@@ -1,6 +1,5 @@
 part of '../../screens/filter_job_screen.dart';
 
-
 class SubTextWidget extends StatelessWidget {
   const SubTextWidget({
     super.key,
@@ -25,7 +24,7 @@ class SubTextWidget extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                subText,
+                AppFormat.nonUnicode(subText),
                 style: TxtStyles.semiBold14,
               ),
               spaceW8,

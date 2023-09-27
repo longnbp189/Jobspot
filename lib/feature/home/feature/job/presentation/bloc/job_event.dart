@@ -6,6 +6,7 @@ class JobEvent with _$JobEvent {
   const factory JobEvent.getJobCategory() = GetJobCategoryRequested;
   const factory JobEvent.searchJobCategory(String searchText) =
       SearchJobCategoryRequested;
+  const factory JobEvent.searchJob(String searchText) = SearchJobRequested;
   const factory JobEvent.getProvinces() = GetProvincesRequested;
   const factory JobEvent.getTextProvince(String text) =
       GetTextProvinceRequested;
@@ -14,7 +15,8 @@ class JobEvent with _$JobEvent {
   const factory JobEvent.getTextdistrict(String text) =
       GetTextDistrictRequested;
 
-  const factory JobEvent.getTextSalary(String text) = GetTextSalaryRequested;
+  const factory JobEvent.getTextSalary(SalaryRange salaryRange) =
+      GetTextSalaryRequested;
 
   const factory JobEvent.getTextJobCategory(String text) =
       GetTextJobCategoryRequested;
@@ -36,12 +38,16 @@ class JobEvent with _$JobEvent {
   const factory JobEvent.getListJobMax(UserModel userModel) =
       GetListJobMaxRequested;
 
+  const factory JobEvent.getSearchText(String text) = GetSearchTextRequested;
+
   const factory JobEvent.resetLastDocument() = ResetLastDocumentRequested;
   const factory JobEvent.updateBookmark() = UpdateBookmarkRequest;
   const factory JobEvent.getJobById(JobsModel job, UserModel userModel) =
       GetJobByIdRequested;
   const factory JobEvent.getJobSameType() = GetJobSameTypeRequest;
+  const factory JobEvent.getListBestJob() = GetListBestJobRequest;
   const factory JobEvent.getJobSameCompany() = GetJobSameCompanyRequest;
+  const factory JobEvent.getJobByFilter() = GetJobByFilterRequest;
   const factory JobEvent.submitCV(CVInfoModel cvInfoModel) = SubmitCVRequest;
 
   const factory JobEvent.getTextEmailJob(String text) =

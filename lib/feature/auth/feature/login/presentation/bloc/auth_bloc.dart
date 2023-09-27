@@ -675,8 +675,7 @@ final job = [
     companyName: 'NANOFILM . TRADING SERVICE CO., LTD',
     companyLocation:
         'No. 2, 34th Street, Van Phuc Urban Area, Hiep Binh Phuoc Ward, Thu Duc District, Ho Chi Minh City',
-    benefit:
-        '''Income: Fixed salary + KPI bonus > 20 million (discussed in more detail at the interview)
+    benefit: '''
           Clear promotion path, salary increase review once a year.
           Get trained, improve your expertise, develop yourself...
           Enjoy full insurance benefits, days off, and holidays according to regulations.
@@ -701,7 +700,8 @@ Be responsible and dedicated to work.
 Have management and organizational skills, able to withstand high work pressure.
 University graduate from directly related majors, preferably in Marketing.
 Have extensive knowledge and experience in marketing methods, advertising, PR, communications, branding and implementing campaigns on Google, Facebook, Tiktok...''',
-    salary: '400\$ - 700\$',
+    minSalary: 400,
+    maxSalary: 700,
     status: true,
     title: 'Marketing Executive (HCM) - Specialist',
     type: 'Full-time',
@@ -716,7 +716,6 @@ Have extensive knowledge and experience in marketing methods, advertising, PR, c
     companyLocation:
         '4th floor, Luxury Park View Building, Duong Dinh Nghe, Cau Giay District, Hanoi City',
     benefit: '''Dynamic, creative, youthful working environment.
-Hard salary 7 - 9 million + Bonus + Allowances
 There are clear opportunities for advancement, testing, learning and personal development.
 Enjoy full benefits according to Vietnam Labor Law''',
     category: 'aZ3TJiJL2i3eM3IR00xD',
@@ -738,7 +737,8 @@ Ability to search and apply insights from the brand's initial input to develop a
 Proficient in using working software: Lark, Google, etc....
 Have knowledge of design and color to work with the Media team
 Ability to work independently & in groups, coordinating with other departments in the company.''',
-    salary: 'Over 300\$',
+    minSalary: 0,
+    maxSalary: 300,
     status: true,
     title: 'Editor of Aesthetics and Beauty Section',
     type: 'Full-time',
@@ -752,8 +752,7 @@ Ability to work independently & in groups, coordinating with other departments i
     companyName: 'CHANNEL JOINT STOCK COMPANY 28 ENTERTAINMENT',
     companyLocation:
         '4th floor, Luxury Park View Building, Duong Dinh Nghe, Cau Giay District, Hanoi City',
-    benefit:
-        '''Income: Hard salary 6 - 8 million + % commission + Bonus, income from 10-25 million
+    benefit: '''
 Dynamic and friendly working environment
 Opportunities for development in the fields of advertising, media and entertainment
 Pay full social insurance
@@ -779,9 +778,10 @@ Have good presentation, negotiation and communication skills
 Proficient in office computer skills
 Able to work independently
 Hardworking, industrious, with a high sense of responsibility towards work''',
-    salary: '6 - 8 million',
+    minSalary: 300,
+    maxSalary: 500,
     status: true,
-    title: 'Sales Officer [Hanoi] - Income 10-25 Million',
+    title: 'Sales Officer [Hanoi]',
     type: 'Full-time',
     endDate: DateTime.now().add(const Duration(days: 39)),
   ),
@@ -817,9 +817,10 @@ Sensitive to hot news, daily developments in the fields of: School, Life, Societ
 Have Social knowledge, look for information on Social, often hang out on forums and always update news..
 Good writing ability, diverse and flexible languages.
 Use basic Photoshop.''',
-    salary: '8 - 10 million',
+    minSalary: 400,
+    maxSalary: 550,
     status: true,
-    title: 'Fanpage Admin (Income From 8 Million)',
+    title: 'Fanpage Admin ',
     type: 'Full-time',
     endDate: DateTime.now().add(const Duration(days: 36)),
   ),
@@ -864,10 +865,716 @@ Excellent analytical skills with a good problem-solving attitude
 Ability to perform in a team environment
 BSc degree in Computer Science or relevant field
 Excellent English verbal and written communication skills.''',
-    salary: 'Up to 20 million',
+    minSalary: 0,
+    maxSalary: 1000,
     status: true,
     title: 'Flutter Developer',
     type: 'Full-time',
     endDate: DateTime.now().add(const Duration(days: 70)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: '9lY3PVSEJ0Z5ZhE5GaXy',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/ntrSkdcRVlCv0czL5gYAwJUBgZJIMdGQ_1691725136____a1d9acaf01ced0e610c824399293a2c5.png',
+    companyName: 'SUNVALUE ASSESSMENT GROUP CO., LTD',
+    companyLocation:
+        '175 - 177 Tran Huy Lieu, Ward 08, Phu Nhuan District, Ho Chi Minh City, Vietnam',
+    benefit: '''
+       - Uniforms, full working tools support.
+
+- Fully paid: social insurance, unemployment insurance, health insurance,... according to state regulations.
+
+- Other benefits such as birthday, sickness, etc.
+
+- Work from Monday to Friday every week, 8:00 a.m. - 5:30 p.m
+
+- Young, dynamic, experienced, hard-working & enthusiastic colleagues.
+
+- Corporate environment with over 21 years of experience in the valuation market, professional.
+
+- Many opportunities for advancement and personal development.
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        - Receive information customers need from banking and marketing partners to process, answer, and advise on appraisal services, prices, documentation, quotes... for customers.
+- Find customers, expand and exploit the market.
+- Maintain existing business relationships and customer care to promote company services.
+- Contact the appraisal department to perform a preliminary assessment of the property value and quote the appraisal fee.
+- Process information, draft appraisal contracts with customers.
+- Monitor the contract liquidation process, support the accounting department in debt management until customers have completed payment.
+- Report promptly, fully, and accurately related information to the Head of Department and competent persons on a regular or irregular basis.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '2 years',
+    gender: 2,
+    location: 'Da Nang',
+    quantity: '2',
+    requirement: '''
+    - Experience requirements:
++ 1 year or more in similar position.
++ Priority to work at Appraisal Companies, Banks, Insurance, Real Estate, Finance,...
++ Experience in marketing, sales and service, and customer service spirit. Business development of new customers in the field of appraisal/real estate is an advantage.
+    ''',
+    minSalary: 0,
+    maxSalary: 0,
+    status: true,
+    title: 'Sales Officer',
+    type: 'Part-time',
+    endDate: DateTime.now().add(const Duration(days: 14)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: '9lY3PVSEJ0Z5ZhE5GaXy',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/ntrSkdcRVlCv0czL5gYAwJUBgZJIMdGQ_1691725136____a1d9acaf01ced0e610c824399293a2c5.png',
+    companyName: 'SUNVALUE ASSESSMENT GROUP CO., LTD',
+    companyLocation:
+        '175 - 177 Tran Huy Lieu, Ward 08, Phu Nhuan District, Ho Chi Minh City, Vietnam',
+    benefit: '''
+- Uniforms, full working tools support.
+
+- Fully paid: social insurance, unemployment insurance, health insurance,... according to state regulations.
+
+- Other benefits such as birthday, sickness, etc.
+
+- Team building at home and abroad.
+
+- Work from Monday to Friday every week, 8:00 a.m. - 5:30 p.m
+
+- Young, dynamic, experienced, hard-working & enthusiastic colleagues.
+
+- Corporate environment over 21 years in the valuation market, professional.
+
+- Many opportunities for advancement and personal development.
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        Describe:
+- Support the Head of HR Department to manage HR department activities. (Including administration and personnel)
+- Advise on building human resources and department budget according to annual development orientation from the Head of Human Resources Department and the Board of Directors.
+- Representing the Head of Human Resources Department to resolve labor disputes on salary and bonus issues, handling violations, discipline, insurance, fire protection...
+- Plan, organize, and supervise the implementation of security, order, labor safety, and labor discipline throughout the company system.
+- Advise on the development of working processes, regulations and company regulations.
+- Advise on the development of salary and bonus regulations, measures to encourage and stimulate employees to work, and implement benefits for employees.
+- Build an evaluation system and organize training for employees. Monitor and evaluate results after training.
+- Propose measures to increase work efficiency and human resource development strategies.
+- Advise on building and implementing corporate culture into a professional working environment and help with effective human resource management.
+- Build, adjust and amend the organizational structure, functions and tasks of departments/divisions in the Company.
+- Build a personnel evaluation system for each stage and take measures to recruit and filter personnel.
+- Monitor, coordinate and supervise the work progress of employees in the HR department, headquarters and branches.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '3 years',
+    gender: 2,
+    location: 'Ho Chi Minh',
+    quantity: '1',
+    requirement: '''
+    Male/Female from 27 - 35, bright appearance is an advantage.
+University graduate - Major in human resource management, administrative management, law or equivalent;
+Experience: From 2 YEARS in human resources management position (Head/deputy human resources administrative officer)
+Requirements: Understanding of LABOR LAWS, Updated State documents on implementing policies for employees.
+Have experience and skills (tough) in handling labor violations.
+Staff management and coordination skills.
+Good communication skills, flexible handling of situations and problem solving.
+Good planning, organizing and monitoring skills.
+Proficient in using office information technology and Word, Excel...
+    ''',
+    minSalary: 0,
+    maxSalary: 500,
+    status: true,
+    title:
+        'Deputy Head of Human Resources Department (Strong in Labor Law, Get Job Immediately, Have Experience)',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 20)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: '9lY3PVSEJ0Z5ZhE5GaXy',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/ntrSkdcRVlCv0czL5gYAwJUBgZJIMdGQ_1691725136____a1d9acaf01ced0e610c824399293a2c5.png',
+    companyName: 'SUNVALUE ASSESSMENT GROUP CO., LTD',
+    companyLocation:
+        '175 - 177 Tran Huy Lieu, Ward 08, Phu Nhuan District, Ho Chi Minh City, Vietnam',
+    benefit: '''
+        - Priority: Female.
+- Over 1 year of experience in a similar position, preferably in the fields of Real Estate, Banking and Finance, credit... Valuation is even more advantageous.
+- Good communication and persuasion skills
+- Ability to work independently and work well in groups
+- Problem solving skills
+- Knowledge of content, onpage/offpage website
+- Overall knowledge of marketing
+- Deep understanding of SEO tools, knowledge of HTML and CSS.
+- Proactive and responsible at work.
+- Enthusiastic, hardworking, careful, progressive, with a spirit of learning for personal development.
+- Agile and agile working style.
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        • Orient and plan SEO monthly/quarterly/yearly
+• Keyword research, business product/service analysis, customer and competitor analysis to build a suitable SEO strategy and take full advantage of the product/service ecosystem
+• Check and evaluate the quality of the current system and build, develop and manage the company's website, satellite website, Social Entity, Backlinks, etc.
+• Work with Digital, Content, Design departments to plan content, interact on FB fanpage system, FB group, Twitter, Youtube, Instagram, Tik Tok, Youtube, Forum, satellite website, etc.
+• Track interactions, website traffic, conversion rates by Social Media sources at no cost,... create periodic reports.
+• Monitor & execute onpage and offpage SEO plans (70%)
+• Responsible for and supervise the team's work according to the plan set out from superiors • Support research and implementation of SEO/Online Marketing solutions
+new
+• Advise with Leader to train the digital + content team as well as add resources when necessary
+• Responsible for booking and working with outsource partners to write press articles, etc.
+• Measure + Evaluate + Report strategic progress, goals, conversion rates, web traffic and optimization by month/quarter/year
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '1 year',
+    gender: 2,
+    location: 'Ho Chi Minh',
+    quantity: '1',
+    requirement: '''
+   
+Receive medical insurance at international hospitals and participate in social insurance and regular health check-ups.
+Other benefits such as birthday, sickness, team building...
+  Strong Marketing team, professional corporate environment (Over 21 years)
+Young, dynamic, experienced, hard-working & enthusiastic colleagues.
+There are prescribed allowances and full working tool allowance.
+  Company uniform provided.
+Other benefits according to company regulations.
+    ''',
+    minSalary: 500,
+    maxSalary: 700,
+    status: true,
+    title:
+        'Recruiting Website SEO Specialist (Sunvalue Group, Salary Up to 500\$, Get Job Immediately)',
+    type: 'Part-time',
+    endDate: DateTime.now().add(const Duration(days: 21)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: '9lY3PVSEJ0Z5ZhE5GaXy',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/ntrSkdcRVlCv0czL5gYAwJUBgZJIMdGQ_1691725136____a1d9acaf01ced0e610c824399293a2c5.png',
+    companyName: 'SUNVALUE ASSESSMENT GROUP CO., LTD',
+    companyLocation:
+        '175 - 177 Tran Huy Lieu, Ward 08, Phu Nhuan District, Ho Chi Minh City, Vietnam',
+    benefit: '''
+• Salary increases are considered periodically by the Company.
+• Fully paid: social insurance, unemployment insurance, health insurance,... according to state regulations.
+• Welfare benefits such as birthdays, sickness, holidays...
+• The group was established 21 years ago, the working environment is stable and professional.
+• Working with experienced and dedicated Board of Directors and Management levels.
+• Clear and fast promotion path.
+• Colleagues are young, dynamic, hard-working & enthusiastic, supporting mutual development.
+• Team building, team break, year end party and many other benefits are discussed specifically at the interview.
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        • Representing the Board of Directors in approaching and building partnerships and customers according to the Company's business development orientation.
+• Advise and propose policies and methods in establishing and maintaining relationships and negotiation processes with partners and customers.
+• Create good, close relationships and regular care with senior positions at partner companies, state agencies...
+• Contact partners and customers to arrange meetings, appointments and prepare related documents.
+• Support the Chairman and Board of General Directors when transacting, negotiating, and signing contracts with investors and partners..
+• Record working minutes, meetings with customer partners, record and synthesize content.
+• Communicate information from the Chairman to partners and customers and receive feedback and opinions.
+• Travel on business, attend events and seminars when required.
+• Support the Chairman and Board of Directors in foreign affairs when they arise.
+• Other tasks as assigned by the Chairman.
+• Working at the Group Headquarters (Phu Nhuan), working hours: From Monday - Friday.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '2 years',
+    gender: 0,
+    location: 'Ho Chi Minh',
+    quantity: '1',
+    requirement: '''
+    • Male, bright appearance.
+• Information Technology & Foreign Language Skills.
+- Priority is given to know basic English communication.
+– Proficient in office information technology and work application software.
+• Soft skills.
+– Have good and fluent communication skills, presentation, negotiation, diplomacy and work under pressure;
+– Have the ability to manage time, work independently and have a sense of responsibility;
+– Have analytical, synthesis and reporting skills.
+• Graduated from College/University with related majors such as: Business Administration, Economics, Foreign Affairs, Marketing,...
+• Experience of 2 years or more in a similar position in the fields of valuation, real estate, banking and finance, and credit is an advantage.
+
+• Ability to work with senior leaders (Chairman of the Board of Directors, Board of General Directors).
+• Have good relationships and experience in working and solving external problems.
+• Willing to accept the company's transfer on business trips when requested
+• Dynamic, open, sociable, gentle attitude at work
+• Honest, creative, enthusiastic, eager to learn, good at listening, and hard-working.
+    ''',
+    minSalary: 0,
+    maxSalary: 1000,
+    status: true,
+    title:
+        'Assistant to the President (Male, Foreign Affairs, Business, Phu Nhuan, Salary Over 1000\$)',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 10)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'SepLV6cRtRsxrxqOsnkl',
+    companyImage:
+        'https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN002SWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--29a9ccea815d61dcacf0d95f6f4e013b151121cd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--15c3f2f3e11927673ae52b71712c1f66a7a1b7bd/ECR_Logo_Stick.png',
+    companyName: 'ECR SOLUTIONS VIETNAM CO., LTD',
+    companyLocation:
+        'The Morning Star Building, 57 National Highway 13, Ward 26, Binh Thanh District, Ho Chi Minh City, Vietnam',
+    benefit: '''
+        Friendly and comfortable working environment
+Work directly with foreign customers.
+Onsite in Europe countries
+Learn new technologies
+Team building & company trips at least once a year
+Premium healthcare insurance & Full-labor insurance (social, health, unemployed insurances)
+Bonuses at national Holidays as well as 13th & 14th month bonuses
+12 days paid leave per year
+Working Hours: 9:00 AM – 6:30 PM from Monday to Friday.
+
+        ''',
+    category: 'MmStx33B4bDPbcQxqaJX',
+    description: '''
+        Reading & understanding project specifications, analyzing requirements.
+Implementing & testing software components.
+Troubleshooting technical issues.
+Working with tester to ensure deliveries to meet expected quality.
+Studying new innovative technologies to solve technical challenges.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '4 years',
+    gender: 2,
+    location: 'Ho Chi Minh',
+    quantity: '5',
+    requirement: '''
+    Bachelor Degree in Computer Science or Software Engineering.
+Experience in eCommerce field & Payment Gateway.
+Experience in Microservice Architect.
+Familiar with AWS services & technologies:
+Elastic Beanstalk
+RDS
+CloudFront
+Web Application Firewall
+S3
+EC2
+Route 53
+ 
+Experience (5+ years) in .NET framework or .NET Core framework for Web Application Development
+Good at English (Must-have).
+Self-Management.
+Programming Languages: C Sharp (.NET or .NET Core), Javascript, HTML, CSS
+Deep Understanding in Object Oriented Programming.
+Eager to learn new technologies.
+    ''',
+    minSalary: 0,
+    maxSalary: 3000,
+    status: true,
+    title: 'Senior .Net Developers - Salary Upto 3000 Usd',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 5)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'SepLV6cRtRsxrxqOsnkl',
+    companyImage:
+        'https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN002SWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--29a9ccea815d61dcacf0d95f6f4e013b151121cd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--15c3f2f3e11927673ae52b71712c1f66a7a1b7bd/ECR_Logo_Stick.png',
+    companyName: 'ECR SOLUTIONS VIETNAM CO., LTD',
+    companyLocation:
+        'The Morning Star Building, 57 National Highway 13, Ward 26, Binh Thanh District, Ho Chi Minh City, Vietnam',
+    benefit: '''
+        Friendly and comfortable working environment
+Opportunity to work directly with foreign customers.
+Opportunity to learn new technologies
+Team building & company trips at least once a year
+Premium healthcare insurance & Full-labor insurance (social, health, unemployed insurances)
+Bonuses at national Holidays as well as 13th & 14th month bonuses
+12 days paid leave per year
+Working Hours: 9:00 AM – 6:30 PM from Monday to Friday.
+Competitive salary
+        ''',
+    category: 'MmStx33B4bDPbcQxqaJX',
+    description: '''
+        Reading & understanding project specifications, analyzing requirements.
+Producing fully functional applications & writing clean code
+Troubleshooting technical issues & debugging to optimize performance
+Supporting the entire application lifecycle (concept, design, test, release and support)
+Focusing to user interfaces as well as user experience
+Working with tester to ensure deliveries to meet expected quality.
+Stay up-to-date with new technology trends
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '5 years',
+    gender: 2,
+    location: 'Ho Chi Minh',
+    quantity: '2',
+    requirement: '''
+    êu cầu ứng viên
+Proven work experience as a Mobile developer
+Experience (5+ years) in develop mobile application, familiar with FLUTTER framework
+Demonstrable portfolio of released applications on the App store or the Android market
+Knowledge of languages like Swift (iOS) and Java (Android) is a major plus
+Experience with third-party libraries and APIs
+Familiarity with OOP design principles
+Excellent analytical skills with a good problem-solving attitude
+Ability to perform in a team environment
+Bachelor degree in Computer Science field or relevant ones
+Excellent English verbal and written communication skills.
+    ''',
+    minSalary: 0,
+    maxSalary: 2000,
+    status: true,
+    title: 'Senior Flutter Developer - Upto 2,000 Usd',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 15)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'SepLV6cRtRsxrxqOsnkl',
+    companyImage:
+        'https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN002SWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--29a9ccea815d61dcacf0d95f6f4e013b151121cd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--15c3f2f3e11927673ae52b71712c1f66a7a1b7bd/ECR_Logo_Stick.png',
+    companyName: 'ECR SOLUTIONS VIETNAM CO., LTD',
+    companyLocation:
+        'The Morning Star Building, 57 National Highway 13, Ward 26, Binh Thanh District, Ho Chi Minh City, Vietnam',
+    benefit: '''
+        Friendly and comfortable working environment
+Work directly with foreign customers.
+Onsite in Europe countries
+Learn new technologies
+Team building & company trips at least once a year
+Premium healthcare insurance & Full-labor insurance (social, health, unemployed insurances)
+Bonuses at national Holidays as well as 13th & 14th month bonuses
+12 days paid leave per year
+Working Hours: 9:00 AM – 6:30 PM from Monday to Friday.
+        ''',
+    category: 'MmStx33B4bDPbcQxqaJX',
+    description: '''
+        Research and iterate on the target system (Windows or Linux VMs) and application configurations for optimization and reliability.
+Build and maintain CI / CD pipelines for testing and releasing configuration and software.
+Automate tasks and develop tools to increase engineering efficiency and visibility.
+Manage secure, well-tested, and high-quality infrastructure.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '1 year',
+    gender: 2,
+    location: 'Ho Chi Minh',
+    quantity: '3',
+    requirement: '''
+    Experience working on Windows or Linux based infrastructure
+Excellent understanding of .NET (.NET Core) technologies, IIS, MS SQL Server, Gitlab, Bitbucket, Bamboo
+Familiar with AWS services & technologies:
+Elastic Beanstalk
+RDS
+CloudFront
+Web Application Firewall
+S3
+EC2
+Route 53
+Excellent troubleshooting
+Working knowledge of various tools, open-source technologies (Github, NPM).
+Awareness of critical concepts in DevOps, GPDR or ISO 27001, and Agile principles
+Self-Management.
+Eager to learn new technologies.
+Good at English (Must-have)
+    ''',
+    minSalary: 0,
+    maxSalary: 2000,
+    status: true,
+    title: 'Senior Devops Engineers - Salary Upto 2000 Usd',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 14)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'SepLV6cRtRsxrxqOsnkl',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/B3liLb6TxRmh8RZ0xG1VIfJwAKxjwQrq_1691825152____b1eb605a0878ca07febd8bda5e75e76b.png',
+    companyName: 'WEDDING & CONFERENCE CENTER MIPEC PALACE',
+    companyLocation: '229 Tay Son, Dong Da, City. Hanoi',
+    benefit: '''
+Monthly bonus: Except for summer months (low season), the remaining peak months have additional bonuses.
+Allowances: meals, transportation, makeup (women),...
+Enjoy all Tet holidays of the year, birthdays: National Day, April 30 - May 1, Lunar New Year, Yang New Year.
+13th month bonus.
+Working time 25 days/month (5-6 days/month off).
+12 days of vacation per year.
+Annual VIP health check package.
+Travel 02 times/year.
+1 month probationary period, after the probationary period, full social insurance and health insurance will be paid according to Labor law.
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        Designing company publications and brand identities such as brochures, catalogs, profiles, presentations, promotions,...
+Design items for event decoration such as: wedding invitations, envelopes, gift boxes, bride and groom name logos, stationery, nameplates, party table plans, photography backdrops, banners,...
+Coordinate with the Sales & Marketing department in communication work, designing posters, banners for promotional programs, enhancing the image and developing the company's brand.
+Image management, post-processing and standardization of brand identity on images, articles, websites, facebook,...
+Responsible for the quality of designed products, monitoring and managing quality from files to printing, production and actual construction.
+Research and create new decoration models that keep up with trends and are suitable for Weddings.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '2 years',
+    gender: 2,
+    location: 'Ha Noi',
+    quantity: '1',
+    requirement: '''
+    Male/Female: Age from 22-30.
+Have interest and passion in the Wedding field. Desire for a long-term relationship.
+Good communication skills, handle situations quickly.
+Possesses aesthetic talent and high creative ability.
+Have experience in design. Having trained through art school, graduated with a major in Graphic Design.
+Proficient in design software such as: Photoshop, Illustrator, InDesign,...
+If you have the ability to come up with ideas, concepts, hand-draw, sketch and be skillful with crafts (handmade) it will be an advantage.
+Ability to work under high pressure, willing to work overtime, always goal-oriented.
+Can work on days off, Sunday.
+Candidates please send your CV and designed products when applying.
+    ''',
+    minSalary: 250,
+    maxSalary: 700,
+    status: true,
+    title: '2D Design Specialist (Event - Wedding Design)',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 30)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'Xdd5xmG91u5PV6TuUaZY',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-vjs-viet-nam-61482a2038c80.jpg',
+    companyName: 'WEDDING & CONFERENCE CENTER MIPEC PALACE',
+    companyLocation: 'No. 22 Nguyen Thai Hoc, Ba Dinh, Hanoi',
+    benefit: '''
+        - Salary from: 9,000,000 – 15,000,000 VND
+
+- 1 day of annual leave per month when officially promoted
+
+- Working hours from 8:00 a.m. - 5:30 p.m. (1.5 hour lunch break) from Monday to Saturday morning
+
+- Work in a professional, dynamic environment.
+
+- Be exposed to and experience many technological devices
+
+- Participate in paying social insurance and health insurance according to regulations after the probationary period ends.
+
+- Bonuses for holidays, New Year and anniversaries according to general regulations of the Company.
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        - Develop ideas and design graphics for brand communication products
+
+- Design print advertising publications, event publications, online advertising products, landing pages, product websites...
+
+- Fundamental thinking about color and layout in image design, graphics, and fine arts.
+
+- Proficient in using graphic tools such as Photoshop, AI...
+
+- Coordinate with related departments (Advertising, Content, Community...) to ensure overall quality of work.
+
+- Related tasks as assigned by superiors.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '1 year',
+    gender: 2,
+    location: 'Ha Noi',
+    quantity: '2',
+    requirement: '''
+    - Graduated from University or College in one of the following majors: Graphic Design, Advertising, Marketing, Communications or related majors.
+
+- Have a minimum experience of 06 months or more corresponding to the job categories according to the job description.
+
+- Video recording/editing or photography skills are an advantage.
+
+- Responsibility and standards, proactive spirit and good independent/team work.
+
+- Note: Attach a Portfolio or Drive of the designed product
+    ''',
+    minSalary: 150,
+    maxSalary: 500,
+    status: true,
+    title: 'Designer (Income 150\$ - 500\$)',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 30)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'Xdd5xmG91u5PV6TuUaZY',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-vjs-viet-nam-61482a2038c80.jpg',
+    companyName: 'WEDDING & CONFERENCE CENTER MIPEC PALACE',
+    companyLocation: 'No. 22 Nguyen Thai Hoc, Ba Dinh, Hanoi',
+    benefit: '''
+        - Salary from: 9,000,000 - 15,000,000 VND
+
+- 1 day of annual leave per month when officially promoted
+
+- Working hours from 8:00 a.m. to 5:30 p.m. (1.5 hour lunch break) from Monday to Saturday morning
+
+- Work in a professional, dynamic environment.
+
+- Be exposed to and experience many technological devices
+
+- Participate in paying social insurance and health insurance according to regulations after the probationary period ends.
+
+- Bonuses for holidays, New Year and anniversaries according to general regulations of the Company.
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        - Develop ideas and design graphics for brand communication products
+
+- Design print advertising publications, event publications, online advertising products, landing pages, product websites...
+
+- Fundamental thinking about color and layout in image design, graphics, and fine arts.
+
+- Proficient in using graphic tools such as Photoshop, AI...
+
+- Coordinate with related departments (Advertising, Content, Community...) to ensure overall quality of work.
+
+- Related tasks as assigned by superiors.
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '1 year',
+    gender: 2,
+    location: 'Ha Noi',
+    quantity: '2',
+    requirement: '''
+    - Graduated from University or College in one of the following majors: Graphic Design, Advertising, Marketing, Communications or related majors.
+
+- Have a minimum experience of 06 months or more corresponding to the job categories according to the job description.
+
+- Video recording/editing or photography skills are an advantage.
+
+- Responsibility and standards, proactive spirit and good independent/team work.
+
+- Note: Attach a Portfolio or Drive of the designed product
+    ''',
+    minSalary: 150,
+    maxSalary: 500,
+    status: true,
+    title: 'Designer (150\$ - 500\$)',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 30)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'Xdd5xmG91u5PV6TuUaZY',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-vjs-viet-nam-61482a2038c80.jpg',
+    companyName: 'WEDDING & CONFERENCE CENTER MIPEC PALACE',
+    companyLocation: 'No. 22 Nguyen Thai Hoc, Ba Dinh, Hanoi',
+    benefit: '''
+        • Salary from: 8,000,000 – 12,000,000 VND
+
+• Work in a professional, dynamic environment.
+
+• Be exposed to and experience many technological devices
+
+• Be able to participate in social insurance and health insurance according to regulations after the probationary period ends.
+
+• Annual leave of 12 days/year upon official promotion
+
+• Work from Monday to Saturday morning
+
+• Bonuses for holidays, New Year and other days according to the Company's general regulations.
+
+• Work address: 22 Nguyen Thai Hoc, Ba Dinh, Hanoi
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        • In charge of content marketing activities and ideas to increase interaction, traffic, and number of potential customers on the company website system.
+
+• Website care and administration. Write PR articles for the company and projects in charge.
+
+• Optimize content, write standard content according to SEO, optimize website rankings on search engines and pages
+
+• Use tools to boost SEO results (App, Google Analytics, Google webmaster tools, SEO copywriting...)
+
+• Research, evaluate and analyze keyword sets in the search field.
+
+• Monitor and analyze website data to ensure SEO results follow the roadmap and set goals.
+
+• Prepare reports and assessments for each campaign.
+
+• Other professional work as requested by the Department Head
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '1 year',
+    gender: 2,
+    location: 'Ha Noi',
+    quantity: '2',
+    requirement: '''
+    • Understand SEO standard article writing techniques, Onpage SEO
+
+• Have skills in understanding content in different fields
+
+• Work independently and work well in groups
+
+• Experience from 1 year in a similar position
+
+• Equip yourself with a personal computer
+    ''',
+    minSalary: 400,
+    maxSalary: 700,
+    status: true,
+    title: 'SEO Content',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 30)),
+  ),
+  JobsModel(
+    id: AppFormat.generateRandomString(),
+    companyId: 'Xdd5xmG91u5PV6TuUaZY',
+    companyImage:
+        'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/cong-ty-tnhh-vjs-viet-nam-61482a2038c80.jpg',
+    companyName: 'WEDDING & CONFERENCE CENTER MIPEC PALACE',
+    companyLocation: 'No. 22 Nguyen Thai Hoc, Ba Dinh, Hanoi',
+    benefit: '''
+        • Salary from: 8,000,000 – 12,000,000 VND
+
+• Work in a professional, dynamic environment.
+
+• Be exposed to and experience many technological devices
+
+• Be able to participate in social insurance and health insurance according to regulations after the probationary period ends.
+
+• Annual leave of 12 days/year upon official promotion
+
+• Work from Monday to Saturday morning
+
+• Bonuses for holidays, New Year and other days according to the Company's general regulations.
+
+• Work address: 22 Nguyen Thai Hoc, Ba Dinh, Hanoi
+        ''',
+    category: 'sV7mEBn75Wk0BiA3i4VQ',
+    description: '''
+        • In charge of content marketing activities and ideas to increase interaction, traffic, and number of potential customers on the company website system.
+
+• Website care and administration. Write PR articles for the company and projects in charge.
+
+• Optimize content, write standard content according to SEO, optimize website rankings on search engines and pages
+
+• Use tools to boost SEO results (App, Google Analytics, Google webmaster tools, SEO copywriting...)
+
+• Research, evaluate and analyze keyword sets in the search field.
+
+• Monitor and analyze website data to ensure SEO results follow the roadmap and set goals.
+
+• Prepare reports and assessments for each campaign.
+
+• Other professional work as requested by the Head of Department
+        ''',
+    startDate: DateTime.now(),
+    experienceYear: '1 year',
+    gender: 2,
+    location: 'Ha Noi',
+    quantity: '2',
+    requirement: '''
+    • Understand SEO standard article writing techniques, Onpage SEO
+
+• Have skills in understanding content in different fields
+
+
+• Experience from 1 year in a similar position
+
+• Equip yourself with a personal computer
+    ''',
+    minSalary: 400,
+    maxSalary: 700,
+    status: true,
+    title: 'Content SEO (Salary From 8,000,000 - 12,000,000)',
+    type: 'Full-time',
+    endDate: DateTime.now().add(const Duration(days: 30)),
   ),
 ];

@@ -38,4 +38,8 @@ class JobUsecase {
     return await serviceLocator<JobRepository>()
         .getListApplyJob(userModel: userModel);
   }
+
+  Future<Either<Failure, List<JobsModel>>> getListBestJob() async {
+    return await serviceLocator<JobRepository>().getListBestJob();
+  }
 }

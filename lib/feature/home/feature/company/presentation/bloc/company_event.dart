@@ -15,6 +15,8 @@ class CompanyEvent with _$CompanyEvent {
   const factory CompanyEvent.getCompanyById(
       CompanyModel company, UserModel userModel) = GetCompanyByIdRequested;
   const factory CompanyEvent.followCompany() = FollowCompanyRequested;
+  const factory CompanyEvent.getJobSameCompany() = GetJobSameCompanyRequest;
+
   const factory CompanyEvent.getListCompanyFollowing(UserModel userModel) =
       GetListCompanyFollowingRequested;
   const factory CompanyEvent.unFollowCompany(CompanyModel company) =

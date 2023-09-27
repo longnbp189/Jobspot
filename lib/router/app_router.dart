@@ -121,9 +121,11 @@ class AppRouter {
                     name: AppRouterName.companyDetail,
                     path: 'conpany-detail',
                     pageBuilder: (context, state) {
-                      final arguments = state.extra as CompanyModel;
+                      final arguments = state.extra as CompanyAgrument;
                       return MaterialPage(
-                          child: CompanyDetailScreen(companyModel: arguments));
+                          child: CompanyDetailScreen(
+                              changed: arguments.changed,
+                              companyModel: arguments.companyModel));
                     },
                   ),
                   GoRoute(
@@ -213,11 +215,12 @@ class AppRouter {
                           name: AppRouterName.filterJob,
                           path: 'filter-job',
                           pageBuilder: (context, state) {
+                            final arguments = state.extra as JobBloc;
+
                             return MaterialPage(
-                                child: BlocProvider(
-                              create: (context) => JobBloc()
-                                ..add(const GetProvincesRequested())
-                                ..add(const GetJobCategoryRequested()),
+                                child: BlocProvider.value(
+                              value: arguments,
+                               
                               child: const FilterJobScreen(),
                             ));
                           },
@@ -359,4 +362,11 @@ class _InterNetCheckerState extends State<InterNetChecker> {
       },
     );
   }
+}
+
+class CompanyAgrument {
+  final CompanyModel companyModel;
+  final ValueChanged<bool> changed;
+
+  CompanyAgrument({required this.companyModel, required this.changed});
 }
