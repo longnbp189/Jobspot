@@ -84,6 +84,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   @override
   Future<void> logout() async {
+    await _googleSignIn.disconnect();
     await _auth.signOut();
   }
 
