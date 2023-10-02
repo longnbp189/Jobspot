@@ -87,7 +87,7 @@ class _CustomTextFormFieldPasswordState
               errorText:
                   // widget.stateBloc.isNotEmpty && widget.stateValue.isEmpty
                   widget.isCorrectPassword == false
-                      ? "Password cannot be empty"
+                      ? "Password and comfirm password is different"
                       : null,
               hintText: widget.hintText,
               border: OutlineInputBorder(

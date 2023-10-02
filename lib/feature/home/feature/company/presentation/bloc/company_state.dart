@@ -29,6 +29,6 @@ extension CompanyStateExtension on CompanyState {
   }
 
   bool isLastPage() {
-    return companies.length < 8;
+    return companies.length < 20;
   }
 }

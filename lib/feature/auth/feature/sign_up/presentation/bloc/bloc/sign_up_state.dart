@@ -5,6 +5,7 @@ class SignUpState with _$SignUpState {
   const factory SignUpState({
     UserModel? user,
     @Default(false) bool isLoading,
+    @Default(LoadStatusEnum.notLoad) LoadStatusEnum loadStatus,
     @Default("") String error,
     @Default("") String email,
     @Default("") String password,

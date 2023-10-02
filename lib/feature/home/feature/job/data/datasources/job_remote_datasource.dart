@@ -32,7 +32,7 @@ abstract class JobRemoteDataSource {
 DocumentSnapshot? _lastDocument;
 
 class JobRemoteDataSourceImpl implements JobRemoteDataSource {
-  final int _perPage = 8; // Number of documents to fetch per page
+  final int _perPage = 20; // Number of documents to fetch per page
   final dio = Dio();
   var db = DatabaseHelper.instance;
   final _db = FirebaseFirestore.instance;
@@ -45,7 +45,6 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
       List<ProvinceModel> provinceModel = [];
       var provinces = responseProvince.data['data']['data'];
       for (var element in provinces) {
-        
         provinceModel.add(ProvinceModel.fromJson(element));
       }
       db.addProvince(provinceModel);
@@ -123,12 +122,6 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
         final data = doc.data();
         return JobsModel.fromJson(data);
       }).toList();
-
-      jobs.removeWhere((element) =>
-          !element.status || !DateTime.now().isBefore(element.endDate!));
-      jobs.sort(
-        (a, b) => b.startDate!.compareTo(a.startDate!),
-      );
 
       return right(jobs);
     } catch (e) {
@@ -268,7 +261,7 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
       }).toList();
 
       jobs.removeWhere((element) =>
-         !element.status || !DateTime.now().isBefore(element.endDate!));
+          !element.status || !DateTime.now().isBefore(element.endDate!));
 
       // jobs.shuffle();
       // List<JobsModel> shuffledJobs = jobs.take(4).toList();

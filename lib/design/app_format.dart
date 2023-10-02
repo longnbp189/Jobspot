@@ -69,6 +69,7 @@ class AppFormat {
         children: [
           SvgPicture.asset(
             iconPath!,
+            color: AppColor.white,
             height: 24.r,
             width: 24.r,
           ),

@@ -1,8 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/common/widgets/stateful/custom_text_form_field_password.dart';
 import 'package:jobspot/common/widgets/stateless/button_medium.dart';
 import 'package:jobspot/common/widgets/stateful/custom_text_form_field.dart';
+import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
@@ -50,6 +52,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
+  BuildContext? dialogContext;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -60,13 +64,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
             create: (context) => SignUpBloc(),
             child: BlocConsumer<SignUpBloc, SignUpState>(
               listener: (context, state) {
-                if (state.signUpSuccess == true) {
-                  AppFormat.showSnackBar(
-                    context,
-                    'Sign up success.',
-                    2,
-                  );
-                  context.pushReplacementNamed(AppRouterName.login);
+                if (state.loadStatus == LoadStatusEnum.loading) {
+                  showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) {
+                        dialogContext = context;
+
+                        return Container(
+                            color: AppColor.black.withOpacity(0.4),
+                            child: const Center(
+                                child: CircularProgressIndicator()));
+                      });
+                }
+                if (state.loadStatus == LoadStatusEnum.loaded) {
+                  if (dialogContext != null) {
+                    Navigator.of(dialogContext!).pop();
+                  }
+                  if (state.signUpSuccess == true) {
+                    AppFormat.showSnackBar(
+                      context,
+                      'Sign up success.',
+                      2,
+                    );
+                    context.pushReplacementNamed(AppRouterName.login);
+                  }
                 }
                 if (state.error.isNotEmpty) {
                   AppFormat.showSnackBar(
@@ -100,6 +122,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           spaceH40,
                           CustomTextFormField(
                             title: 'Email',
+                            type: TextInputType.emailAddress,
                             // isCanEmpty: false,
                             textController: _emailController,
                             // stateBloc: '',

@@ -1060,6 +1060,7 @@ abstract class SignUp implements SignUpEvent {
 mixin _$SignUpState {
   UserModel? get user => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  LoadStatusEnum get loadStatus => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
@@ -1084,6 +1085,7 @@ abstract class $SignUpStateCopyWith<$Res> {
   $Res call(
       {UserModel? user,
       bool isLoading,
+      LoadStatusEnum loadStatus,
       String error,
       String email,
       String password,
@@ -1112,6 +1114,7 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
   $Res call({
     Object? user = freezed,
     Object? isLoading = null,
+    Object? loadStatus = null,
     Object? error = null,
     Object? email = null,
     Object? password = null,
@@ -1131,6 +1134,10 @@ class _$SignUpStateCopyWithImpl<$Res, $Val extends SignUpState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadStatus: null == loadStatus
+          ? _value.loadStatus
+          : loadStatus // ignore: cast_nullable_to_non_nullable
+              as LoadStatusEnum,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1194,6 +1201,7 @@ abstract class _$$_SignUpStateCopyWith<$Res>
   $Res call(
       {UserModel? user,
       bool isLoading,
+      LoadStatusEnum loadStatus,
       String error,
       String email,
       String password,
@@ -1221,6 +1229,7 @@ class __$$_SignUpStateCopyWithImpl<$Res>
   $Res call({
     Object? user = freezed,
     Object? isLoading = null,
+    Object? loadStatus = null,
     Object? error = null,
     Object? email = null,
     Object? password = null,
@@ -1240,6 +1249,10 @@ class __$$_SignUpStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadStatus: null == loadStatus
+          ? _value.loadStatus
+          : loadStatus // ignore: cast_nullable_to_non_nullable
+              as LoadStatusEnum,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1286,6 +1299,7 @@ class _$_SignUpState implements _SignUpState {
   const _$_SignUpState(
       {this.user,
       this.isLoading = false,
+      this.loadStatus = LoadStatusEnum.notLoad,
       this.error = "",
       this.email = "",
       this.password = "",
@@ -1301,6 +1315,9 @@ class _$_SignUpState implements _SignUpState {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final LoadStatusEnum loadStatus;
   @override
   @JsonKey()
   final String error;
@@ -1330,7 +1347,7 @@ class _$_SignUpState implements _SignUpState {
 
   @override
   String toString() {
-    return 'SignUpState(user: $user, isLoading: $isLoading, error: $error, email: $email, password: $password, forgotEmail: $forgotEmail, confirmPassword: $confirmPassword, fullName: $fullName, phone: $phone, sendEmailSuccess: $sendEmailSuccess, signUpSuccess: $signUpSuccess)';
+    return 'SignUpState(user: $user, isLoading: $isLoading, loadStatus: $loadStatus, error: $error, email: $email, password: $password, forgotEmail: $forgotEmail, confirmPassword: $confirmPassword, fullName: $fullName, phone: $phone, sendEmailSuccess: $sendEmailSuccess, signUpSuccess: $signUpSuccess)';
   }
 
   @override
@@ -1341,6 +1358,8 @@ class _$_SignUpState implements _SignUpState {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.loadStatus, loadStatus) ||
+                other.loadStatus == loadStatus) &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
@@ -1363,6 +1382,7 @@ class _$_SignUpState implements _SignUpState {
       runtimeType,
       user,
       isLoading,
+      loadStatus,
       error,
       email,
       password,
@@ -1384,6 +1404,7 @@ abstract class _SignUpState implements SignUpState {
   const factory _SignUpState(
       {final UserModel? user,
       final bool isLoading,
+      final LoadStatusEnum loadStatus,
       final String error,
       final String email,
       final String password,
@@ -1398,6 +1419,8 @@ abstract class _SignUpState implements SignUpState {
   UserModel? get user;
   @override
   bool get isLoading;
+  @override
+  LoadStatusEnum get loadStatus;
   @override
   String get error;
   @override

@@ -22,7 +22,7 @@ DocumentSnapshot? _lastDocument;
 
 class CompanyDataSourceImp implements CompanyDataSource {
   final _db = FirebaseFirestore.instance;
-  final int _perPage = 8; // Number of documents to fetch per page
+  final int _perPage = 20; // Number of documents to fetch per page
   // Store the last document for pagination
 
   @override

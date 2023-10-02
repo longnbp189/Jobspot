@@ -19,7 +19,7 @@ DocumentSnapshot? _lastDocument;
 
 class NotificationDataSourceImpl implements NotificationDataSource {
   final _db = FirebaseFirestore.instance;
-  final int _perPage = 8; // Number of documents to fetch per page
+  final int _perPage = 20; // Number of documents to fetch per page
 
   @override
   Future<Either<Failure, List<NotificationModel>>> getListNotification(

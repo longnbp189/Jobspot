@@ -200,7 +200,7 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
   //   }
   // }
 
-  final int _perPage = 2; // Number of documents to fetch per page
+  // final int _perPage = 2; // Number of documents to fetch per page
   // DocumentSnapshot? _lastDocument; // Store the last document for pagination
 
   // Future<List<CompanyModel>> fetchCompaniesFromFirestore(int pageSize) async {

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
@@ -44,7 +45,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   }
 
   FutureOr<void> _onSignUp(SignUp event, Emitter<SignUpState> emit) async {
-    emit(state.copyWith(isLoading: true, error: '', signUpSuccess: false));
+    emit(state.copyWith(
+        loadStatus: LoadStatusEnum.loading, error: '', signUpSuccess: false));
     try {
       final user = await serviceLocator<SignUpUsecase>()
           .signUp(email: state.email.trim(), password: state.password.trim());
@@ -57,11 +59,13 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         password: state.password,
         phoneNumber: state.phone,
       ));
-      emit(state.copyWith(signUpSuccess: true, isLoading: false));
+      emit(state.copyWith(
+          signUpSuccess: true, loadStatus: LoadStatusEnum.loaded));
     } on FirebaseAuthException catch (e) {
-      emit(state.copyWith(error: e.toString(), isLoading: false));
+      emit(state.copyWith(
+          error: e.toString(), loadStatus: LoadStatusEnum.loaded));
     } finally {
-      emit(state.copyWith(error: '', isLoading: false));
+      emit(state.copyWith(error: '', loadStatus: LoadStatusEnum.notLoad));
     }
   }
 

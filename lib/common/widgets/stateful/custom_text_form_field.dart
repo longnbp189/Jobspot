@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
+import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +74,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       if (value == null || value.isEmpty) {
         return '${widget.title} cannot be empty';
       }
+    } else if (widget.type == TextInputType.emailAddress) {
+      if (value == null || value.isEmpty) {
+        return '${widget.title} cannot be empty';
+      } else if (!AppFormat.validateEmail(value)) {
+        return '${widget.title} invalid. Example abc@gmail.com';
+      }
     }
     return null; // No validation issues
   }
@@ -104,7 +111,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           enabled: widget.enabled,
           maxLength: widget.maxLength,
           focusNode: focus,
-
           maxLines: widget.maxLine,
           obscureText: widget.hide!,
           controller: widget._textController,

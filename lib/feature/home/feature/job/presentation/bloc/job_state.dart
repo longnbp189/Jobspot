@@ -29,6 +29,7 @@ class JobState with _$JobState {
     @Default(false) bool updateSuccess,
     @Default(false) bool submitSuccess,
     @Default("") String error,
+    @Default(0) int jobLength,
     @Default("") String idProvince,
     @Default("") String provinceText,
     @Default("") String districtText,
@@ -59,11 +60,11 @@ extension JobStateExtension on JobState {
   }
 
   bool isLastPage() {
-    return jobs.length < 8;
+    return jobs.length < 20 - jobLength;
   }
 
   bool isHasBookmark() {
-    return user?.bookmarkIds.contains(job!.id) ?? false;
+    return user?.bookmarkIds.contains(job?.id ?? '') ?? false;
   }
 
   String getSubText(int index) {
@@ -84,7 +85,7 @@ extension JobStateExtension on JobState {
   }
 
   bool isSubmitCV() {
-    return user!.jobIds.contains(job!.id);
+    return user!.jobIds.contains(job?.id ?? '');
   }
 
   bool isHasSubText() {

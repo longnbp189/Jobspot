@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   // }
 
   var jobBloc = JobBloc();
-  // final _messagingServices = MessagingService();
+  final _messagingServices = MessagingService();
 
   Future<void> initBox() async {
     if (await AppFormat.isCacheAddress()) {
@@ -42,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     initBox();
-    // _messagingServices.init(context);
+    _messagingServices.init(context);
     Future.delayed(
       const Duration(seconds: 3),
       () async {
@@ -59,13 +60,33 @@ class _SplashScreenState extends State<SplashScreen> {
         }
       },
     );
-
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarIconBrightness:
+          Brightness.light, // You can customize the status bar icon color
+    ));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Restore the status bar color when leaving this screen
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarIconBrightness:
+          Brightness.dark, // You can customize the default icon color
+    ));
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        // appBar: AppBar(
+        //   systemOverlayStyle: const SystemUiOverlayStyle(
+        //     statusBarColor: Colors.red,
+
+        //     statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        //   ),
+        // ),
         body: Container(
       color: AppColor.primary,
       height: double.infinity,

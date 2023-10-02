@@ -6,6 +6,7 @@ import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/district_model.dart';
@@ -175,10 +176,16 @@ class JobBloc extends Bloc<JobEvent, JobState> {
       (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
       (r) => jobs = r,
     );
-
+    var length = jobs.length;
+    jobs.removeWhere((element) =>
+        !element.status || !DateTime.now().isBefore(element.endDate!));
+    jobs.sort(
+      (a, b) => b.startDate!.compareTo(a.startDate!),
+    );
+    length = length - jobs.length;
     // jobs.removeWhere((element) =>
     //     !element.status || !DateTime.now().isBefore(element.endDate!));
-    emit(state.copyWith(jobs: jobs, isShimmer: false));
+    emit(state.copyWith(jobs: jobs, isShimmer: false, jobLength: length));
   }
 
   FutureOr<void> _onResetLastDocumentRequested(

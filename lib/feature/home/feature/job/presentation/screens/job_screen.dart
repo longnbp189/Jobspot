@@ -64,6 +64,7 @@ class _JobScreenState extends State<JobScreen> {
         ),
         body: SafeArea(
             child: BlocConsumer<JobBloc, JobState>(
+          bloc: jobBloc,
           listenWhen: (previous, current) => previous.jobs != current.jobs,
           listener: (context, state) {
             if (state.updateSuccess) {
@@ -74,6 +75,12 @@ class _JobScreenState extends State<JobScreen> {
               }
 
               authBloc.add(InitUserRequested(state.user!));
+              bloc.add(const ResetLastDocumentRequested());
+
+              Future.delayed(const Duration(milliseconds: 400), () {
+                pagingController.refresh();
+              });
+
               print('object22222222');
             }
 

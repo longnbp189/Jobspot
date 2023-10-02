@@ -11385,6 +11385,7 @@ mixin _$JobState {
   bool get updateSuccess => throw _privateConstructorUsedError;
   bool get submitSuccess => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
+  int get jobLength => throw _privateConstructorUsedError;
   String get idProvince => throw _privateConstructorUsedError;
   String get provinceText => throw _privateConstructorUsedError;
   String get districtText => throw _privateConstructorUsedError;
@@ -11435,6 +11436,7 @@ abstract class $JobStateCopyWith<$Res> {
       bool updateSuccess,
       bool submitSuccess,
       String error,
+      int jobLength,
       String idProvince,
       String provinceText,
       String districtText,
@@ -11492,6 +11494,7 @@ class _$JobStateCopyWithImpl<$Res, $Val extends JobState>
     Object? updateSuccess = null,
     Object? submitSuccess = null,
     Object? error = null,
+    Object? jobLength = null,
     Object? idProvince = null,
     Object? provinceText = null,
     Object? districtText = null,
@@ -11610,6 +11613,10 @@ class _$JobStateCopyWithImpl<$Res, $Val extends JobState>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
+      jobLength: null == jobLength
+          ? _value.jobLength
+          : jobLength // ignore: cast_nullable_to_non_nullable
+              as int,
       idProvince: null == idProvince
           ? _value.idProvince
           : idProvince // ignore: cast_nullable_to_non_nullable
@@ -11732,6 +11739,7 @@ abstract class _$$_JobStateCopyWith<$Res> implements $JobStateCopyWith<$Res> {
       bool updateSuccess,
       bool submitSuccess,
       String error,
+      int jobLength,
       String idProvince,
       String provinceText,
       String districtText,
@@ -11790,6 +11798,7 @@ class __$$_JobStateCopyWithImpl<$Res>
     Object? updateSuccess = null,
     Object? submitSuccess = null,
     Object? error = null,
+    Object? jobLength = null,
     Object? idProvince = null,
     Object? provinceText = null,
     Object? districtText = null,
@@ -11908,6 +11917,10 @@ class __$$_JobStateCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
+      jobLength: null == jobLength
+          ? _value.jobLength
+          : jobLength // ignore: cast_nullable_to_non_nullable
+              as int,
       idProvince: null == idProvince
           ? _value.idProvince
           : idProvince // ignore: cast_nullable_to_non_nullable
@@ -11990,6 +12003,7 @@ class _$_JobState implements _JobState {
       this.updateSuccess = false,
       this.submitSuccess = false,
       this.error = "",
+      this.jobLength = 0,
       this.idProvince = "",
       this.provinceText = "",
       this.districtText = "",
@@ -12192,6 +12206,9 @@ class _$_JobState implements _JobState {
   final String error;
   @override
   @JsonKey()
+  final int jobLength;
+  @override
+  @JsonKey()
   final String idProvince;
   @override
   @JsonKey()
@@ -12229,7 +12246,7 @@ class _$_JobState implements _JobState {
 
   @override
   String toString() {
-    return 'JobState(company: $company, job: $job, user: $user, salaryRange: $salaryRange, loadStatus: $loadStatus, provinces: $provinces, searchProvinces: $searchProvinces, districts: $districts, searchDistricts: $searchDistricts, jobCategories: $jobCategories, searchjobCategories: $searchjobCategories, jobs: $jobs, jobsBest: $jobsBest, jobsFilter: $jobsFilter, jobsApplied: $jobsApplied, jobBookmark: $jobBookmark, searchjobs: $searchjobs, jobsSameType: $jobsSameType, jobsSameCompany: $jobsSameCompany, cvInfoList: $cvInfoList, cvInfoMap: $cvInfoMap, isLoading: $isLoading, isShimmer: $isShimmer, updateSuccess: $updateSuccess, submitSuccess: $submitSuccess, error: $error, idProvince: $idProvince, provinceText: $provinceText, districtText: $districtText, experienceText: $experienceText, salaryText: $salaryText, jobCategoryText: $jobCategoryText, typeText: $typeText, introLetter: $introLetter, name: $name, phone: $phone, email: $email, searchText: $searchText)';
+    return 'JobState(company: $company, job: $job, user: $user, salaryRange: $salaryRange, loadStatus: $loadStatus, provinces: $provinces, searchProvinces: $searchProvinces, districts: $districts, searchDistricts: $searchDistricts, jobCategories: $jobCategories, searchjobCategories: $searchjobCategories, jobs: $jobs, jobsBest: $jobsBest, jobsFilter: $jobsFilter, jobsApplied: $jobsApplied, jobBookmark: $jobBookmark, searchjobs: $searchjobs, jobsSameType: $jobsSameType, jobsSameCompany: $jobsSameCompany, cvInfoList: $cvInfoList, cvInfoMap: $cvInfoMap, isLoading: $isLoading, isShimmer: $isShimmer, updateSuccess: $updateSuccess, submitSuccess: $submitSuccess, error: $error, jobLength: $jobLength, idProvince: $idProvince, provinceText: $provinceText, districtText: $districtText, experienceText: $experienceText, salaryText: $salaryText, jobCategoryText: $jobCategoryText, typeText: $typeText, introLetter: $introLetter, name: $name, phone: $phone, email: $email, searchText: $searchText)';
   }
 
   @override
@@ -12283,6 +12300,8 @@ class _$_JobState implements _JobState {
             (identical(other.submitSuccess, submitSuccess) ||
                 other.submitSuccess == submitSuccess) &&
             (identical(other.error, error) || other.error == error) &&
+            (identical(other.jobLength, jobLength) ||
+                other.jobLength == jobLength) &&
             (identical(other.idProvince, idProvince) ||
                 other.idProvince == idProvince) &&
             (identical(other.provinceText, provinceText) ||
@@ -12335,6 +12354,7 @@ class _$_JobState implements _JobState {
         updateSuccess,
         submitSuccess,
         error,
+        jobLength,
         idProvince,
         provinceText,
         districtText,
@@ -12384,6 +12404,7 @@ abstract class _JobState implements JobState {
       final bool updateSuccess,
       final bool submitSuccess,
       final String error,
+      final int jobLength,
       final String idProvince,
       final String provinceText,
       final String districtText,
@@ -12449,6 +12470,8 @@ abstract class _JobState implements JobState {
   bool get submitSuccess;
   @override
   String get error;
+  @override
+  int get jobLength;
   @override
   String get idProvince;
   @override

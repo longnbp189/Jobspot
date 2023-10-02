@@ -17,6 +17,6 @@ class NotificationState with _$NotificationState {
 
 extension NotificationStateExtension on NotificationState {
   bool isLastPage() {
-    return notifications.length < 8;
+    return notifications.length < 20;
   }
 }
