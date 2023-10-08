@@ -1,15 +1,17 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/change_password_screen.dart';
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/check_mail_screen.dart';
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/forgot_password_screen.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/screens/login_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/bloc/profile_bloc.dart';
+import 'package:jobspot/feature/auth/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/following_company_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/job_applied_screen.dart';
-import 'package:jobspot/feature/home/feature/job/presentation/screens/cv_configuration_screen.dart';
-import 'package:jobspot/feature/auth/feature/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/profile_screen.dart';
 import 'package:jobspot/feature/auth/feature/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
@@ -19,8 +21,8 @@ import 'package:jobspot/feature/home/feature/company/presentation/screens/compan
 import 'package:jobspot/feature/home/feature/company/presentation/screens/search_company.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
-import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
+import 'package:jobspot/feature/home/feature/job/presentation/screens/cv_configuration_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/screens/filter_job_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/screens/job_detail_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/screens/job_screen.dart';
@@ -31,8 +33,6 @@ import 'package:jobspot/feature/home/presentation/screen/home_screen.dart';
 import 'package:jobspot/feature/splash/presentation/screen/intro_screen.dart';
 import 'package:jobspot/feature/splash/presentation/screen/splash_screen.dart';
 import 'package:jobspot/router/app_router_name.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static var navigationKey = GlobalKey<NavigatorState>();
@@ -71,6 +71,17 @@ class AppRouter {
                                 child: BlocProvider.value(
                               value: arguments,
                               child: const EditProfileScreen(),
+                            ));
+                          },
+                        ),
+                        GoRoute(
+                          name: AppRouterName.changePassword,
+                          path: 'change-password',
+                          pageBuilder: (context, state) {
+                            return MaterialPage(
+                                child: BlocProvider(
+                              create: (context) => ProfileBloc(),
+                              child: const ChangePasswordScreen(),
                             ));
                           },
                         ),
@@ -123,9 +134,12 @@ class AppRouter {
                     pageBuilder: (context, state) {
                       final arguments = state.extra as CompanyAgrument;
                       return MaterialPage(
-                          child: CompanyDetailScreen(
-                              changed: arguments.changed,
-                              companyModel: arguments.companyModel));
+                          child: BlocProvider.value(
+                        value: arguments.companyBloc,
+                        child: CompanyDetailScreen(
+                            changed: arguments.changed,
+                            companyModel: arguments.companyModel),
+                      ));
                     },
                   ),
                   GoRoute(
@@ -220,7 +234,6 @@ class AppRouter {
                             return MaterialPage(
                                 child: BlocProvider.value(
                               value: arguments,
-                               
                               child: const FilterJobScreen(),
                             ));
                           },
@@ -367,6 +380,10 @@ class _InterNetCheckerState extends State<InterNetChecker> {
 class CompanyAgrument {
   final CompanyModel companyModel;
   final ValueChanged<bool> changed;
+  final CompanyBloc companyBloc;
 
-  CompanyAgrument({required this.companyModel, required this.changed});
+  CompanyAgrument(
+      {required this.companyModel,
+      required this.changed,
+      required this.companyBloc});
 }

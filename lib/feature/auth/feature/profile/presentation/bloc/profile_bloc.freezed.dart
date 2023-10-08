@@ -20,7 +20,12 @@ mixin _$ProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
     required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
     required TResult Function() updateUser,
     required TResult Function(UserModel userModel) getUser,
   }) =>
@@ -29,7 +34,12 @@ mixin _$ProfileEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
     TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
     TResult? Function()? updateUser,
     TResult? Function(UserModel userModel)? getUser,
   }) =>
@@ -38,7 +48,12 @@ mixin _$ProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
     TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
     TResult Function()? updateUser,
     TResult Function(UserModel userModel)? getUser,
     required TResult orElse(),
@@ -49,7 +64,14 @@ mixin _$ProfileEvent {
     required TResult Function(PhoneNumberChangedRequested value)
         phoneNumberChanged,
     required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
     required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
     required TResult Function(UpdateUserRequest value) updateUser,
     required TResult Function(GetUserRequest value) getUser,
   }) =>
@@ -58,7 +80,13 @@ mixin _$ProfileEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
     TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
     TResult? Function(UpdateUserRequest value)? updateUser,
     TResult? Function(GetUserRequest value)? getUser,
   }) =>
@@ -67,7 +95,13 @@ mixin _$ProfileEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
     TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
     TResult Function(UpdateUserRequest value)? updateUser,
     TResult Function(GetUserRequest value)? getUser,
     required TResult orElse(),
@@ -163,7 +197,12 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
     required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
     required TResult Function() updateUser,
     required TResult Function(UserModel userModel) getUser,
   }) {
@@ -175,7 +214,12 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
     TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
     TResult? Function()? updateUser,
     TResult? Function(UserModel userModel)? getUser,
   }) {
@@ -187,7 +231,12 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
     TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
     TResult Function()? updateUser,
     TResult Function(UserModel userModel)? getUser,
     required TResult orElse(),
@@ -204,7 +253,14 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
     required TResult Function(PhoneNumberChangedRequested value)
         phoneNumberChanged,
     required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
     required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
     required TResult Function(UpdateUserRequest value) updateUser,
     required TResult Function(GetUserRequest value) getUser,
   }) {
@@ -216,7 +272,13 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
     TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
     TResult? Function(UpdateUserRequest value)? updateUser,
     TResult? Function(GetUserRequest value)? getUser,
   }) {
@@ -228,7 +290,13 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
     TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
     TResult Function(UpdateUserRequest value)? updateUser,
     TResult Function(GetUserRequest value)? getUser,
     required TResult orElse(),
@@ -319,7 +387,12 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
     required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
     required TResult Function() updateUser,
     required TResult Function(UserModel userModel) getUser,
   }) {
@@ -331,7 +404,12 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
     TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
     TResult? Function()? updateUser,
     TResult? Function(UserModel userModel)? getUser,
   }) {
@@ -343,7 +421,12 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
     TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
     TResult Function()? updateUser,
     TResult Function(UserModel userModel)? getUser,
     required TResult orElse(),
@@ -360,7 +443,14 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
     required TResult Function(PhoneNumberChangedRequested value)
         phoneNumberChanged,
     required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
     required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
     required TResult Function(UpdateUserRequest value) updateUser,
     required TResult Function(GetUserRequest value) getUser,
   }) {
@@ -372,7 +462,13 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
     TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
     TResult? Function(UpdateUserRequest value)? updateUser,
     TResult? Function(GetUserRequest value)? getUser,
   }) {
@@ -384,7 +480,13 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
     TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
     TResult Function(UpdateUserRequest value)? updateUser,
     TResult Function(GetUserRequest value)? getUser,
     required TResult orElse(),
@@ -404,6 +506,765 @@ abstract class FullnameChangedRequested implements ProfileEvent {
   @JsonKey(ignore: true)
   _$$FullnameChangedRequestedCopyWith<_$FullnameChangedRequested>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PasswordChangedRequestedCopyWith<$Res> {
+  factory _$$PasswordChangedRequestedCopyWith(_$PasswordChangedRequested value,
+          $Res Function(_$PasswordChangedRequested) then) =
+      __$$PasswordChangedRequestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String text});
+}
+
+/// @nodoc
+class __$$PasswordChangedRequestedCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$PasswordChangedRequested>
+    implements _$$PasswordChangedRequestedCopyWith<$Res> {
+  __$$PasswordChangedRequestedCopyWithImpl(_$PasswordChangedRequested _value,
+      $Res Function(_$PasswordChangedRequested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? text = null,
+  }) {
+    return _then(_$PasswordChangedRequested(
+      null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PasswordChangedRequested implements PasswordChangedRequested {
+  const _$PasswordChangedRequested(this.text);
+
+  @override
+  final String text;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.passwordChanged(text: $text)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PasswordChangedRequested &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, text);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PasswordChangedRequestedCopyWith<_$PasswordChangedRequested>
+      get copyWith =>
+          __$$PasswordChangedRequestedCopyWithImpl<_$PasswordChangedRequested>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
+    required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
+    required TResult Function() updateUser,
+    required TResult Function(UserModel userModel) getUser,
+  }) {
+    return passwordChanged(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
+    TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
+    TResult? Function()? updateUser,
+    TResult? Function(UserModel userModel)? getUser,
+  }) {
+    return passwordChanged?.call(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
+    TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
+    TResult Function()? updateUser,
+    TResult Function(UserModel userModel)? getUser,
+    required TResult orElse(),
+  }) {
+    if (passwordChanged != null) {
+      return passwordChanged(text);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChangedRequested value)
+        phoneNumberChanged,
+    required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
+    required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
+    required TResult Function(UpdateUserRequest value) updateUser,
+    required TResult Function(GetUserRequest value) getUser,
+  }) {
+    return passwordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
+    TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
+    TResult? Function(UpdateUserRequest value)? updateUser,
+    TResult? Function(GetUserRequest value)? getUser,
+  }) {
+    return passwordChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
+    TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
+    TResult Function(UpdateUserRequest value)? updateUser,
+    TResult Function(GetUserRequest value)? getUser,
+    required TResult orElse(),
+  }) {
+    if (passwordChanged != null) {
+      return passwordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PasswordChangedRequested implements ProfileEvent {
+  const factory PasswordChangedRequested(final String text) =
+      _$PasswordChangedRequested;
+
+  String get text;
+  @JsonKey(ignore: true)
+  _$$PasswordChangedRequestedCopyWith<_$PasswordChangedRequested>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ConfirmPasswordChangedRequestedCopyWith<$Res> {
+  factory _$$ConfirmPasswordChangedRequestedCopyWith(
+          _$ConfirmPasswordChangedRequested value,
+          $Res Function(_$ConfirmPasswordChangedRequested) then) =
+      __$$ConfirmPasswordChangedRequestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String text});
+}
+
+/// @nodoc
+class __$$ConfirmPasswordChangedRequestedCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$ConfirmPasswordChangedRequested>
+    implements _$$ConfirmPasswordChangedRequestedCopyWith<$Res> {
+  __$$ConfirmPasswordChangedRequestedCopyWithImpl(
+      _$ConfirmPasswordChangedRequested _value,
+      $Res Function(_$ConfirmPasswordChangedRequested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? text = null,
+  }) {
+    return _then(_$ConfirmPasswordChangedRequested(
+      null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ConfirmPasswordChangedRequested
+    implements ConfirmPasswordChangedRequested {
+  const _$ConfirmPasswordChangedRequested(this.text);
+
+  @override
+  final String text;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.confirmPasswordChanged(text: $text)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ConfirmPasswordChangedRequested &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, text);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConfirmPasswordChangedRequestedCopyWith<_$ConfirmPasswordChangedRequested>
+      get copyWith => __$$ConfirmPasswordChangedRequestedCopyWithImpl<
+          _$ConfirmPasswordChangedRequested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
+    required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
+    required TResult Function() updateUser,
+    required TResult Function(UserModel userModel) getUser,
+  }) {
+    return confirmPasswordChanged(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
+    TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
+    TResult? Function()? updateUser,
+    TResult? Function(UserModel userModel)? getUser,
+  }) {
+    return confirmPasswordChanged?.call(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
+    TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
+    TResult Function()? updateUser,
+    TResult Function(UserModel userModel)? getUser,
+    required TResult orElse(),
+  }) {
+    if (confirmPasswordChanged != null) {
+      return confirmPasswordChanged(text);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChangedRequested value)
+        phoneNumberChanged,
+    required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
+    required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
+    required TResult Function(UpdateUserRequest value) updateUser,
+    required TResult Function(GetUserRequest value) getUser,
+  }) {
+    return confirmPasswordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
+    TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
+    TResult? Function(UpdateUserRequest value)? updateUser,
+    TResult? Function(GetUserRequest value)? getUser,
+  }) {
+    return confirmPasswordChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
+    TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
+    TResult Function(UpdateUserRequest value)? updateUser,
+    TResult Function(GetUserRequest value)? getUser,
+    required TResult orElse(),
+  }) {
+    if (confirmPasswordChanged != null) {
+      return confirmPasswordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ConfirmPasswordChangedRequested implements ProfileEvent {
+  const factory ConfirmPasswordChangedRequested(final String text) =
+      _$ConfirmPasswordChangedRequested;
+
+  String get text;
+  @JsonKey(ignore: true)
+  _$$ConfirmPasswordChangedRequestedCopyWith<_$ConfirmPasswordChangedRequested>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NewPasswordChangedRequestedCopyWith<$Res> {
+  factory _$$NewPasswordChangedRequestedCopyWith(
+          _$NewPasswordChangedRequested value,
+          $Res Function(_$NewPasswordChangedRequested) then) =
+      __$$NewPasswordChangedRequestedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String text});
+}
+
+/// @nodoc
+class __$$NewPasswordChangedRequestedCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$NewPasswordChangedRequested>
+    implements _$$NewPasswordChangedRequestedCopyWith<$Res> {
+  __$$NewPasswordChangedRequestedCopyWithImpl(
+      _$NewPasswordChangedRequested _value,
+      $Res Function(_$NewPasswordChangedRequested) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? text = null,
+  }) {
+    return _then(_$NewPasswordChangedRequested(
+      null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NewPasswordChangedRequested implements NewPasswordChangedRequested {
+  const _$NewPasswordChangedRequested(this.text);
+
+  @override
+  final String text;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.newPasswordChanged(text: $text)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewPasswordChangedRequested &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, text);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewPasswordChangedRequestedCopyWith<_$NewPasswordChangedRequested>
+      get copyWith => __$$NewPasswordChangedRequestedCopyWithImpl<
+          _$NewPasswordChangedRequested>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
+    required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
+    required TResult Function() updateUser,
+    required TResult Function(UserModel userModel) getUser,
+  }) {
+    return newPasswordChanged(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
+    TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
+    TResult? Function()? updateUser,
+    TResult? Function(UserModel userModel)? getUser,
+  }) {
+    return newPasswordChanged?.call(text);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
+    TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
+    TResult Function()? updateUser,
+    TResult Function(UserModel userModel)? getUser,
+    required TResult orElse(),
+  }) {
+    if (newPasswordChanged != null) {
+      return newPasswordChanged(text);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChangedRequested value)
+        phoneNumberChanged,
+    required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
+    required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
+    required TResult Function(UpdateUserRequest value) updateUser,
+    required TResult Function(GetUserRequest value) getUser,
+  }) {
+    return newPasswordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
+    TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
+    TResult? Function(UpdateUserRequest value)? updateUser,
+    TResult? Function(GetUserRequest value)? getUser,
+  }) {
+    return newPasswordChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
+    TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
+    TResult Function(UpdateUserRequest value)? updateUser,
+    TResult Function(GetUserRequest value)? getUser,
+    required TResult orElse(),
+  }) {
+    if (newPasswordChanged != null) {
+      return newPasswordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewPasswordChangedRequested implements ProfileEvent {
+  const factory NewPasswordChangedRequested(final String text) =
+      _$NewPasswordChangedRequested;
+
+  String get text;
+  @JsonKey(ignore: true)
+  _$$NewPasswordChangedRequestedCopyWith<_$NewPasswordChangedRequested>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangePasswordRequestCopyWith<$Res> {
+  factory _$$ChangePasswordRequestCopyWith(_$ChangePasswordRequest value,
+          $Res Function(_$ChangePasswordRequest) then) =
+      __$$ChangePasswordRequestCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String username});
+}
+
+/// @nodoc
+class __$$ChangePasswordRequestCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$ChangePasswordRequest>
+    implements _$$ChangePasswordRequestCopyWith<$Res> {
+  __$$ChangePasswordRequestCopyWithImpl(_$ChangePasswordRequest _value,
+      $Res Function(_$ChangePasswordRequest) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+  }) {
+    return _then(_$ChangePasswordRequest(
+      null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangePasswordRequest implements ChangePasswordRequest {
+  const _$ChangePasswordRequest(this.username);
+
+  @override
+  final String username;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.changePassword(username: $username)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePasswordRequest &&
+            (identical(other.username, username) ||
+                other.username == username));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, username);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePasswordRequestCopyWith<_$ChangePasswordRequest> get copyWith =>
+      __$$ChangePasswordRequestCopyWithImpl<_$ChangePasswordRequest>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
+    required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
+    required TResult Function() updateUser,
+    required TResult Function(UserModel userModel) getUser,
+  }) {
+    return changePassword(username);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
+    TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
+    TResult? Function()? updateUser,
+    TResult? Function(UserModel userModel)? getUser,
+  }) {
+    return changePassword?.call(username);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
+    TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
+    TResult Function()? updateUser,
+    TResult Function(UserModel userModel)? getUser,
+    required TResult orElse(),
+  }) {
+    if (changePassword != null) {
+      return changePassword(username);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChangedRequested value)
+        phoneNumberChanged,
+    required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
+    required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
+    required TResult Function(UpdateUserRequest value) updateUser,
+    required TResult Function(GetUserRequest value) getUser,
+  }) {
+    return changePassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
+    TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
+    TResult? Function(UpdateUserRequest value)? updateUser,
+    TResult? Function(GetUserRequest value)? getUser,
+  }) {
+    return changePassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
+    TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
+    TResult Function(UpdateUserRequest value)? updateUser,
+    TResult Function(GetUserRequest value)? getUser,
+    required TResult orElse(),
+  }) {
+    if (changePassword != null) {
+      return changePassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangePasswordRequest implements ProfileEvent {
+  const factory ChangePasswordRequest(final String username) =
+      _$ChangePasswordRequest;
+
+  String get username;
+  @JsonKey(ignore: true)
+  _$$ChangePasswordRequestCopyWith<_$ChangePasswordRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -473,7 +1334,12 @@ class _$ImageChangedRequested implements ImageChangedRequested {
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
     required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
     required TResult Function() updateUser,
     required TResult Function(UserModel userModel) getUser,
   }) {
@@ -485,7 +1351,12 @@ class _$ImageChangedRequested implements ImageChangedRequested {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
     TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
     TResult? Function()? updateUser,
     TResult? Function(UserModel userModel)? getUser,
   }) {
@@ -497,7 +1368,12 @@ class _$ImageChangedRequested implements ImageChangedRequested {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
     TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
     TResult Function()? updateUser,
     TResult Function(UserModel userModel)? getUser,
     required TResult orElse(),
@@ -514,7 +1390,14 @@ class _$ImageChangedRequested implements ImageChangedRequested {
     required TResult Function(PhoneNumberChangedRequested value)
         phoneNumberChanged,
     required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
     required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
     required TResult Function(UpdateUserRequest value) updateUser,
     required TResult Function(GetUserRequest value) getUser,
   }) {
@@ -526,7 +1409,13 @@ class _$ImageChangedRequested implements ImageChangedRequested {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
     TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
     TResult? Function(UpdateUserRequest value)? updateUser,
     TResult? Function(GetUserRequest value)? getUser,
   }) {
@@ -538,7 +1427,13 @@ class _$ImageChangedRequested implements ImageChangedRequested {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
     TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
     TResult Function(UpdateUserRequest value)? updateUser,
     TResult Function(GetUserRequest value)? getUser,
     required TResult orElse(),
@@ -558,6 +1453,161 @@ abstract class ImageChangedRequested implements ProfileEvent {
   @JsonKey(ignore: true)
   _$$ImageChangedRequestedCopyWith<_$ImageChangedRequested> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingRequestedCopyWith<$Res> {
+  factory _$$LoadingRequestedCopyWith(
+          _$LoadingRequested value, $Res Function(_$LoadingRequested) then) =
+      __$$LoadingRequestedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingRequestedCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$LoadingRequested>
+    implements _$$LoadingRequestedCopyWith<$Res> {
+  __$$LoadingRequestedCopyWithImpl(
+      _$LoadingRequested _value, $Res Function(_$LoadingRequested) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingRequested implements LoadingRequested {
+  const _$LoadingRequested();
+
+  @override
+  String toString() {
+    return 'ProfileEvent.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingRequested);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
+    required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
+    required TResult Function() updateUser,
+    required TResult Function(UserModel userModel) getUser,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
+    TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
+    TResult? Function()? updateUser,
+    TResult? Function(UserModel userModel)? getUser,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
+    TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
+    TResult Function()? updateUser,
+    TResult Function(UserModel userModel)? getUser,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(PhoneNumberChangedRequested value)
+        phoneNumberChanged,
+    required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
+    required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
+    required TResult Function(UpdateUserRequest value) updateUser,
+    required TResult Function(GetUserRequest value) getUser,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
+    TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
+    TResult? Function(UpdateUserRequest value)? updateUser,
+    TResult? Function(GetUserRequest value)? getUser,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
+    TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
+    TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
+    TResult Function(UpdateUserRequest value)? updateUser,
+    TResult Function(GetUserRequest value)? getUser,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingRequested implements ProfileEvent {
+  const factory LoadingRequested() = _$LoadingRequested;
 }
 
 /// @nodoc
@@ -600,7 +1650,12 @@ class _$UpdateUserRequest implements UpdateUserRequest {
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
     required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
     required TResult Function() updateUser,
     required TResult Function(UserModel userModel) getUser,
   }) {
@@ -612,7 +1667,12 @@ class _$UpdateUserRequest implements UpdateUserRequest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
     TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
     TResult? Function()? updateUser,
     TResult? Function(UserModel userModel)? getUser,
   }) {
@@ -624,7 +1684,12 @@ class _$UpdateUserRequest implements UpdateUserRequest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
     TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
     TResult Function()? updateUser,
     TResult Function(UserModel userModel)? getUser,
     required TResult orElse(),
@@ -641,7 +1706,14 @@ class _$UpdateUserRequest implements UpdateUserRequest {
     required TResult Function(PhoneNumberChangedRequested value)
         phoneNumberChanged,
     required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
     required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
     required TResult Function(UpdateUserRequest value) updateUser,
     required TResult Function(GetUserRequest value) getUser,
   }) {
@@ -653,7 +1725,13 @@ class _$UpdateUserRequest implements UpdateUserRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
     TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
     TResult? Function(UpdateUserRequest value)? updateUser,
     TResult? Function(GetUserRequest value)? getUser,
   }) {
@@ -665,7 +1743,13 @@ class _$UpdateUserRequest implements UpdateUserRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
     TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
     TResult Function(UpdateUserRequest value)? updateUser,
     TResult Function(GetUserRequest value)? getUser,
     required TResult orElse(),
@@ -758,7 +1842,12 @@ class _$GetUserRequest implements GetUserRequest {
   TResult when<TResult extends Object?>({
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String fullName) fullnameChanged,
+    required TResult Function(String text) passwordChanged,
+    required TResult Function(String text) confirmPasswordChanged,
+    required TResult Function(String text) newPasswordChanged,
+    required TResult Function(String username) changePassword,
     required TResult Function(String image) imageChanged,
+    required TResult Function() loading,
     required TResult Function() updateUser,
     required TResult Function(UserModel userModel) getUser,
   }) {
@@ -770,7 +1859,12 @@ class _$GetUserRequest implements GetUserRequest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String fullName)? fullnameChanged,
+    TResult? Function(String text)? passwordChanged,
+    TResult? Function(String text)? confirmPasswordChanged,
+    TResult? Function(String text)? newPasswordChanged,
+    TResult? Function(String username)? changePassword,
     TResult? Function(String image)? imageChanged,
+    TResult? Function()? loading,
     TResult? Function()? updateUser,
     TResult? Function(UserModel userModel)? getUser,
   }) {
@@ -782,7 +1876,12 @@ class _$GetUserRequest implements GetUserRequest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String fullName)? fullnameChanged,
+    TResult Function(String text)? passwordChanged,
+    TResult Function(String text)? confirmPasswordChanged,
+    TResult Function(String text)? newPasswordChanged,
+    TResult Function(String username)? changePassword,
     TResult Function(String image)? imageChanged,
+    TResult Function()? loading,
     TResult Function()? updateUser,
     TResult Function(UserModel userModel)? getUser,
     required TResult orElse(),
@@ -799,7 +1898,14 @@ class _$GetUserRequest implements GetUserRequest {
     required TResult Function(PhoneNumberChangedRequested value)
         phoneNumberChanged,
     required TResult Function(FullnameChangedRequested value) fullnameChanged,
+    required TResult Function(PasswordChangedRequested value) passwordChanged,
+    required TResult Function(ConfirmPasswordChangedRequested value)
+        confirmPasswordChanged,
+    required TResult Function(NewPasswordChangedRequested value)
+        newPasswordChanged,
+    required TResult Function(ChangePasswordRequest value) changePassword,
     required TResult Function(ImageChangedRequested value) imageChanged,
+    required TResult Function(LoadingRequested value) loading,
     required TResult Function(UpdateUserRequest value) updateUser,
     required TResult Function(GetUserRequest value) getUser,
   }) {
@@ -811,7 +1917,13 @@ class _$GetUserRequest implements GetUserRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult? Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult? Function(PasswordChangedRequested value)? passwordChanged,
+    TResult? Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult? Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult? Function(ChangePasswordRequest value)? changePassword,
     TResult? Function(ImageChangedRequested value)? imageChanged,
+    TResult? Function(LoadingRequested value)? loading,
     TResult? Function(UpdateUserRequest value)? updateUser,
     TResult? Function(GetUserRequest value)? getUser,
   }) {
@@ -823,7 +1935,13 @@ class _$GetUserRequest implements GetUserRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(PhoneNumberChangedRequested value)? phoneNumberChanged,
     TResult Function(FullnameChangedRequested value)? fullnameChanged,
+    TResult Function(PasswordChangedRequested value)? passwordChanged,
+    TResult Function(ConfirmPasswordChangedRequested value)?
+        confirmPasswordChanged,
+    TResult Function(NewPasswordChangedRequested value)? newPasswordChanged,
+    TResult Function(ChangePasswordRequest value)? changePassword,
     TResult Function(ImageChangedRequested value)? imageChanged,
+    TResult Function(LoadingRequested value)? loading,
     TResult Function(UpdateUserRequest value)? updateUser,
     TResult Function(GetUserRequest value)? getUser,
     required TResult orElse(),
@@ -847,12 +1965,18 @@ abstract class GetUserRequest implements ProfileEvent {
 /// @nodoc
 mixin _$ProfileState {
   bool get isLoading => throw _privateConstructorUsedError;
+  LoadStatusEnum get loadStatus => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get confirmPassword => throw _privateConstructorUsedError;
+  String get newPassword => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   bool get updateSuccess => throw _privateConstructorUsedError;
+  bool get changePasswordSuccess => throw _privateConstructorUsedError;
   UserModel? get userModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -868,12 +1992,18 @@ abstract class $ProfileStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      LoadStatusEnum loadStatus,
       String error,
       String email,
       String phone,
       String fullName,
       String imageUrl,
+      String password,
+      String confirmPassword,
+      String newPassword,
+      String username,
       bool updateSuccess,
+      bool changePasswordSuccess,
       UserModel? userModel});
 
   $UserModelCopyWith<$Res>? get userModel;
@@ -893,12 +2023,18 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? loadStatus = null,
     Object? error = null,
     Object? email = null,
     Object? phone = null,
     Object? fullName = null,
     Object? imageUrl = null,
+    Object? password = null,
+    Object? confirmPassword = null,
+    Object? newPassword = null,
+    Object? username = null,
     Object? updateSuccess = null,
+    Object? changePasswordSuccess = null,
     Object? userModel = freezed,
   }) {
     return _then(_value.copyWith(
@@ -906,6 +2042,10 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadStatus: null == loadStatus
+          ? _value.loadStatus
+          : loadStatus // ignore: cast_nullable_to_non_nullable
+              as LoadStatusEnum,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -926,9 +2066,29 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      newPassword: null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
       updateSuccess: null == updateSuccess
           ? _value.updateSuccess
           : updateSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
+      changePasswordSuccess: null == changePasswordSuccess
+          ? _value.changePasswordSuccess
+          : changePasswordSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
       userModel: freezed == userModel
           ? _value.userModel
@@ -960,12 +2120,18 @@ abstract class _$$_ProfileStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      LoadStatusEnum loadStatus,
       String error,
       String email,
       String phone,
       String fullName,
       String imageUrl,
+      String password,
+      String confirmPassword,
+      String newPassword,
+      String username,
       bool updateSuccess,
+      bool changePasswordSuccess,
       UserModel? userModel});
 
   @override
@@ -984,12 +2150,18 @@ class __$$_ProfileStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? loadStatus = null,
     Object? error = null,
     Object? email = null,
     Object? phone = null,
     Object? fullName = null,
     Object? imageUrl = null,
+    Object? password = null,
+    Object? confirmPassword = null,
+    Object? newPassword = null,
+    Object? username = null,
     Object? updateSuccess = null,
+    Object? changePasswordSuccess = null,
     Object? userModel = freezed,
   }) {
     return _then(_$_ProfileState(
@@ -997,6 +2169,10 @@ class __$$_ProfileStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadStatus: null == loadStatus
+          ? _value.loadStatus
+          : loadStatus // ignore: cast_nullable_to_non_nullable
+              as LoadStatusEnum,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1017,9 +2193,29 @@ class __$$_ProfileStateCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      confirmPassword: null == confirmPassword
+          ? _value.confirmPassword
+          : confirmPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      newPassword: null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
       updateSuccess: null == updateSuccess
           ? _value.updateSuccess
           : updateSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
+      changePasswordSuccess: null == changePasswordSuccess
+          ? _value.changePasswordSuccess
+          : changePasswordSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
       userModel: freezed == userModel
           ? _value.userModel
@@ -1034,17 +2230,26 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 class _$_ProfileState implements _ProfileState {
   const _$_ProfileState(
       {this.isLoading = false,
+      this.loadStatus = LoadStatusEnum.notLoad,
       this.error = "",
       this.email = "",
       this.phone = "",
       this.fullName = "",
       this.imageUrl = "",
+      this.password = "",
+      this.confirmPassword = "",
+      this.newPassword = "",
+      this.username = "",
       this.updateSuccess = false,
+      this.changePasswordSuccess = false,
       this.userModel});
 
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final LoadStatusEnum loadStatus;
   @override
   @JsonKey()
   final String error;
@@ -1062,13 +2267,28 @@ class _$_ProfileState implements _ProfileState {
   final String imageUrl;
   @override
   @JsonKey()
+  final String password;
+  @override
+  @JsonKey()
+  final String confirmPassword;
+  @override
+  @JsonKey()
+  final String newPassword;
+  @override
+  @JsonKey()
+  final String username;
+  @override
+  @JsonKey()
   final bool updateSuccess;
+  @override
+  @JsonKey()
+  final bool changePasswordSuccess;
   @override
   final UserModel? userModel;
 
   @override
   String toString() {
-    return 'ProfileState(isLoading: $isLoading, error: $error, email: $email, phone: $phone, fullName: $fullName, imageUrl: $imageUrl, updateSuccess: $updateSuccess, userModel: $userModel)';
+    return 'ProfileState(isLoading: $isLoading, loadStatus: $loadStatus, error: $error, email: $email, phone: $phone, fullName: $fullName, imageUrl: $imageUrl, password: $password, confirmPassword: $confirmPassword, newPassword: $newPassword, username: $username, updateSuccess: $updateSuccess, changePasswordSuccess: $changePasswordSuccess, userModel: $userModel)';
   }
 
   @override
@@ -1078,6 +2298,8 @@ class _$_ProfileState implements _ProfileState {
             other is _$_ProfileState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.loadStatus, loadStatus) ||
+                other.loadStatus == loadStatus) &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
@@ -1085,15 +2307,39 @@ class _$_ProfileState implements _ProfileState {
                 other.fullName == fullName) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword) &&
+            (identical(other.newPassword, newPassword) ||
+                other.newPassword == newPassword) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.updateSuccess, updateSuccess) ||
                 other.updateSuccess == updateSuccess) &&
+            (identical(other.changePasswordSuccess, changePasswordSuccess) ||
+                other.changePasswordSuccess == changePasswordSuccess) &&
             (identical(other.userModel, userModel) ||
                 other.userModel == userModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, error, email, phone,
-      fullName, imageUrl, updateSuccess, userModel);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      loadStatus,
+      error,
+      email,
+      phone,
+      fullName,
+      imageUrl,
+      password,
+      confirmPassword,
+      newPassword,
+      username,
+      updateSuccess,
+      changePasswordSuccess,
+      userModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1105,16 +2351,24 @@ class _$_ProfileState implements _ProfileState {
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
       {final bool isLoading,
+      final LoadStatusEnum loadStatus,
       final String error,
       final String email,
       final String phone,
       final String fullName,
       final String imageUrl,
+      final String password,
+      final String confirmPassword,
+      final String newPassword,
+      final String username,
       final bool updateSuccess,
+      final bool changePasswordSuccess,
       final UserModel? userModel}) = _$_ProfileState;
 
   @override
   bool get isLoading;
+  @override
+  LoadStatusEnum get loadStatus;
   @override
   String get error;
   @override
@@ -1126,7 +2380,17 @@ abstract class _ProfileState implements ProfileState {
   @override
   String get imageUrl;
   @override
+  String get password;
+  @override
+  String get confirmPassword;
+  @override
+  String get newPassword;
+  @override
+  String get username;
+  @override
   bool get updateSuccess;
+  @override
+  bool get changePasswordSuccess;
   @override
   UserModel? get userModel;
   @override

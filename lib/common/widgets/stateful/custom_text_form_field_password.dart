@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomTextFormFieldPassword extends StatefulWidget {
   const CustomTextFormFieldPassword({
@@ -64,7 +64,12 @@ class _CustomTextFormFieldPasswordState
           keyboardType: widget.type ?? TextInputType.text,
           controller: widget._textController,
           onChanged: widget.onChanged,
+          onTapOutside: (event) =>
+              FocusManager.instance.primaryFocus?.unfocus(),
+
           decoration: InputDecoration(
+              filled: true,
+              fillColor: AppColor.white,
               suffixIcon: IconButton(
                   onPressed: widget.onTap,
                   splashColor: Colors.transparent,

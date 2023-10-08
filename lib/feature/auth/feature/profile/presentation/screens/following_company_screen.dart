@@ -21,7 +21,12 @@ class FollowingCompanyScreen extends StatelessWidget {
     companyBloc.add(CompanyEvent.getListCompanyFollowing(
         authBloc.state.user ?? UserModel()));
     return BlocConsumer<CompanyBloc, CompanyState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.isFollow) {
+          print('iâdadadanit');
+          authBloc.add(InitUserRequested(state.user ?? UserModel()));
+        }
+      },
       builder: (context, state) {
         return Scaffold(
             backgroundColor: AppColor.backgroundWhite,
@@ -38,6 +43,7 @@ class FollowingCompanyScreen extends StatelessWidget {
               },
               child: SafeArea(
                   child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.only(
                     top: 16.h, left: 16.w, right: 16.w, bottom: 42.h),
                 child: state.isShimmer
@@ -51,6 +57,7 @@ class FollowingCompanyScreen extends StatelessWidget {
                             //     horizontal: 16.w, vertical: 16.h),
                             itemBuilder: (context, index) => TopCompanyCard(
                               argument: CompanyAgrument(
+                                companyBloc: companyBloc,
                                 companyModel: state.companiesFollowing[index],
                                 changed: (value) {},
                               ),

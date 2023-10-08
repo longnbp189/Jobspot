@@ -6,7 +6,6 @@ import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
-import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/district_model.dart';
@@ -17,11 +16,10 @@ import 'package:jobspot/feature/home/feature/job/domain/usecases/job_use_case.da
 import 'package:jobspot/feature/home/feature/job/presentation/screens/filter_job_screen.dart';
 import 'package:jobspot/services/database_helper.dart';
 import 'package:jobspot/services/user_cache_service.dart';
-import 'package:collection/collection.dart';
 
+part 'job_bloc.freezed.dart';
 part 'job_event.dart';
 part 'job_state.dart';
-part 'job_bloc.freezed.dart';
 
 class JobBloc extends Bloc<JobEvent, JobState> {
   JobBloc() : super(JobState()) {
@@ -238,24 +236,44 @@ class JobBloc extends Bloc<JobEvent, JobState> {
       var user = state.user?.copyWith(bookmarkIds: bookmarkIds) ?? UserModel();
       await serviceLocator<UserCacheService>().saveUser(user);
       List<JobsModel> jobs = List.from(state.jobs);
-
-      final result =
-          await serviceLocator<JobUsecase>().updateBookmark(userModel: user);
-      final index = jobs.indexWhere((job) => job.id == state.job!.id);
-      result.fold(
-        (l) => emit(state.copyWith(error: l.message, isLoading: false)),
-        (r) {
-          if (index != -1) {
-            jobs[index] = state.job!;
-            emit(state.copyWith(
-                updateSuccess: true,
-                isLoading: false,
-                user: user,
-                jobs: jobs,
-                jobBookmark: jobBookmark));
-          }
-        },
-      );
+      List<JobsModel> searchjobs = List.from(state.searchjobs);
+      if (searchjobs.isNotEmpty) {
+        final result =
+            await serviceLocator<JobUsecase>().updateBookmark(userModel: user);
+        final index = searchjobs.indexWhere((job) => job.id == state.job!.id);
+        result.fold(
+          (l) => emit(state.copyWith(error: l.message, isLoading: false)),
+          (r) {
+            if (index != -1) {
+              searchjobs[index] = state.job!;
+              emit(state.copyWith(
+                  updateSuccess: true,
+                  isLoading: false,
+                  user: user,
+                  searchjobs: searchjobs,
+                  jobBookmark: jobBookmark));
+            }
+          },
+        );
+      } else {
+        final result =
+            await serviceLocator<JobUsecase>().updateBookmark(userModel: user);
+        final index = jobs.indexWhere((job) => job.id == state.job!.id);
+        result.fold(
+          (l) => emit(state.copyWith(error: l.message, isLoading: false)),
+          (r) {
+            if (index != -1) {
+              jobs[index] = state.job!;
+              emit(state.copyWith(
+                  updateSuccess: true,
+                  isLoading: false,
+                  user: user,
+                  jobs: jobs,
+                  jobBookmark: jobBookmark));
+            }
+          },
+        );
+      }
     } catch (e) {
       emit(state.copyWith(
           error: e.toString(), updateSuccess: false, isLoading: false));

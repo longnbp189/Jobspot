@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jobspot/common/widgets/stateless/avatar_company.dart';
-import 'package:jobspot/common/widgets/stateless/button_medium.dart';
 import 'package:jobspot/common/widgets/stateless/icon_widget.dart';
 import 'package:jobspot/common/widgets/stateless/shimmer_effect.dart';
 import 'package:jobspot/design/app_asset.dart';
@@ -48,6 +47,7 @@ class JobAppliedScreen extends StatelessWidget {
               },
               child: SafeArea(
                   child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: state.isShimmer
                     ? const JobAppliedItemShimmer()
                     : state.cvInfoList.isEmpty

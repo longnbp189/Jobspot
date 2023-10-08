@@ -32,7 +32,7 @@ class RecruitmentNewsBody extends StatelessWidget {
                           itemBuilder: (context, index) => JobCard(
                               item: state.jobSameCompanies[index],
                               jobBloc: jobBloc,
-                              authBloc: authBloc),
+                              userModel: authBloc.state.user ?? UserModel()),
                           separatorBuilder: (context, index) => spaceH16,
                           itemCount: state.jobSameCompanies.length)
                       : const EmptyJobDetail(),

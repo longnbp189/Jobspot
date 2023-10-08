@@ -9,6 +9,7 @@ import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
+import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
@@ -95,7 +96,7 @@ class BookmarkScreen extends StatelessWidget {
                                 itemBuilder: (context, index) => JobCard(
                                     item: state.jobBookmark[index],
                                     jobBloc: jobBloc,
-                                    authBloc: authBloc),
+                                    userModel: authBloc.state.user??UserModel()),
                               )
                             : const JobEmpty())));
       },

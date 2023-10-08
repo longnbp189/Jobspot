@@ -1,20 +1,19 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/domain/usecases/company_use_case.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/domain/usecases/job_use_case.dart';
 
+part 'company_bloc.freezed.dart';
 part 'company_event.dart';
 part 'company_state.dart';
-part 'company_bloc.freezed.dart';
 
 class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
   CompanyBloc() : super(CompanyState()) {
@@ -75,6 +74,8 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
       final List<String> userFollow = List.from(state.user?.followerIds ?? []);
       final List<String> companyFollow =
           List.from(state.company?.followerIds ?? []);
+      List<CompanyModel> companiesFollowing =
+          List.from(state.companiesFollowing);
       if (state.isFollowCompany()) {
         userFollow.remove(state.company!.id);
         companyFollow.remove(state.user!.id);
@@ -82,10 +83,25 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
         userFollow.add(state.company!.id);
         companyFollow.add(state.user!.id);
       }
+
       emit(state.copyWith(
         user: state.user?.copyWith(followerIds: userFollow),
         company: state.company?.copyWith(followerIds: companyFollow),
       ));
+
+      if (companiesFollowing.isNotEmpty) {
+        companiesFollowing
+            .removeWhere((element) => element.id == state.company!.id);
+        final result = await serviceLocator<CompanyUsecase>().followCompany(
+            companyModel: state.company!, userModel: state.user!);
+        result.fold(
+          (l) => emit(state.copyWith(error: l.message, isLoading: false)),
+          (r) => emit(state.copyWith(
+              isFollow: true,
+              isLoading: false,
+              companiesFollowing: companiesFollowing)),
+        );
+      }
 
       if (state.searchCompanies.isEmpty) {
         List<CompanyModel> companies = List.from(state.companies);
@@ -132,7 +148,8 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
           (r) {
             if (index != -1) {
               searchCompanies[index] = state.company!;
-              emit(state.copyWith(searchCompanies: searchCompanies));
+              emit(state.copyWith(
+                  isFollow: true, searchCompanies: searchCompanies));
             }
           },
         );

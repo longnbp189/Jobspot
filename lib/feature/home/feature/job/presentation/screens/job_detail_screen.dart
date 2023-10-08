@@ -68,6 +68,10 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<JobBloc, JobState>(
       listener: (context, state) {
+        if (state.updateSuccess) {
+          print('ahihi');
+          authBloc.add(InitUserRequested(state.user!));
+        }
         if (state.submitSuccess) {
           print('pop');
           context.pop();
@@ -116,7 +120,7 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
                       child: SvgPicture.asset(
                         AppAsset.save,
                         color: AppFormat.isHasBookmark(
-                                state.job!, authBloc.state.user!)
+                                state.job!, state.user ?? authBloc.state.user!)
                             ? AppColor.secondary
                             : AppColor.unSelected,
                       ),
@@ -658,7 +662,8 @@ class CompanyBody extends StatelessWidget {
                               itemBuilder: (context, index) => JobCard(
                                   item: state.jobsSameCompany[index],
                                   jobBloc: jobBloc,
-                                  authBloc: authBloc),
+                                  userModel:
+                                      authBloc.state.user ?? UserModel()),
                               separatorBuilder: (context, index) => spaceH16,
                               itemCount: state.jobsSameCompany.length)
                           : const EmptyJobDetail(),
@@ -735,7 +740,7 @@ class RelatedJobsBody extends StatelessWidget {
                           itemBuilder: (context, index) => JobCard(
                               item: state.jobsSameType[index],
                               jobBloc: jobBloc,
-                              authBloc: authBloc),
+                              userModel: authBloc.state.user ?? UserModel()),
                           separatorBuilder: (context, index) => spaceH16,
                           itemCount: state.jobsSameType.length)
                       : const EmptyJobDetail(),
@@ -888,8 +893,8 @@ class JobDetailHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = context.read<AuthBloc>();
-    authBloc.add(const AuthEvent.getUser());
+    // final authBloc = context.read<AuthBloc>();
+    // authBloc.add(const AuthEvent.getUser());
     return BlocBuilder<JobBloc, JobState>(
       builder: (context, state) {
         return Column(
@@ -957,7 +962,7 @@ class JobDetailHeader extends StatelessWidget {
                                 ),
                                 spaceH4,
                                 Text(
-                                AppFormat.parseSalaryText(jobsModel),
+                                  AppFormat.parseSalaryText(jobsModel),
                                   style: TxtStyles.semiBold14
                                       .copyWith(color: AppColor.secondary),
                                   maxLines: 1,

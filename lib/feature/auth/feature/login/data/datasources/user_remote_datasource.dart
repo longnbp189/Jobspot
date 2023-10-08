@@ -5,9 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:jobspot/core/failure.dart';
-import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
-import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 
 abstract class UserRemoteDataSource {
   Future<Either<Failure, UserModel>> loginWithGoogle();
@@ -19,6 +17,8 @@ abstract class UserRemoteDataSource {
       {required String username, required String password});
   Future<void> logout();
 }
+
+GoogleSignInAccount? googleUser;
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
@@ -40,14 +40,14 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     //   );
     // }
     try {
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      googleUser = await _googleSignIn.signIn();
       if (googleUser != null) {
         final user = UserModel(
-          id: googleUser.id,
-          displayName: googleUser.displayName ?? '',
-          email: googleUser.email,
-          username: googleUser.email,
-          image: googleUser.photoUrl ?? '',
+          id: googleUser!.id,
+          displayName: googleUser!.displayName ?? '',
+          email: googleUser!.email,
+          username: googleUser!.email,
+          image: googleUser!.photoUrl ?? '',
         );
         return right(user);
       } else {
@@ -84,8 +84,13 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   @override
   Future<void> logout() async {
-    await _googleSignIn.disconnect();
-    await _auth.signOut();
+    if (googleUser != null) {
+      await _googleSignIn.disconnect();
+      googleUser = null;
+    } else {
+      await _auth.signOut();
+      googleUser = null;
+    }
   }
 
   @override

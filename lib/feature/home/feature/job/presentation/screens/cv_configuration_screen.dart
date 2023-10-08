@@ -1,23 +1,21 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/common/widgets/stateful/custom_text_form_field.dart';
-import 'package:jobspot/common/widgets/stateless/icon_widget.dart';
-import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/cv/data/models/cv_model.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
-import 'package:collection/collection.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
 
 class CVConfigurationScreen extends StatefulWidget {
@@ -252,6 +250,7 @@ class _CVConfigurationScreenState extends State<CVConfigurationScreen> {
                           spaceH16,
                           CustomTextFormField(
                               title: 'Phone number',
+                              type: TextInputType.number,
                               onChanged: (value) =>
                                   jobBloc.add(JobEvent.getTextPhoneJob(value)),
                               textController: _phoneController),

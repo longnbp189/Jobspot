@@ -59,6 +59,7 @@ class TopCompaniesBody extends StatelessWidget {
                     //   pagingController.refresh();
                     // },
                     argument: CompanyAgrument(
+                      companyBloc: CompanyBloc(),
                       companyModel: item,
                       changed: (value) {
                         if (value) {
@@ -148,112 +149,119 @@ class TopCompanyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authBloc = context.read<AuthBloc>();
-    final companyBloc = context.read<CompanyBloc>();
-    return BlocBuilder<CompanyBloc, CompanyState>(
-      builder: (context, state) {
-        return InkWell(
-          onTap: () {
-            FocusManager.instance.primaryFocus?.unfocus();
-            companyBloc.add(CompanyEvent.getCompanyById(
-                argument.companyModel, authBloc.state.user ?? UserModel()));
-            context.pushNamed(AppRouterName.companyDetail, extra: argument);
-          },
-          child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              decoration: BoxDecoration(
-                  color: AppColor.white,
-                  borderRadius: BorderRadius.circular(24.r)),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AvatarCompany(
-                    sizeAvatar: 72.r,
-                    avatarUrl: argument.companyModel.image,
-                  ),
-                  spaceW16,
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          argument.companyModel.displayName,
-                          style: TxtStyles.extraBold14,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                        ),
-                        spaceH8,
-                        Text(
-                          argument.companyModel.type,
-                          style: TxtStyles.extraBold14
-                              .copyWith(fontWeight: FontWeight.normal),
-                        ),
-                        spaceH8,
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 16.w, vertical: 6.h),
-                          decoration: BoxDecoration(
-                              color: AppColor.backgroundChip.withOpacity(0.4),
-                              borderRadius: BorderRadius.circular(8.r)),
-                          child: Text(
-                            '36 Jobs',
-                            style: TxtStyles.regular14,
-                          ),
-                        ),
-                        spaceH16,
-                        InkWell(
-                          onTap: () {
-                            companyBloc.add(CompanyEvent.getCompanyById(
-                                argument.companyModel,
-                                authBloc.state.user ?? UserModel()));
-                            Future.delayed(const Duration(milliseconds: 400),
-                                () {
-                              companyBloc
-                                  .add(const CompanyEvent.followCompany());
-                            });
-                          },
-                          child: AppFormat.isFollow(
-                                  argument.companyModel, authBloc.state.user!)
-                              ? Container(
-                                  width: double.infinity,
-                                  alignment: Alignment.bottomCenter,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 16.w, vertical: 6.h),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: AppColor.backgroundChip),
-                                      color: AppColor.white,
-                                      borderRadius:
-                                          BorderRadius.circular(24.r)),
-                                  child: Text(
-                                    'Following',
-                                    style: TxtStyles.semiBold14,
-                                  ),
-                                )
-                              : Container(
-                                  width: double.infinity,
-                                  alignment: Alignment.bottomCenter,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 16.w, vertical: 6.h),
-                                  decoration: BoxDecoration(
-                                      border:
-                                          Border.all(color: AppColor.primary),
-                                      color: AppColor.white,
-                                      borderRadius:
-                                          BorderRadius.circular(24.r)),
-                                  child: Text(
-                                    '+ Follow',
-                                    style: TxtStyles.semiBold14
-                                        .copyWith(color: AppColor.primary),
-                                  ),
-                                ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              )),
-        );
+    final companyBloc = argument.companyBloc;
+    return BlocListener<CompanyBloc, CompanyState>(
+      listener: (context, state) {
+      
       },
+      child: BlocBuilder<CompanyBloc, CompanyState>(
+        bloc: companyBloc,
+        builder: (context, state) {
+          return InkWell(
+            onTap: () {
+              // FocusManager.instance.primaryFocus?.unfocus();
+              companyBloc.add(CompanyEvent.getCompanyById(
+                  argument.companyModel, authBloc.state.user ?? UserModel()));
+              context.pushNamed(AppRouterName.companyDetail, extra: argument);
+            },
+            child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                decoration: BoxDecoration(
+                    color: AppColor.white,
+                    borderRadius: BorderRadius.circular(24.r)),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AvatarCompany(
+                      sizeAvatar: 72.r,
+                      avatarUrl: argument.companyModel.image,
+                    ),
+                    spaceW16,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            argument.companyModel.displayName,
+                            style: TxtStyles.extraBold14,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ),
+                          spaceH8,
+                          Text(
+                            argument.companyModel.type,
+                            style: TxtStyles.extraBold14
+                                .copyWith(fontWeight: FontWeight.normal),
+                          ),
+                          spaceH8,
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.w, vertical: 6.h),
+                            decoration: BoxDecoration(
+                                color: AppColor.backgroundChip.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(8.r)),
+                            child: Text(
+                              '36 Jobs',
+                              style: TxtStyles.regular14,
+                            ),
+                          ),
+                          spaceH16,
+                          InkWell(
+                            onTap: () {
+                              companyBloc.add(CompanyEvent.getCompanyById(
+                                  argument.companyModel,
+                                  authBloc.state.user ?? UserModel()));
+                              Future.delayed(const Duration(milliseconds: 400),
+                                  () {
+                                companyBloc
+                                    .add(const CompanyEvent.followCompany());
+                              });
+                              argument.changed.call(true);
+                            },
+                            child: AppFormat.isFollow(
+                                    argument.companyModel, authBloc.state.user!)
+                                ? Container(
+                                    width: double.infinity,
+                                    alignment: Alignment.bottomCenter,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 16.w, vertical: 6.h),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: AppColor.backgroundChip),
+                                        color: AppColor.white,
+                                        borderRadius:
+                                            BorderRadius.circular(24.r)),
+                                    child: Text(
+                                      'Following',
+                                      style: TxtStyles.semiBold14,
+                                    ),
+                                  )
+                                : Container(
+                                    width: double.infinity,
+                                    alignment: Alignment.bottomCenter,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 16.w, vertical: 6.h),
+                                    decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: AppColor.primary),
+                                        color: AppColor.white,
+                                        borderRadius:
+                                            BorderRadius.circular(24.r)),
+                                    child: Text(
+                                      '+ Follow',
+                                      style: TxtStyles.semiBold14
+                                          .copyWith(color: AppColor.primary),
+                                    ),
+                                  ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                )),
+          );
+        },
+      ),
     );
   }
 }

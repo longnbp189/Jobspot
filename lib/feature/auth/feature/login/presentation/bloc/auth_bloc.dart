@@ -1,16 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobspot/core/service_locator.dart';
-import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/domain/usecases/login_use_case.dart';
 import 'package:jobspot/feature/auth/feature/profile/domain/usecases/profile_usecase.dart';
-import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
-import 'package:jobspot/feature/home/feature/notification/data/models/notification_model.dart';
 import 'package:jobspot/services/user_cache_service.dart';
 
 part 'auth_bloc.freezed.dart';
@@ -36,8 +32,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> _onLogin(Login event, Emitter<AuthState> emit) async {
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(isLoading: true, error: ''));
     final result = await serviceLocator<LoginUsecase>().loginWithGoogle();
+    print('_onLogin');
     UserModel? userResponse;
     result.fold((l) => emit(state.copyWith(error: l.message, isLoading: false)),
         (r) => userResponse = r);
@@ -51,6 +48,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> _onSignUp(SignUp event, Emitter<AuthState> emit) async {
     emit(state.copyWith(isLoading: true, error: '', signUpSuccess: null));
+    print('_onSignUp');
+
     try {
       await serviceLocator<LoginUsecase>()
           .signUp(email: state.email.trim(), password: state.password.trim());
@@ -61,14 +60,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> _onLogout(Logout event, Emitter<AuthState> emit) async {
+    print('_onLogout');
+
     await serviceLocator<LoginUsecase>().logout(state.user?.id ?? '');
     // await serviceLocator<UserCacheService>().deleteUser();
-    emit(state.copyWith(user: null));
+    emit(state.copyWith(user: null, password: '', email: ''));
   }
 
   FutureOr<void> _onLoginWithUsernameAndPasswordRequested(
       LoginWithUsernameAndPasswordRequested event,
       Emitter<AuthState> emit) async {
+    print('_onLoginWithUsernameAndPasswordRequested');
+
     emit(state.copyWith(isLoading: true, error: ''));
     final result = await serviceLocator<LoginUsecase>()
         .loginWithUsernameAndPassword(
@@ -140,6 +143,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> _onGetUserRequested(
       GetUserRequested event, Emitter<AuthState> emit) async {
     emit(state.copyWith(isLoading: true));
+    print('_onGetUserRequested');
 
     // final collectionReference = FirebaseFirestore.instance.collection('Jobs');
 
@@ -176,12 +180,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       //   await collectionReference.doc(company.id).set(company.toJson());
       // }
       emit(state.copyWith(user: result, isLoading: false));
+    } else {
+      emit(state.copyWith(isLoading: false));
     }
   }
 
   FutureOr<void> _onForgotPasswordRequested(
       ForgotPasswordRequested event, Emitter<AuthState> emit) async {
     emit(state.copyWith(isLoading: true, error: ''));
+    print('_onForgotPasswordRequested');
 
     final result = await serviceLocator<LoginUsecase>()
         .forgotPassword(email: state.forgotEmail.trim());

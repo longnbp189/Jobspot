@@ -1,6 +1,7 @@
+import 'dart:core';
 import 'dart:io';
 import 'dart:math';
-import 'dart:core';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:jobspot/design/app_asset.dart';
@@ -29,8 +29,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:collection/collection.dart';
-
 // import 'dart:math' show sin, cos, sqrt, atan2;
 import 'package:vector_math/vector_math.dart' as vector;
 
@@ -831,7 +829,8 @@ class AppFormat {
         actions: [
           TextButton(
             onPressed: () {
-              context.pop();
+              Navigator.pop(context);
+              // context.pop();
             },
             child: const Text('Cancel'),
           ),

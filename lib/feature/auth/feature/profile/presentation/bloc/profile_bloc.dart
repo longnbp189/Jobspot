@@ -3,14 +3,15 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/profile/domain/usecases/profile_usecase.dart';
 import 'package:jobspot/services/user_cache_service.dart';
 
+part 'profile_bloc.freezed.dart';
 part 'profile_event.dart';
 part 'profile_state.dart';
-part 'profile_bloc.freezed.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(const ProfileState()) {
@@ -19,6 +20,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<UpdateUserRequest>(_onUpdateUserRequest);
     on<ImageChangedRequested>(_onImageChangedRequested);
     on<GetUserRequest>(_onGetUserRequest);
+    on<LoadingRequested>(_onLoadingRequested);
+    on<PasswordChangedRequested>(_onPasswordChangedRequested);
+    on<ConfirmPasswordChangedRequested>(_onConfirmPasswordChangedRequested);
+    on<NewPasswordChangedRequested>(_onNewPasswordChangedRequested);
+    on<ChangePasswordRequest>(_onChangePasswordRequest);
   }
 
   FutureOr<void> _onPhoneNumberChangedRequested(
@@ -33,8 +39,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   FutureOr<void> _onUpdateUserRequest(
       UpdateUserRequest event, Emitter<ProfileState> emit) async {
-    emit(state.copyWith(isLoading: true, error: ''));
     try {
+      emit(state.copyWith(loadStatus: LoadStatusEnum.loading, error: ''));
+
       var userModel = state.userModel;
       if (userModel != null) {
         var user = UserModel(
@@ -58,17 +65,22 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             await serviceLocator<ProfileUsecase>().updateUserToFirebase(user);
 
         result.fold(
-          (l) => emit(state.copyWith(error: l.toString(), isLoading: false)),
+          (l) => emit(state.copyWith(
+              error: l.toString(), loadStatus: LoadStatusEnum.loaded)),
           (r) => emit(state.copyWith(
-              updateSuccess: true, isLoading: false, userModel: user)),
+              updateSuccess: true,
+              loadStatus: LoadStatusEnum.loaded,
+              userModel: user)),
         );
 
         await serviceLocator<UserCacheService>().saveUser(user);
       }
     } on FirebaseAuthException catch (e) {
-      emit(state.copyWith(error: e.toString(), isLoading: false));
+      emit(state.copyWith(
+          error: e.toString(), loadStatus: LoadStatusEnum.loaded));
     } finally {
-      emit(state.copyWith(error: '', updateSuccess: false, isLoading: false));
+      emit(state.copyWith(
+          error: '', updateSuccess: false, loadStatus: LoadStatusEnum.notLoad));
     }
   }
 
@@ -81,4 +93,27 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       GetUserRequest event, Emitter<ProfileState> emit) {
     emit(state.copyWith(userModel: event.userModel));
   }
+
+  FutureOr<void> _onLoadingRequested(
+      LoadingRequested event, Emitter<ProfileState> emit) {
+    emit(state.copyWith(loadStatus: LoadStatusEnum.loading));
+  }
+
+  FutureOr<void> _onPasswordChangedRequested(
+      PasswordChangedRequested event, Emitter<ProfileState> emit) {
+    emit(state.copyWith(password: event.text));
+  }
+
+  FutureOr<void> _onConfirmPasswordChangedRequested(
+      ConfirmPasswordChangedRequested event, Emitter<ProfileState> emit) {
+    emit(state.copyWith(confirmPassword: event.text));
+  }
+
+  FutureOr<void> _onNewPasswordChangedRequested(
+      NewPasswordChangedRequested event, Emitter<ProfileState> emit) {
+    emit(state.copyWith(newPassword: event.text));
+  }
+
+  FutureOr<void> _onChangePasswordRequest(
+      ChangePasswordRequest event, Emitter<ProfileState> emit) async {}
 }

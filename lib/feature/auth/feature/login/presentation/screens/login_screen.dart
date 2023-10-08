@@ -1,9 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:jobspot/common/widgets/stateful/custom_text_form_field.dart';
 import 'package:jobspot/common/widgets/stateful/custom_text_form_field_password.dart';
 import 'package:jobspot/common/widgets/stateless/button_medium.dart';
-import 'package:jobspot/common/widgets/stateful/custom_text_form_field.dart';
 import 'package:jobspot/common/widgets/stateless/loading_screen.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
@@ -11,11 +16,6 @@ import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/router/app_router_name.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  BuildContext? dialogContext;
 
   void _toggle() {
     setState(() {
@@ -196,6 +197,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
+        dialogContext = context;
+
         return AlertDialog(
           title: Text(title ?? ''),
           content: SingleChildScrollView(
@@ -210,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: onPressed ??
                   () {
                     // authBloc.state.copyWith(error: "");
-                    context.pop();
+                    Navigator.of(dialogContext!).pop();
                   },
               child: const Text('OK'),
             ),

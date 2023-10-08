@@ -53,7 +53,16 @@ class _CompanyScreenState extends State<CompanyScreen> {
           ),
           actions: [
             IconButton(
-                onPressed: () => context.pushNamed(AppRouterName.searchCompany),
+                onPressed: () async {
+                  final returnedArgument = await context.pushNamed(
+                    AppRouterName.searchCompany,
+                  );
+                  if (returnedArgument is bool && returnedArgument == true) {
+                    bloc.add(const ResetLastDocumentRequested());
+
+                    pagingController.refresh();
+                  }
+                },
                 icon: const Icon(Icons.search))
           ],
         ),
@@ -104,6 +113,7 @@ class _CompanyScreenState extends State<CompanyScreen> {
                       itemBuilder: (context, item, index) {
                         return TopCompanyCard(
                           argument: CompanyAgrument(
+                            companyBloc: CompanyBloc(),
                             companyModel: item,
                             changed: (value) {
                               print('ahihi');

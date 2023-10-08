@@ -38,7 +38,9 @@ class _SearchJobScreenState extends State<SearchJobScreen> {
     jobBloc.add(JobEvent.getListJobMax(authBloc.state.user ?? UserModel()));
     return BlocConsumer<JobBloc, JobState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state.updateSuccess) {
+          authBloc.add(InitUserRequested(state.user!));
+        }
       },
       builder: (context, state) {
         return Scaffold(
@@ -51,93 +53,101 @@ class _SearchJobScreenState extends State<SearchJobScreen> {
             ),
             body: SafeArea(
                 child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(
-              children: [
-                Container(
-                  color: AppColor.white,
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          onTapOutside: (event) =>
-                              FocusManager.instance.primaryFocus?.unfocus(),
-                          onChanged: (value) {
-                            jobBloc.add(SearchJobRequested(value));
-                          },
-                          controller: _searchController,
-                          decoration: InputDecoration(
-                            suffixIcon: GestureDetector(
-                              onTap: () {
-                                jobBloc.add(const SearchJobRequested(''));
-                                _searchController.clear();
-                              },
-                              child: const Icon(
-                                Icons.close,
-                                color: AppColor.primary,
-                                size: 24,
+                      children: [
+                        Container(
+                          color: AppColor.white,
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextFormField(
+                                  onTapOutside: (event) => FocusManager
+                                      .instance.primaryFocus
+                                      ?.unfocus(),
+                                  onChanged: (value) {
+                                    jobBloc.add(SearchJobRequested(value));
+                                  },
+                                  controller: _searchController,
+                                  decoration: InputDecoration(
+                                    suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        jobBloc
+                                            .add(const SearchJobRequested(''));
+                                        _searchController.clear();
+                                      },
+                                      child: const Icon(
+                                        Icons.close,
+                                        color: AppColor.primary,
+                                        size: 24,
+                                      ),
+                                    ),
+                                    hintText: 'Job name',
+                                    contentPadding: EdgeInsets.zero,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      borderSide: const BorderSide(
+                                          color: AppColor.primary),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      borderSide: const BorderSide(
+                                          color: AppColor.primary),
+                                    ),
+                                    prefixIcon: const Icon(
+                                      Icons.search,
+                                      color: AppColor.primary,
+                                      size: 24,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                            hintText: 'Job name',
-                            contentPadding: EdgeInsets.zero,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r),
-                              borderSide:
-                                  const BorderSide(color: AppColor.primary),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.r),
-                              borderSide:
-                                  const BorderSide(color: AppColor.primary),
-                            ),
-                            prefixIcon: const Icon(
-                              Icons.search,
-                              color: AppColor.primary,
-                              size: 24,
-                            ),
+                              spaceW8,
+                              InkWell(
+                                onTap: () => context.pushNamed(
+                                    AppRouterName.filterJob,
+                                    extra: jobBloc),
+                                child: IconWidget(
+                                  icon: AppAsset.filter,
+                                  color: state.isHasSubText()
+                                      ? AppColor.secondary
+                                      : AppColor.black,
+                                  size: 52.r,
+                                ),
+                              )
+                            ],
                           ),
                         ),
-                      ),
-                      spaceW8,
-                      InkWell(
-                        onTap: () => context.pushNamed(AppRouterName.filterJob,
-                            extra: jobBloc),
-                        child: IconWidget(
-                          icon: AppAsset.filter,
-                          color: state.isHasSubText()
-                              ? AppColor.secondary
-                              : AppColor.black,
-                          size: 52.r,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                _searchController.text.isEmpty &&
-                        state.searchjobs.isEmpty &&
-                        !state.isHasSubText()
-                    ? SizedBox(
-                        height: AppFormat.height(context) - 200.h,
-                        width: AppFormat.width(context),
-                        child: const InitSearchEmpty())
-                    : state.searchjobs.isEmpty
-                        ? SizedBox(
-                            height: AppFormat.height(context) - 200.h,
-                            width: AppFormat.width(context),
-                            child: const TopCompanyEmpty())
-                        : ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 16.w, vertical: 16.h),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) => JobCard(
-                                item: state.searchjobs[index],
-                                jobBloc: jobBloc,
-                                authBloc: authBloc),
-                            separatorBuilder: (context, index) => spaceH16,
-                            itemCount: state.searchjobs.length)
-              ],
-            ))));
+                        _searchController.text.isEmpty &&
+                                state.searchjobs.isEmpty &&
+                                !state.isHasSubText()
+                            ? SizedBox(
+                                height: AppFormat.height(context) - 200.h,
+                                width: AppFormat.width(context),
+                                child: const InitSearchEmpty())
+                            : state.searchjobs.isEmpty
+                                ? SizedBox(
+                                    height: AppFormat.height(context) - 200.h,
+                                    width: AppFormat.width(context),
+                                    child: const TopCompanyEmpty())
+                                : ListView.separated(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 16.w, vertical: 16.h),
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) => JobCard(
+                                        item: state.searchjobs[index],
+                                        jobBloc: jobBloc,
+                                        userModel: state.user ??
+                                            authBloc.state.user ??
+                                            UserModel()),
+                                    separatorBuilder: (context, index) =>
+                                        spaceH16,
+                                    itemCount: state.searchjobs.length)
+                      ],
+                    ))));
       },
     );
   }

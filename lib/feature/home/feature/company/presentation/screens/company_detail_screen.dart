@@ -47,8 +47,15 @@ class _CompanyDetailScreenState extends State<CompanyDetailScreen> {
   // TabController? _tabController;
   int intTab = 0;
   late ScrollController _scrollController;
+  var companyBloc = CompanyBloc();
+  var authBloc = AuthBloc();
+
   @override
   void initState() {
+    companyBloc = context.read<CompanyBloc>();
+    authBloc = context.read<AuthBloc>();
+    companyBloc.add(CompanyEvent.getCompanyById(
+            widget.companyModel, authBloc.state.user ?? UserModel()));
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {});
@@ -66,112 +73,106 @@ class _CompanyDetailScreenState extends State<CompanyDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = context.read<AuthBloc>();
     var collapsedHeight =
         widget.companyModel.displayName.length > 37 ? 370.h : 350.h;
-    return BlocProvider(
-      create: (context) => CompanyBloc()
-        ..add(CompanyEvent.getCompanyById(
-            widget.companyModel, authBloc.state.user ?? UserModel())),
-      child: BlocBuilder<CompanyBloc, CompanyState>(
-        builder: (context, state) {
-          return DefaultTabController(
-            length: 3,
-            child: Scaffold(
-                body: SafeArea(
-                    child: NestedScrollView(
-              controller: _scrollController,
-              headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return [
-                  SliverAppBar(
-                    pinned: true,
-                    expandedHeight: collapsedHeight,
-                    leading: GestureDetector(
-                      onTap: () => context.pop(),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 700),
-                        margin: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: _isSliverAppBarExpanded ? null : Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.arrow_back,
-                          color: AppColor.primary,
-                        ),
+    return BlocBuilder<CompanyBloc, CompanyState>(
+      builder: (context, state) {
+        return DefaultTabController(
+          length: 3,
+          child: Scaffold(
+              body: SafeArea(
+                  child: NestedScrollView(
+            controller: _scrollController,
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                SliverAppBar(
+                  pinned: true,
+                  expandedHeight: collapsedHeight,
+                  leading: GestureDetector(
+                    onTap: () => context.pop(),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 700),
+                      margin: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: _isSliverAppBarExpanded ? null : Colors.white,
+                        shape: BoxShape.circle,
                       ),
-                    ),
-                    flexibleSpace: FlexibleSpaceBar(
-                      title: AnimatedOpacity(
-                        opacity: _isSliverAppBarExpanded ? 1.0 : 0.0,
-                        duration: const Duration(milliseconds: 300),
-                        child: _isSliverAppBarExpanded
-                            ? Text(
-                                state.company?.displayName ??
-                                    widget.companyModel.displayName,
-                                style: TxtStyles.semiBold20,
-                              )
-                            : null,
+                      child: const Icon(
+                        Icons.arrow_back,
+                        color: AppColor.primary,
                       ),
-                      background: CompanyDetailHeader(
-                          change: widget.changed,
-                          companyModel: state.company ?? widget.companyModel),
                     ),
                   ),
-                  SliverPersistentHeader(
-                      pinned: true,
-                      delegate: SliverAppBarDelegate(TabBar(
-                        onTap: (value) => setState(() {
-                          intTab = value;
-                        }),
-                        isScrollable: true,
-                        tabAlignment: TabAlignment.start,
-                        // indicatorColor: Colors.transparent,
-                        // dividerColor: Colors.transparent,
-                        // controller: _tabController,
-                        tabs: [
-                          Tab(
-                              child: Text(
-                            'About company',
-                            style: intTab == 0
-                                ? TxtStyles.semiBold14.copyWith(
-                                    color: AppColor.primary, fontSize: 16.sp)
-                                : TxtStyles.semiBold14,
-                          )),
-                          Tab(
-                              child: Text(
-                            'Recruitment news',
-                            style: intTab == 1
-                                ? TxtStyles.semiBold14.copyWith(
-                                    color: AppColor.primary, fontSize: 16.sp)
-                                : TxtStyles.semiBold14,
-                          )),
-                          Tab(
-                              child: Text(
-                            'Top companies in the same field',
-                            style: intTab == 2
-                                ? TxtStyles.semiBold14.copyWith(
-                                    color: AppColor.primary, fontSize: 16.sp)
-                                : TxtStyles.semiBold14,
-                          )),
-                        ],
-                      )))
-                ];
-              },
-              body: TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  // controller: _tabController,
-                  children: [
-                    AboutCompanyBody(
-                      companyModel: widget.companyModel,
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: AnimatedOpacity(
+                      opacity: _isSliverAppBarExpanded ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 300),
+                      child: _isSliverAppBarExpanded
+                          ? Text(
+                              state.company?.displayName ??
+                                  widget.companyModel.displayName,
+                              style: TxtStyles.semiBold20,
+                            )
+                          : null,
                     ),
-                    const RecruitmentNewsBody(),
-                    const TopCompaniesBody(),
-                  ]),
-            ))),
-          );
-        },
-      ),
+                    background: CompanyDetailHeader(
+                        change: widget.changed,
+                        companyModel: state.company ?? widget.companyModel),
+                  ),
+                ),
+                SliverPersistentHeader(
+                    pinned: true,
+                    delegate: SliverAppBarDelegate(TabBar(
+                      onTap: (value) => setState(() {
+                        intTab = value;
+                      }),
+                      isScrollable: true,
+                      tabAlignment: TabAlignment.start,
+                      // indicatorColor: Colors.transparent,
+                      // dividerColor: Colors.transparent,
+                      // controller: _tabController,
+                      tabs: [
+                        Tab(
+                            child: Text(
+                          'About company',
+                          style: intTab == 0
+                              ? TxtStyles.semiBold14.copyWith(
+                                  color: AppColor.primary, fontSize: 16.sp)
+                              : TxtStyles.semiBold14,
+                        )),
+                        Tab(
+                            child: Text(
+                          'Recruitment news',
+                          style: intTab == 1
+                              ? TxtStyles.semiBold14.copyWith(
+                                  color: AppColor.primary, fontSize: 16.sp)
+                              : TxtStyles.semiBold14,
+                        )),
+                        Tab(
+                            child: Text(
+                          'Top companies in the same field',
+                          style: intTab == 2
+                              ? TxtStyles.semiBold14.copyWith(
+                                  color: AppColor.primary, fontSize: 16.sp)
+                              : TxtStyles.semiBold14,
+                        )),
+                      ],
+                    )))
+              ];
+            },
+            body: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                // controller: _tabController,
+                children: [
+                  AboutCompanyBody(
+                    companyModel: widget.companyModel,
+                  ),
+                  const RecruitmentNewsBody(),
+                  const TopCompaniesBody(),
+                ]),
+          ))),
+        );
+      },
     );
   }
 }

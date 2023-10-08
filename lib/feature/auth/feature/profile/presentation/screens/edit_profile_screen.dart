@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/common/widgets/stateful/custom_text_form_field.dart';
 import 'package:jobspot/common/widgets/stateless/avatar.dart';
 import 'package:jobspot/common/widgets/stateless/button_medium.dart';
@@ -14,10 +15,8 @@ import 'package:jobspot/design/app_color.dart';
 import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
-import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/bloc/profile_bloc.dart';
-import 'package:jobspot/router/app_router_name.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -49,11 +48,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   // final authState = AuthBloc().state;
   var profileBloc = ProfileBloc();
   var authBloc = AuthBloc();
+
   @override
   void initState() {
     profileBloc = context.read<ProfileBloc>();
     authBloc = context.read<AuthBloc>();
     // user = authState.user;
+    profileBloc.add(ProfileEvent.fullnameChanged(
+        profileBloc.state.userModel?.displayName ?? ''));
+    profileBloc.add(ProfileEvent.phoneNumberChanged(
+        profileBloc.state.userModel?.phoneNumber ?? ''));
     _emailController.text = profileBloc.state.userModel?.email ?? '';
     _fullNameController.text = profileBloc.state.userModel?.displayName ?? '';
     _phoneController.text = profileBloc.state.userModel?.phoneNumber ?? '';
@@ -64,13 +68,37 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<ProfileBloc, ProfileState>(
+        bloc: profileBloc,
         listener: (context, state) {
-          if (state.updateSuccess) {
-            authBloc.add(InitUserRequested(state.userModel!));
+          if (state.loadStatus == LoadStatusEnum.loading) {
+            showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) {
+                  dialogContext = context;
 
-            AppFormat.showSnackBar(context, 'Update success', 2);
+                  return Container(
+                      color: AppColor.black.withOpacity(0.4),
+                      child: const Center(child: CircularProgressIndicator()));
+                });
+          }
+          if (state.loadStatus == LoadStatusEnum.loaded) {
+            if (dialogContext != null) {
+              if (avatarImage != null) {
+                Navigator.of(dialogContext!).pop();
+                Navigator.of(dialogContext!).pop();
+              } else {
+                Navigator.of(dialogContext!).pop();
+              }
+            }
 
-            context.pop();
+            if (state.updateSuccess) {
+              authBloc.add(InitUserRequested(state.userModel!));
+
+              AppFormat.showSnackBar(context, 'Update success', 2);
+
+              context.pop();
+            }
           }
         },
         builder: (context, state) {
@@ -127,7 +155,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     onTap: () async {
                                       dialogContext = context;
                                       if (await AppFormat()
-                                          .checkPermission(context)) {
+                                          .checkPermission(dialogContext!)) {
                                         pickImage();
                                       }
 
@@ -213,6 +241,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               ? null
                               : () async {
                                   if (avatarImage != null) {
+                                    profileBloc
+                                        .add(const ProfileEvent.loading());
+
                                     await uploadAvatar(profileBloc);
                                   }
 

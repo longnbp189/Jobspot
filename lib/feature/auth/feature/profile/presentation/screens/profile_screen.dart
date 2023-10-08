@@ -1,18 +1,11 @@
-import 'dart:io';
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:jobspot/common/widgets/stateless/avatar.dart';
-import 'package:jobspot/common/widgets/stateless/button_medium.dart';
-import 'package:jobspot/common/widgets/stateful/custom_text_form_field.dart';
 import 'package:jobspot/common/widgets/stateless/icon_widget.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
-import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
@@ -20,7 +13,6 @@ import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.d
 import 'package:jobspot/feature/auth/feature/profile/presentation/bloc/profile_bloc.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/screens/filter_job_screen.dart';
 import 'package:jobspot/router/app_router_name.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -195,8 +187,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               style: TxtStyles.regular14,
                                             ),
                                             Text(
-                                              authBloc.state.user!.jobIds.length
-                                                  .toString(),
+                                              authBloc.state.user == null
+                                                  ? '0'
+                                                  : authBloc
+                                                      .state.user!.jobIds.length
+                                                      .toString(),
                                               style: TxtStyles.semiBold16,
                                             )
                                           ],
@@ -234,9 +229,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               style: TxtStyles.regular14,
                                             ),
                                             Text(
-                                              authBloc.state.user!.followerIds
-                                                  .length
-                                                  .toString(),
+                                              authBloc.state.user == null
+                                                  ? '0'
+                                                  : authBloc.state.user!
+                                                      .followerIds.length
+                                                      .toString(),
                                               style: TxtStyles.semiBold16,
                                             )
                                           ],

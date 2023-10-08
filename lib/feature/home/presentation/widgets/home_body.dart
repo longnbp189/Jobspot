@@ -230,7 +230,8 @@ class HomeBody extends StatelessWidget {
                                       itemBuilder: (context, index) => JobCard(
                                           item: jobBloc.state.jobsBest[index],
                                           jobBloc: jobBloc,
-                                          authBloc: authBloc),
+                                          userModel: authBloc.state.user ??
+                                              UserModel()),
                                       separatorBuilder: (context, index) =>
                                           spaceW16,
                                       itemCount: jobBloc.state.jobsBest.length),
@@ -296,6 +297,7 @@ class HomeBody extends StatelessWidget {
                                             context.pushNamed(
                                                 AppRouterName.companyDetail,
                                                 extra: CompanyAgrument(
+                                                  companyBloc: CompanyBloc(),
                                                   companyModel: companyState
                                                       .companies[index],
                                                   changed: (value) {},

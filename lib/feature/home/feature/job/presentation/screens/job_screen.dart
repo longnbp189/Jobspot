@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:jobspot/common/widgets/stateless/avatar.dart';
 import 'package:jobspot/common/widgets/stateless/avatar_company.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
@@ -75,11 +74,11 @@ class _JobScreenState extends State<JobScreen> {
               }
 
               authBloc.add(InitUserRequested(state.user!));
-              bloc.add(const ResetLastDocumentRequested());
+              // bloc.add(const ResetLastDocumentRequested());
 
-              Future.delayed(const Duration(milliseconds: 400), () {
-                pagingController.refresh();
-              });
+              // Future.delayed(const Duration(milliseconds: 400), () {
+              //   pagingController.refresh();
+              // });
 
               print('object22222222');
             }
@@ -116,7 +115,11 @@ class _JobScreenState extends State<JobScreen> {
                           const TopCompanyCardShimmer(),
                       itemBuilder: (context, item, index) {
                         return JobCard(
-                            item: item, jobBloc: jobBloc, authBloc: authBloc);
+                            item: item,
+                            jobBloc: jobBloc,
+                            userModel: state.user ??
+                                authBloc.state.user ??
+                                UserModel());
                       },
                     ),
                     separatorBuilder: (context, index) => spaceH16,
@@ -130,12 +133,12 @@ class _JobScreenState extends State<JobScreen> {
 class JobCard extends StatelessWidget {
   final JobsModel item;
   final JobBloc jobBloc;
-  final AuthBloc authBloc;
+  final UserModel userModel;
   const JobCard(
       {super.key,
       required this.item,
       required this.jobBloc,
-      required this.authBloc});
+      required this.userModel});
 
   @override
   Widget build(BuildContext context) {
@@ -146,8 +149,7 @@ class JobCard extends StatelessWidget {
           color: AppColor.white, borderRadius: BorderRadius.circular(24.r)),
       child: InkWell(
         onTap: () {
-          jobBloc.add(
-              JobEvent.getJobById(item, authBloc.state.user ?? UserModel()));
+          jobBloc.add(JobEvent.getJobById(item, userModel));
 
           context.pushNamed(AppRouterName.jobDetail, extra: jobBloc);
         },
@@ -161,18 +163,16 @@ class JobCard extends StatelessWidget {
                   sizeAvatar: 72.r,
                   avatarUrl: item.companyImage,
                 ),
-                GestureDetector(
+                InkWell(
                   onTap: () {
-                    jobBloc.add(JobEvent.getJobById(
-                        item, authBloc.state.user ?? UserModel()));
+                    jobBloc.add(JobEvent.getJobById(item, userModel));
                     Future.delayed(const Duration(milliseconds: 400), () {
                       jobBloc.add(const JobEvent.updateBookmark());
                     });
                   },
                   child: SvgPicture.asset(
                     AppAsset.save,
-                    color: AppFormat.isHasBookmark(
-                            item, authBloc.state.user ?? UserModel())
+                    color: AppFormat.isHasBookmark(item, userModel)
                         ? AppColor.secondary
                         : AppColor.unSelected,
                   ),
