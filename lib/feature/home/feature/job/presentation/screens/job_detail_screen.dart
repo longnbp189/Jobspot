@@ -128,46 +128,66 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
                     spaceW8,
                     Expanded(
                       child: InkWell(
-                        onTap: () {
-                          if (authBloc.state.user!.jobIds.isEmpty) {
-                            context.pushNamed(AppRouterName.cvConfiguration,
-                                extra: SubmitJob(
-                                    jobBloc: jobBloc, cvBloc: cvBloc));
-                          } else {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) => MultiBlocProvider(
-                                providers: [
-                                  BlocProvider.value(
-                                    value: cvBloc,
-                                  ),
-                                  BlocProvider.value(
-                                    value: jobBloc,
-                                  ),
-                                ],
-                                child: const ApplyBottomSheet(),
-                              ),
-                            );
-                          }
-                        },
+                        onTap:
+                            !AppFormat.isAvailableJob(state.job ?? JobsModel())
+                                ? null
+                                : () {
+                                    if (authBloc.state.user!.jobIds.isEmpty) {
+                                      context.pushNamed(
+                                          AppRouterName.cvConfiguration,
+                                          extra: SubmitJob(
+                                              jobBloc: jobBloc,
+                                              cvBloc: cvBloc));
+                                    } else {
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) => MultiBlocProvider(
+                                          providers: [
+                                            BlocProvider.value(
+                                              value: cvBloc,
+                                            ),
+                                            BlocProvider.value(
+                                              value: jobBloc,
+                                            ),
+                                          ],
+                                          child: const ApplyBottomSheet(),
+                                        ),
+                                      );
+                                    }
+                                  },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 12.h),
                           alignment: Alignment.center,
-                          decoration: state.isSubmitCV()
+                          decoration: !AppFormat.isAvailableJob(
+                                  state.job ?? JobsModel())
                               ? BoxDecoration(
                                   borderRadius: BorderRadius.circular(12.r),
-                                  border: Border.all(color: AppColor.primary),
+                                  border: Border.all(color: AppColor.red),
                                 )
-                              : BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12.r),
-                                  color: AppColor.primary),
+                              : state.isSubmitCV()
+                                  ? BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      border:
+                                          Border.all(color: AppColor.primary),
+                                    )
+                                  : BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      color: AppColor.primary),
                           child: Text(
-                            state.isSubmitCV() ? 'Reapply' : 'Apply now',
-                            style: state.isSubmitCV()
+                            !AppFormat.isAvailableJob(state.job ?? JobsModel())
+                                ? 'Expired'
+                                : state.isSubmitCV()
+                                    ? 'Reapply'
+                                    : 'Apply now',
+                            style: !AppFormat.isAvailableJob(
+                                    state.job ?? JobsModel())
                                 ? TxtStyles.semiBold16
-                                    .copyWith(color: AppColor.primary)
-                                : TxtStyles.semiBold16
-                                    .copyWith(color: AppColor.white),
+                                    .copyWith(color: AppColor.red)
+                                : state.isSubmitCV()
+                                    ? TxtStyles.semiBold16
+                                        .copyWith(color: AppColor.primary)
+                                    : TxtStyles.semiBold16
+                                        .copyWith(color: AppColor.white),
                           ),
                         ),
                       ),

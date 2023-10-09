@@ -8,7 +8,6 @@ import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/domain/usecases/login_use_case.dart';
 import 'package:jobspot/feature/auth/feature/profile/domain/usecases/profile_usecase.dart';
-import 'package:jobspot/feature/auth/feature/sign_up/domain/usecases/sign_up_use_case.dart';
 import 'package:jobspot/services/user_cache_service.dart';
 
 part 'profile_bloc.freezed.dart';
@@ -120,7 +119,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       ChangePasswordRequest event, Emitter<ProfileState> emit) async {
     try {
       emit(state.copyWith(loadStatus: LoadStatusEnum.loading, error: ''));
-      var userModel = event.userModel;
       if (event.userModel.isPassword) {
         final result = await serviceLocator<LoginUsecase>()
             .loginWithUsernameAndPassword(
@@ -136,15 +134,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           await serviceLocator<LoginUsecase>()
               .changePassword(password: state.newPassword);
         }
-      } else {
-        await serviceLocator<SignUpUsecase>().signUp(
-            email: event.userModel.email.trim(),
-            password: state.newPassword.trim());
-
-        await serviceLocator<SignUpUsecase>()
-            .saveUserToFirebase(userModel.copyWith(isPassword: true));
-        emit(state.copyWith(
-            changePasswordSuccess: true, loadStatus: LoadStatusEnum.loaded));
       }
     } catch (e) {
       emit(state.copyWith(

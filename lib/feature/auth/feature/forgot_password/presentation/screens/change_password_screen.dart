@@ -90,11 +90,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 Navigator.of(dialogContext!).pop();
               }
               if (state.changePasswordSuccess == true) {
-                if (!authBloc.state.user!.isPassword) {
-                  var user = authBloc.state.user?.copyWith(isPassword: true) ??
-                      UserModel();
-                  authBloc.add(InitUserRequested(user));
-                }
                 AppFormat.showSnackBar(
                   context,
                   'Change Password success.',
@@ -106,7 +101,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             if (state.error.isNotEmpty) {
               AppFormat.showSnackBar(
                 context,
-                'Duplicate email. Please use another email.',
+                'Wrong password',
                 0,
               );
             }
@@ -116,111 +111,69 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               child: Form(
                 key: _formKey,
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-                  child: authBloc.state.user!.isPassword
-                      ? Column(
-                          children: [
-                            spaceH16,
-                            CustomTextFormFieldPassword(
-                              // stateBloc: '',
-                              // stateValue: '',
-                              hide: _passwordVisible,
-                              title: 'Old Password',
-                              textController: _passwordController,
-                              onTap: _togglePassword,
-                              onChanged: (value) => profileBloc
-                                  .add(ProfileEvent.passwordChanged(value)),
-                            ),
-                            spaceH16,
-                            CustomTextFormFieldPassword(
-                              // stateBloc: '',
-                              // stateValue: '',
-                              hide: _newPasswordVisible,
-                              title: 'New Password',
-                              textController: _newPasswordController,
-                              onTap: _toggleNewPassword,
-                              isCorrectOldPassword:
-                                  state.isCorrectOldPassword(),
-
-                              onChanged: (value) => profileBloc
-                                  .add(ProfileEvent.newPasswordChanged(value)),
-                            ),
-                            spaceH16,
-                            CustomTextFormFieldPassword(
-                              // stateBloc: '',
-                              // stateValue: '',
-                              hide: _confirmPasswordVisible,
-                              title: 'Confirm New Password',
-                              textController: _confirmPasswordController,
-                              onTap: _toggleConfirmPassword,
-                              onChanged: (value) => profileBloc.add(
-                                  ProfileEvent.confirmPasswordChanged(value)),
-                              isCorrectPassword: state.isCorrectPassword(),
-                            ),
-                            spaceH32,
-                            ButtonMedium(
-                              title: 'Change password',
-                              onTap: state.isPasswordEmpty() ||
-                                      !state.isCorrectPassword() ||
-                                      state.isCorrectOldPassword()
-                                  ? null
-                                  : () async {
-                                      // FocusManager.instance.primaryFocus?.unfocus();
-                                      if (_formKey.currentState!.validate()) {
-                                        profileBloc.add(
-                                            ProfileEvent.changePassword(
-                                                authBloc.state.user ??
-                                                    UserModel()));
-                                      }
-
-                                      // AppFormat.showSnackBar(
-                                      //   context,
-                                      //   'Tạo tài khoản thành công',
-                                      //   2,
-                                      // );
-                                    },
-                            ),
-                          ],
-                        )
-                      : Column(
-                          children: [
-                            spaceH16,
-                            CustomTextFormFieldPassword(
-                              // stateBloc: '',
-                              // stateValue: '',
-                              hide: _newPasswordVisible,
-                              title: 'New Password',
-                              textController: _newPasswordController,
-                              onTap: _toggleNewPassword,
-
-                              onChanged: (value) => profileBloc
-                                  .add(ProfileEvent.newPasswordChanged(value)),
-                            ),
-                            spaceH32,
-                            ButtonMedium(
-                              title: 'Change password',
-                              onTap: state.isNewPasswordEmpty()
-                                  ? null
-                                  : () async {
-                                      // FocusManager.instance.primaryFocus?.unfocus();
-                                      if (_formKey.currentState!.validate()) {
-                                        profileBloc.add(
-                                            ProfileEvent.changePassword(
-                                                authBloc.state.user ??
-                                                    UserModel()));
-                                      }
-
-                                      // AppFormat.showSnackBar(
-                                      //   context,
-                                      //   'Tạo tài khoản thành công',
-                                      //   2,
-                                      // );
-                                    },
-                            ),
-                          ],
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                    child: Column(
+                      children: [
+                        spaceH16,
+                        CustomTextFormFieldPassword(
+                          // stateBloc: '',
+                          // stateValue: '',
+                          hide: _passwordVisible,
+                          title: 'Old Password',
+                          textController: _passwordController,
+                          onTap: _togglePassword,
+                          onChanged: (value) => profileBloc
+                              .add(ProfileEvent.passwordChanged(value)),
                         ),
-                ),
+                        spaceH16,
+                        CustomTextFormFieldPassword(
+                          // stateBloc: '',
+                          // stateValue: '',
+                          hide: _newPasswordVisible,
+                          title: 'New Password',
+                          textController: _newPasswordController,
+                          onTap: _toggleNewPassword,
+                          isCorrectOldPassword: state.isCorrectOldPassword(),
+
+                          onChanged: (value) => profileBloc
+                              .add(ProfileEvent.newPasswordChanged(value)),
+                        ),
+                        spaceH16,
+                        CustomTextFormFieldPassword(
+                          // stateBloc: '',
+                          // stateValue: '',
+                          hide: _confirmPasswordVisible,
+                          title: 'Confirm New Password',
+                          textController: _confirmPasswordController,
+                          onTap: _toggleConfirmPassword,
+                          onChanged: (value) => profileBloc
+                              .add(ProfileEvent.confirmPasswordChanged(value)),
+                          isCorrectPassword: state.isCorrectPassword(),
+                        ),
+                        spaceH32,
+                        ButtonMedium(
+                          title: 'Change password',
+                          onTap: state.isPasswordEmpty() ||
+                                  !state.isCorrectPassword() ||
+                                  state.isCorrectOldPassword()
+                              ? null
+                              : () async {
+                                  // FocusManager.instance.primaryFocus?.unfocus();
+                                  if (_formKey.currentState!.validate()) {
+                                    profileBloc.add(ProfileEvent.changePassword(
+                                        authBloc.state.user ?? UserModel()));
+                                  }
+
+                                  // AppFormat.showSnackBar(
+                                  //   context,
+                                  //   'Tạo tài khoản thành công',
+                                  //   2,
+                                  // );
+                                },
+                        ),
+                      ],
+                    )),
               ),
             );
           },
