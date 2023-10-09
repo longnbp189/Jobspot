@@ -20,6 +20,7 @@ class UserModel with _$UserModel {
     @Default([]) final List<String> bookmarkIds,
     @Default([]) final List<String> jobIds,
     @Default('') final String token,
+    @Default(false) final bool isPassword,
   }) = _UserModel;
   factory UserModel.fromJson(Map<String, Object?> json) =>
       _$UserModelFromJson(json);

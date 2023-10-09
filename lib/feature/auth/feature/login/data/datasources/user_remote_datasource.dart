@@ -10,6 +10,7 @@ import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 abstract class UserRemoteDataSource {
   Future<Either<Failure, UserModel>> loginWithGoogle();
   Future<Either<Failure, Unit>> forgotPassword({required String email});
+  Future<Either<Failure, Unit>> changePassword({required String password});
 
   Future<Either<Failure, UserModel>> loginWithUsernameAndPassword(
       {required String username, required String password});
@@ -43,12 +44,12 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       googleUser = await _googleSignIn.signIn();
       if (googleUser != null) {
         final user = UserModel(
-          id: googleUser!.id,
-          displayName: googleUser!.displayName ?? '',
-          email: googleUser!.email,
-          username: googleUser!.email,
-          image: googleUser!.photoUrl ?? '',
-        );
+            id: googleUser!.id,
+            displayName: googleUser!.displayName ?? '',
+            email: googleUser!.email,
+            username: googleUser!.email,
+            image: googleUser!.photoUrl ?? '',
+            isPassword: false);
         return right(user);
       } else {
         return left(const ConnectionFailure('Connection google login failure'));
@@ -108,5 +109,18 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       {required String username, required String password}) async {
     return await _auth.createUserWithEmailAndPassword(
         email: username, password: password);
+  }
+
+  @override
+  Future<Either<Failure, Unit>> changePassword(
+      {required String password}) async {
+    try {
+      var user = FirebaseAuth.instance.currentUser!;
+      user.updatePassword(password);
+      // await _auth.(email: email);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(ParsingFailure('Change password Error: $e'));
+    }
   }
 }

@@ -42,5 +42,9 @@ class AuthRepositoryImpl implements AuthRepository {
         .signUp(username: email, password: password);
   }
 
-  
+  @override
+  Future<Either<Failure, Unit>> changePassword({required String password}) {
+    return serviceLocator<UserRemoteDataSource>()
+        .changePassword(password: password);
+  }
 }

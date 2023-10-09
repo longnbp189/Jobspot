@@ -25,7 +25,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final authBloc = context.read<AuthBloc>();
-
+    var item = authBloc.state.user!.isPassword ? itemProfile : itemProfileGmail;
     return Scaffold(
       backgroundColor: AppColor.backgroundWhite,
       body: BlocProvider(
@@ -264,7 +264,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) =>
-                                  ProfileOptionItem(item: itemProfile[index]),
+                                  ProfileOptionItem(item: item[index]),
                               separatorBuilder: (context, index) => Padding(
                                     padding:
                                         EdgeInsets.symmetric(vertical: 16.h),
@@ -273,7 +273,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       color: AppColor.unSelected,
                                     ),
                                   ),
-                              itemCount: itemProfile.length),
+                              itemCount: item.length),
                         ],
                       ),
                     )

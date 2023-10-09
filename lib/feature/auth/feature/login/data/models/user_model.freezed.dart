@@ -33,6 +33,7 @@ mixin _$UserModel {
   List<String> get bookmarkIds => throw _privateConstructorUsedError;
   List<String> get jobIds => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
+  bool get isPassword => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +59,8 @@ abstract class $UserModelCopyWith<$Res> {
       List<String> followerIds,
       List<String> bookmarkIds,
       List<String> jobIds,
-      String token});
+      String token,
+      bool isPassword});
 }
 
 /// @nodoc
@@ -87,6 +89,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? bookmarkIds = null,
     Object? jobIds = null,
     Object? token = null,
+    Object? isPassword = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -141,6 +144,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
+      isPassword: null == isPassword
+          ? _value.isPassword
+          : isPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -165,7 +172,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       List<String> followerIds,
       List<String> bookmarkIds,
       List<String> jobIds,
-      String token});
+      String token,
+      bool isPassword});
 }
 
 /// @nodoc
@@ -192,6 +200,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? bookmarkIds = null,
     Object? jobIds = null,
     Object? token = null,
+    Object? isPassword = null,
   }) {
     return _then(_$_UserModel(
       id: null == id
@@ -246,6 +255,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
+      isPassword: null == isPassword
+          ? _value.isPassword
+          : isPassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -266,7 +279,8 @@ class _$_UserModel implements _UserModel {
       final List<String> followerIds = const [],
       final List<String> bookmarkIds = const [],
       final List<String> jobIds = const [],
-      this.token = ''})
+      this.token = '',
+      this.isPassword = false})
       : _followerIds = followerIds,
         _bookmarkIds = bookmarkIds,
         _jobIds = jobIds;
@@ -331,10 +345,13 @@ class _$_UserModel implements _UserModel {
   @override
   @JsonKey()
   final String token;
+  @override
+  @JsonKey()
+  final bool isPassword;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, username: $username, password: $password, email: $email, displayName: $displayName, phoneNumber: $phoneNumber, gender: $gender, image: $image, introducingLetter: $introducingLetter, followerIds: $followerIds, bookmarkIds: $bookmarkIds, jobIds: $jobIds, token: $token)';
+    return 'UserModel(id: $id, username: $username, password: $password, email: $email, displayName: $displayName, phoneNumber: $phoneNumber, gender: $gender, image: $image, introducingLetter: $introducingLetter, followerIds: $followerIds, bookmarkIds: $bookmarkIds, jobIds: $jobIds, token: $token, isPassword: $isPassword)';
   }
 
   @override
@@ -361,7 +378,9 @@ class _$_UserModel implements _UserModel {
             const DeepCollectionEquality()
                 .equals(other._bookmarkIds, _bookmarkIds) &&
             const DeepCollectionEquality().equals(other._jobIds, _jobIds) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.isPassword, isPassword) ||
+                other.isPassword == isPassword));
   }
 
   @JsonKey(ignore: true)
@@ -380,7 +399,8 @@ class _$_UserModel implements _UserModel {
       const DeepCollectionEquality().hash(_followerIds),
       const DeepCollectionEquality().hash(_bookmarkIds),
       const DeepCollectionEquality().hash(_jobIds),
-      token);
+      token,
+      isPassword);
 
   @JsonKey(ignore: true)
   @override
@@ -410,7 +430,8 @@ abstract class _UserModel implements UserModel {
       final List<String> followerIds,
       final List<String> bookmarkIds,
       final List<String> jobIds,
-      final String token}) = _$_UserModel;
+      final String token,
+      final bool isPassword}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -441,6 +462,8 @@ abstract class _UserModel implements UserModel {
   List<String> get jobIds;
   @override
   String get token;
+  @override
+  bool get isPassword;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

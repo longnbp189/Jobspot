@@ -12,7 +12,7 @@ class ProfileEvent with _$ProfileEvent {
       ConfirmPasswordChangedRequested;
   const factory ProfileEvent.newPasswordChanged(String text) =
       NewPasswordChangedRequested;
-  const factory ProfileEvent.changePassword(String username) =
+  const factory ProfileEvent.changePassword(UserModel userModel) =
       ChangePasswordRequest;
   const factory ProfileEvent.imageChanged(String image) = ImageChangedRequested;
   const factory ProfileEvent.loading() = LoadingRequested;

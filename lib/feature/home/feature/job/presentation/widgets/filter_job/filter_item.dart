@@ -56,3 +56,11 @@ List<ProfileItem> itemProfile = [
     ontap: (context) => BlocProvider.of<AuthBloc>(context).add(const Logout()),
   ),
 ];
+
+List<ProfileItem> itemProfileGmail = [
+  ProfileItem(
+    title: 'Log out',
+    icon: AppAsset.logout,
+    ontap: (context) => BlocProvider.of<AuthBloc>(context).add(const Logout()),
+  ),
+];

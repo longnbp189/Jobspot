@@ -29,6 +29,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
               .toList() ??
           const [],
       token: json['token'] as String? ?? '',
+      isPassword: json['isPassword'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
@@ -46,4 +47,5 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'bookmarkIds': instance.bookmarkIds,
       'jobIds': instance.jobIds,
       'token': instance.token,
+      'isPassword': instance.isPassword,
     };

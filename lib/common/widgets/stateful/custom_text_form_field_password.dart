@@ -16,6 +16,7 @@ class CustomTextFormFieldPassword extends StatefulWidget {
     this.hide = true,
     this.onChanged,
     this.isCorrectPassword,
+    this.isCorrectOldPassword,
     // required this.stateValue,
     // required this.stateBloc,
     super.key,
@@ -31,6 +32,7 @@ class CustomTextFormFieldPassword extends StatefulWidget {
   // final String stateValue;
   // final String stateBloc;
   final bool? isCorrectPassword;
+  final bool? isCorrectOldPassword;
 
   @override
   State<CustomTextFormFieldPassword> createState() =>
@@ -48,6 +50,20 @@ class _CustomTextFormFieldPasswordState
     super.initState();
   }
 
+  String? validator(String? value) {
+    if (widget.type == TextInputType.text) {
+      if (value == null || value.isEmpty) {
+        return '${widget.title} cannot be empty';
+      }
+      if (value.length < 5) {
+        return '${widget.title} should have at least 6 characters';
+      }
+    }
+    return null; // No validation issues
+  }
+
+  bool isChange = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,13 +79,22 @@ class _CustomTextFormFieldPasswordState
           obscureText: widget.hide!,
           keyboardType: widget.type ?? TextInputType.text,
           controller: widget._textController,
-          onChanged: widget.onChanged,
+          onChanged: (value) {
+            if (widget.onChanged != null) {
+              if (!isChange) {
+                setState(() {
+                  isChange = true;
+                });
+              }
+
+              widget.onChanged!.call(value);
+            }
+          },
+
           onTapOutside: (event) =>
               FocusManager.instance.primaryFocus?.unfocus(),
 
           decoration: InputDecoration(
-              filled: true,
-              fillColor: AppColor.white,
               suffixIcon: IconButton(
                   onPressed: widget.onTap,
                   splashColor: Colors.transparent,
@@ -89,11 +114,13 @@ class _CustomTextFormFieldPasswordState
                           color:
                               focus.hasFocus ? AppColor.primary : AppColor.grey,
                         )),
-              errorText:
-                  // widget.stateBloc.isNotEmpty && widget.stateValue.isEmpty
-                  widget.isCorrectPassword == false
-                      ? "Password and comfirm password is different"
-                      : null,
+              errorText: isChange
+                  ? (widget.isCorrectOldPassword == true)
+                      ? 'Old Password and new password must different'
+                      : (widget.isCorrectPassword == false)
+                          ? 'Password and comfirm password is different'
+                          : validator(widget._textController.text)
+                  : null,
               hintText: widget.hintText,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),

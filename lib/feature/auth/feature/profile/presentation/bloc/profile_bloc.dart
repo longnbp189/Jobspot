@@ -6,7 +6,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/login/domain/usecases/login_use_case.dart';
 import 'package:jobspot/feature/auth/feature/profile/domain/usecases/profile_usecase.dart';
+import 'package:jobspot/feature/auth/feature/sign_up/domain/usecases/sign_up_use_case.dart';
 import 'package:jobspot/services/user_cache_service.dart';
 
 part 'profile_bloc.freezed.dart';
@@ -45,22 +47,22 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       var userModel = state.userModel;
       if (userModel != null) {
         var user = UserModel(
-          // id: state,
-          id: userModel.id,
-          displayName: state.fullName.isNotEmpty
-              ? state.fullName
-              : userModel.displayName,
-          username: userModel.email,
-          email: userModel.email,
-          image: state.imageUrl.isNotEmpty ? state.imageUrl : userModel.image,
-          phoneNumber: state.phone,
-          followerIds: userModel.followerIds,
-          bookmarkIds: userModel.bookmarkIds,
-          introducingLetter: userModel.introducingLetter,
-          gender: userModel.gender,
-          jobIds: userModel.jobIds,
-          password: userModel.password,
-        );
+            // id: state,
+            id: userModel.id,
+            displayName: state.fullName.isNotEmpty
+                ? state.fullName
+                : userModel.displayName,
+            username: userModel.email,
+            email: userModel.email,
+            image: state.imageUrl.isNotEmpty ? state.imageUrl : userModel.image,
+            phoneNumber: state.phone,
+            followerIds: userModel.followerIds,
+            bookmarkIds: userModel.bookmarkIds,
+            introducingLetter: userModel.introducingLetter,
+            gender: userModel.gender,
+            jobIds: userModel.jobIds,
+            password: userModel.password,
+            isPassword: userModel.isPassword);
         final result =
             await serviceLocator<ProfileUsecase>().updateUserToFirebase(user);
 
@@ -115,5 +117,43 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   FutureOr<void> _onChangePasswordRequest(
-      ChangePasswordRequest event, Emitter<ProfileState> emit) async {}
+      ChangePasswordRequest event, Emitter<ProfileState> emit) async {
+    try {
+      emit(state.copyWith(loadStatus: LoadStatusEnum.loading, error: ''));
+      var userModel = event.userModel;
+      if (event.userModel.isPassword) {
+        final result = await serviceLocator<LoginUsecase>()
+            .loginWithUsernameAndPassword(
+                username: event.userModel.email, password: state.password);
+        result.fold(
+          (l) => emit(state.copyWith(
+              error: l.message, loadStatus: LoadStatusEnum.loaded)),
+          (r) => emit(state.copyWith(
+              changePasswordSuccess: true, loadStatus: LoadStatusEnum.loaded)),
+        );
+
+        if (state.changePasswordSuccess) {
+          await serviceLocator<LoginUsecase>()
+              .changePassword(password: state.newPassword);
+        }
+      } else {
+        await serviceLocator<SignUpUsecase>().signUp(
+            email: event.userModel.email.trim(),
+            password: state.newPassword.trim());
+
+        await serviceLocator<SignUpUsecase>()
+            .saveUserToFirebase(userModel.copyWith(isPassword: true));
+        emit(state.copyWith(
+            changePasswordSuccess: true, loadStatus: LoadStatusEnum.loaded));
+      }
+    } catch (e) {
+      emit(state.copyWith(
+          error: e.toString(), loadStatus: LoadStatusEnum.loaded));
+    } finally {
+      emit(state.copyWith(
+          error: '',
+          loadStatus: LoadStatusEnum.notLoad,
+          changePasswordSuccess: false));
+    }
+  }
 }

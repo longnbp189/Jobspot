@@ -31,4 +31,12 @@ extension ProfileStateExtension on ProfileState {
   bool isCorrectPassword() {
     return newPassword.trim() == confirmPassword.trim();
   }
+
+  bool isCorrectOldPassword() {
+    return newPassword.trim() == password.trim();
+  }
+
+  bool isNewPasswordEmpty() {
+    return newPassword.isEmpty;
+  }
 }

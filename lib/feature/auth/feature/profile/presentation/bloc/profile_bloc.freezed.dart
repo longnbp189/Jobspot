@@ -23,7 +23,7 @@ mixin _$ProfileEvent {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -37,7 +37,7 @@ mixin _$ProfileEvent {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -51,7 +51,7 @@ mixin _$ProfileEvent {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -200,7 +200,7 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -217,7 +217,7 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -234,7 +234,7 @@ class _$PhoneNumberChangedRequested implements PhoneNumberChangedRequested {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -390,7 +390,7 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -407,7 +407,7 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -424,7 +424,7 @@ class _$FullnameChangedRequested implements FullnameChangedRequested {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -579,7 +579,7 @@ class _$PasswordChangedRequested implements PasswordChangedRequested {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -596,7 +596,7 @@ class _$PasswordChangedRequested implements PasswordChangedRequested {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -613,7 +613,7 @@ class _$PasswordChangedRequested implements PasswordChangedRequested {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -770,7 +770,7 @@ class _$ConfirmPasswordChangedRequested
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -787,7 +787,7 @@ class _$ConfirmPasswordChangedRequested
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -804,7 +804,7 @@ class _$ConfirmPasswordChangedRequested
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -960,7 +960,7 @@ class _$NewPasswordChangedRequested implements NewPasswordChangedRequested {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -977,7 +977,7 @@ class _$NewPasswordChangedRequested implements NewPasswordChangedRequested {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -994,7 +994,7 @@ class _$NewPasswordChangedRequested implements NewPasswordChangedRequested {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -1084,7 +1084,9 @@ abstract class _$$ChangePasswordRequestCopyWith<$Res> {
           $Res Function(_$ChangePasswordRequest) then) =
       __$$ChangePasswordRequestCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username});
+  $Res call({UserModel userModel});
+
+  $UserModelCopyWith<$Res> get userModel;
 }
 
 /// @nodoc
@@ -1098,28 +1100,36 @@ class __$$ChangePasswordRequestCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? username = null,
+    Object? userModel = null,
   }) {
     return _then(_$ChangePasswordRequest(
-      null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == userModel
+          ? _value.userModel
+          : userModel // ignore: cast_nullable_to_non_nullable
+              as UserModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userModel {
+    return $UserModelCopyWith<$Res>(_value.userModel, (value) {
+      return _then(_value.copyWith(userModel: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$ChangePasswordRequest implements ChangePasswordRequest {
-  const _$ChangePasswordRequest(this.username);
+  const _$ChangePasswordRequest(this.userModel);
 
   @override
-  final String username;
+  final UserModel userModel;
 
   @override
   String toString() {
-    return 'ProfileEvent.changePassword(username: $username)';
+    return 'ProfileEvent.changePassword(userModel: $userModel)';
   }
 
   @override
@@ -1127,12 +1137,12 @@ class _$ChangePasswordRequest implements ChangePasswordRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangePasswordRequest &&
-            (identical(other.username, username) ||
-                other.username == username));
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username);
+  int get hashCode => Object.hash(runtimeType, userModel);
 
   @JsonKey(ignore: true)
   @override
@@ -1149,13 +1159,13 @@ class _$ChangePasswordRequest implements ChangePasswordRequest {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
     required TResult Function(UserModel userModel) getUser,
   }) {
-    return changePassword(username);
+    return changePassword(userModel);
   }
 
   @override
@@ -1166,13 +1176,13 @@ class _$ChangePasswordRequest implements ChangePasswordRequest {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
     TResult? Function(UserModel userModel)? getUser,
   }) {
-    return changePassword?.call(username);
+    return changePassword?.call(userModel);
   }
 
   @override
@@ -1183,7 +1193,7 @@ class _$ChangePasswordRequest implements ChangePasswordRequest {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -1191,7 +1201,7 @@ class _$ChangePasswordRequest implements ChangePasswordRequest {
     required TResult orElse(),
   }) {
     if (changePassword != null) {
-      return changePassword(username);
+      return changePassword(userModel);
     }
     return orElse();
   }
@@ -1258,10 +1268,10 @@ class _$ChangePasswordRequest implements ChangePasswordRequest {
 }
 
 abstract class ChangePasswordRequest implements ProfileEvent {
-  const factory ChangePasswordRequest(final String username) =
+  const factory ChangePasswordRequest(final UserModel userModel) =
       _$ChangePasswordRequest;
 
-  String get username;
+  UserModel get userModel;
   @JsonKey(ignore: true)
   _$$ChangePasswordRequestCopyWith<_$ChangePasswordRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1337,7 +1347,7 @@ class _$ImageChangedRequested implements ImageChangedRequested {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -1354,7 +1364,7 @@ class _$ImageChangedRequested implements ImageChangedRequested {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -1371,7 +1381,7 @@ class _$ImageChangedRequested implements ImageChangedRequested {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -1498,7 +1508,7 @@ class _$LoadingRequested implements LoadingRequested {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -1515,7 +1525,7 @@ class _$LoadingRequested implements LoadingRequested {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -1532,7 +1542,7 @@ class _$LoadingRequested implements LoadingRequested {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -1653,7 +1663,7 @@ class _$UpdateUserRequest implements UpdateUserRequest {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -1670,7 +1680,7 @@ class _$UpdateUserRequest implements UpdateUserRequest {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -1687,7 +1697,7 @@ class _$UpdateUserRequest implements UpdateUserRequest {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,
@@ -1845,7 +1855,7 @@ class _$GetUserRequest implements GetUserRequest {
     required TResult Function(String text) passwordChanged,
     required TResult Function(String text) confirmPasswordChanged,
     required TResult Function(String text) newPasswordChanged,
-    required TResult Function(String username) changePassword,
+    required TResult Function(UserModel userModel) changePassword,
     required TResult Function(String image) imageChanged,
     required TResult Function() loading,
     required TResult Function() updateUser,
@@ -1862,7 +1872,7 @@ class _$GetUserRequest implements GetUserRequest {
     TResult? Function(String text)? passwordChanged,
     TResult? Function(String text)? confirmPasswordChanged,
     TResult? Function(String text)? newPasswordChanged,
-    TResult? Function(String username)? changePassword,
+    TResult? Function(UserModel userModel)? changePassword,
     TResult? Function(String image)? imageChanged,
     TResult? Function()? loading,
     TResult? Function()? updateUser,
@@ -1879,7 +1889,7 @@ class _$GetUserRequest implements GetUserRequest {
     TResult Function(String text)? passwordChanged,
     TResult Function(String text)? confirmPasswordChanged,
     TResult Function(String text)? newPasswordChanged,
-    TResult Function(String username)? changePassword,
+    TResult Function(UserModel userModel)? changePassword,
     TResult Function(String image)? imageChanged,
     TResult Function()? loading,
     TResult Function()? updateUser,

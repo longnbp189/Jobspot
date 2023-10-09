@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jobspot/core/failure.dart';
@@ -8,7 +9,6 @@ import 'package:jobspot/feature/auth/feature/profile/domain/repositories/profile
 import 'package:jobspot/feature/auth/feature/profile/domain/usecases/profile_usecase.dart';
 import 'package:jobspot/feature/auth/feature/sign_up/domain/usecases/sign_up_use_case.dart';
 import 'package:jobspot/services/user_cache_service.dart';
-import 'package:collection/collection.dart';
 
 class LoginUsecase {
   Future<Either<Failure, UserModel>> loginWithGoogle() async {
@@ -88,5 +88,11 @@ class LoginUsecase {
       {required String email, required String password}) async {
     return await serviceLocator<AuthRepository>()
         .signUp(email: email, password: password);
+  }
+
+  Future<Either<Failure, Unit>> changePassword(
+      {required String password}) async {
+    return await serviceLocator<AuthRepository>()
+        .changePassword(password: password);
   }
 }

@@ -58,6 +58,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         email: state.email.trim(),
         password: state.password,
         phoneNumber: state.phone,
+        isPassword: true
       ));
       emit(state.copyWith(
           signUpSuccess: true, loadStatus: LoadStatusEnum.loaded));
