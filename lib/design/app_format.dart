@@ -991,6 +991,23 @@ class AppFormat {
     return formattedTime;
   }
 
+  static String countJobSameCompany(List<JobsModel> jobList, String idCompany) {
+    int count = 0;
+    for (var item in jobList) {
+      if (item.companyId == idCompany) {
+        count++;
+      }
+    }
+    switch (count) {
+      case 0:
+        return '0 job';
+      case 1:
+        return '1 job';
+      default:
+        return '$count jobs';
+    }
+  }
+
   static bool validatePassword(String password) {
     RegExp regex = RegExp(
         // r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~_()[]]).{8,}$');

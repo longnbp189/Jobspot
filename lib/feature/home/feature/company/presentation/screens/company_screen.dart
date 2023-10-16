@@ -73,12 +73,12 @@ class _CompanyScreenState extends State<CompanyScreen> {
               current.isFollow == true,
           listener: (context, state) {
             if (state.isFollow) {
-              var index = pagingController.itemList!
-                  .indexWhere((element) => element.id == state.company!.id);
-              if (index != -1) {
-                pagingController.itemList![index] = state.company!;
-              }
-              print('init');
+              // var index = pagingController.itemList!
+              //     .indexWhere((element) => element.id == state.company!.id);
+              // if (index != -1) {
+              //   pagingController.itemList![index] = state.company!;
+              // }
+              // print('init');
               authBloc.add(InitUserRequested(state.user ?? UserModel()));
             }
 
@@ -113,7 +113,8 @@ class _CompanyScreenState extends State<CompanyScreen> {
                       itemBuilder: (context, item, index) {
                         return TopCompanyCard(
                           argument: CompanyAgrument(
-                            companyBloc: CompanyBloc(),
+                            authBloc: authBloc,
+                            companyBloc: bloc,
                             companyModel: item,
                             changed: (value) {
                               print('ahihi');

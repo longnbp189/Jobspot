@@ -32,32 +32,32 @@ class CompanyCard extends StatelessWidget {
           style: TxtStyles.extraBold14.copyWith(fontWeight: FontWeight.normal),
           overflow: TextOverflow.ellipsis,
         ),
-        spaceH16,
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
-          decoration: BoxDecoration(
-              color: AppColor.backgroundChip.withOpacity(0.4),
-              borderRadius: BorderRadius.circular(8.r)),
-          child: Text(
-            '36 Jobs',
-            style: TxtStyles.regular14,
-          ),
-        ),
-        spaceH16,
-        InkWell(
-          onTap: () {},
-          child: Container(
-            alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
-            decoration: BoxDecoration(
-                color: AppColor.backgroundChip.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(8.r)),
-            child: Text(
-              '+ Follow',
-              style: TxtStyles.semiBold14,
-            ),
-          ),
-        ),
+        // spaceH16,
+        // Container(
+        //   padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+        //   decoration: BoxDecoration(
+        //       color: AppColor.backgroundChip.withOpacity(0.4),
+        //       borderRadius: BorderRadius.circular(8.r)),
+        //   child: Text(
+        //     '36 Jobs',
+        //     style: TxtStyles.regular14,
+        //   ),
+        // ),
+        // spaceH16,
+        // InkWell(
+        //   onTap: () {},
+        //   child: Container(
+        //     alignment: Alignment.bottomCenter,
+        //     padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.h),
+        //     decoration: BoxDecoration(
+        //         color: AppColor.backgroundChip.withOpacity(0.4),
+        //         borderRadius: BorderRadius.circular(8.r)),
+        //     child: Text(
+        //       '+ Follow',
+        //       style: TxtStyles.semiBold14,
+        //     ),
+        //   ),
+        // ),
       ]),
     );
   }

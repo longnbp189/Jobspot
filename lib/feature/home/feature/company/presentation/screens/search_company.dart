@@ -121,6 +121,7 @@ class _SearchCompanyState extends State<SearchCompany> {
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) => TopCompanyCard(
                                         argument: CompanyAgrument(
+                                      authBloc: authBloc,
                                       companyBloc: bloc,
                                       companyModel:
                                           _searchController.text.isEmpty

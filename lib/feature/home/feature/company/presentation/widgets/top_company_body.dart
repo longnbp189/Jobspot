@@ -59,6 +59,7 @@ class TopCompaniesBody extends StatelessWidget {
                     //   pagingController.refresh();
                     // },
                     argument: CompanyAgrument(
+                      authBloc: authBloc,
                       companyBloc: CompanyBloc(),
                       companyModel: item,
                       changed: (value) {
@@ -148,12 +149,9 @@ class TopCompanyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = context.read<AuthBloc>();
     final companyBloc = argument.companyBloc;
     return BlocListener<CompanyBloc, CompanyState>(
-      listener: (context, state) {
-      
-      },
+      listener: (context, state) {},
       child: BlocBuilder<CompanyBloc, CompanyState>(
         bloc: companyBloc,
         builder: (context, state) {
@@ -161,7 +159,7 @@ class TopCompanyCard extends StatelessWidget {
             onTap: () {
               // FocusManager.instance.primaryFocus?.unfocus();
               companyBloc.add(CompanyEvent.getCompanyById(
-                  argument.companyModel, authBloc.state.user ?? UserModel()));
+                  argument.companyModel, argument.authBloc.state.user ?? UserModel()));
               context.pushNamed(AppRouterName.companyDetail, extra: argument);
             },
             child: Container(
@@ -201,7 +199,7 @@ class TopCompanyCard extends StatelessWidget {
                                 color: AppColor.backgroundChip.withOpacity(0.4),
                                 borderRadius: BorderRadius.circular(8.r)),
                             child: Text(
-                              '36 Jobs',
+                              AppFormat.countJobSameCompany(state.jobs, argument.companyModel.id).toString(),
                               style: TxtStyles.regular14,
                             ),
                           ),
@@ -210,7 +208,7 @@ class TopCompanyCard extends StatelessWidget {
                             onTap: () {
                               companyBloc.add(CompanyEvent.getCompanyById(
                                   argument.companyModel,
-                                  authBloc.state.user ?? UserModel()));
+                                argument.  authBloc.state.user ?? UserModel()));
                               Future.delayed(const Duration(milliseconds: 400),
                                   () {
                                 companyBloc
@@ -219,7 +217,7 @@ class TopCompanyCard extends StatelessWidget {
                               argument.changed.call(true);
                             },
                             child: AppFormat.isFollow(
-                                    argument.companyModel, authBloc.state.user!)
+                                    argument.companyModel, argument.authBloc.state.user!)
                                 ? Container(
                                     width: double.infinity,
                                     alignment: Alignment.bottomCenter,

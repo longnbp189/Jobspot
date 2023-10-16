@@ -57,6 +57,7 @@ class FollowingCompanyScreen extends StatelessWidget {
                             //     horizontal: 16.w, vertical: 16.h),
                             itemBuilder: (context, index) => TopCompanyCard(
                               argument: CompanyAgrument(
+                                authBloc: authBloc,
                                 companyBloc: companyBloc,
                                 companyModel: state.companiesFollowing[index],
                                 changed: (value) {},

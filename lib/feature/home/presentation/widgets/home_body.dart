@@ -283,13 +283,7 @@ class HomeBody extends StatelessWidget {
                                         crossAxisCount: 2,
                                         crossAxisSpacing: 10.w,
                                         mainAxisSpacing: 10.h,
-                                        childAspectRatio:
-                                            (AppFormat.width(context) /
-                                                    AppFormat.height(context)) *
-                                                ((AppFormat.width(context) >
-                                                        700)
-                                                    ? 1.1
-                                                    : 1.15),
+                                        childAspectRatio: 0.95,
                                       ),
                                       itemCount: companyState.companies.length,
                                       itemBuilder: (context, index) => InkWell(
@@ -297,6 +291,7 @@ class HomeBody extends StatelessWidget {
                                             context.pushNamed(
                                                 AppRouterName.companyDetail,
                                                 extra: CompanyAgrument(
+                                                  authBloc: authBloc,
                                                   companyBloc: CompanyBloc(),
                                                   companyModel: companyState
                                                       .companies[index],

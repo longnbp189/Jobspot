@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/change_password_screen.dart';
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/check_mail_screen.dart';
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/forgot_password_screen.dart';
+import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/screens/login_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/bloc/profile_bloc.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/edit_profile_screen.dart';
@@ -381,9 +383,11 @@ class CompanyAgrument {
   final CompanyModel companyModel;
   final ValueChanged<bool> changed;
   final CompanyBloc companyBloc;
+  final AuthBloc authBloc;
 
-  CompanyAgrument(
+  CompanyAgrument( 
       {required this.companyModel,
+      required this.authBloc,
       required this.changed,
       required this.companyBloc});
 }

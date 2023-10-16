@@ -42,11 +42,20 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
   FutureOr<void> _onGetListCompanyRequested(
       GetListCompanyRequested event, Emitter<CompanyState> emit) async {
     emit(state.copyWith(isShimmer: true, error: ''));
+    List<JobsModel> jobList = [];
+    final resultJob = await serviceLocator<JobUsecase>().getListJobMax();
+    resultJob.fold(
+      (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+      (r) => jobList = r,
+    );
+
+    jobList.removeWhere((element) => !AppFormat.isAvailableJob(element));
 
     final result = await serviceLocator<CompanyUsecase>().getListCompany();
     result.fold(
       (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
-      (r) => emit(state.copyWith(companies: r, isShimmer: false)),
+      (r) =>
+          emit(state.copyWith(companies: r, isShimmer: false, jobs: jobList)),
     );
   }
 
