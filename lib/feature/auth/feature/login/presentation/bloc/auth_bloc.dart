@@ -1288,7 +1288,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 //   ),
 //   JobsModel(
 //     id: AppFormat.generateRandomString(),
-//     companyId: 'SepLV6cRtRsxrxqOsnkl',
+//     companyId: 'VioqqRWsuyjtsWI6gfB8',
 //     companyImage:
 //         'https://cdn-new.topcv.vn/unsafe/140x/filters:format(webp)/https://static.topcv.vn/company_logos/B3liLb6TxRmh8RZ0xG1VIfJwAKxjwQrq_1691825152____b1eb605a0878ca07febd8bda5e75e76b.png',
 //     companyName: 'WEDDING & CONFERENCE CENTER MIPEC PALACE',

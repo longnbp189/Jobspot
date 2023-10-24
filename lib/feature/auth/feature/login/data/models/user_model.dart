@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
@@ -19,22 +20,10 @@ class UserModel with _$UserModel {
     @Default([]) final List<String> followerIds,
     @Default([]) final List<String> bookmarkIds,
     @Default([]) final List<String> jobIds,
+    @Default([]) final List<String> companyIdsMessage,
     @Default('') final String token,
     @Default(false) final bool isPassword,
   }) = _UserModel;
   factory UserModel.fromJson(Map<String, Object?> json) =>
       _$UserModelFromJson(json);
-
-//   UserEntity toEntity(UserModel mol) {
-//     return UserEntity(
-//         id: mol.id,
-//         username: mol.username,
-//         password: mol.password,
-//         email: mol.email,
-//         displayName: mol.displayName,
-//         phoneNumber: mol.phoneNumber,
-//         gender: mol.gender,
-//         image: mol.image,
-//         token: mol.token);
-//   }
 }

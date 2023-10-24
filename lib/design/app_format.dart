@@ -2,6 +2,7 @@ import 'dart:core';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
@@ -18,12 +19,14 @@ import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
+import 'package:jobspot/feature/home/feature/chat/data/model/message_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/province_model.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/screens/filter_job_screen.dart';
+import 'package:jobspot/services/chat_service.dart';
 import 'package:jobspot/services/database_helper.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -478,6 +481,19 @@ class AppFormat {
     DateTime dt = DateTime.parse(date);
     String formattedDate = DateFormat('dd-MM-yyyy').format(dt);
     return formattedDate;
+  }
+
+  static String formatTime(DateTime dateTime) {
+    final now = DateTime.now();
+    final difference = now.difference(dateTime);
+
+    if (difference.inDays < 7) {
+      // Hiển thị thứ và giờ nếu cách 1 tuần trở lại
+      return DateFormat('EEEE HH:mm').format(dateTime);
+    } else {
+      // Hiển thị ngày tháng năm và giờ nếu không cách 1 tuần
+      return DateFormat('dd/MM/yyyy HH:mm').format(dateTime);
+    }
   }
 
   static String statusAppointment(String status) {
@@ -1183,6 +1199,129 @@ class AppFormat {
     }
     return price.replaceAll(",", ".");
   }
+
+  static bool checkSameSender(
+    List<MessageModel> messageList,
+  ) {
+    if (messageList.length >= 2) {
+      List<MessageModel> lastTwo = messageList.sublist(messageList.length - 2);
+      return lastTwo[0].senderId == lastTwo[1].senderId;
+    } else {
+      return false;
+    }
+  }
+
+  static String checkMessageSender(MessageModel? message, String userId) {
+    if (message == null || message.message.isEmpty) return '';
+
+    if (message.senderId == userId) {
+      return 'You: ${message.message}';
+    } else {
+      return message.message;
+    }
+  }
+
+  static bool isTimeDifferenceGreaterThanOneHour(
+      DateTime previousTime, DateTime currentTime) {
+    return currentTime.difference(previousTime).inHours < 1;
+  }
+
+  static List<MessageModel> parseDocToMes(
+      List<QueryDocumentSnapshot> snapshot) {
+    List<MessageModel> messageList = [];
+    if (snapshot.isEmpty) return [];
+    for (var element in snapshot) {
+      Map<String, dynamic> data = element.data() as Map<String, dynamic>;
+      var message = MessageModel.fromJson(data);
+      messageList.add(message);
+    }
+
+    return messageList;
+  }
+
+  static Future<MessageModel> getLastMessage(
+      String userId, String companyId) async {
+    final chatService = ChatService();
+    // String lastMessage = '';
+    // Stream<List<MessageModel>> messageList =
+    //     chatService.getMessages(userId, companyId);
+
+    // return lastMessage;
+    var messageList = chatService.getMessages(userId, companyId);
+
+    await for (var snapshot in messageList) {
+      if (snapshot.docs.isEmpty) {
+        // Handle the case where there are no documents
+        return MessageModel();
+      }
+
+      var lastDocument = snapshot.docs.last;
+      Map<String, dynamic> data = lastDocument.data() as Map<String, dynamic>;
+
+      MessageModel messageModel = MessageModel.fromJson(data);
+
+      return messageModel;
+    }
+    return MessageModel();
+
+    // try {
+    //   List<MessageModel> messages = await messageList.last;
+    //   if (messages.isNotEmpty) {
+    //     return messages.last;
+    //   }
+    // } catch (e) {
+    //   // Handle any errors that may occur when waiting for the last event in the stream.
+    //   // You can log or handle the error as needed.
+    //   print("Error: $e");
+    // }
+  }
+
+  // static List<bool> checkMessagesContinuously(
+  //   List<MessageModel> messageList,
+  // ) {
+  //   //   List<MessageModel> lastTwo = messageList.sublist(messageList.length - 2);
+
+  //   // if (messageList.length >= 2) {
+  //   //   Duration difference = lastTwo[1].sendTime!.difference(lastTwo[0].sendTime!);
+  //   //   return difference.inHours >=3;
+  //   // } else {
+  //   //   return false;
+  //   // }
+
+  //   // for (int i = 1; i < messageList.length; i++) {
+  //   //   final previousMessage = messageList[i - 1];
+  //   //   final currentMessage = messageList[i];
+
+  //   //   // Assuming there's a time property in your Message class
+  //   //   final timeDifference =
+  //   //       currentMessage.sendTime!.difference(previousMessage.sendTime!);
+
+  //   //   // If the time difference between consecutive messages is more than 1 hour, they are not sent continuously.
+  //   //   if (timeDifference.inHours >= 1) {
+  //   //     return false;
+  //   //   }
+  //   // }
+  //   // return true; // All messages are sent continuously.
+
+  //   List<bool> results = [];
+
+  //   for (int i = 1; i < messageList.length; i++) {
+  //     final previousMessage = messageList[i - 1];
+  //     final currentMessage = messageList[i];
+
+  //     // Assuming there's a time property in your Message class
+  //     final timeDifference =
+  //         currentMessage.sendTime!.difference(previousMessage.sendTime!);
+
+  //     // If the time difference between consecutive messages is more than 1 hour, they are not sent continuously.
+  //     results.add(timeDifference.inHours < 1);
+  //   }
+
+  //   // The first message is always considered continuous since there's no previous message to compare.
+  //   results.insert(0, true);
+
+  //   return results;
+  // }
 
   static width(BuildContext context) {
     final size = MediaQuery.of(context).size.width;

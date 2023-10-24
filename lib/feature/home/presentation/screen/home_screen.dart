@@ -17,10 +17,10 @@ import 'package:jobspot/design/spaces.dart';
 import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
-import 'package:jobspot/feature/auth/feature/profile/presentation/screens/profile_screen.dart';
+import 'package:jobspot/feature/home/feature/chat/presentation/bloc/chat_bloc.dart';
+import 'package:jobspot/feature/home/feature/chat/presentation/screens/chat_screen.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
-import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final authBloc = context.read<AuthBloc>();
     authBloc.add(const AuthEvent.getUser());
-
+   
     List<Widget> body = [
       BlocProvider(
         create: (context) => CompanyBloc(),
@@ -98,6 +98,10 @@ class _HomeScreenState extends State<HomeScreen> {
       BlocProvider(
         create: (context) => CvBloc(),
         child: const CVScreen(),
+      ),
+      BlocProvider(
+        create: (context) => ChatBloc(),
+        child: const ChatScreen(),
       ),
       BlocProvider(
         create: (context) => NotificationBloc(),

@@ -158,8 +158,8 @@ class TopCompanyCard extends StatelessWidget {
           return InkWell(
             onTap: () {
               // FocusManager.instance.primaryFocus?.unfocus();
-              companyBloc.add(CompanyEvent.getCompanyById(
-                  argument.companyModel, argument.authBloc.state.user ?? UserModel()));
+              companyBloc.add(CompanyEvent.getCompanyById(argument.companyModel,
+                  argument.authBloc.state.user ?? UserModel()));
               context.pushNamed(AppRouterName.companyDetail, extra: argument);
             },
             child: Container(
@@ -199,7 +199,9 @@ class TopCompanyCard extends StatelessWidget {
                                 color: AppColor.backgroundChip.withOpacity(0.4),
                                 borderRadius: BorderRadius.circular(8.r)),
                             child: Text(
-                              AppFormat.countJobSameCompany(state.jobs, argument.companyModel.id).toString(),
+                              AppFormat.countJobSameCompany(
+                                      state.jobs, argument.companyModel.id)
+                                  .toString(),
                               style: TxtStyles.regular14,
                             ),
                           ),
@@ -208,7 +210,7 @@ class TopCompanyCard extends StatelessWidget {
                             onTap: () {
                               companyBloc.add(CompanyEvent.getCompanyById(
                                   argument.companyModel,
-                                argument.  authBloc.state.user ?? UserModel()));
+                                  argument.authBloc.state.user ?? UserModel()));
                               Future.delayed(const Duration(milliseconds: 400),
                                   () {
                                 companyBloc
@@ -216,8 +218,8 @@ class TopCompanyCard extends StatelessWidget {
                               });
                               argument.changed.call(true);
                             },
-                            child: AppFormat.isFollow(
-                                    argument.companyModel, argument.authBloc.state.user!)
+                            child: AppFormat.isFollow(argument.companyModel,
+                                    argument.authBloc.state.user!)
                                 ? Container(
                                     width: double.infinity,
                                     alignment: Alignment.bottomCenter,

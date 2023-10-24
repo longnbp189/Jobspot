@@ -13,7 +13,6 @@ import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.d
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
-import 'package:jobspot/feature/home/feature/notification/presentation/bloc/notification_bloc.dart';
 import 'package:jobspot/firebase_options.dart';
 
 import 'router/app_router.dart';
@@ -57,7 +56,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              // CompanyBloc()..add(const CompanyEvent.getListTopCompany()),
+              // CompanyBloc()..add(const CompanyEvent.getListCompanyMax()),
               CompanyBloc(),
         ),
         BlocProvider(
@@ -70,6 +69,11 @@ class MyApp extends StatelessWidget {
               // CompanyBloc()..add(const CompanyEvent.getListTopCompany()),
               JobBloc(),
         ),
+        // BlocProvider(
+        //   create: (context) =>
+        //       // CompanyBloc()..add(const CompanyEvent.getListTopCompany()),
+        //       ChatBloc(),
+        // ),
         // BlocProvider(
         //   create: (context) => NotificationBloc(),
         // ),

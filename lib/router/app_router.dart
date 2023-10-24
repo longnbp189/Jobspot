@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/change_password_screen.dart';
 import 'package:jobspot/feature/auth/feature/forgot_password/presentation/screens/check_mail_screen.dart';
@@ -16,6 +15,9 @@ import 'package:jobspot/feature/auth/feature/profile/presentation/screens/follow
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/job_applied_screen.dart';
 import 'package:jobspot/feature/auth/feature/profile/presentation/screens/profile_screen.dart';
 import 'package:jobspot/feature/auth/feature/sign_up/presentation/screens/sign_up_screen.dart';
+import 'package:jobspot/feature/home/feature/chat/presentation/bloc/chat_bloc.dart';
+import 'package:jobspot/feature/home/feature/chat/presentation/screens/chat_detail_screen.dart';
+import 'package:jobspot/feature/home/feature/chat/presentation/screens/chat_screen.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/bloc/company_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
@@ -155,6 +157,27 @@ class AppRouter {
                       ));
                     },
                   ),
+                  GoRoute(
+                      name: AppRouterName.chat,
+                      path: 'chat',
+                      pageBuilder: (context, state) {
+                        return const MaterialPage(child: ChatScreen());
+                      },
+                      routes: [
+                        GoRoute(
+                          name: AppRouterName.chatDetail,
+                          path: 'chat-detail',
+                          pageBuilder: (context, state) {
+                            final arguments = state.extra as ChatBloc;
+
+                            return MaterialPage(
+                                child: BlocProvider.value(
+                              value: arguments,
+                              child: const ChatDetailScreen(),
+                            ));
+                          },
+                        ),
+                      ]),
                   GoRoute(
                     name: AppRouterName.notification,
                     path: 'notification',
@@ -385,7 +408,7 @@ class CompanyAgrument {
   final CompanyBloc companyBloc;
   final AuthBloc authBloc;
 
-  CompanyAgrument( 
+  CompanyAgrument(
       {required this.companyModel,
       required this.authBloc,
       required this.changed,

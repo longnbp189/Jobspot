@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jobspot/core/service_locator.dart';
 import 'package:jobspot/design/app_asset.dart';
 import 'package:jobspot/design/app_color.dart';
@@ -10,9 +10,6 @@ import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/domain/usecases/login_use_case.dart';
 import 'package:jobspot/feature/home/feature/job/presentation/bloc/job_bloc.dart';
 import 'package:jobspot/router/app_router_name.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jobspot/services/messaging_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,12 +21,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // final bool isFirst = checkIsFirst();
-//  checkIsFirst() async {
-
-  // return isFirst;
-  // }
-
   var jobBloc = JobBloc();
   final _messagingServices = MessagingService();
 
@@ -80,13 +71,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   systemOverlayStyle: const SystemUiOverlayStyle(
-        //     statusBarColor: Colors.red,
-
-        //     statusBarBrightness: Brightness.light, // For iOS (dark icons)
-        //   ),
-        // ),
         body: Container(
       color: AppColor.primary,
       height: double.infinity,

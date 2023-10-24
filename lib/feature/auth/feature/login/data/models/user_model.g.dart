@@ -28,6 +28,10 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      companyIdsMessage: (json['companyIdsMessage'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
       token: json['token'] as String? ?? '',
       isPassword: json['isPassword'] as bool? ?? false,
     );
@@ -46,6 +50,7 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'followerIds': instance.followerIds,
       'bookmarkIds': instance.bookmarkIds,
       'jobIds': instance.jobIds,
+      'companyIdsMessage': instance.companyIdsMessage,
       'token': instance.token,
       'isPassword': instance.isPassword,
     };

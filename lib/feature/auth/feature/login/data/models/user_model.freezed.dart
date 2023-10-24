@@ -32,6 +32,7 @@ mixin _$UserModel {
   List<String> get followerIds => throw _privateConstructorUsedError;
   List<String> get bookmarkIds => throw _privateConstructorUsedError;
   List<String> get jobIds => throw _privateConstructorUsedError;
+  List<String> get companyIdsMessage => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
   bool get isPassword => throw _privateConstructorUsedError;
 
@@ -59,6 +60,7 @@ abstract class $UserModelCopyWith<$Res> {
       List<String> followerIds,
       List<String> bookmarkIds,
       List<String> jobIds,
+      List<String> companyIdsMessage,
       String token,
       bool isPassword});
 }
@@ -88,6 +90,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? followerIds = null,
     Object? bookmarkIds = null,
     Object? jobIds = null,
+    Object? companyIdsMessage = null,
     Object? token = null,
     Object? isPassword = null,
   }) {
@@ -140,6 +143,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.jobIds
           : jobIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      companyIdsMessage: null == companyIdsMessage
+          ? _value.companyIdsMessage
+          : companyIdsMessage // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -172,6 +179,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       List<String> followerIds,
       List<String> bookmarkIds,
       List<String> jobIds,
+      List<String> companyIdsMessage,
       String token,
       bool isPassword});
 }
@@ -199,6 +207,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? followerIds = null,
     Object? bookmarkIds = null,
     Object? jobIds = null,
+    Object? companyIdsMessage = null,
     Object? token = null,
     Object? isPassword = null,
   }) {
@@ -251,6 +260,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value._jobIds
           : jobIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      companyIdsMessage: null == companyIdsMessage
+          ? _value._companyIdsMessage
+          : companyIdsMessage // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -279,11 +292,13 @@ class _$_UserModel implements _UserModel {
       final List<String> followerIds = const [],
       final List<String> bookmarkIds = const [],
       final List<String> jobIds = const [],
+      final List<String> companyIdsMessage = const [],
       this.token = '',
       this.isPassword = false})
       : _followerIds = followerIds,
         _bookmarkIds = bookmarkIds,
-        _jobIds = jobIds;
+        _jobIds = jobIds,
+        _companyIdsMessage = companyIdsMessage;
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -342,6 +357,16 @@ class _$_UserModel implements _UserModel {
     return EqualUnmodifiableListView(_jobIds);
   }
 
+  final List<String> _companyIdsMessage;
+  @override
+  @JsonKey()
+  List<String> get companyIdsMessage {
+    if (_companyIdsMessage is EqualUnmodifiableListView)
+      return _companyIdsMessage;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_companyIdsMessage);
+  }
+
   @override
   @JsonKey()
   final String token;
@@ -351,7 +376,7 @@ class _$_UserModel implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, username: $username, password: $password, email: $email, displayName: $displayName, phoneNumber: $phoneNumber, gender: $gender, image: $image, introducingLetter: $introducingLetter, followerIds: $followerIds, bookmarkIds: $bookmarkIds, jobIds: $jobIds, token: $token, isPassword: $isPassword)';
+    return 'UserModel(id: $id, username: $username, password: $password, email: $email, displayName: $displayName, phoneNumber: $phoneNumber, gender: $gender, image: $image, introducingLetter: $introducingLetter, followerIds: $followerIds, bookmarkIds: $bookmarkIds, jobIds: $jobIds, companyIdsMessage: $companyIdsMessage, token: $token, isPassword: $isPassword)';
   }
 
   @override
@@ -378,6 +403,8 @@ class _$_UserModel implements _UserModel {
             const DeepCollectionEquality()
                 .equals(other._bookmarkIds, _bookmarkIds) &&
             const DeepCollectionEquality().equals(other._jobIds, _jobIds) &&
+            const DeepCollectionEquality()
+                .equals(other._companyIdsMessage, _companyIdsMessage) &&
             (identical(other.token, token) || other.token == token) &&
             (identical(other.isPassword, isPassword) ||
                 other.isPassword == isPassword));
@@ -399,6 +426,7 @@ class _$_UserModel implements _UserModel {
       const DeepCollectionEquality().hash(_followerIds),
       const DeepCollectionEquality().hash(_bookmarkIds),
       const DeepCollectionEquality().hash(_jobIds),
+      const DeepCollectionEquality().hash(_companyIdsMessage),
       token,
       isPassword);
 
@@ -430,6 +458,7 @@ abstract class _UserModel implements UserModel {
       final List<String> followerIds,
       final List<String> bookmarkIds,
       final List<String> jobIds,
+      final List<String> companyIdsMessage,
       final String token,
       final bool isPassword}) = _$_UserModel;
 
@@ -460,6 +489,8 @@ abstract class _UserModel implements UserModel {
   List<String> get bookmarkIds;
   @override
   List<String> get jobIds;
+  @override
+  List<String> get companyIdsMessage;
   @override
   String get token;
   @override

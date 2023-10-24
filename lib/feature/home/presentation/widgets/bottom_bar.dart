@@ -48,20 +48,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
               isFocus: curentIndex == 1,
             )),
             // const ButtonBetween(),
-            Expanded(
+              Expanded(
                 child: IconBottomNarvigationBar(
-              title: 'Notification',
-              iconUrl: curentIndex == 2 ? AppAsset.bellBold : AppAsset.bell,
+              title: 'Chat',
+              iconUrl: curentIndex == 2 ? AppAsset.messageBold : AppAsset.message,
               onPressed: () => _onTabTapped(2),
               isFocus: curentIndex == 2,
             )),
             Expanded(
                 child: IconBottomNarvigationBar(
-              title: 'Bookmark',
-              iconUrl:
-                  curentIndex == 3 ? AppAsset.bookmarkBold : AppAsset.bookmark,
+              title: 'Notification',
+              iconUrl: curentIndex == 3? AppAsset.bellBold : AppAsset.bell,
               onPressed: () => _onTabTapped(3),
               isFocus: curentIndex == 3,
+            )),
+            Expanded(
+                child: IconBottomNarvigationBar(
+              title: 'Bookmark',
+              iconUrl:
+                  curentIndex == 4 ? AppAsset.bookmarkBold : AppAsset.bookmark,
+              onPressed: () => _onTabTapped(4),
+              isFocus: curentIndex == 4,
             )),
           ],
         ));

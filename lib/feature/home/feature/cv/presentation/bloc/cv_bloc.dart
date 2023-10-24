@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jobspot/common/widgets/enum/load_status_enum.dart';
 import 'package:jobspot/core/service_locator.dart';
@@ -9,10 +10,10 @@ import 'package:jobspot/feature/home/feature/cv/data/models/cv_model.dart';
 import 'package:jobspot/feature/home/feature/cv/domain/usecases/cv_use_case.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/services/user_cache_service.dart';
-import 'package:collection/collection.dart';
+
+part 'cv_bloc.freezed.dart';
 part 'cv_event.dart';
 part 'cv_state.dart';
-part 'cv_bloc.freezed.dart';
 
 class CvBloc extends Bloc<CvEvent, CvState> {
   CvBloc() : super(const CvState()) {

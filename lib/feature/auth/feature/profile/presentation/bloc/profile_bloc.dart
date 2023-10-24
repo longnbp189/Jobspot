@@ -61,6 +61,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             gender: userModel.gender,
             jobIds: userModel.jobIds,
             password: userModel.password,
+            companyIdsMessage: userModel.companyIdsMessage,
             isPassword: userModel.isPassword);
         final result =
             await serviceLocator<ProfileUsecase>().updateUserToFirebase(user);

@@ -20,4 +20,6 @@ class AppRouterName {
   static const changePassword = 'change-password';
   static const followingCompany = 'following-company';
   static const jobApplied = 'job-applied';
+  static const chat = 'chat';
+  static const chatDetail = 'chat-detail';
 }

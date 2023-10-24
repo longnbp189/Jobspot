@@ -16,6 +16,7 @@ import 'package:jobspot/feature/home/feature/job/domain/usecases/job_use_case.da
 import 'package:jobspot/feature/home/feature/job/presentation/screens/filter_job_screen.dart';
 import 'package:jobspot/services/database_helper.dart';
 import 'package:jobspot/services/user_cache_service.dart';
+import 'package:logger/logger.dart';
 
 part 'job_bloc.freezed.dart';
 part 'job_event.dart';
@@ -60,7 +61,13 @@ class JobBloc extends Bloc<JobEvent, JobState> {
 
   FutureOr<void> _onGetAddressRequested(
       GetAddressRequested event, Emitter<JobState> emit) async {
-    await serviceLocator<JobUsecase>().getAddress();
+    final logger = Logger();
+    try {
+      await serviceLocator<JobUsecase>().getAddress();
+    } catch (e) {
+      print('ahihi');
+      logger.e(e);
+    }
   }
 
   FutureOr<void> _onGetProvincesRequested(
@@ -367,11 +374,20 @@ class JobBloc extends Bloc<JobEvent, JobState> {
       if (!userJob.contains(state.job?.id)) {
         userJob.add(state.job?.id ?? '');
       }
+
+      List<String> userCompanyIdMessage =
+          List.from(state.user?.companyIdsMessage ?? []);
+      if (!userCompanyIdMessage.contains(state.job?.companyId)) {
+        userCompanyIdMessage.add(state.job?.companyId ?? '');
+      }
+
       final result =
           await serviceLocator<JobUsecase>().submitCV(event.cvInfoModel);
       // await Future.delayed(const Duration(seconds: 1));
-      var user = state.user!
-          .copyWith(jobIds: userJob, introducingLetter: state.introLetter);
+      var user = state.user!.copyWith(
+          jobIds: userJob,
+          introducingLetter: state.introLetter,
+          companyIdsMessage: userCompanyIdMessage);
 
       result.fold(
           (l) => emit(state.copyWith(

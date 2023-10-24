@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:hive/hive.dart';
 import 'package:jobspot/core/failure.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
@@ -11,7 +10,6 @@ import 'package:jobspot/feature/home/feature/job/data/models/district_model.dart
 import 'package:jobspot/feature/home/feature/job/data/models/job_category_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/province_model.dart';
-import 'package:jobspot/feature/home/feature/job/data/models/ward_model.dart';
 import 'package:jobspot/services/database_helper.dart';
 
 abstract class JobRemoteDataSource {
@@ -98,7 +96,7 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
       // print('add address success');
 
       return right(unit);
-    } catch (e) {
+    } on Exception catch (e) {
       return left(ParsingFailure('get data address Error: ${e.toString()}'));
     }
   }
@@ -124,7 +122,7 @@ class JobRemoteDataSourceImpl implements JobRemoteDataSource {
       }).toList();
 
       return right(jobs);
-    } catch (e) {
+    } on Exception catch (e) {
       return left(
           ParsingFailure('Get list job Firebase Error: ${e.toString()}'));
     }

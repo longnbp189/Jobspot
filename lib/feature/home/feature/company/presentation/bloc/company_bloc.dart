@@ -62,7 +62,6 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
   FutureOr<void> _onGetListTopCompanyRequested(
       GetListTopCompanyRequested event, Emitter<CompanyState> emit) async {
     emit(state.copyWith(isShimmer: true, error: ''));
-
     final result = await serviceLocator<CompanyUsecase>().getListTopCompany();
     result.fold(
       (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
