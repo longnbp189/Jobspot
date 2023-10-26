@@ -15,7 +15,6 @@ import 'package:jobspot/design/typography.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/login/presentation/bloc/auth_bloc.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
-import 'package:jobspot/feature/home/feature/chat/presentation/bloc/chat_bloc.dart';
 import 'package:jobspot/feature/home/feature/company/presentation/screens/company_detail_screen.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/bloc/cv_bloc.dart';
 import 'package:jobspot/feature/home/feature/cv/presentation/screens/cv_screen.dart';
@@ -67,7 +66,7 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final chatBloc = context.read<ChatBloc>();
+    // final chatBloc = context.read<ChatBloc>();
     return BlocConsumer<JobBloc, JobState>(
       listener: (context, state) {
         if (state.updateSuccess) {
@@ -79,8 +78,8 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
           context.pop();
           AppFormat.showSnackBar(context, 'CV submitted successfully', 2);
           authBloc.add(InitUserRequested(state.user!));
-          chatBloc.add(
-              ChatEvent.getListMessage(state.user?.companyIdsMessage ?? []));
+          // chatBloc.add(
+          //     ChatEvent.getListMessage(state.user?.companyIdsMessage ?? []));
         }
         if (state.loadStatus == LoadStatusEnum.loading) {
           showDialog(

@@ -27,6 +27,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   final _messageController = TextEditingController();
   final chatService = ChatService();
   MessageModel? lastMessage;
+  bool isInitScroll = false;
 
   void sendMessage() async {
     if (_messageController.text.isNotEmpty) {
@@ -50,6 +51,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   @override
   void dispose() {
     _messageController.dispose();
+    // _controller.dispose();
     super.dispose();
   }
 
@@ -66,8 +68,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
         return true;
       },
       child: BlocConsumer<ChatBloc, ChatState>(
-        listener: (context, state) {
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
               backgroundColor: AppColor.backgroundWhite,
@@ -100,14 +101,20 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           if (doc.isNotEmpty) {
             messageList = AppFormat.parseDocToMes(doc);
             lastMessage = messageList.last;
+            // if (_controller.hasClients) {
+            if (!isInitScroll) {
+              Future.delayed(const Duration(milliseconds: 300), () {
+                isInitScroll = true;
+                _controller.animateTo(
+                  _controller.position.maxScrollExtent,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOut,
+                );
+              });
+            }
 
-            Future.delayed(const Duration(milliseconds: 100), () {
-              _controller.animateTo(
-                _controller.position.maxScrollExtent,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut,
-              );
-            });
+            // }
+
             return ListView.builder(
               shrinkWrap: true,
               controller: _controller,
@@ -273,13 +280,11 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           ),
         ),
         IconButton(
-            onPressed: _messageController.text.isNotEmpty ? sendMessage : null,
+            onPressed: sendMessage,
             icon: Icon(
               Icons.arrow_circle_right_rounded,
               size: 52.r,
-              color: _messageController.text.isNotEmpty
-                  ? AppColor.primary
-                  : AppColor.backgroundChip,
+              color: AppColor.primary,
             ))
       ],
     );
