@@ -47,7 +47,6 @@ class _ChatItemState extends State<ChatItem> {
   void initState() {
     authBloc = context.read<AuthBloc>();
     _loadLastMessage();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -105,23 +104,49 @@ class _ChatItemState extends State<ChatItem> {
                         overflow: TextOverflow.ellipsis,
                       ),
                       spaceH4,
-                      Text(
-                        AppFormat.checkMessageSender(
-                            _lastMessage, authBloc.state.user!.id),
-                        style: _lastMessage != null
-                            ? _lastMessage!.senderId == authBloc.state.user!.id
-                                ? TxtStyles.regular12
-                                    .copyWith(color: AppColor.textGreyColor)
-                                : TxtStyles.semiBold14
-                                    .copyWith(color: AppColor.textGreyColor)
-                            : TxtStyles.regular12
-                                .copyWith(color: AppColor.textGreyColor),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              AppFormat.checkMessageSender(
+                                  _lastMessage, authBloc.state.user!.id),
+                              style: _lastMessage != null &&
+                                      _lastMessage!.message.isNotEmpty
+                                  ? _lastMessage!.senderId ==
+                                          authBloc.state.user!.id
+                                      ? TxtStyles.regular12.copyWith(
+                                          color: AppColor.textGreyColor)
+                                      : TxtStyles.semiBold14.copyWith(
+                                          color: AppColor.textGreyColor)
+                                  : TxtStyles.regular12
+                                      .copyWith(color: AppColor.textGreyColor),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ),
+                          spaceW4,
+                          Text(
+                            _lastMessage != null &&
+                                    _lastMessage!.message.isNotEmpty
+                                ? AppFormat.formatMessTime(
+                                    _lastMessage!.sendTime!)
+                                : '',
+                            style: _lastMessage != null &&
+                                    _lastMessage!.message.isNotEmpty
+                                ? _lastMessage!.senderId ==
+                                        authBloc.state.user!.id
+                                    ? TxtStyles.regular12
+                                        .copyWith(color: AppColor.textGreyColor)
+                                    : TxtStyles.semiBold14
+                                        .copyWith(color: AppColor.textGreyColor)
+                                : TxtStyles.regular12
+                                    .copyWith(color: AppColor.textGreyColor),
+                          )
+                        ],
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             spaceH16,

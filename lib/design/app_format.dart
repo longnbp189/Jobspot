@@ -496,6 +496,22 @@ class AppFormat {
     }
   }
 
+  static String formatMessTime(DateTime dateTime) {
+    final now = DateTime.now();
+    final difference = now.difference(dateTime);
+
+    if (difference.inDays > 365) {
+      // Nếu quá 1 năm, hiển thị ngày/tháng/năm
+      return DateFormat('dd/MM/yyyy').format(dateTime);
+    } else if (difference.inDays > 0) {
+      // Nếu quá 1 ngày, hiển thị ngày/tháng
+      return DateFormat('dd/MM').format(dateTime);
+    } else {
+      // Nếu không quá 1 ngày, hiển thị giờ/phút
+      return DateFormat('HH:mm').format(dateTime);
+    }
+  }
+
   static String statusAppointment(String status) {
     switch (int.parse(status.toString())) {
       // case 0:

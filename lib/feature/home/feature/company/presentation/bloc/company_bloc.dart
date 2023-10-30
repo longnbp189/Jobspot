@@ -176,6 +176,15 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
   FutureOr<void> _onGetListCompanySameTypeRequested(
       GetListCompanySameTypeRequested event, Emitter<CompanyState> emit) async {
     emit(state.copyWith(isShimmer: true, error: ''));
+    // List<JobsModel> jobs = [];
+    final resultJob = await serviceLocator<JobUsecase>().getListJobMax();
+    final jobs = resultJob.fold((l) => throw l, (r) => r);
+    jobs.removeWhere((element) =>
+        // (!(element.companyId == state.job!.companyId)
+        // // ||
+        // // element.id == state.job!.id
+        // ) ||
+        !AppFormat.isAvailableJob(element));
     final result = await serviceLocator<CompanyUsecase>()
         .getListCompanySameType(state.company?.type ?? '');
     result.fold(
@@ -187,7 +196,7 @@ class CompanyBloc extends Bloc<CompanyEvent, CompanyState> {
             break;
           }
         }
-        emit(state.copyWith(companies: r, isShimmer: false));
+        emit(state.copyWith(companies: r, isShimmer: false, jobs: jobs));
       },
     );
     // loadMore(isdelete, event.pageKey);

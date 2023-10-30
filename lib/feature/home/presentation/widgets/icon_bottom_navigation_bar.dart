@@ -1,6 +1,4 @@
-
 part of '../screen/home_screen.dart';
-
 
 class IconBottomNarvigationBar extends StatelessWidget {
   final String iconUrl;
@@ -31,8 +29,8 @@ class IconBottomNarvigationBar extends StatelessWidget {
           Text(
             title,
             style: isFocus
-                ? TxtStyles.semiBold14.copyWith(color: AppColor.primary)
-                : TxtStyles.regular14.copyWith(color: AppColor.unSelected),
+                ? TxtStyles.semiBold12.copyWith(color: AppColor.primary)
+                : TxtStyles.regular12.copyWith(color: AppColor.unSelected),
           ),
         ],
       ),

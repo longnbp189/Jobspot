@@ -8,6 +8,7 @@ import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
 import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info_model.dart';
 import 'package:jobspot/feature/home/feature/company/data/models/company_model.dart';
+import 'package:jobspot/feature/home/feature/company/domain/usecases/company_use_case.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/district_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/job_category_model.dart';
 import 'package:jobspot/feature/home/feature/job/data/models/jobs_model.dart';
@@ -344,21 +345,21 @@ class JobBloc extends Bloc<JobEvent, JobState> {
     emit(state.copyWith(isShimmer: true, error: ''));
     // await Future.delayed(const Duration(milliseconds: 700));
 
-    // final result = await serviceLocator<CompanyUsecase>()
-    //     .getCompanyById(id: state.job!.companyId);
-    // result.fold(
-    //     (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
-    //     (r) => emit(state.copyWith(
-    //           company: r,
-    //           isShimmer: false,
-    //         )));
+    final result = await serviceLocator<CompanyUsecase>()
+        .getCompanyById(id: state.job!.companyId);
+    result.fold(
+        (l) => emit(state.copyWith(error: l.message, isShimmer: false)),
+        (r) => emit(state.copyWith(
+              company: r,
+              isShimmer: false,
+            )));
 
     List<JobsModel> jobs = List.from(state.jobs);
 
     jobs.removeWhere((element) =>
         (!(element.companyId == state.job!.companyId)
-        // ||
-        // element.id == state.job!.id
+        ||
+        element.id == state.job!.id
         ) ||
         !AppFormat.isAvailableJob(element));
     emit(state.copyWith(isShimmer: false, error: '', jobsSameCompany: jobs));

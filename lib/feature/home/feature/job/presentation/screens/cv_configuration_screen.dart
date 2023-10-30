@@ -33,6 +33,7 @@ class _CVConfigurationScreenState extends State<CVConfigurationScreen> {
   final _emailController = TextEditingController();
   final _introController = TextEditingController();
   var authBloc = AuthBloc();
+  var cvBloc = CvBloc();
   CVModel? selectedValue;
   @override
   void initState() {
@@ -40,6 +41,15 @@ class _CVConfigurationScreenState extends State<CVConfigurationScreen> {
     var keyboardVisibilityController = KeyboardVisibilityController();
 
     authBloc = context.read<AuthBloc>();
+    cvBloc = context.read<CvBloc>();
+    var cvList = cvBloc.state.cvList;
+    var isHasMainCV = cvList.firstWhereOrNull(
+          (element) => element.isMainCV,
+        ) ??
+        CVModel();
+    if (isHasMainCV.id.isNotEmpty) {
+      selectedValue = isHasMainCV;
+    }
     _nameController.text = authBloc.state.user?.displayName ?? '';
     _phoneController.text = authBloc.state.user?.phoneNumber ?? '';
     _emailController.text = authBloc.state.user?.email ?? '';
@@ -66,16 +76,9 @@ class _CVConfigurationScreenState extends State<CVConfigurationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cvBloc = context.read<CvBloc>();
+    // final cvBloc = context.read<CvBloc>();
     final jobBloc = context.read<JobBloc>();
-    var cvList = cvBloc.state.cvList;
-    var isHasMainCV = cvList.firstWhereOrNull(
-          (element) => element.isMainCV,
-        ) ??
-        CVModel();
-    if (isHasMainCV.id.isNotEmpty) {
-      selectedValue = isHasMainCV;
-    }
+
     bool isInValidCV = selectedValue == null ||
         _nameController.text.isEmpty ||
         _phoneController.text.isEmpty ||

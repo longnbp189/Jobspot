@@ -421,34 +421,20 @@ class _ApplyBottomSheetState extends State<ApplyBottomSheet> {
                                         ),
                                       )
                                   : null,
-                              child: Row(
-                                children: [
-                                  Text(
-                                    (cvBloc.state.cvMainModel != null &&
-                                            cvBloc.state.cvMainModel!.name
-                                                .isNotEmpty)
-                                        ? ':${cvBloc.state.cvMainModel!.name}'
-                                        : ':Empty',
-                                    style: (cvBloc.state.cvMainModel != null &&
-                                            cvBloc.state.cvMainModel!.name
-                                                .isNotEmpty)
-                                        ? TxtStyles.semiBold16
-                                            .copyWith(color: AppColor.primary)
-                                        : TxtStyles.regular16,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  if ((cvBloc.state.cvMainModel != null &&
-                                      cvBloc
-                                          .state.cvMainModel!.name.isNotEmpty))
-                                    Expanded(
-                                      child: Text(
-                                        ' (View)',
-                                        style: TxtStyles.semiBold16
-                                            .copyWith(color: AppColor.primary),
-                                      ),
-                                    ),
-                                ],
+                              child: Text(
+                                (cvBloc.state.cvMainModel != null &&
+                                        cvBloc
+                                            .state.cvMainModel!.name.isNotEmpty)
+                                    ? ':${cvBloc.state.cvMainModel!.name}'
+                                    : ':Empty',
+                                style: (cvBloc.state.cvMainModel != null &&
+                                        cvBloc
+                                            .state.cvMainModel!.name.isNotEmpty)
+                                    ? TxtStyles.semiBold16
+                                        .copyWith(color: AppColor.primary)
+                                    : TxtStyles.regular16,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                             Text(

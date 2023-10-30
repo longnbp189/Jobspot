@@ -16,8 +16,8 @@ class RecruitmentNewsBody extends StatelessWidget {
     return ColoredBox(
         color: AppColor.backgroundWhite,
         child: BlocBuilder<CompanyBloc, CompanyState>(
-          buildWhen: (previous, current) =>
-              previous.jobSameCompanies != current.jobSameCompanies,
+          // buildWhen: (previous, current) =>
+          // previous.jobSameCompanies != current.jobSameCompanies,
           builder: (context, state) {
             print('22222 ${state.isShimmer}');
             return SingleChildScrollView(

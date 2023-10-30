@@ -36,6 +36,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         }
       }
     }
+    // companyMessage.sort((a, b) => a.,);
     emit(state.copyWith(companyList: companyMessage, isShimmer: false));
   }
 

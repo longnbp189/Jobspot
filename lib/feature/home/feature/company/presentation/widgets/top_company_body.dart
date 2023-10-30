@@ -60,7 +60,7 @@ class TopCompaniesBody extends StatelessWidget {
                     // },
                     argument: CompanyAgrument(
                       authBloc: authBloc,
-                      companyBloc: CompanyBloc(),
+                      companyBloc: bloc,
                       companyModel: item,
                       changed: (value) {
                         if (value) {
