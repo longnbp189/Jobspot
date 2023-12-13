@@ -70,9 +70,9 @@ class LoginUsecase {
     return response;
   }
 
-  Future<void> logout() async {
+  Future<void> logout(String  userId) async {
     await serviceLocator<AuthRepository>().logout();
-    await serviceLocator<UserCacheService>().deleteUser();
+    await serviceLocator<UserCacheService>().deleteUser(userId);
   }
 
   Future<UserModel?> checkIfUserLoggedIn() async {

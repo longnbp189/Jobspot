@@ -70,8 +70,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> _onLogout(Logout event, Emitter<AuthState> emit) async {
-    await serviceLocator<LoginUsecase>().logout();
-    await serviceLocator<UserCacheService>().deleteUser();
+    await serviceLocator<LoginUsecase>().logout(state.user?.id??'');
+    // await serviceLocator<UserCacheService>().deleteUser();
     emit(state.copyWith(user: null));
   }
 

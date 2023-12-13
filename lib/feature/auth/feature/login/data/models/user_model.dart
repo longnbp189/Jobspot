@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info.dart';
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 

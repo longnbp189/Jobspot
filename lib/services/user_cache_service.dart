@@ -32,8 +32,8 @@ class UserCacheService {
     return usr;
   }
 
-  Future<bool> deleteUser() async {
-    FirebaseMessaging.instance.unsubscribeFromTopic(user?.id.toString() ?? '');
+  Future<bool> deleteUser(String id) async {
+    FirebaseMessaging.instance.unsubscribeFromTopic(id);
 
     _user = null;
 

@@ -5,7 +5,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:jobspot/core/failure.dart';
+import 'package:jobspot/design/app_format.dart';
 import 'package:jobspot/feature/auth/feature/login/data/models/user_model.dart';
+import 'package:jobspot/feature/auth/feature/profile/data/models/cv_info.dart';
 
 abstract class UserRemoteDataSource {
   Future<Either<Failure, UserModel>> loginWithGoogle();
@@ -64,13 +66,23 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         email: username,
         password: password,
       );
+
       final User? user = authResult.user;
       if (user != null) {
-        final userModel = UserModel(
-          id: user.uid,
-          displayName: user.displayName ?? '',
-          email: user.email ?? '',
-        );
+        final userFirebase = await _db.collection("Users").doc(user.uid).get();
+        final userData = userFirebase.data() as Map<String, dynamic>;
+        final userModel = UserModel.fromJson(userData);
+
+        // UserModel userResponse;
+        // if (userModel.cvInfo != null && userModel.cvInfo!.id.isNotEmpty) {}
+
+        //  userResponse = UserModel(
+        //     id: user.uid,
+        //     displayName: user.displayName ?? '',
+        //     email: user.email ?? '',
+        //     cvInfo: CVInfoModel(
+        //       displayName: user.displayName ?? '',
+        //     ));
         return right(userModel);
       } else {
         return left(const ConnectionFailure('Login failed.'));

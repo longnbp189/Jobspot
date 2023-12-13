@@ -38,21 +38,22 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       var userModel = state.userModel;
       if (userModel != null) {
         var user = UserModel(
-            // id: state,
-            id: userModel.id,
-            displayName: state.fullName.isNotEmpty
-                ? state.fullName
-                : userModel.displayName,
-            username: userModel.email,
-            email: userModel.email,
-            image: state.imageUrl.isNotEmpty ? state.imageUrl : userModel.image,
-            phoneNumber: state.phone,
-            followerIds: userModel.followerIds,
-            bookmarkIds: userModel.bookmarkIds,
-            introducingLetter: userModel.introducingLetter,
-            gender: userModel.gender,
-            jobIds: userModel.jobIds,
-            password: userModel.password);
+          // id: state,
+          id: userModel.id,
+          displayName: state.fullName.isNotEmpty
+              ? state.fullName
+              : userModel.displayName,
+          username: userModel.email,
+          email: userModel.email,
+          image: state.imageUrl.isNotEmpty ? state.imageUrl : userModel.image,
+          phoneNumber: state.phone,
+          followerIds: userModel.followerIds,
+          bookmarkIds: userModel.bookmarkIds,
+          introducingLetter: userModel.introducingLetter,
+          gender: userModel.gender,
+          jobIds: userModel.jobIds,
+          password: userModel.password,
+        );
         final result =
             await serviceLocator<ProfileUsecase>().updateUserToFirebase(user);
 

@@ -41,6 +41,4 @@ class AuthRepositoryImpl implements AuthRepository {
     return serviceLocator<UserRemoteDataSource>()
         .signUp(username: email, password: password);
   }
-
-  
 }
